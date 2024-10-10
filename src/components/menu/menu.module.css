@@ -1,0 +1,89 @@
+.menuContainer {
+  width: 100%;
+  margin-top: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding-left: 20px;
+  overflow: auto;
+  padding-right: 20px;
+
+  & .item {
+    min-width: 165px;
+    border: 2px solid #1f1f1f;
+    background-color: #0c0c0cb1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    height: 70px;
+    border-radius: 50px;
+    padding-left: 15px;
+   
+
+    & .boxImg {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      position: relative;
+      background-color: #1F1F1F;
+      opacity: 0.6;
+    }
+
+    & p {
+      color: white;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      opacity: 0.6;
+    }
+  }
+
+  & .itemTwo {
+    min-width: 210px;
+    border: 2px solid #1f1f1f;
+    background-color: #0c0c0cb1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    height: 70px;
+    border-radius: 50px;
+    padding-left: 20px;
+
+    & img{
+        opacity: 0.6;
+    }
+
+    & p {
+      color: white;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      opacity: 0.6;
+    }
+  }
+
+  & .itemTre {
+    min-width: 190px;
+    border: 2px solid #1f1f1f;
+    background-color: #0c0c0cb1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    height: 70px;
+    border-radius: 50px;
+    padding-left: 20px;
+
+    & img{
+        opacity: 0.6;
+    }
+
+    & p {
+      color: white;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      opacity: 0.6;
+    }
+  }
+}
