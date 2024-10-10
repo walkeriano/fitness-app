@@ -6,7 +6,7 @@ import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import Closing from "@/components/closing/closing";
 import HeroSub from "@/components/heroSub/heroSub";
-import Explicacion from "@/components/Explicacion/explicacion";
+import Explicacion from "@/components/explicacion/explicacion";
 import Beneficios from "@/components/beneficios/beneficios";
 import Onetoone from "@/components/onetoone/onetoone";
 

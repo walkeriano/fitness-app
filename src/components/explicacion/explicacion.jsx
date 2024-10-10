@@ -47,7 +47,7 @@ export default function Explicacion() {
       </h4>
       <p>
         Toda nuestra experiencia y conocimientos en en una aplicación que te
-        ayudará a lograr tus objetivos físicos en tiempo record!
+        ayudará a lograr tus objetivos físicos en tiedadsampo record!
       </p>
     </section>
   );
