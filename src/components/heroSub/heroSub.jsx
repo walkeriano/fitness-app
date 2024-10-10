@@ -43,7 +43,7 @@ export default function HeroHub() {
       if (responseData.success) {
         setResult("Form Submitted Successfully");
         reset(); // Resetea el formulario
-        router.push("/acceso-fitness-app"); // Redirige al usuario al home principal
+        router.push("/registro-nuevo-perfil"); // Redirige al usuario al home principal
       } else {
         setResult(`Error: ${responseData.message}`);
       }
