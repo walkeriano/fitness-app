@@ -124,7 +124,7 @@ export default function SliderCasos() {
           </div>
         </section>
       </section>
-      <Link href="/" className={styles.btnSuscripcion}>
+      <Link href="/suscripcion-mensual" className={styles.btnSuscripcion}>
         suscribirme ahora
         <span>
           <FontAwesomeIcon

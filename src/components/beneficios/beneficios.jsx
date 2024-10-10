@@ -296,7 +296,7 @@ export default function Beneficios() {
           </section>
         )}
       </section>
-      <Link href="/" className={styles.btnSuscripcion}>
+      <Link href="/suscripcion-mensual" className={styles.btnSuscripcion}>
         Suscribirme ahora
         <span>
           <FontAwesomeIcon

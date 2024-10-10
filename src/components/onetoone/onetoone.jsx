@@ -67,7 +67,7 @@ export default function Onetoone() {
           reservar una cita online con los coachs para resolver cualquier
           requerimiento o duda
         </p>
-        <Link href="/" className={styles.btnSuscripcion}>
+        <Link  href="/suscripcion-mensual" className={styles.btnSuscripcion}>
           Suscribirme ahora
           <span>
             <FontAwesomeIcon
