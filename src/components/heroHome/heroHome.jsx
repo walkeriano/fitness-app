@@ -48,7 +48,7 @@ export default function HeroHome() {
           Fitness<span>life style</span>
         </h1>
         <section className={styles.contInfo}>
-          <h2>Los grandes secretos del fitness en tus manos</h2>
+          <h2>Los grandes secretos del fitness en tus manos!</h2>
           <div className={styles.slide}>
             <p>Seguir deslizando</p>
             <FontAwesomeIcon
