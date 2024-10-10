@@ -66,7 +66,7 @@ export default function HeroHub() {
           Suscripción <span>mensual</span>
         </h2>
         <div className={styles.price}>
-          <p>S/.100</p>
+          <p>S/.100222</p>
           <p>
             S/.120
             <span></span>
