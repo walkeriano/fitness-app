@@ -1,117 +1,72 @@
+"use client";
 import React, { useState, useContext } from "react";
 import AuthContext from "@/state/auth/auth-context";
 import styles from "./headerPerfil.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faRightFromBracket,
+  faRightFromBracket,
   faBars,
   faXmark,
   faArrowRight,
+  faRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "next/navigation";
 
 export default function HeaderPerfil() {
+  const { logout } = useContext(AuthContext);
   const [menu, setMenu] = useState(true);
-
-  const { user, logout } = useContext(AuthContext); // Obtener el usuario y la función logout desde el contexto
-  const router = useRouter(); // Inicializar el hook useRouter
+  const [outside, setOutside] = useState(true);
+  const router = useRouter();
 
   const handleLogout = async () => {
     try {
-      await logout(); // Intentar cerrar sesión
-      console.log("Sesión cerrada exitosamente");
-      router.push("/acceso-fitness-app"); // Redirigir al home después de cerrar sesión
+      await logout(); // Llamamos a la función logout para cerrar la sesión
+      console.log("Sesión cerrada con éxito");
+      router.push("/");
     } catch (error) {
-      console.error("Error al cerrar sesión:", error);
+      console.error("Error al cerrar la sesión:", error.message);
     }
   };
 
   return (
     <header className={styles.header}>
-      <button onClick={handleLogout}>
-        <FontAwesomeIcon
-          icon={faRightFromBracket}
-          size="2x"
-          className={styles.icon}
-        />
-      </button>
       <Link href="/">
         <Image
           src="/images/icons/logo.svg"
           alt="logo-quesada"
-          width={200}
-          height={60}
+          width={175}
+          height={50}
         />
       </Link>
-      {menu ? (
-        <section onClick={() => setMenu(false)} className={styles.menu}>
-          <FontAwesomeIcon
-            icon={faBars}
-            size="2x"
-            className={styles.iconLeft}
-          />
+      {outside ? (
+        <section onClick={() => setOutside(false)} className={styles.btnHeader}>
+          <p>Cerrar sesión</p>
+          <FontAwesomeIcon icon={faXmark} size="2x" className={styles.icon} />
         </section>
       ) : (
-        <section className={styles.menuShow}>
-          <section className={styles.headMenu}>
-            <Image
-              src="/images/icons/logo.svg"
-              alt="logo-quesada"
-              width={180}
-              height={45}
-            />
-            <button onClick={() => setMenu(true)}>
+        <section className={styles.cerrarSesion}>
+          <div className={styles.containerClosing}>
+            <div onClick={() => setOutside(true)} className={styles.btnClose}>
               <FontAwesomeIcon
-                icon={faXmark}
+                icon={faRotateLeft}
                 size="2x"
-                className={styles.icon}
+                className={styles.iconBtn}
               />
+            </div>
+            <h3>¿Seguro que deseas salir de la sesión?</h3>
+            <button onClick={handleLogout} className={styles.btnSesionClosing}>
+              Si, Cerrar sesión
+              <span>
+                <FontAwesomeIcon
+                  icon={faRightFromBracket}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </span>
             </button>
-          </section>
-          <ul>
-            <li>
-              <Link href="/">Más detalles</Link>
-              <span>
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  size="2x"
-                  className={styles.icon}
-                />
-              </span>
-            </li>
-            <li>
-              <Link href="/">Iniciar sesión</Link>
-              <span>
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  size="2x"
-                  className={styles.icon}
-                />
-              </span>
-            </li>
-            <li>
-              <Link href="/">Suscribirme</Link>
-              <span>
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  size="2x"
-                  className={styles.icon}
-                />
-              </span>
-            </li>
-            <li>
-              <Link href="/">Contacto</Link>
-              <span>
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  size="2x"
-                  className={styles.icon}
-                />
-              </span>
-            </li>
-          </ul>
+          </div>
         </section>
       )}
     </header>

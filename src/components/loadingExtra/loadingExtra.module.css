@@ -1,0 +1,55 @@
+.contLoading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #006fff;
+    gap: 40px;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  
+  .blur{
+    width: 150%;
+    height: 400px;
+    top: -300px;
+    z-index: -1;
+    position: absolute;
+    background-image: radial-gradient(
+        closest-side,
+        #002D9D,#0c0c0c00
+      );
+  }
+  
+  .blurTwo{
+    width: 150%;
+    height: 400px;
+    bottom: -300px;
+    z-index: -1;
+    position: absolute;
+    background-image: radial-gradient(
+        closest-side,
+        #002D9D,#0c0c0c00
+      );
+  }
+  
+  .loader {
+    width: 70px;
+    padding: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #006fff;
+    --_m: 
+      conic-gradient(#0000 10%,#000),
+      linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+            mask: var(--_m);
+    -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+    animation: l3 1s infinite linear;
+  }
+  @keyframes l3 {to{transform: rotate(1turn)}}
+  

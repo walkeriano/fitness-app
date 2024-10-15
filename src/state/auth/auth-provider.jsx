@@ -9,6 +9,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth, db } from "../../../firebase-config";
+import Loading from "@/components/loadingExtra/loadingExtra";
 
 // Función para obtener mensajes de error específicos de Firebase
 const getFirebaseErrorMessage = (error) => {
@@ -53,49 +54,43 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    return await signInWithEmailAndPassword(auth, email, password);
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      return userCredential;
+    } catch (error) {
+      throw new Error(handleFirebaseError(error));
+    }
   };
 
   const logout = async () => {
     try {
       await signOut(auth);
+      setUser(null); // Limpiar el estado del usuario después de cerrar sesión
     } catch (error) {
       throw new Error("Error durante el cierre de sesión. Inténtalo de nuevo.");
     }
   };
 
-  const register = async ({
-    email,
-    password,
-    name,
-    lastName,
-    country,
-    city,
-    birthDate,
-  }) => {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const userId = userCredential.user.uid; // Obtener el UID del usuario recién registrado
+  const register = async ({ email, password }) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userId = userCredential.user.uid; // Obtener el UID del usuario recién registrado
 
-    // Crear un documento en Firestore en la colección "users"
-    await setDoc(doc(db, "users", userId), {
-      email: email,
-      name: name,
-      lastName: lastName,
-      country: country,
-      city: city,
-      createdAt: new Date(),
-    });
+      // Crear un documento en Firestore en la colección "users"
+      await setDoc(doc(db, "users", userId), {
+        email: email,
+        createdAt: new Date(),
+      });
 
-    return userCredential;
+      return userCredential;
+    } catch (error) {
+      throw new Error(handleFirebaseError(error));
+    }
   };
 
   return (
     <AuthContext.Provider value={{ user, register, login, logout }}>
-      {loading ? <p>Cargando...</p> : children}
+      {loading ? <Loading/> : children}
     </AuthContext.Provider>
   );
 };

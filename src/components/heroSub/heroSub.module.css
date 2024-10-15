@@ -132,7 +132,7 @@
 
         & label {
           color: white;
-          font-size: 0.9rem;
+          font-size: 16px;
           letter-spacing: 1px;
           padding-left: 15px;
         }
@@ -144,7 +144,7 @@
           border: 1px solid #212121;
           background-color: #131313;
           padding-left: 15px;
-          font-size: 0.8rem;
+          font-size: 16px;
           color: white;
           letter-spacing: 1px;
           outline: none;
@@ -153,7 +153,7 @@
         & input::placeholder {
           color: #848484;
           letter-spacing: 1px;
-          font-size: 0.8rem;
+          font-size: 16px;
         }
 
         & input:hover,
@@ -170,7 +170,7 @@
           -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
           box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
           transition: background-color 5000s ease-in-out 0s;
-          font-size: 0.8rem;
+          font-size: 16px;
         }
 
         & .error {

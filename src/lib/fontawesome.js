@@ -12,6 +12,7 @@ import {
   faCamera,
   faTriangleExclamation,
   faRightFromBracket,
+  faRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -33,4 +34,5 @@ library.add(
   faCamera,
   faTriangleExclamation,
   faRightFromBracket,
+  faRotateLeft
 );

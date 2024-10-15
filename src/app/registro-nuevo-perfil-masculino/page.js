@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import Head from "next/head";
 import FormMasculino from "@/components/formularios/formMasculino";
-import Header from "@/components/header/header";
+import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
 import Footer from "@/components/footer/footer";
 
 export default function PerfilMasculino() {
@@ -15,7 +15,7 @@ export default function PerfilMasculino() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.containerPerfilMasculino}>
-        <Header />
+        <HeaderPerfil />
         <FormMasculino />
         <span className={styles.blur}></span>
         <Footer />

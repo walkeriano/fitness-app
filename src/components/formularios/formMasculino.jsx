@@ -1,15 +1,11 @@
 "use client";
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  useContext,
-} from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import styles from "./form.module.css";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
@@ -19,96 +15,143 @@ import {
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "@/state/auth/auth-context";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../../firebase-config";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function FormMasculino() {
-  const { register: registerUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const [errorMessage, setErrorMessage] = useState("");
+  } = useForm({ mode: "onChange" });
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [progress, setProgress] = useState(0);
   const formRef = useRef(null);
+  const [loading, setLoading] = useState(true);
   const [training, setTraining] = useState(false);
   const [impedimento, setImpedimento] = useState(false);
   const [suplemento, setSuplemento] = useState(false);
 
+  useEffect(() => {
+    if (user === undefined) return; // Asegúrate de que user esté definido
+
+    if (!user) {
+      router.push("/");
+    } else {
+      setLoading(false);
+    }
+  }, [user, router]);
+
+  const onSubmit = async (data) => {
+    if (!user) return; // Si no hay usuario, no hacer nada
+
+    try {
+      // Guardar los datos en el documento del usuario en Firestore
+      await setDoc(doc(db, "users", user.uid), data, { merge: true });
+      console.log("Datos guardados correctamente:", data);
+    } catch (error) {
+      console.error("Error al guardar los datos:", error);
+    }
+  };
+
+  // Función para desplazarse a la pregunta específica usando GSAP
   const scrollToQuestion = (index) => {
     const questionElement = formRef.current.children[index];
-    questionElement.scrollIntoView({
-      behavior: "smooth",
-      flex: "flex",
-    });
+
+    if (questionElement) {
+      gsap.to(window, {
+        duration: 0.5, // Duración de la animación en segundos
+        scrollTo: { y: questionElement, offsetY: 10 }, // Ajusta offsetY si es necesario
+        ease: "power2.out", // Curva de aceleración para un movimiento más suave
+      });
+    } else {
+      console.warn("No se encontró el elemento para desplazarse:", index);
+    }
   };
 
   const handleNext = () => {
     if (currentQuestion < formRef.current.children.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-      scrollToQuestion(currentQuestion + 1);
+      setCurrentQuestion((prevQuestion) => {
+        const nextQuestion = prevQuestion + 1;
+        scrollToQuestion(nextQuestion);
+        return nextQuestion;
+      });
     }
-    console.log("next");
   };
 
   const handlePrev = () => {
     if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-      scrollToQuestion(currentQuestion - 1);
+      setCurrentQuestion((prevQuestion) => {
+        const previousQuestion = prevQuestion - 1;
+        scrollToQuestion(previousQuestion);
+        return previousQuestion;
+      });
     }
-    console.log("prev");
   };
 
-  const updateVisibility = useCallback(() => {
+  // Efecto para manejar la actualización de visibilidad y progreso con animación
+  useEffect(() => {
     const totalQuestions = formRef.current?.children.length || 0;
 
     for (let i = 0; i < totalQuestions; i++) {
       const questionElement = formRef.current.children[i];
       if (i === currentQuestion) {
-        questionElement.style.display = "flex"; // Mostrar solo la pregunta actual
+        gsap.fromTo(
+          questionElement,
+          { x: -100, autoAlpha: 0 }, // Comienza desde la derecha, oculto
+          {
+            duration: 0.5,
+            x: 0, // Se mueve a su posición original
+            autoAlpha: 1, // Se vuelve visible
+            display: "flex",
+            ease: "power2.out",
+          }
+        );
       } else {
-        questionElement.style.display = "none"; // Ocultar las preguntas que no están visibles
+        gsap.to(questionElement, {
+          duration: 0.5,
+          x: 100, // Se mueve hacia la izquierda
+          autoAlpha: 0, // Se vuelve invisible
+          onComplete: () => {
+            questionElement.style.display = "none"; // Oculta el elemento después de la animación
+          },
+        });
       }
     }
-  }, [currentQuestion]);
 
-  useEffect(() => {
-    updateVisibility();
+    // Calcula y actualiza el progreso del formulario con precisión
     const calculateProgress = () => {
-      const totalQuestions = formRef.current?.children.length || 1;
-      return (currentQuestion / (totalQuestions - 1)) * 100;
+      const totalQuestions = formRef.current?.children.length || 1; // Asegúrate de que sea al menos 1
+      const progressValue = (currentQuestion / totalQuestions) * 100;
+      return progressValue;
     };
 
     setProgress(calculateProgress());
-  }, [currentQuestion, updateVisibility]);
+  }, [currentQuestion]);
 
-  const onSubmit = async (data) => {
-    setErrorMessage("");
-    try {
-      await registerUser({
-        email: data.email,
-        password: data.password,
-        name: data.name,
-        lastName: data.lastName,
-        country: data.country,
-        city: data.city,
-        createdAt: new Date(),
-      });
-      console.log("Registro exitoso");
-      router.push("/perfil-coach-fitness-app");
-    } catch (err) {
-      const error = handleFirebaseError(err);
-      setErrorMessage(error);
-    }
-  };
+  // Mostramos un mensaje de carga mientras verificamos el estado de autenticación
+  if (loading) {
+    return <p>Cargando información del usuario...</p>;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formMasculino}>
       <section className={styles.contBtns}>
+        <div className={styles.contUser}>
+          <h4>{user ? user.email : "Usuario no disponible"}</h4>
+          <h5>Masculino</h5>
+        </div>
         <button
           type="button"
           onClick={handlePrev}
+          style={{
+            opacity: currentQuestion === 0 ? 0.5 : 1,
+            cursor: currentQuestion === 0 ? "not-allowed" : "pointer",
+          }}
           disabled={currentQuestion === 0}
           className={styles.btnLeft}
         >
@@ -153,42 +196,6 @@ export default function FormMasculino() {
         <div className={styles.question}>
           <section className={styles.title}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
-            <h4 className={styles.firstitle}>Crea tus credenciales</h4>
-          </section>
-          <section className={styles.contForm}>
-            <section className={styles.flexBox}>
-              <div className={styles.itemInput}>
-                <label htmlFor="name">Email:</label>
-                <input
-                  type="email"
-                  {...register("email", {
-                    required: "El email es obligatorio",
-                  })}
-                  placeholder="Escribir aqui..."
-                />
-                {errors.email && <p>{errors.email.message}</p>}
-              </div>
-              <div className={styles.itemInput}>
-                <label htmlFor="name">Contraseña:</label>
-                <input
-                  type="password"
-                  {...register("password", {
-                    required: "La contraseña es obligatoria",
-                    minLength: {
-                      value: 6,
-                      message: "La contraseña debe tener al menos 6 caracteres",
-                    },
-                  })}
-                  placeholder="Escribir aqui..."
-                />
-                {errors.password && <p>{errors.password.message}</p>}
-              </div>
-            </section>
-          </section>
-        </div>
-        <div className={styles.question}>
-          <section className={styles.title}>
-            <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
             <h4 className={styles.firstitle}>Datos informativos</h4>
           </section>
           <section className={styles.contForm}>
@@ -202,7 +209,9 @@ export default function FormMasculino() {
                   })}
                   placeholder="Escribir aqui..."
                 />
-                {errors.name && <p>{errors.name.message}</p>}
+                {errors.name && (
+                  <p style={{ color: "red" }}>{errors.name.message}</p>
+                )}
               </div>
               <div className={styles.itemInput}>
                 <label>Apellidos:</label>

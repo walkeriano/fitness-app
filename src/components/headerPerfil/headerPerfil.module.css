@@ -1,130 +1,118 @@
-.header{
-    border-bottom: 1px solid #1F1F1F;
-    width: 100vw;
-    height: 90px;
-    border-radius: 0px 0px 30px 30px;
+.header {
+  border-bottom: 1px solid #1f1f1f;
+  width: 100vw;
+  height: 90px;
+  border-radius: 0px 0px 30px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  backdrop-filter: blur(5px);
+  background-color: #0c0c0ccf;
+  position: fixed;
+  z-index: 100;
+  animation: header 1.5s linear;
+
+  & .btnHeader {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    backdrop-filter: blur(5px);
-    background-color: #0c0c0ccf;
-    position: fixed;
-    z-index: 100;
-    animation: header 1.5s linear;
+    justify-content: center;
+    border: 1px solid transparent;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 50px;
 
-    & .icon{
-        font-size: 2rem;
-        color: #3D3D3D;
+    & .icon {
+      font-size: 1.3rem;
+      color: #3d3d3d;
     }
 
-    & .iconLeft{
-        font-size: 1.7rem;
-        color: #3D3D3D;
+    & p{
+      color: #3d3d3d;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
     }
+  }
 
-    & button:nth-child(1){
-        border: none;
-        background-color: transparent;
-        border-radius: 50%;
+  
 
-        & .icon{
-            font-size: 1.8rem;
-            transform: rotate(180deg);
-        }
-    }
+  
 
+  & .cerrarSesion {
+    width: 45px;
+    height: 45px;
+    position: relative;
 
-
-    & .menuShow{
-      position: absolute;
-      width: 100%;
-      height: 100vh;
-      background-color:  #006fff;
+    & .containerClosing {
+      position: fixed;
       top: 0px;
+      left: 0px;
+      width: 100vw;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      backdrop-filter: blur(10px);
+      justify-content: center;
+      flex-direction: column;
+      z-index: 100;
+      background-color: #0c0c0cea;
+      gap: 35px;
 
-      & .headMenu{
-        width: 100%;
-        height: 100px;
+      & h3 {
+        color: white;
+        font-size: 1.5rem;
+        width: 70%;
+        text-align: center;
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+      }
+
+      & .btnClose {
+        color: white;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+      }
+
+      & .btnSesionClosing {
+        border: 1px solid red;
+        width: 70%;
+        height: 65px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0px 25px;
+        padding: 0px 20px;
+        border-radius: 15px;
+        background-color: rgb(165, 0, 0);
+        color: white;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
 
-        & button{
-          width: 45px;
-          height: 45px;
-          border: 2px solid white;
-          background-color: transparent;
+        & span {
+          width: 40px;
+          height: 40px;
+          background-color: red;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
 
-          & .icon{
+          & .icon {
+            font-size: 1.3rem;
             color: white;
-            font-size: 1.5rem;
           }
         }
       }
-
-      & ul{
-        width: 85%;
-        height: 75%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 25px;
-
-        & li{
-          list-style: none;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 15px;
-          width: 100%;
-
-          & a{
-            text-decoration: none;
-            color: white;
-            font-size: 2rem;
-            font-family: "Montserrat";
-          }
-
-          & span{
-            background-color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            & .icon{
-              color: #006fff;
-              font-size: 1.6rem;
-              transform: rotate(-45deg);
-            }
-          }
-        }
-      }
-    }
-}
-
-
-
-@keyframes header {
-    0% {
-      opacity: 0;
-      transform: translateY(-100px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0px);
     }
   }
+}
+
+@keyframes header {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
