@@ -12,14 +12,14 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin-top: 410px;
+    margin-top:390px;
     position: absolute;
     z-index: 10;
     
 
     & .contUser{
       position: absolute;
-      top: -260px;
+      top: -265px;
       color: white;
       display: flex;
       flex-direction: column;
@@ -33,12 +33,14 @@
         border-radius: 50%;
         background-color: #006eff23;
         border: 1px solid #006fff;
+        outline: 1px solid #006fff;
         margin-top: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 10px;
+        position: relative;
 
         & p{
           color: #006fff;
@@ -61,6 +63,20 @@
           & .icon{
             font-size: 1.2rem;
             color: white;
+          }
+        }
+
+        & .imagePreview{
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          position: absolute;
+
+          & img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
           }
         }
       }
@@ -108,7 +124,7 @@
 
     & .progressContainer {
       width: 50%;
-      height: 4px;
+      height: 5px;
       border: 1px solid #006fff;
       border-radius: 5px;
       overflow: hidden;
@@ -117,6 +133,7 @@
     & .btnFin {
       background-color: #006fff;
       border: none;
+      height: 50px;
       padding: 10px 10px 10px 15px;
       border-radius: 50px;
       display: flex;
@@ -130,7 +147,7 @@
       letter-spacing: 1px;
 
       & .icon {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
     }
 

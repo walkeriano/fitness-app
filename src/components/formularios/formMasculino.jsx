@@ -15,8 +15,10 @@ import {
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "@/state/auth/auth-context";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../../firebase-config";
+import { storage, db } from "../../../firebase-config";
+import imageCompression from "browser-image-compression";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -25,6 +27,7 @@ export default function FormMasculino() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ mode: "onChange" });
   const router = useRouter();
@@ -35,6 +38,8 @@ export default function FormMasculino() {
   const [training, setTraining] = useState(false);
   const [impedimento, setImpedimento] = useState(false);
   const [suplemento, setSuplemento] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     if (user === undefined) return; // Asegúrate de que user esté definido
@@ -46,13 +51,49 @@ export default function FormMasculino() {
     }
   }, [user, router]);
 
-  const onSubmit = async (data) => {
-    if (!user) return; // Si no hay usuario, no hacer nada
+  const onImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
 
+  const onSubmit = async (data) => {
+    if (!user) return; // Verificar si hay usuario antes de continuar
     try {
+      let imageUrl = "";
+
+      if (selectedImage) {
+        // Opciones para la compresión de la imagen
+        const options = {
+          maxSizeMB: 0.5, // Máximo tamaño de la imagen en MB (500 KB)
+          maxWidthOrHeight: 1920, // Máxima dimensión de ancho o alto
+          useWebWorker: true,
+        };
+
+        const compressedImage = await imageCompression(selectedImage, options); // Comprimir la imagen
+
+        // Crear una referencia para almacenar la imagen en Firebase Storage
+        const storageRef = ref(storage, `images/${user.uid}/${compressedImage.name}`);
+        // Subir la imagen comprimida a Firebase Storage
+        const snapshot = await uploadBytes(storageRef, compressedImage);
+        // Obtener la URL pública de la imagen almacenada
+        imageUrl = await getDownloadURL(snapshot.ref);
+      }
+
+      // Crear un nuevo objeto de datos excluyendo el campo 'image'
+      const { image, ...dataWithoutImage } = data; // Excluye el campo 'image'
+      const formData = { ...dataWithoutImage, imageUrl }; // Agrega solo la URL de la imagen
+
       // Guardar los datos en el documento del usuario en Firestore
-      await setDoc(doc(db, "users", user.uid), data, { merge: true });
-      console.log("Datos guardados correctamente:", data);
+      await setDoc(doc(db, "users", user.uid), formData, { merge: true });
+      console.log("Datos guardados correctamente:", formData);
+
+      // Resetear el formulario y limpiar la imagen seleccionada
+      reset(); // Resetea todos los campos del formulario
+      setSelectedImage(null); // Limpia la imagen seleccionada
+      setImagePreview(null); // Limpia la vista previa de la imagen
     } catch (error) {
       console.error("Error al guardar los datos:", error);
     }
@@ -142,10 +183,23 @@ export default function FormMasculino() {
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formMasculino}>
       <section className={styles.contBtns}>
         <section className={styles.contUser}>
-        <h4>{user ? user.email : "Usuario no disponible"}</h4>
+          <h4>{user ? user.email : "Usuario no disponible"}</h4>
           <h5>Nuevo perfil: Masculino</h5>
-          
-          <div className={styles.imgPerfil}>
+          <label htmlFor="image" className={styles.imgPerfil}>
+            {imagePreview && ( // Renderizar la vista previa si existe
+              <div className={styles.imagePreview}>
+                <Image src={imagePreview} alt="Vista previa" fill={true} />
+              </div>
+            )}
+            <input
+              type="file"
+              id="image"
+              accept="image/*"
+              {...register("image", { required: true })}
+              onChange={onImageChange}
+              hidden
+            />
+            {errors.image && <p>La imagen es requerida</p>}
             <span>
               <FontAwesomeIcon
                 icon={faCamera}
@@ -158,7 +212,7 @@ export default function FormMasculino() {
               <br />
               imagen
             </p>
-          </div>
+          </label>
         </section>
         <button
           type="button"
