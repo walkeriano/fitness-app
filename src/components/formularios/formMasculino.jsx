@@ -141,15 +141,30 @@ export default function FormMasculino() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formMasculino}>
       <section className={styles.contBtns}>
-        <div className={styles.contUser}>
-          <h4>{user ? user.email : "Usuario no disponible"}</h4>
-          <h5>Masculino</h5>
-        </div>
+        <section className={styles.contUser}>
+        <h4>{user ? user.email : "Usuario no disponible"}</h4>
+          <h5>Nuevo perfil: Masculino</h5>
+          
+          <div className={styles.imgPerfil}>
+            <span>
+              <FontAwesomeIcon
+                icon={faCamera}
+                size="2x"
+                className={styles.icon}
+              />
+            </span>
+            <p>
+              Adjuntar
+              <br />
+              imagen
+            </p>
+          </div>
+        </section>
         <button
           type="button"
           onClick={handlePrev}
           style={{
-            opacity: currentQuestion === 0 ? 0.5 : 1,
+            opacity: currentQuestion === 0 ? 0.0 : 1,
             cursor: currentQuestion === 0 ? "not-allowed" : "pointer",
           }}
           disabled={currentQuestion === 0}

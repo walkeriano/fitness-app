@@ -12,14 +12,14 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin-top: 190px;
+    margin-top: 410px;
     position: absolute;
     z-index: 10;
     
 
     & .contUser{
       position: absolute;
-      top: -70px;
+      top: -260px;
       color: white;
       display: flex;
       flex-direction: column;
@@ -27,8 +27,46 @@
       justify-content: center;
       gap: 7px;
 
+      & .imgPerfil{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #006eff23;
+        border: 1px solid #006fff;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        & p{
+          color: #006fff;
+          text-align: center;
+          width: 70%;
+          font-size: 0.8rem;
+          letter-spacing: 1px;
+          line-height: 1.2;
+        }
+
+        & span{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: #006fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          & .icon{
+            font-size: 1.2rem;
+            color: white;
+          }
+        }
+      }
+
       & h4{
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         font-family: "Montserrat";
       }
 
@@ -42,8 +80,8 @@
     & .btnLeft,
     & .btnRight {
       border: 1px solid transparent;
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       color: white;
       display: flex;
@@ -70,8 +108,8 @@
 
     & .progressContainer {
       width: 50%;
-      height: 3px;
-      background-color: white;
+      height: 4px;
+      border: 1px solid #006fff;
       border-radius: 5px;
       overflow: hidden;
     }
@@ -123,7 +161,7 @@
 
       & .title {
         width: 100%;
-        margin-top: 270px;
+        margin-top: 500px;
         display: flex;
         flex-direction: column;
         align-items: center;

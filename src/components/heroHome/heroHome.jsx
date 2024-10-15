@@ -58,7 +58,7 @@ export default function HeroHome() {
             />
           </div>
           <div className={styles.butonsHero}>
-            <Link href="/acceso-fitness-app" className={styles.button}>
+            <Link href="/registro-nuevo-perfil" className={styles.button}>
               Iniciar sesión
               <span>
                 <FontAwesomeIcon
