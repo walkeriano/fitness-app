@@ -1,55 +1,88 @@
 .contLoading {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #006fff;
-    gap: 40px;
-    position: relative;
-    overflow-y: hidden;
-    overflow-x: hidden;
-  }
-  
-  .blur{
-    width: 150%;
-    height: 400px;
-    top: -300px;
-    z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #006fff;
+  gap: 40px;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: black;
+  z-index: 10000;
+}
+
+.textLoading{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  & p{
     position: absolute;
-    background-image: radial-gradient(
-        closest-side,
-        #002D9D,#0c0c0c00
-      );
+    font-size: 1.1rem;
+    opacity: 0.0;
+    letter-spacing: 1px;
   }
-  
-  .blurTwo{
-    width: 150%;
-    height: 400px;
-    bottom: -300px;
-    z-index: -1;
-    position: absolute;
-    background-image: radial-gradient(
-        closest-side,
-        #002D9D,#0c0c0c00
-      );
+
+  & p:nth-child(1){
+    animation: text 3s linear;
   }
-  
-  .loader {
-    width: 70px;
-    padding: 10px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: #006fff;
-    --_m: 
-      conic-gradient(#0000 10%,#000),
-      linear-gradient(#000 0 0) content-box;
-    -webkit-mask: var(--_m);
-            mask: var(--_m);
-    -webkit-mask-composite: source-out;
-            mask-composite: subtract;
-    animation: l3 1s infinite linear;
+  & p:nth-child(2){
+    animation: text 3s 3.5s linear;
   }
-  @keyframes l3 {to{transform: rotate(1turn)}}
-  
+  & p:nth-child(3){
+    animation: text 3s 7s linear;
+  }
+}
+
+.blur {
+  width: 150%;
+  height: 400px;
+  top: -300px;
+  z-index: -1;
+  position: absolute;
+  background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
+}
+
+.blurTwo {
+  width: 150%;
+  height: 400px;
+  bottom: -300px;
+  z-index: -1;
+  position: absolute;
+  background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
+}
+
+.loader {
+  width: 70px;
+  padding: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #006fff;
+  --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes text {
+  to {
+    opacity: 0.0;
+  } from{
+    opacity: 1;
+  }
+}
+

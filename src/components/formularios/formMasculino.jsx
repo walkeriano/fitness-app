@@ -19,6 +19,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { storage, db } from "../../../firebase-config";
 import imageCompression from "browser-image-compression";
+import LoadingExtra from "@/components/loadingExtra/loadingForm";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -35,11 +36,18 @@ export default function FormMasculino() {
   const [progress, setProgress] = useState(0);
   const formRef = useRef(null);
   const [loading, setLoading] = useState(true);
+  const [loadingForm, setLoadingForm] = useState(false);
   const [training, setTraining] = useState(false);
   const [impedimento, setImpedimento] = useState(false);
   const [suplemento, setSuplemento] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage1, setSelectedImage1] = useState(null);
+  const [imagePreview1, setImagePreview1] = useState(null);
+  const [selectedImage2, setSelectedImage2] = useState(null);
+  const [imagePreview2, setImagePreview2] = useState(null);
+  const [selectedImage3, setSelectedImage3] = useState(null);
+  const [imagePreview3, setImagePreview3] = useState(null);
   const [selectedAge, setSelectedAge] = useState("");
   const [selectedBody, setSelectedBody] = useState("");
 
@@ -53,54 +61,141 @@ export default function FormMasculino() {
     }
   }, [user, router]);
 
-  const onImageChange = (e) => {
+  const onImageChange = (e, imageIndex) => {
     const file = e.target.files[0];
     if (file) {
-      setSelectedImage(file);
-      setImagePreview(URL.createObjectURL(file));
+      if (imageIndex === 1) {
+        setSelectedImage1(file);
+        setImagePreview1(URL.createObjectURL(file));
+      } else if (imageIndex === 2) {
+        setSelectedImage2(file);
+        setImagePreview2(URL.createObjectURL(file));
+      } else if (imageIndex === 3) {
+        setSelectedImage3(file);
+        setImagePreview3(URL.createObjectURL(file));
+      } else {
+        setSelectedImage(file);
+        setImagePreview(URL.createObjectURL(file));
+      }
     }
   };
 
   const onSubmit = async (data) => {
     if (!user) return; // Verificar si hay usuario antes de continuar
-    try {
-      let imageUrl = "";
 
+    try {
+      setLoadingForm(true); // Activar el loading
+      let imageUrl = "";
+      let imageUrl1 = "";
+      let imageUrl2 = "";
+      let imageUrl3 = "";
+
+      // Comprimir y subir la primera imagen
       if (selectedImage) {
-        // Opciones para la compresión de la imagen
         const options = {
-          maxSizeMB: 0.5, // Máximo tamaño de la imagen en MB (500 KB)
-          maxWidthOrHeight: 1920, // Máxima dimensión de ancho o alto
+          maxSizeMB: 0.5,
+          maxWidthOrHeight: 1920,
           useWebWorker: true,
         };
-
-        const compressedImage = await imageCompression(selectedImage, options); // Comprimir la imagen
-
-        // Crear una referencia para almacenar la imagen en Firebase Storage
+        const compressedImage = await imageCompression(selectedImage, options);
         const storageRef = ref(
           storage,
           `images/${user.uid}/${compressedImage.name}`
         );
-        // Subir la imagen comprimida a Firebase Storage
         const snapshot = await uploadBytes(storageRef, compressedImage);
-        // Obtener la URL pública de la imagen almacenada
         imageUrl = await getDownloadURL(snapshot.ref);
       }
 
-      // Crear un nuevo objeto de datos excluyendo el campo 'image'
-      const { image, ...dataWithoutImage } = data; // Excluye el campo 'image'
-      const formData = { ...dataWithoutImage, imageUrl }; // Agrega solo la URL de la imagen
+      // Comprimir y subir la segunda imagen
+      if (selectedImage1) {
+        const options = {
+          maxSizeMB: 0.5,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+        const compressedImage1 = await imageCompression(
+          selectedImage1,
+          options
+        );
+        const storageRef1 = ref(
+          storage,
+          `images/${user.uid}/${compressedImage1.name}`
+        );
+        const snapshot1 = await uploadBytes(storageRef1, compressedImage1);
+        imageUrl1 = await getDownloadURL(snapshot1.ref);
+      }
+
+      // Comprimir y subir la tercera imagen
+      if (selectedImage2) {
+        const options = {
+          maxSizeMB: 0.5,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+        const compressedImage2 = await imageCompression(
+          selectedImage2,
+          options
+        );
+        const storageRef2 = ref(
+          storage,
+          `images/${user.uid}/${compressedImage2.name}`
+        );
+        const snapshot2 = await uploadBytes(storageRef2, compressedImage2);
+        imageUrl2 = await getDownloadURL(snapshot2.ref);
+      }
+
+      // Comprimir y subir la cuarta imagen
+      if (selectedImage3) {
+        const options = {
+          maxSizeMB: 0.5,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+        const compressedImage3 = await imageCompression(
+          selectedImage3,
+          options
+        );
+        const storageRef3 = ref(
+          storage,
+          `images/${user.uid}/${compressedImage3.name}`
+        );
+        const snapshot3 = await uploadBytes(storageRef3, compressedImage3);
+        imageUrl3 = await getDownloadURL(snapshot3.ref);
+      }
+
+      // Crear un nuevo objeto de datos excluyendo los campos 'image', 'image1', 'image2'
+      const { image, image1, image2, image3, ...dataWithoutImages } = data;
+      const formData = {
+        ...dataWithoutImages,
+        imageUrl,
+        imageUrl1,
+        imageUrl2,
+        imageUrl3,
+      };
 
       // Guardar los datos en el documento del usuario en Firestore
       await setDoc(doc(db, "users", user.uid), formData, { merge: true });
       console.log("Datos guardados correctamente:", formData);
 
-      // Resetear el formulario y limpiar la imagen seleccionada
-      reset(); // Resetea todos los campos del formulario
-      setSelectedImage(null); // Limpia la imagen seleccionada
-      setImagePreview(null); // Limpia la vista previa de la imagen
+      // Resetear el formulario y limpiar las imágenes seleccionadas
+      reset();
+      setSelectedImage(null);
+      setImagePreview(null);
+      setSelectedImage1(null);
+      setImagePreview1(null);
+      setSelectedImage2(null);
+      setImagePreview2(null);
+      setSelectedImage3(null);
+      setImagePreview3(null);
     } catch (error) {
       console.error("Error al guardar los datos:", error);
+    } finally {
+      // Asegúrate de que el loading permanezca activo al menos 6 segundos
+      const loadingDuration = 6000; // 6 segundos
+      setTimeout(() => {
+        setLoadingForm(false); // Desactivar el loading
+        router.push("/perfil-coach-fitness-app"); // Redirigir al usuario
+      }, loadingDuration);
     }
   };
 
@@ -194,6 +289,7 @@ export default function FormMasculino() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formMasculino}>
+      {loadingForm && <LoadingExtra />}
       <section className={styles.contBtns}>
         <section className={styles.contUser}>
           <h4>{user ? user.email : "Usuario no disponible"}</h4>
@@ -212,6 +308,7 @@ export default function FormMasculino() {
               onChange={onImageChange}
               hidden
             />
+
             <span>
               <FontAwesomeIcon
                 icon={faCamera}
@@ -581,9 +678,18 @@ export default function FormMasculino() {
           <section className={styles.contForm}>
             <section className={styles.flexBoxAdjuntar}>
               <div className={styles.itemAdjuntar}>
-                <h3>Frontal</h3>
+                <h3>Foto Frontal</h3>
                 <h4>Formato 1º</h4>
-                <label>
+                <label htmlFor="image1">
+                  {imagePreview1 && (
+                    <div className={styles.imagePreviewFirst}>
+                      <Image
+                        src={imagePreview1}
+                        alt="Vista previa 1"
+                        fill={true}
+                      />
+                    </div>
+                  )}
                   <div className={styles.iconCam}>
                     <FontAwesomeIcon
                       icon={faCamera}
@@ -600,21 +706,32 @@ export default function FormMasculino() {
                       fill={true}
                     />
                   </div>
-                  <input type="file" hidden />
-                </label>
-                <div className={styles.notification}>
-                  <FontAwesomeIcon
-                    icon={faTriangleExclamation}
-                    size="2x"
-                    className={styles.icon}
+                  <input
+                    type="file"
+                    id="image1"
+                    accept="image/*"
+                    {...register("image1", { required: true })}
+                    onChange={(e) => onImageChange(e, 1)}
+                    hidden
                   />
-                  <p>Campo vacío</p>
-                </div>
+                </label>
+                {errors.image1 && (
+                  <p className={styles.error}>La imagen 1 es requerida</p>
+                )}
               </div>
               <div className={styles.itemAdjuntar}>
-                <h3>Perfil</h3>
+                <h3>Foto Perfil</h3>
                 <h4>Formato 2º</h4>
-                <label>
+                <label htmlFor="image2">
+                  {imagePreview2 && (
+                    <div className={styles.imagePreviewFirst}>
+                      <Image
+                        src={imagePreview2}
+                        alt="Vista previa 1"
+                        fill={true}
+                      />
+                    </div>
+                  )}
                   <div className={styles.iconCam}>
                     <FontAwesomeIcon
                       icon={faCamera}
@@ -631,21 +748,32 @@ export default function FormMasculino() {
                       fill={true}
                     />
                   </div>
-                  <input type="file" hidden />
-                </label>
-                <div className={styles.notification}>
-                  <FontAwesomeIcon
-                    icon={faTriangleExclamation}
-                    size="2x"
-                    className={styles.icon}
+                  <input
+                    type="file"
+                    id="image2"
+                    accept="image/*"
+                    {...register("image2", { required: true })}
+                    onChange={(e) => onImageChange(e, 2)}
+                    hidden
                   />
-                  <p>Campo vacío</p>
-                </div>
+                </label>
+                {errors.image2 && (
+                  <p className={styles.error}>La imagen 2 es requerida</p>
+                )}
               </div>
               <div className={styles.itemAdjuntar}>
-                <h3>Espalda</h3>
+                <h3>Foto Espalda</h3>
                 <h4>Formato 3º</h4>
-                <label>
+                <label htmlFor="image3">
+                  {imagePreview3 && (
+                    <div className={styles.imagePreviewFirst}>
+                      <Image
+                        src={imagePreview3}
+                        alt="Vista previa 1"
+                        fill={true}
+                      />
+                    </div>
+                  )}
                   <div className={styles.iconCam}>
                     <FontAwesomeIcon
                       icon={faCamera}
@@ -662,16 +790,18 @@ export default function FormMasculino() {
                       fill={true}
                     />
                   </div>
-                  <input type="file" hidden />
-                </label>
-                <div className={styles.notification}>
-                  <FontAwesomeIcon
-                    icon={faTriangleExclamation}
-                    size="2x"
-                    className={styles.icon}
+                  <input
+                    type="file"
+                    id="image3"
+                    accept="image/*"
+                    {...register("image3", { required: true })}
+                    onChange={(e) => onImageChange(e, 3)}
+                    hidden
                   />
-                  <p>Campo vacío</p>
-                </div>
+                </label>
+                {errors.image3 && (
+                  <p className={styles.error}>La imagen 3 es requerida</p>
+                )}
               </div>
             </section>
           </section>
@@ -685,11 +815,53 @@ export default function FormMasculino() {
             <section className={styles.flexBox}>
               <div className={styles.itemInput}>
                 <label>Estatura (mts):</label>
-                <input type="text" placeholder="Escribir aqui..." />
+                <input
+                  type="text"
+                  {...register("estatura", {
+                    required: "La estatura es obligatoria",
+                    pattern: {
+                      value: /^\d+([.,]?\d+)?$/, // Permite números con punto o coma como separador decimal
+                      message:
+                        "Solo se permiten números y un separador decimal (punto o coma)*",
+                    },
+                  })}
+                  placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.estatura
+                      ? errors.estatura
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
+                />
+                {errors.estatura && (
+                  <p className={styles.error}>{errors.estatura.message}</p>
+                )}
               </div>
               <div className={styles.itemInput}>
                 <label>Peso (kg):</label>
-                <input type="text" placeholder="Escribir aqui..." />
+                <input
+                  type="text"
+                  {...register("peso", {
+                    required: "El peso es obligatorio",
+                    pattern: {
+                      value: /^\d+([.,]?\d+)?$/, // Permite números con punto o coma como separador decimal
+                      message:
+                        "Solo se permiten números y un separador decimal (punto o coma)*",
+                    },
+                  })}
+                  placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.peso
+                      ? errors.peso
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
+                />
+                {errors.peso && (
+                  <p className={styles.error}>{errors.peso.message}</p>
+                )}
               </div>
             </section>
           </section>
