@@ -84,7 +84,7 @@
       justify-content: center;
       gap: 20px;
 
-      & .button {
+      & .buttonFirst {
         border: 1px solid #006fff;
         width: 100%;
         height: 70px;
@@ -119,7 +119,7 @@
         }
       }
 
-      & .button:last-child {
+      & .buttonFirst:last-child {
         border: 1px solid white;
         background-color: rgb(255, 255, 255);
         color: #006fff;

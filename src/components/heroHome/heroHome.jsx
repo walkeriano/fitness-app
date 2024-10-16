@@ -45,10 +45,10 @@ export default function HeroHome() {
     <section className={styles.hero} ref={containerRef}>
       <section className={styles.info}>
         <h1>
-          Fitness<span>life style</span>
+          Fitness<br/><span>life style</span>
         </h1>
         <section className={styles.contInfo}>
-          <h2>Los grandes secretos del fitness en tus manos!</h2>
+          <h2>Los grandes secretos del fitness en tus manos</h2>
           <div className={styles.slide}>
             <p>Seguir deslizando</p>
             <FontAwesomeIcon
@@ -58,7 +58,7 @@ export default function HeroHome() {
             />
           </div>
           <div className={styles.butonsHero}>
-            <Link href="/registro-nuevo-perfil" className={styles.button}>
+            <Link href="/registro-nuevo-perfil" className={styles.buttonFirst}>
               Iniciar sesión
               <span>
                 <FontAwesomeIcon
@@ -68,7 +68,7 @@ export default function HeroHome() {
                 />
               </span>
             </Link>
-            <Link href="/suscripcion-mensual" className={styles.button} >
+            <Link href="/suscripcion-mensual" className={styles.buttonFirst} >
               Suscribirme
               <span>
                 <FontAwesomeIcon
