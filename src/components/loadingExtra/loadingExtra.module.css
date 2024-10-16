@@ -7,10 +7,10 @@
   justify-content: center;
   color: #006fff;
   gap: 40px;
-  position: relative;
+  position: fixed;
   overflow-y: hidden;
   overflow-x: hidden;
-  background-color: black;
+  background-color: #0c0c0c;
   z-index: 10000;
 }
 

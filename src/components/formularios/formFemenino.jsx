@@ -22,7 +22,7 @@ import LoadingExtra from "@/components/loadingExtra/loadingForm";
 
 gsap.registerPlugin(ScrollToPlugin);
 
-export default function FormMasculino() {
+export default function FormFemenino() {
   const { user } = useContext(AuthContext);
   const {
     register,
@@ -338,7 +338,7 @@ export default function FormMasculino() {
       <section className={styles.contBtns}>
         <section className={styles.contUser}>
           <h4>{user ? user.email : "Usuario no disponible"}</h4>
-          <h5>Nuevo perfil: Masculino</h5>
+          <h5>Nuevo perfil: Femenino</h5>
           <label htmlFor="image" className={styles.imgPerfil}>
             {imagePreview && ( // Renderizar la vista previa si existe
               <div className={styles.imagePreview}>
@@ -556,7 +556,7 @@ export default function FormMasculino() {
                 />
                 <p>18-25 años</p>
                 <Image
-                  src="/images/sujeto-4.png"
+                  src="/images/sujeto-2-fem.png"
                   alt="sujeto-edad"
                   width={95}
                   height={110}
@@ -580,10 +580,10 @@ export default function FormMasculino() {
                 />
                 <p>26-35 años</p>
                 <Image
-                  src="/images/sujeto-2.png"
+                  src="/images/sujeto-4-fem.png"
                   alt="sujeto-edad"
-                  width={95}
-                  height={110}
+                  width={105}
+                  height={120}
                 />
               </label>
               <label
@@ -604,10 +604,10 @@ export default function FormMasculino() {
                 />
                 <p>36-45 años</p>
                 <Image
-                  src="/images/sujeto-3.png"
+                  src="/images/sujeto-3-fem.png"
                   alt="sujeto-edad"
-                  width={95}
-                  height={110}
+                  width={105}
+                  height={115}
                 />
               </label>
               <label
@@ -627,10 +627,10 @@ export default function FormMasculino() {
                 />
                 <p>45-65 años</p>
                 <Image
-                  src="/images/sujeto-1.png"
+                  src="/images/sujeto-1-fem.png"
                   alt="sujeto-edad"
-                  width={95}
-                  height={110}
+                  width={100}
+                  height={120}
                 />
               </label>
               {errors.edad && (
@@ -664,7 +664,7 @@ export default function FormMasculino() {
                 />
                 <p>Ectomorfo</p>
                 <Image
-                  src="/images/body-1.png"
+                  src="/images/body-1-fem.png"
                   alt="sujeto-edad"
                   width={80}
                   height={120}
@@ -688,10 +688,10 @@ export default function FormMasculino() {
                 />
                 <p>Mesomorfo</p>
                 <Image
-                  src="/images/body-2.png"
+                  src="/images/body-2-fem.png"
                   alt="sujeto-edad"
                   width={80}
-                  height={120}
+                  height={130}
                 />
               </label>
               <label
@@ -712,10 +712,10 @@ export default function FormMasculino() {
                 />
                 <p>Endomorfo</p>
                 <Image
-                  src="/images/body-3.png"
+                  src="/images/body-3-fem.png"
                   alt="sujeto-edad"
-                  width={80}
-                  height={120}
+                  width={85}
+                  height={130}
                 />
               </label>
             </section>
@@ -1261,7 +1261,7 @@ export default function FormMasculino() {
                   value="definicion"
                 />
                 <Image
-                  src="/images/objetivo-1.jpg"
+                  src="/images/objetivo-1-fem.jpg"
                   alt="objetivo-fisico"
                   fill={true}
                 />
@@ -1287,7 +1287,7 @@ export default function FormMasculino() {
                   value="masa muscular"
                 />
                 <Image
-                  src="/images/objetivo-2.jpg"
+                  src="/images/objetivo-2-fem.jpg"
                   alt="objetivo-fisico"
                   fill={true}
                 />
@@ -1314,7 +1314,7 @@ export default function FormMasculino() {
                   value="recomposicion corporal"
                 />
                 <Image
-                  src="/images/objetivo-3.jpg"
+                  src="/images/objetivo-3-fem.jpg"
                   alt="objetivo-fisico"
                   fill={true}
                 />

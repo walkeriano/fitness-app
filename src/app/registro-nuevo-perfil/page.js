@@ -145,7 +145,6 @@ export default function RegistroNuevoPerfil() {
                 />
               </div>
             </section>
-
             <section className={styles.selectorContainer}>
               <Link
                 href="/registro-nuevo-perfil-masculino"
@@ -168,7 +167,7 @@ export default function RegistroNuevoPerfil() {
                 />
               </Link>
               <Link
-                href="/registro-nuevo-perfil-masculino"
+                href="/registro-nuevo-perfil-femenino"
                 className={styles.linkGen}
               >
                 <div className={styles.conTitle}>

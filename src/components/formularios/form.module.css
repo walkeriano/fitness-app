@@ -150,6 +150,16 @@
       }
     }
 
+    & .btnFin.disabled {
+      background-color: gray; /* o el color que prefieras */
+      cursor: not-allowed;
+    }
+    
+    & .btnFin.active {
+      background-color: #006fff; /* o el color que prefieras */
+      cursor: pointer;
+    }
+
     & .progressBar {
       height: 100%;
       background-color: #006fff; /* color de la barra de progreso */
@@ -410,6 +420,14 @@
                 }
               }
 
+              & .textAdj{
+                position: absolute;
+                color: white;
+                z-index: 1;
+                bottom: 15px;
+                font-size: 0.9rem;
+              }
+
               & .bgItem {
                 position: relative;
                 height: 90%;
@@ -424,7 +442,6 @@
                   background: linear-gradient(#0c0c0c, #0c0c0c00);
                   width: 90%;
                   height: 80px;
-                  
                 }
 
                 & span:nth-child(2) {
@@ -467,6 +484,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
 
             & p {
               color: white;
@@ -478,6 +496,19 @@
                 margin-left: 5px;
               }
             }
+          }
+
+          & .error {
+            color: yellow;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-left: 15px;
+            border-bottom: 1px solid yellow;
+            padding-bottom: 3px;
+          }
+
+          & .valid {
+            border-color: #006fff;
           }
 
           & .showInputs {
@@ -506,7 +537,7 @@
 
                 & label {
                   color: white;
-                  font-size: 0.9rem;
+                  font-size: 16px;
                   letter-spacing: 0.5px;
                   margin-left: 15px;
                 }
@@ -520,11 +551,48 @@
                   background-color: #131313;
                   color: white;
                   outline: none;
+                  font-size: 16px;
                 }
 
                 & input::placeholder {
-                  font-size: 0.8rem;
+                  font-size: 16px;
                   letter-spacing: 0.5px;
+                }
+
+                & input::placeholder {
+                  color: #848484;
+                  letter-spacing: 1px;
+                  font-size: 16px;
+                }
+    
+                & input:hover,
+                & input:focus,
+                & input:active {
+                  border: 1px solid #006fff;
+                }
+    
+                & input:-webkit-autofill,
+                & input:-webkit-autofill:hover,
+                & input:-webkit-autofill:focus,
+                & input:-webkit-autofill:active {
+                  -webkit-text-fill-color: white !important; /* Cambia el color del texto */
+                  -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
+                  box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
+                  transition: background-color 5000s ease-in-out 0s;
+                  font-size: 16px;
+                }
+
+                & .error {
+                  color: yellow;
+                  font-size: 0.9rem;
+                  letter-spacing: 1px;
+                  margin-left: 15px;
+                  border-bottom: 1px solid yellow;
+                  padding-bottom: 3px;
+                }
+      
+                & .valid {
+                  border-color: #006fff;
                 }
               }
 
@@ -538,6 +606,7 @@
                 bottom: 12px;
                 right: -17px;
                 color: white;
+                cursor: pointer;
 
                 & .icon {
                   font-size: 1.4rem;
@@ -573,12 +642,13 @@
 
           & .itemObjetivo {
             width: 100%;
-            height: 200px;
+            height: 270px;
             position: relative;
             display: flex;
             align-items: flex-end;
             justify-content: center;
             gap: 10px;
+            border-radius: 30px;
 
             & .titleBox {
               width: 85%;
@@ -589,29 +659,13 @@
 
               & h4 {
                 color: white;
-                font-size: 1.4rem;
+                font-size: 1.6rem;
                 letter-spacing: 0.5px;
                 text-transform: uppercase;
-                width: 80%;
+                width: 90%;
               }
 
-              & span {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 3px solid #006fff;
-                background-color: #0c0c0c93;
-
-                & .icon {
-                  color: white;
-                  font-size: 1.3rem;
-                  transform: rotate(-90deg);
-                  opacity: 0;
-                }
-              }
+              
             }
 
             & img {
@@ -621,6 +675,21 @@
               border-radius: 25px;
               z-index: -1;
             }
+          }
+
+          & .valid {
+            border:2px solid #006fff;
+            position: relative;
+          }
+
+          & .valid::after{
+            content: "";
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to Top,#006fff, #006eff00) ;
+            position: absolute;
+            border-radius: 0px 0px 27px 27px;
+            z-index: -1;
           }
         }
       }
