@@ -41,9 +41,10 @@ export default function FormMasculino() {
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedAge, setSelectedAge] = useState("");
+  const [selectedBody, setSelectedBody] = useState("");
 
   useEffect(() => {
-    if (user === undefined) return; // Asegúrate de que user esté definido
+    if (user === undefined) return;
 
     if (!user) {
       router.push("/");
@@ -182,6 +183,10 @@ export default function FormMasculino() {
     setSelectedAge(e.target.value); // Actualiza el estado cuando se selecciona una opción
   };
 
+  const handleBodyChange = (e) => {
+    setSelectedBody(e.target.value); // Actualiza el estado cuando se selecciona una opción
+  };
+
   // Mostramos un mensaje de carga mientras verificamos el estado de autenticación
   if (loading) {
     return <p>Cargando información del usuario...</p>;
@@ -207,7 +212,6 @@ export default function FormMasculino() {
               onChange={onImageChange}
               hidden
             />
-            {errors.image && <p>La imagen es requerida</p>}
             <span>
               <FontAwesomeIcon
                 icon={faCamera}
@@ -221,6 +225,7 @@ export default function FormMasculino() {
               imagen
             </p>
           </label>
+          {errors.image && <p>La imagen es requerida</p>}
         </section>
         <button
           type="button"
@@ -493,12 +498,21 @@ export default function FormMasculino() {
           </section>
           <section className={styles.contForm}>
             <section className={styles.flexBoxEdad}>
-              <label className={styles.boxEdad}>
+              <label
+                htmlFor="body1"
+                className={`${styles.boxEdad} ${
+                  selectedBody === "ectomorfo" ? styles.valid : ""
+                }`}
+              >
                 <input
                   type="radio"
                   hidden
-                  id="tipoCuerpo1"
+                  id="body1"
                   value="ectomorfo"
+                  {...register("body", {
+                    required: "La edad es obligatoria",
+                    onChange: handleBodyChange,
+                  })}
                 />
                 <p>Ectomorfo</p>
                 <Image
@@ -508,7 +522,22 @@ export default function FormMasculino() {
                   height={120}
                 />
               </label>
-              <div className={styles.boxEdad}>
+              <label
+                htmlFor="body2"
+                className={`${styles.boxEdad} ${
+                  selectedBody === "mesomorfo" ? styles.valid : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  hidden
+                  id="body2"
+                  value="mesomorfo"
+                  {...register("body", {
+                    required: "La edad es obligatoria",
+                    onChange: handleBodyChange,
+                  })}
+                />
                 <p>Mesomorfo</p>
                 <Image
                   src="/images/body-2.png"
@@ -516,8 +545,23 @@ export default function FormMasculino() {
                   width={80}
                   height={120}
                 />
-              </div>
-              <div className={styles.boxEdad}>
+              </label>
+              <label
+                htmlFor="body3"
+                className={`${styles.boxEdad} ${
+                  selectedBody === "endomorfo" ? styles.valid : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  hidden
+                  id="body3"
+                  value="endomorfo"
+                  {...register("body", {
+                    required: "La edad es obligatoria",
+                    onChange: handleBodyChange,
+                  })}
+                />
                 <p>Endomorfo</p>
                 <Image
                   src="/images/body-3.png"
@@ -525,7 +569,7 @@ export default function FormMasculino() {
                   width={80}
                   height={120}
                 />
-              </div>
+              </label>
             </section>
           </section>
         </div>
