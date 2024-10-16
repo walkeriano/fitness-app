@@ -1338,7 +1338,7 @@ export default function FormFemenino() {
                 }`}
               >
                 <div className={styles.titleBox}>
-                  <h4>Carlos quesada</h4>
+                  <h4>Carlos Quesada</h4>
                 </div>
                 <input
                   type="radio"
@@ -1359,11 +1359,11 @@ export default function FormFemenino() {
               <label
                 htmlFor="coach2"
                 className={`${styles.itemObjetivo} ${
-                  selectedCoach === "karina quispe" ? styles.valid : ""
+                  selectedCoach === "karina durand" ? styles.valid : ""
                 }`}
               >
                 <div className={styles.titleBox}>
-                  <h4>karina quispe</h4>
+                  <h4>Karina Durand</h4>
                 </div>
 
                 <input
@@ -1374,7 +1374,7 @@ export default function FormFemenino() {
                     required: "El objetivo físico es obligatoria",
                     onChange: handleCoachChange,
                   })}
-                  value="karina quispe"
+                  value="karina durand"
                 />
                 <Image
                   src="/images/karina-coach.jpg"

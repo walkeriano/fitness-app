@@ -1359,11 +1359,11 @@ export default function FormMasculino() {
               <label
                 htmlFor="coach2"
                 className={`${styles.itemObjetivo} ${
-                  selectedCoach === "karina quispe" ? styles.valid : ""
+                  selectedCoach === "karina durand" ? styles.valid : ""
                 }`}
               >
                 <div className={styles.titleBox}>
-                  <h4>karina quispe</h4>
+                  <h4>Karina Durand</h4>
                 </div>
 
                 <input
@@ -1374,7 +1374,7 @@ export default function FormMasculino() {
                     required: "El objetivo físico es obligatoria",
                     onChange: handleCoachChange,
                   })}
-                  value="karina quispe"
+                  value="karina durand"
                 />
                 <Image
                   src="/images/karina-coach.jpg"
