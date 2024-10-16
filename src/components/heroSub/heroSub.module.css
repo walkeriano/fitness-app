@@ -174,10 +174,12 @@
         }
 
         & .error {
-          color: red;
+          color: yellow;
           font-size: 0.9rem;
-          letter-spacing: 0.5px;
+          letter-spacing: 1px;
           margin-left: 15px;
+          border-bottom: 1px solid yellow;
+          padding-bottom: 3px;
         }
 
         .valid {

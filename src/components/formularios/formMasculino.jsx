@@ -28,7 +28,7 @@ export default function FormMasculino() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, touchedFields },
   } = useForm({ mode: "onChange" });
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -40,6 +40,7 @@ export default function FormMasculino() {
   const [suplemento, setSuplemento] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedAge, setSelectedAge] = useState("");
 
   useEffect(() => {
     if (user === undefined) return; // Asegúrate de que user esté definido
@@ -75,7 +76,10 @@ export default function FormMasculino() {
         const compressedImage = await imageCompression(selectedImage, options); // Comprimir la imagen
 
         // Crear una referencia para almacenar la imagen en Firebase Storage
-        const storageRef = ref(storage, `images/${user.uid}/${compressedImage.name}`);
+        const storageRef = ref(
+          storage,
+          `images/${user.uid}/${compressedImage.name}`
+        );
         // Subir la imagen comprimida a Firebase Storage
         const snapshot = await uploadBytes(storageRef, compressedImage);
         // Obtener la URL pública de la imagen almacenada
@@ -173,6 +177,10 @@ export default function FormMasculino() {
 
     setProgress(calculateProgress());
   }, [currentQuestion]);
+
+  const handleAgeChange = (e) => {
+    setSelectedAge(e.target.value); // Actualiza el estado cuando se selecciona una opción
+  };
 
   // Mostramos un mensaje de carga mientras verificamos el estado de autenticación
   if (loading) {
@@ -275,11 +283,22 @@ export default function FormMasculino() {
                   type="text"
                   {...register("name", {
                     required: "El nombre es obligatorio",
+                    pattern: {
+                      value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/, // Solo permite letras y espacios
+                      message: "Solo se permiten letras*",
+                    },
                   })}
                   placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.name
+                      ? errors.name
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
                 />
                 {errors.name && (
-                  <p style={{ color: "red" }}>{errors.name.message}</p>
+                  <p className={styles.error}>{errors.name.message}</p>
                 )}
               </div>
               <div className={styles.itemInput}>
@@ -288,13 +307,24 @@ export default function FormMasculino() {
                   type="text"
                   {...register("lastName", {
                     required: "El nombre es obligatorio",
+                    pattern: {
+                      value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/, // Solo permite letras y espacios
+                      message: "Solo se permiten letras*",
+                    },
                   })}
                   placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.lastName
+                      ? errors.lastName
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
                 />
+                {errors.lastName && (
+                  <p className={styles.error}>{errors.lastName.message}</p>
+                )}
               </div>
-              {errors.lastName && (
-                <p style={{ color: "red" }}>{errors.lastName.message}</p>
-              )}
             </section>
             <section className={styles.flexBox}>
               <div className={styles.itemInput}>
@@ -304,10 +334,21 @@ export default function FormMasculino() {
                   placeholder="Escribir aqui..."
                   {...register("country", {
                     required: "El nombre es obligatorio",
+                    pattern: {
+                      value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/, // Solo permite letras y espacios
+                      message: "Solo se permiten letras*",
+                    },
                   })}
+                  className={
+                    touchedFields.country
+                      ? errors.country
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
                 />
                 {errors.country && (
-                  <p style={{ color: "red" }}>{errors.country.message}</p>
+                  <p className={styles.error}>{errors.country.message}</p>
                 )}
               </div>
               <div className={styles.itemInput}>
@@ -317,10 +358,21 @@ export default function FormMasculino() {
                   placeholder="Escribir aqui..."
                   {...register("city", {
                     required: "El nombre es obligatorio",
+                    pattern: {
+                      value: /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/, // Solo permite letras y espacios
+                      message: "Solo se permiten letras*",
+                    },
                   })}
+                  className={
+                    touchedFields.city
+                      ? errors.city
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
                 />
                 {errors.city && (
-                  <p style={{ color: "red" }}>{errors.city.message}</p>
+                  <p className={styles.error}>{errors.city.message}</p>
                 )}
               </div>
             </section>
@@ -333,7 +385,22 @@ export default function FormMasculino() {
           </section>
           <section className={styles.contForm}>
             <section className={styles.flexBoxEdad}>
-              <div className={styles.boxEdad}>
+              <label
+                htmlFor="edad1"
+                className={`${styles.boxEdad} ${
+                  selectedAge === "18-25" ? styles.valid : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  hidden
+                  id="edad1"
+                  {...register("edad", {
+                    required: "La edad es obligatoria",
+                    onChange: handleAgeChange,
+                  })}
+                  value="18-25"
+                />
                 <p>18-25 años</p>
                 <Image
                   src="/images/sujeto-4.png"
@@ -341,26 +408,70 @@ export default function FormMasculino() {
                   width={95}
                   height={110}
                 />
-              </div>
-              <div className={styles.boxEdad}>
-                <p>25-35 años</p>
+              </label>
+              <label
+                htmlFor="edad2"
+                className={`${styles.boxEdad} ${
+                  selectedAge === "26-35" ? styles.valid : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  hidden
+                  id="edad2"
+                  {...register("edad", {
+                    required: "La edad es obligatoria",
+                    onChange: handleAgeChange,
+                  })}
+                  value="26-35"
+                />
+                <p>26-35 años</p>
                 <Image
                   src="/images/sujeto-2.png"
                   alt="sujeto-edad"
                   width={95}
                   height={110}
                 />
-              </div>
-              <div className={styles.boxEdad}>
-                <p>35-45 años</p>
+              </label>
+              <label
+                htmlFor="edad3"
+                className={`${styles.boxEdad} ${
+                  selectedAge === "36-45" ? styles.valid : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  hidden
+                  id="edad3"
+                  {...register("edad", {
+                    required: "La edad es obligatoria",
+                    onChange: handleAgeChange,
+                  })}
+                  value="36-45"
+                />
+                <p>36-45 años</p>
                 <Image
                   src="/images/sujeto-3.png"
                   alt="sujeto-edad"
                   width={95}
                   height={110}
                 />
-              </div>
-              <div className={styles.boxEdad}>
+              </label>
+              <label
+                htmlFor="edad4"
+                className={`${styles.boxEdad} ${
+                  selectedAge === "46-65" ? styles.valid : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  hidden
+                  id="edad4"
+                  {...register("edad", {
+                    required: "La edad es obligatoria",
+                  })}
+                  value="46-65"
+                />
                 <p>45-65 años</p>
                 <Image
                   src="/images/sujeto-1.png"
@@ -368,7 +479,10 @@ export default function FormMasculino() {
                   width={95}
                   height={110}
                 />
-              </div>
+              </label>
+              {errors.edad && (
+                <p className={styles.error}>{errors.edad.message}</p>
+              )}
             </section>
           </section>
         </div>
@@ -379,7 +493,13 @@ export default function FormMasculino() {
           </section>
           <section className={styles.contForm}>
             <section className={styles.flexBoxEdad}>
-              <div className={styles.boxEdad}>
+              <label className={styles.boxEdad}>
+                <input
+                  type="radio"
+                  hidden
+                  id="tipoCuerpo1"
+                  value="ectomorfo"
+                />
                 <p>Ectomorfo</p>
                 <Image
                   src="/images/body-1.png"
@@ -387,7 +507,7 @@ export default function FormMasculino() {
                   width={80}
                   height={120}
                 />
-              </div>
+              </label>
               <div className={styles.boxEdad}>
                 <p>Mesomorfo</p>
                 <Image
