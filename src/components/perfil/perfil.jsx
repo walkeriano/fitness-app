@@ -5,7 +5,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGear,
+  faChevronDown,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import useUserProfile from "@/state/hook/useUserProfile";
 import Loading from "@/components/loadingExtra/loadingExtra";
 
@@ -50,10 +54,7 @@ export default function Perfil() {
               </Link>
             </section>
             <section className={styles.infoImg}>
-              <img
-                src={userProfile?.imageUrl}
-                alt="image-persons"
-              />
+              <img src={userProfile?.imageUrl} alt="image-persons" />
             </section>
           </section>
           <section className={styles.contInfoFisica}>
@@ -67,21 +68,67 @@ export default function Perfil() {
             </section>
             <section className={styles.infoFisica}>
               <div className={styles.itemFis}>
-                <Image src="/images/icons/calendar.svg" alt="icon-info" width={35} height={35} />
+                <Image
+                  src="/images/icons/calendar.svg"
+                  alt="icon-info"
+                  width={35}
+                  height={35}
+                />
                 <h3>{userProfile?.edad}</h3>
                 <p>Edad</p>
               </div>
               <div className={styles.itemFis}>
-                <Image src="/images/icons/altura.svg" alt="icon-info" width={35} height={35} />
+                <Image
+                  src="/images/icons/altura.svg"
+                  alt="icon-info"
+                  width={35}
+                  height={35}
+                />
                 <h3>{userProfile?.estatura} cm</h3>
                 <p>Altura</p>
               </div>
               <div className={styles.itemFis}>
-                <Image src="/images/icons/peso.svg" alt="icon-info" width={35} height={35} />
-                <h3>{userProfile?.peso}</h3>
+                <Image
+                  src="/images/icons/peso.svg"
+                  alt="icon-info"
+                  width={35}
+                  height={35}
+                />
+                <h3>{userProfile?.peso} kg</h3>
                 <p>Peso</p>
               </div>
             </section>
+          </section>
+          <section className={styles.containerFunctions}>
+            <section className={styles.trainningBox}>
+              <div className={styles.titleSection}>
+                <h4>Plan de entrenamiento</h4>
+                <div className={styles.contDetalle}>
+                  <p>Abrir rutina</p>
+                  <FontAwesomeIcon
+                    icon={faChevronDown}
+                    size="2x"
+                    className={styles.icon}
+                  />
+                </div>
+              </div>
+              <span className={styles.btnRedirect}>
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </span>
+              <div className={styles.imgCoach}>
+                <Image
+                  src="/images/body-1.png"
+                  alt="image-coach"
+                  fill={true}
+                  className={styles.imgItem}
+                />
+              </div>
+            </section>
+            <section className={styles.totalCalculo}></section>
           </section>
         </>
       ) : (
