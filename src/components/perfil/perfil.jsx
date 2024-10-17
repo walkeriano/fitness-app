@@ -121,7 +121,7 @@ export default function Perfil() {
               </span>
               <div className={styles.imgCoach}>
                 <Image
-                  src="/images/body-1.png"
+                  src="/images/coach-karina-perfil.png"
                   alt="image-coach"
                   fill={true}
                   className={styles.imgItem}
@@ -129,6 +129,35 @@ export default function Perfil() {
               </div>
             </section>
             <section className={styles.totalCalculo}></section>
+          </section>
+          <section className={styles.containerFood}>
+            <section className={styles.titleFood}>
+              <div className={styles.boxtitleFood}>
+                <h4>Guía de alimentación</h4>
+                <div className={styles.contDetalle}>
+                  <p>Abrir dieta</p>
+                  <FontAwesomeIcon
+                    icon={faChevronDown}
+                    size="2x"
+                    className={styles.icon}
+                  />
+                </div>
+              </div>
+              <span className={styles.btnRedirect}>
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </span>
+            </section>
+            <div className={styles.imgFood}>
+              <Image
+                src="/images/food.png"
+                alt="image-coach"
+                fill={true}
+              />
+            </div>
           </section>
         </>
       ) : (
