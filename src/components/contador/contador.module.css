@@ -1,0 +1,45 @@
+.containerContador{
+    width: 100%;
+    height: 100%;
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    & .totalInfo{
+        border: 1px solid red;
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        & .boxImg{
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            z-index: -1;
+            border: 1px solid red;
+
+            & img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            
+            }
+            
+        }
+    }
+
+    & .extraInfo{
+        width: 100%;
+        height: 50%;
+        border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

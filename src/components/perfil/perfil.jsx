@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import useUserProfile from "@/state/hook/useUserProfile";
 import Loading from "@/components/loadingExtra/loadingExtra";
+import InfoProducts from "@/components/infoProducts/infoProducts";
+import Contador from "@/components/contador/contador";
 
 export default function Perfil() {
   const { userProfile, loading, error } = useUserProfile();
@@ -37,8 +39,8 @@ export default function Perfil() {
             <section className={styles.infoPerfil}>
               <div className={styles.namePerfil}>
                 <h3>Hola,</h3>
-                <h2>{userProfile?.name}b</h2>
-                <h2>{userProfile?.lastName}b</h2>
+                <h2>{userProfile?.name}</h2>
+                <h2>{userProfile?.lastName}</h2>
               </div>
               <div className={styles.infoContact}>
                 <p>{userProfile?.email}</p>
@@ -128,7 +130,9 @@ export default function Perfil() {
                 />
               </div>
             </section>
-            <section className={styles.totalCalculo}></section>
+            <section className={styles.totalCalculo}>
+              <Contador />
+            </section>
           </section>
           <section className={styles.containerFood}>
             <section className={styles.titleFood}>
@@ -152,13 +156,32 @@ export default function Perfil() {
               </span>
             </section>
             <div className={styles.imgFood}>
-              <Image
-                src="/images/food.png"
-                alt="image-coach"
-                fill={true}
-              />
+              <Image src="/images/food.png" alt="image-coach" fill={true} />
             </div>
           </section>
+          <section className={styles.containerContact}>
+            <section className={styles.containerTitle}>
+              <h4>¿Necesitas ayuda?</h4>
+              <p>Contactar al coach</p>
+            </section>
+            <section className={styles.containerLinks}>
+              <a href="/" className={styles.itemWss}>
+                <FontAwesomeIcon
+                  icon={faChevronDown}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </a>
+              <a href="/" className={styles.itemEmail}>
+                <FontAwesomeIcon
+                  icon={faChevronDown}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </a>
+            </section>
+          </section>
+          <InfoProducts />
         </>
       ) : (
         <Loading />
