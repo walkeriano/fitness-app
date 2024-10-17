@@ -24,13 +24,6 @@ export default function RegistroNuevoPerfil() {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    // Si hay un usuario logueado, redirigir a /perfil-user
-    if (user) {
-      router.push("/perfil-coach-fitness-app");
-    }
-  }, [user, router]);
-
   const onSubmit = async (data) => {
     setErrorMessage("");
     try {
