@@ -10,37 +10,33 @@ const useUserProfile = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isMounted = true; // Variable para comprobar si el componente sigue montado
+
     const fetchUserProfile = async () => {
       if (user) { // Solo intentamos obtener datos si el usuario está autenticado
-        // Primero, intentamos obtener los datos del localStorage
-        const cachedProfile = localStorage.getItem(`userProfile_${user.uid}`);
-        
-        if (cachedProfile) {
-          setUserProfile(JSON.parse(cachedProfile)); // Cargar desde localStorage
-          setLoading(false); // Terminar la carga inmediatamente
-          return; // No hacer la solicitud a Firestore
-        }
-
         try {
           const userDocRef = doc(db, "users", user.uid); // Referencia al documento del usuario
           const userDoc = await getDoc(userDocRef);
 
-          if (userDoc.exists()) {
+          if (userDoc.exists() && isMounted) {
             const profileData = userDoc.data();
             setUserProfile(profileData); // Establece el perfil del usuario en el estado
-            localStorage.setItem(`userProfile_${user.uid}`, JSON.stringify(profileData)); // Guardar en localStorage
-          } else {
+          } else if (isMounted) {
             console.error("No se encontró el documento del usuario en Firestore");
           }
         } catch (error) {
           console.error("Error al obtener el perfil del usuario desde Firestore:", error);
-          setError("Error al cargar los datos del perfil.");
+          if (isMounted) setError("Error al cargar los datos del perfil.");
         }
       }
-      setLoading(false);
+      if (isMounted) setLoading(false);
     };
 
     fetchUserProfile();
+
+    return () => {
+      isMounted = false; // Cleanup para evitar actualizaciones de estado en componentes desmontados
+    };
   }, [user]); // Ejecuta el efecto cada vez que el usuario cambie
 
   return { userProfile, loading, error };

@@ -20,6 +20,8 @@ export default function Perfil() {
     }
   }, [loading, userProfile, router]);
 
+  console.log(userProfile);
+
   if (loading) return <Loading />;
   if (error) return <p>Error: {error}</p>;
 
@@ -31,8 +33,8 @@ export default function Perfil() {
             <section className={styles.infoPerfil}>
               <div className={styles.namePerfil}>
                 <h3>Hola,</h3>
-                <h2>{userProfile?.name}</h2>
-                <h2>{userProfile?.lastName}</h2>
+                <h2>{userProfile?.name}b</h2>
+                <h2>{userProfile?.lastName}b</h2>
               </div>
               <div className={styles.infoContact}>
                 <p>{userProfile?.email}</p>
