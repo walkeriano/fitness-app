@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import AuthContext from "@/state/auth/auth-context";
 import styles from "./page.module.css";
 import Head from "next/head";
@@ -13,13 +14,22 @@ import { faChevronDown, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function RegistroNuevoPerfil() {
   const [newRegister, setNewRegister] = useState(true);
-  const { register: registerUser } = useContext(AuthContext);
+  const { user, register: registerUser } = useContext(AuthContext);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors, touchedFields },
   } = useForm();
+
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    // Si hay un usuario logueado, redirigir a /perfil-user
+    if (user) {
+      router.push("/perfil-coach-fitness-app");
+    }
+  }, [user, router]);
 
   const onSubmit = async (data) => {
     setErrorMessage("");

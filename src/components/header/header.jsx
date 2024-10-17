@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <Link href="/">
+      <Link href="/acceso-fitness-app">
         <FontAwesomeIcon
           icon={faCircleUser}
           size="2x"
@@ -67,7 +67,7 @@ export default function Header() {
               </span>
             </li>
             <li>
-              <Link href="/">Iniciar sesión</Link>
+              <Link href="/acceso-fitness-app">Iniciar sesión</Link>
               <span>
                 <FontAwesomeIcon
                   icon={faArrowRight}
@@ -77,7 +77,7 @@ export default function Header() {
               </span>
             </li>
             <li>
-              <Link href="/">Suscribirme</Link>
+              <Link href="/suscripcion-mensual">Suscribirme</Link>
               <span>
                 <FontAwesomeIcon
                   icon={faArrowRight}

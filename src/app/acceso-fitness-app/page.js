@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import AuthContext from "@/state/auth/auth-context";
 import { useRouter } from "next/navigation";
@@ -12,16 +12,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function AccesoFitnessApp() {
-  const { login } = useContext(AuthContext);
+  const { user, login} = useContext(AuthContext);
   const [error, setError] = useState(null);
-  const router = useRouter();
-
   // Desestructura las funciones de useForm
   const {
     register,
     handleSubmit,
     formState: { errors, touchedFields },
   } = useForm();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    // Si hay un usuario logueado, redirigir a /perfil-user
+    if (user) {
+      router.push("/perfil-coach-fitness-app");
+    }
+  }, [user, router]);
 
   // Función para manejar el envío del formulario
   const onSubmit = async (data) => {
