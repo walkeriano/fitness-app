@@ -12,12 +12,23 @@ const useUserProfile = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       if (user) { // Solo intentamos obtener datos si el usuario está autenticado
+        // Primero, intentamos obtener los datos del localStorage
+        const cachedProfile = localStorage.getItem(`userProfile_${user.uid}`);
+        
+        if (cachedProfile) {
+          setUserProfile(JSON.parse(cachedProfile)); // Cargar desde localStorage
+          setLoading(false); // Terminar la carga inmediatamente
+          return; // No hacer la solicitud a Firestore
+        }
+
         try {
           const userDocRef = doc(db, "users", user.uid); // Referencia al documento del usuario
           const userDoc = await getDoc(userDocRef);
 
           if (userDoc.exists()) {
-            setUserProfile(userDoc.data()); // Establece el perfil del usuario en el estado
+            const profileData = userDoc.data();
+            setUserProfile(profileData); // Establece el perfil del usuario en el estado
+            localStorage.setItem(`userProfile_${user.uid}`, JSON.stringify(profileData)); // Guardar en localStorage
           } else {
             console.error("No se encontró el documento del usuario en Firestore");
           }

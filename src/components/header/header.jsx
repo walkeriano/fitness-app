@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./header.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,19 +9,32 @@ import {
   faXmark,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
+import useUserProfile from "@/state/hook/useUserProfile";
+import AuthContext from "@/state/auth/auth-context";
 
 export default function Header() {
   const [menu, setMenu] = useState(true);
+  const { user } = useContext(AuthContext);
+  const { userProfile } = useUserProfile();
 
   return (
     <header className={styles.header}>
-      <Link href="/acceso-fitness-app">
-        <FontAwesomeIcon
-          icon={faCircleUser}
-          size="2x"
-          className={styles.icon}
-        />
+      <Link href={user ? "/perfil-coach-fitness-app" : "/acceso-fitness-app"} className={styles.ancorPerfil}>
+        {userProfile && userProfile.imageUrl ? (
+          <img
+            src={userProfile.imageUrl}
+            alt="Imagen del usuario"
+            className={styles.userImage}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faCircleUser}
+            size="2x"
+            className={styles.icon}
+          />
+        )}
       </Link>
+
       <Link href="/">
         <Image
           src="/images/icons/logo.svg"

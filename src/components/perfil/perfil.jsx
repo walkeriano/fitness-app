@@ -51,7 +51,6 @@ export default function Perfil() {
               <img
                 src={userProfile?.imageUrl}
                 alt="image-persons"
-                fill={true}
               />
             </section>
           </section>

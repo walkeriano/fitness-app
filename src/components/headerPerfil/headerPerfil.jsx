@@ -16,13 +16,13 @@ import { useRouter } from "next/navigation";
 
 export default function HeaderPerfil() {
   const { logout } = useContext(AuthContext);
-  const [menu, setMenu] = useState(true);
   const [outside, setOutside] = useState(true);
   const router = useRouter();
 
   const handleLogout = async () => {
     try {
       await logout(); // Llamamos a la función logout para cerrar la sesión
+      localStorage.removeItem("userProfile"); 
       console.log("Sesión cerrada con éxito");
       router.push("/");
     } catch (error) {
