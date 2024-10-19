@@ -1,39 +1,61 @@
+import React from "react";
 import styles from "./contador.module.css";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-export default function Contador() {
+export default function Contador({ calculatedData }) {
+  if (!calculatedData) {
+    return null; // Si no hay datos, no renderiza nada
+  }
+
   return (
     <section className={styles.containerContador}>
       <section className={styles.totalInfo}>
-        <div>
+        <div className={styles.generalTitle}>
           <FontAwesomeIcon
             icon={faArrowRight}
             size="2x"
             className={styles.icon}
           />
-          <h3>2455</h3>
+          <h3>{calculatedData?.tdee}</h3>
           <p>Total kcal</p>
         </div>
         <div className={styles.boxImg}>
-        <Image src="/images/icons/texture.svg" alt="textura" fill={true} />
+          <Image src="/images/icons/texture.svg" alt="textura" fill={true} />
         </div>
-        
       </section>
       <section className={styles.extraInfo}>
-        <section>
+        <section className={styles.detallesInfo}>
           <p>Detalles</p>
           <FontAwesomeIcon
-            icon={faArrowRight}
+            icon={faChevronDown}
             size="2x"
             className={styles.icon}
           />
         </section>
-        <section>
-          <div>prote</div>
-          <div>carbo</div>
-          <div>grasas</div>
+        <section className={styles.extras}>
+          <div className={styles.itemCalories}>
+            <p>Proteinas:</p>
+            <h4>
+              {calculatedData?.proteinas} g{" "}
+              <span>({calculatedData.proteinasCalorias} cals)</span>
+            </h4>
+          </div>
+          <div className={styles.itemCalories}>
+            <p>Grasas:</p>
+            <h4>
+              {calculatedData?.grasas} g{" "}
+              <span>({calculatedData.grasasCalorias} cals)</span>
+            </h4>
+          </div>
+          <div className={styles.itemCalories}>
+            <p>Carbos:</p>
+            <h4>
+              {calculatedData?.carbohidratos} g{" "}
+              <span>({calculatedData.carbohidratosCalorias} cals)</span>
+            </h4>
+          </div>
         </section>
       </section>
     </section>

@@ -16,7 +16,7 @@ import InfoProducts from "@/components/infoProducts/infoProducts";
 import Contador from "@/components/contador/contador";
 
 export default function Perfil() {
-  const { userProfile, loading, error } = useUserProfile();
+  const { userProfile, calculatedData, loading, error } = useUserProfile();
   const router = useRouter();
 
   useEffect(() => {
@@ -43,6 +43,9 @@ export default function Perfil() {
                 <h2>{userProfile?.lastName}</h2>
               </div>
               <div className={styles.infoContact}>
+                <p>
+                  {userProfile?.city}, {userProfile?.country}
+                </p>
                 <p>{userProfile?.email}</p>
                 <p>993 394 394</p>
               </div>
@@ -61,7 +64,8 @@ export default function Perfil() {
           </section>
           <section className={styles.contInfoFisica}>
             <section className={styles.titleInfo}>
-              <p>Información Física</p>
+              <p>Información Física:</p>
+              <p>{userProfile?.genero}</p>
               <FontAwesomeIcon
                 icon={faChevronDown}
                 size="2x"
@@ -76,7 +80,7 @@ export default function Perfil() {
                   width={35}
                   height={35}
                 />
-                <h3>{userProfile?.edad}</h3>
+                <h3>{userProfile?.edad} años</h3>
                 <p>Edad</p>
               </div>
               <div className={styles.itemFis}>
@@ -86,7 +90,7 @@ export default function Perfil() {
                   width={35}
                   height={35}
                 />
-                <h3>{userProfile?.estatura} cm</h3>
+                <h3>{userProfile?.estatura} mts</h3>
                 <p>Altura</p>
               </div>
               <div className={styles.itemFis}>
@@ -131,7 +135,7 @@ export default function Perfil() {
               </div>
             </section>
             <section className={styles.totalCalculo}>
-              <Contador />
+              <Contador calculatedData={calculatedData} />
             </section>
           </section>
           <section className={styles.containerFood}>

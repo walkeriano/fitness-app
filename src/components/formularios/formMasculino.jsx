@@ -186,6 +186,7 @@ export default function FormMasculino() {
         imageUrl1,
         imageUrl2,
         imageUrl3,
+        genero: "masculino",
       };
 
       // Guardar los datos en el documento del usuario en Firestore
@@ -548,7 +549,7 @@ export default function FormMasculino() {
                   type="radio"
                   hidden
                   id="edad1"
-                  {...register("edad", {
+                  {...register("rangoEdad", {
                     required: "La edad es obligatoria",
                     onChange: handleAgeChange,
                   })}
@@ -572,7 +573,7 @@ export default function FormMasculino() {
                   type="radio"
                   hidden
                   id="edad2"
-                  {...register("edad", {
+                  {...register("rangoEdad", {
                     required: "La edad es obligatoria",
                     onChange: handleAgeChange,
                   })}
@@ -596,7 +597,7 @@ export default function FormMasculino() {
                   type="radio"
                   hidden
                   id="edad3"
-                  {...register("edad", {
+                  {...register("rangoEdad", {
                     required: "La edad es obligatoria",
                     onChange: handleAgeChange,
                   })}
@@ -620,7 +621,7 @@ export default function FormMasculino() {
                   type="radio"
                   hidden
                   id="edad4"
-                  {...register("edad", {
+                  {...register("rangoEdad", {
                     required: "La edad es obligatoria",
                   })}
                   value="46-65"
@@ -633,8 +634,8 @@ export default function FormMasculino() {
                   height={110}
                 />
               </label>
-              {errors.edad && (
-                <p className={styles.error}>{errors.edad.message}</p>
+              {errors.rangoEdad && (
+                <p className={styles.error}>{errors.rangoEdad.message}</p>
               )}
             </section>
           </section>
@@ -915,6 +916,30 @@ export default function FormMasculino() {
                 />
                 {errors.peso && (
                   <p className={styles.error}>{errors.peso.message}</p>
+                )}
+              </div>
+              <div className={styles.itemInput}>
+                <label>Edad:</label>
+                <input
+                  type="text"
+                  {...register("edad", {
+                    required: "El peso es obligatorio",
+                    pattern: {
+                      message:
+                        "Solo se permiten números y un separador decimal (punto o coma)*",
+                    },
+                  })}
+                  placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.edad
+                      ? errors.edad
+                        ? styles.invalid
+                        : styles.edad
+                      : ""
+                  }
+                />
+                {errors.edad && (
+                  <p className={styles.error}>{errors.edad.message}</p>
                 )}
               </div>
             </section>
@@ -1269,7 +1294,7 @@ export default function FormMasculino() {
               <label
                 htmlFor="objetivoFisico2"
                 className={`${styles.itemObjetivo} ${
-                  selectedObjetivoFisico === "masa muscular" ? styles.valid : ""
+                  selectedObjetivoFisico === "masaMuscular" ? styles.valid : ""
                 }`}
               >
                 <div className={styles.titleBox}>
@@ -1284,7 +1309,7 @@ export default function FormMasculino() {
                     required: "El objetivo físico es obligatoria",
                     onChange: handleObjetivoFisicoChange,
                   })}
-                  value="masa muscular"
+                  value="masaMuscular"
                 />
                 <Image
                   src="/images/objetivo-2.jpg"
@@ -1295,7 +1320,7 @@ export default function FormMasculino() {
               <label
                 htmlFor="objetivoFisico3"
                 className={`${styles.itemObjetivo} ${
-                  selectedObjetivoFisico === "recomposicion corporal"
+                  selectedObjetivoFisico === "recomposicionCorporal"
                     ? styles.valid
                     : ""
                 }`}
@@ -1311,7 +1336,7 @@ export default function FormMasculino() {
                     required: "El objetivo físico es obligatoria",
                     onChange: handleObjetivoFisicoChange,
                   })}
-                  value="recomposicion corporal"
+                  value="recomposicionCorporal"
                 />
                 <Image
                   src="/images/objetivo-3.jpg"

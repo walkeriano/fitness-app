@@ -125,6 +125,7 @@
       & p {
         font-size: 0.9rem;
         letter-spacing: 1px;
+        text-transform: capitalize;
       }
 
       & .icon {
@@ -172,7 +173,7 @@
       border: 1px solid #212121;
       background-color: #131313;
       width: 50%;
-      height: 360px;
+      height: 380px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -249,7 +250,7 @@
 
     & .totalCalculo {
       width: 50%;
-      height: 360px;
+      height: 380px;
       border: 1px solid red;
     }
   }
