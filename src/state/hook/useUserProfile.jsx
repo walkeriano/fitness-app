@@ -86,10 +86,10 @@ const useUserProfile = () => {
       case 'definicion':
         tdee *= 0.85; // Reducir el 15% de las calorías para perder peso
         break;
-      case 'masa muscular':
+      case 'masaMuscular':
         tdee *= 1.15; // Aumentar el 15% de las calorías para ganar peso
         break;
-      case 'mantenimiento':
+      case 'recomposicionCorporal':
         // No se requiere ajuste, ya está calculado como TDEE
         break;
       default:

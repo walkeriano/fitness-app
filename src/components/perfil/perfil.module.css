@@ -173,7 +173,7 @@
       border: 1px solid #212121;
       background-color: #131313;
       width: 50%;
-      height: 380px;
+      height: 420px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -250,8 +250,7 @@
 
     & .totalCalculo {
       width: 50%;
-      height: 380px;
-      border: 1px solid red;
+      height: 420px;
     }
   }
 

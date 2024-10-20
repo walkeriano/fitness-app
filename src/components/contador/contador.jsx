@@ -18,6 +18,7 @@ export default function Contador({ calculatedData }) {
             size="2x"
             className={styles.icon}
           />
+          <div className={styles.loader}></div>
           <h3>{calculatedData?.tdee}</h3>
           <p>Total kcal</p>
         </div>
@@ -27,7 +28,7 @@ export default function Contador({ calculatedData }) {
       </section>
       <section className={styles.extraInfo}>
         <section className={styles.detallesInfo}>
-          <p>Detalles</p>
+          <p>Objetivos del día</p>
           <FontAwesomeIcon
             icon={faChevronDown}
             size="2x"
@@ -36,24 +37,24 @@ export default function Contador({ calculatedData }) {
         </section>
         <section className={styles.extras}>
           <div className={styles.itemCalories}>
-            <p>Proteinas:</p>
+            <p>Proteinas</p>
             <h4>
               {calculatedData?.proteinas} g{" "}
-              <span>({calculatedData.proteinasCalorias} cals)</span>
+              <span>( {calculatedData.proteinasCalorias} cals )</span>
             </h4>
           </div>
           <div className={styles.itemCalories}>
-            <p>Grasas:</p>
+            <p>Grasas</p>
             <h4>
               {calculatedData?.grasas} g{" "}
-              <span>({calculatedData.grasasCalorias} cals)</span>
+              <span>( {calculatedData.grasasCalorias} cals )</span>
             </h4>
           </div>
           <div className={styles.itemCalories}>
-            <p>Carbos:</p>
+            <p>Carbos</p>
             <h4>
               {calculatedData?.carbohidratos} g{" "}
-              <span>({calculatedData.carbohidratosCalorias} cals)</span>
+              <span>( {calculatedData.carbohidratosCalorias} cals )</span>
             </h4>
           </div>
         </section>
