@@ -138,6 +138,7 @@ export default function Perfil() {
                   fill={true}
                   className={styles.imgItem}
                 />
+                <span></span>
               </div>
             </section>
             <section className={styles.totalCalculo}>
