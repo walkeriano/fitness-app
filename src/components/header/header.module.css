@@ -13,8 +13,8 @@
   animation: header 1.5s linear;
 
   & .ancorPerfil{
-    width: 40px;
-    height: 40px;
+    width: 47px;
+    height: 47px;
     position: relative;
     display: flex;
     align-items: center;
@@ -35,14 +35,14 @@
 
   
   & .menu{
-    width: 40px;
-    height: 40px;
+    width: 47px;
+    height: 47px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     & .iconLeft {
-      font-size: 1.7rem;
+      font-size: 1.9rem;
       color: #3d3d3d;
     }
   }

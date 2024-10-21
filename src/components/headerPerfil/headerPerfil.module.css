@@ -10,7 +10,6 @@
   background-color: #0c0c0ccf;
   position: fixed;
   z-index: 100;
-  animation: header 1.5s linear;
 
   & .btnHeader {
     display: flex;
@@ -32,10 +31,6 @@
       letter-spacing: 0.5px;
     }
   }
-
-  
-
-  
 
   & .cerrarSesion {
     width: 45px;
@@ -106,13 +101,3 @@
   }
 }
 
-@keyframes header {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}

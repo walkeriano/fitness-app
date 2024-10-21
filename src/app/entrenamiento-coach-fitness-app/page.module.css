@@ -1,0 +1,18 @@
+.contGeneralPerfil{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+
+    & .blur{
+        position: absolute;
+        width: 550px;
+        height: 500px;
+        border-radius: 50%;
+        background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
+        z-index: -1;
+        top: -220px;
+    }
+}

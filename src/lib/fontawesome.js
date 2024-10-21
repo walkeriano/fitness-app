@@ -14,6 +14,8 @@ import {
   faRightFromBracket,
   faRotateLeft,
   faPaperPlane,
+  faStore,
+  faCartArrowDown
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -38,4 +40,6 @@ library.add(
   faRotateLeft,
   faWhatsapp,
   faPaperPlane,
+  faStore,
+  faCartArrowDown
 );

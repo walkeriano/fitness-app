@@ -22,7 +22,7 @@ export default function Header() {
       <Link href={user ? "/perfil-coach-fitness-app" : "/acceso-fitness-app"} className={styles.ancorPerfil}>
         {userProfile && userProfile.imageUrl ? (
           <img
-            src={userProfile.imageUrl}
+            src={userProfile?.imageUrl}
             alt="Imagen del usuario"
             className={styles.userImage}
           />

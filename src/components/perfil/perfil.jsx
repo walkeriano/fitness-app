@@ -10,6 +10,7 @@ import {
   faChevronDown,
   faArrowRight,
   faPaperPlane,
+  faStore
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import useUserProfile from "@/state/hook/useUserProfile";
