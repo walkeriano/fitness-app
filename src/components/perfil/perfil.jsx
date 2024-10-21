@@ -116,7 +116,7 @@ export default function Perfil() {
               <div className={styles.titleSection}>
                 <h4>Plan de entrenamiento</h4>
                 <div className={styles.contDetalle}>
-                  <p>Abrir rutina</p>
+                  <p>{userProfile?.coach}</p>
                   <FontAwesomeIcon
                     icon={faChevronDown}
                     size="2x"

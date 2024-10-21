@@ -96,8 +96,9 @@
     }
 
     & .infoImg {
-      width: 160px;
-      height: 160px;
+      width: 40vw;
+      aspect-ratio: 1;
+      max-width: 160px;
       position: relative;
       animation: openRight 1.5s linear;
 
@@ -241,13 +242,15 @@
         & .contDetalle {
           display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start;
           gap: 5px;
           color: #a6a6a6;
+          width: 100%;
 
           & p {
             font-size: 0.9rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            text-transform: capitalize;
           }
 
           & .icon {
@@ -267,6 +270,7 @@
           object-fit: cover;
           z-index: 1;
           border-radius: 30px;
+          object-position: top;
         }
       }
 
