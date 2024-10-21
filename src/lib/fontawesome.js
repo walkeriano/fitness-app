@@ -13,8 +13,9 @@ import {
   faTriangleExclamation,
   faRightFromBracket,
   faRotateLeft,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
@@ -34,5 +35,7 @@ library.add(
   faCamera,
   faTriangleExclamation,
   faRightFromBracket,
-  faRotateLeft
+  faRotateLeft,
+  faWhatsapp,
+  faPaperPlane,
 );

@@ -23,6 +23,7 @@
       z-index: -2;
       top: -105px;
       opacity: 0.2;
+      animation: text 4s infinite ease;
 
       & img {
         width: 100%;
@@ -32,7 +33,6 @@
     }
 
     & .generalTitle {
-      border: 6px solid rgba(0, 0, 255, 0.135);
       width: 130px;
       height: 130px;
       border-radius: 50%;
@@ -40,18 +40,19 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 10px;
+      gap: 13px;
       position: relative;
 
       & .icon {
         font-size: 1.2rem;
         transform: rotate(90deg);
         margin-top: -10px;
+        
       }
 
       & h3 {
-        font-size: 1.3rem;
-        width: 90%;
+        font-size: 1.4rem;
+        width: 85%;
         text-align: center;
         line-height: 1;
       }
@@ -60,11 +61,12 @@
         font-size: 0.7rem;
         letter-spacing: 0.5px;
         line-height: 1;
+        
       }
 
       & .loader {
-        width: 135px;
-        padding: 11px;
+        width: 145px;
+        padding: 13px;
         aspect-ratio: 1;
         border-radius: 50%;
         background: #006fff;
@@ -74,7 +76,7 @@
         mask: var(--_m);
         -webkit-mask-composite: source-out;
         mask-composite: subtract;
-        animation: l3 4s infinite linear;
+        animation: l3 4s infinite ease;
         position: absolute;
         z-index: -1;
       }
@@ -109,13 +111,13 @@
     }
 
     & .extras {
-      width: 80%;
+      width: 70%;
       height: 90%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 12px;
       
 
       & .itemCalories {
@@ -127,26 +129,30 @@
         align-items: center;
         justify-content: center;
         border-radius: 20px;
-        gap: 3px;
+        
 
         & p {
           font-size: 0.8rem;
           letter-spacing: 1px;
           width: 100%;
           text-align: center;
+          line-height: 1;
+          margin-bottom: 5px;
         }
 
         & h4 {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           gap: 5px;
+          line-height: 1;
 
           & span {
             font-size: 0.6rem;
             letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.61);
           }
         }
       }
@@ -177,9 +183,10 @@
 
 @keyframes text {
   to {
-    opacity: 0;
+    opacity: 0.1;
   }
   from {
-    opacity: 1;
+    opacity: 0.4;
   }
 }
+

@@ -9,7 +9,9 @@ import {
   faGear,
   faChevronDown,
   faArrowRight,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import useUserProfile from "@/state/hook/useUserProfile";
 import Loading from "@/components/loadingExtra/loadingExtra";
 import InfoProducts from "@/components/infoProducts/infoProducts";
@@ -65,12 +67,15 @@ export default function Perfil() {
           <section className={styles.contInfoFisica}>
             <section className={styles.titleInfo}>
               <p>Información Física:</p>
-              <p>{userProfile?.genero}</p>
-              <FontAwesomeIcon
-                icon={faChevronDown}
-                size="2x"
-                className={styles.icon}
-              />
+              <div className={styles.titleCont}>
+                <h4>{userProfile?.genero}</h4>
+                <FontAwesomeIcon
+                  icon={faChevronDown}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </div>
+              
             </section>
             <section className={styles.infoFisica}>
               <div className={styles.itemFis}>
@@ -80,7 +85,7 @@ export default function Perfil() {
                   width={35}
                   height={35}
                 />
-                <h3>{userProfile?.edad} años</h3>
+                <h3>{userProfile?.edad} <span>años</span></h3>
                 <p>Edad</p>
               </div>
               <div className={styles.itemFis}>
@@ -90,7 +95,7 @@ export default function Perfil() {
                   width={35}
                   height={35}
                 />
-                <h3>{userProfile?.estatura} mts</h3>
+                <h3>{userProfile?.estatura} <span>mts</span></h3>
                 <p>Altura</p>
               </div>
               <div className={styles.itemFis}>
@@ -100,7 +105,7 @@ export default function Perfil() {
                   width={35}
                   height={35}
                 />
-                <h3>{userProfile?.peso} kg</h3>
+                <h3>{userProfile?.peso} <span>kg</span></h3>
                 <p>Peso</p>
               </div>
             </section>
@@ -165,20 +170,20 @@ export default function Perfil() {
           </section>
           <section className={styles.containerContact}>
             <section className={styles.containerTitle}>
-              <h4>¿Necesitas ayuda?</h4>
-              <p>Contactar al coach</p>
+              <h4>¿Algúna consulta?</h4>
+              <p>Contacta al coach</p>
             </section>
             <section className={styles.containerLinks}>
               <a href="/" className={styles.itemWss}>
                 <FontAwesomeIcon
-                  icon={faChevronDown}
+                  icon={faWhatsapp}
                   size="2x"
                   className={styles.icon}
                 />
               </a>
               <a href="/" className={styles.itemEmail}>
                 <FontAwesomeIcon
-                  icon={faChevronDown}
+                  icon={faPaperPlane}
                   size="2x"
                   className={styles.icon}
                 />
