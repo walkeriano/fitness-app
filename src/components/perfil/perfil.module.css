@@ -270,8 +270,8 @@
 
         & span{
           position: absolute;
-          width: 150%;
-          height: 300px;
+          width: 130%;
+          height: 220px;
           background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
         }
 
