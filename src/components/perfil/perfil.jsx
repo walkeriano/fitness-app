@@ -61,6 +61,7 @@ export default function Perfil() {
               </Link>
             </section>
             <section className={styles.infoImg}>
+              <span></span>
               <img src={userProfile?.imageUrl} alt="image-persons" />
             </section>
           </section>

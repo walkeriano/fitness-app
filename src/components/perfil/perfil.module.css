@@ -8,7 +8,7 @@
   margin-bottom: 200px;
 
   & .contGeneralPerfil {
-    width: 90%;
+    width: 93%;
     height: 300px;
     display: flex;
     align-items: center;
@@ -16,13 +16,13 @@
 
     & .infoPerfil {
       width: 50%;
-      height: 175px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
       color: white;
       animation: openLeft 1.5s linear;
+      gap: 15px;
 
       & .namePerfil {
         display: flex;
@@ -30,23 +30,25 @@
         align-items: flex-start;
         justify-content: center;
         width: 100%;
+        gap: 4px;
 
         & h3 {
           color: #a6a6a6;
           letter-spacing: 0.5px;
           font-size: 1rem;
-          margin-bottom: 5px;
+          line-height: 1;
         }
 
         & h2 {
           color: white;
-          font-size: 1.4rem;
+          font-size: 1.2rem;
           letter-spacing: 1px;
           line-height: 1;
-          width: 80%;
+          width: 95%;
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
+          text-transform: capitalize;
         }
       }
 
@@ -60,12 +62,16 @@
 
         & p {
           color: #a6a6a6;
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           line-height: 1;
-          width: 80%;
+          width: 90%;
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          letter-spacing: 0.5px;
         }
       }
 
@@ -95,6 +101,17 @@
       position: relative;
       animation: openRight 1.5s linear;
 
+      & span{
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgb(0, 150, 0);
+        right: 5px;
+        top: 5px;
+        border: 1px solid rgb(0, 202, 0);
+      }
+
       & img {
         width: 100%;
         height: 100%;
@@ -115,6 +132,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    animation: openBottom 1.5s linear;
 
     & .titleInfo {
       display: flex;
@@ -163,8 +181,6 @@
         align-items: flex-start;
         justify-content: center;
         gap: 10px;
-        animation: openBottom 1.5s linear;
-
 
         & h3 {
           font-size: 1.3rem;
