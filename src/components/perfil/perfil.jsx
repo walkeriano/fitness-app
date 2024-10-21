@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./perfil.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -16,10 +16,13 @@ import useUserProfile from "@/state/hook/useUserProfile";
 import Loading from "@/components/loadingExtra/loadingExtra";
 import InfoProducts from "@/components/infoProducts/infoProducts";
 import Contador from "@/components/contador/contador";
+import imagenCarlos from "/public/images/coach-carlos-perfil.png";
+import imagenKarina from "/public/images/coach-karina-perfil.png";
 
 export default function Perfil() {
   const { userProfile, calculatedData, loading, error } = useUserProfile();
   const router = useRouter();
+  const [imagenCoach, setImagenCoach] = useState(null);
 
   useEffect(() => {
     // Si no hay usuario logueado y no estamos cargando, redirige al home
@@ -28,7 +31,14 @@ export default function Perfil() {
     }
   }, [loading, userProfile, router]);
 
-  console.log(userProfile);
+  // Actualiza la imagen del coach dependiendo del valor de userProfile.coach
+  useEffect(() => {
+    if (userProfile?.coach === "carlos quesada") {
+      setImagenCoach(imagenCarlos);
+    } else if (userProfile?.coach === "karina durand") {
+      setImagenCoach(imagenKarina);
+    }
+  }, [userProfile?.coach]);
 
   if (loading) return <Loading />;
   if (error) return <p>Error: {error}</p>;
@@ -76,7 +86,6 @@ export default function Perfil() {
                   className={styles.icon}
                 />
               </div>
-              
             </section>
             <section className={styles.infoFisica}>
               <div className={styles.itemFis}>
@@ -86,7 +95,9 @@ export default function Perfil() {
                   width={35}
                   height={35}
                 />
-                <h3>{userProfile?.edad} <span>años</span></h3>
+                <h3>
+                  {userProfile?.edad} <span>años</span>
+                </h3>
                 <p>Edad</p>
               </div>
               <div className={styles.itemFis}>
@@ -96,7 +107,9 @@ export default function Perfil() {
                   width={35}
                   height={35}
                 />
-                <h3>{userProfile?.estatura} <span>mts</span></h3>
+                <h3>
+                  {userProfile?.estatura} <span>mts</span>
+                </h3>
                 <p>Altura</p>
               </div>
               <div className={styles.itemFis}>
@@ -106,7 +119,9 @@ export default function Perfil() {
                   width={35}
                   height={35}
                 />
-                <h3>{userProfile?.peso} <span>kg</span></h3>
+                <h3>
+                  {userProfile?.peso} <span>kg</span>
+                </h3>
                 <p>Peso</p>
               </div>
             </section>
@@ -125,6 +140,7 @@ export default function Perfil() {
                 </div>
               </div>
               <span className={styles.btnRedirect}>
+                <p>Ver rutina</p>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   size="2x"
@@ -132,13 +148,15 @@ export default function Perfil() {
                 />
               </span>
               <div className={styles.imgCoach}>
-                <Image
-                  src="/images/coach-karina-perfil.png"
-                  alt="image-coach"
-                  fill={true}
-                  className={styles.imgItem}
-                />
-                <span></span>
+                {imagenCoach && (
+                  <Image
+                    src={imagenCoach}
+                    alt="image-coach"
+                    fill={true}
+                    className={styles.imgItem}
+                    priority
+                  />
+                )}
               </div>
             </section>
             <section className={styles.totalCalculo}>
@@ -159,6 +177,7 @@ export default function Perfil() {
                 </div>
               </div>
               <span className={styles.btnRedirect}>
+              <p>Ver Dieta</p>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   size="2x"
