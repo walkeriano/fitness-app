@@ -7,6 +7,7 @@ import {
   faHeartPulse,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
+import ContactCoach from "../contactCoach/contactCoach";
 
 export default function Entrenamiento() {
   return (
@@ -89,6 +90,7 @@ export default function Entrenamiento() {
           <Image src="/images/grilla.svg" alt="hello" fill={true} />
         </div>
       </section>
+      <ContactCoach/>
     </section>
   );
 }
