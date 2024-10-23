@@ -4,24 +4,57 @@ import AuthContext from "../auth/auth-context";
 import { db } from "../../../firebase-config";
 
 const useUserProfile = () => {
-  const { user } = useContext(AuthContext); // Obtén el usuario desde el contexto de autenticación
+  const { user } = useContext(AuthContext); // Obtener el usuario desde el contexto de autenticación
   const [userProfile, setUserProfile] = useState(null);
   const [calculatedData, setCalculatedData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true; // Variable para comprobar si el componente sigue montado
+    let isMounted = true; // Variable para verificar si el componente sigue montado
+
+    // Función para obtener los datos de localStorage
+    const getLocalStorageData = () => {
+      const savedUserProfile = localStorage.getItem("userProfile");
+      const savedCalculatedData = localStorage.getItem("calculatedData");
+
+      if (savedUserProfile && savedCalculatedData) {
+        console.log("Datos obtenidos desde localStorage"); // Log cuando los datos provienen de localStorage
+        return {
+          userProfile: JSON.parse(savedUserProfile),
+          calculatedData: JSON.parse(savedCalculatedData),
+        };
+      }
+      return null; // Si no hay datos en localStorage
+    };
+
+    // Función para guardar datos en localStorage
+    const saveToLocalStorage = (profile, calculated) => {
+      localStorage.setItem("userProfile", JSON.stringify(profile));
+      localStorage.setItem("calculatedData", JSON.stringify(calculated));
+    };
 
     const fetchUserProfile = async () => {
-      if (user) { // Solo intentamos obtener datos si el usuario está autenticado
+      // Primero verificar si hay datos en localStorage
+      const localData = getLocalStorageData();
+      if (localData && isMounted) {
+        // Si hay datos en localStorage, utilizarlos y evitar la petición a Firebase
+        setUserProfile(localData.userProfile);
+        setCalculatedData(localData.calculatedData);
+        setLoading(false); // Ya que tenemos los datos, no hay necesidad de cargar más
+        return;
+      }
+
+      // Si no hay datos en localStorage, hacer la petición a Firebase
+      if (user) {
         try {
           const userDocRef = doc(db, "users", user.uid); // Referencia al documento del usuario
           const userDoc = await getDoc(userDocRef);
 
           if (userDoc.exists() && isMounted) {
+            console.log("Datos obtenidos desde Firebase"); // Log cuando los datos provienen de Firebase
             const profileData = userDoc.data();
-            
+
             // Convertir solo los campos necesarios a números
             const convertedData = {
               peso: parseFloat(profileData.peso) || 0,
@@ -30,7 +63,6 @@ const useUserProfile = () => {
               genero: profileData.genero,
               actividad: profileData.actividad,
               objetivoFisico: profileData.objetivoFisico,
-              // Otros campos que no son necesarios para cálculos se pueden ignorar
             };
 
             setUserProfile(profileData); // Establece el perfil del usuario en el estado
@@ -38,6 +70,9 @@ const useUserProfile = () => {
             // Realiza los cálculos de nutrición usando la función que ya tienes
             const calculatedValues = calculateCaloriesAndMacros(convertedData);
             setCalculatedData(calculatedValues); // Establece los datos calculados en el estado
+
+            // Guardar en localStorage
+            saveToLocalStorage(profileData, calculatedValues);
           } else if (isMounted) {
             console.error("No se encontró el documento del usuario en Firestore");
           }

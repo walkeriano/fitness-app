@@ -22,7 +22,8 @@ export default function HeaderPerfil() {
   const handleLogout = async () => {
     try {
       await logout(); // Llamamos a la función logout para cerrar la sesión
-      localStorage.removeItem("userProfile"); 
+      localStorage.removeItem("userProfile");
+    localStorage.removeItem("calculatedData");
       console.log("Sesión cerrada con éxito");
       router.push("/");
     } catch (error) {

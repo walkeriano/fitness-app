@@ -4,6 +4,7 @@ import Head from "next/head";
 import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
 import Footer from "@/components/footer/footer";
 import Menu from "@/components/menu/menu";
+import Entrenamiento from "@/components/entrenamiento/entrenamiento";
 
 export default function EntrenamientoCoachFitnessApp() {
   return (
@@ -18,7 +19,7 @@ export default function EntrenamientoCoachFitnessApp() {
         <HeaderPerfil />
         <Menu />
         <span className={styles.blur}></span>
-        <p>min entrenamiento</p>
+        <Entrenamiento/>
         <Footer />
       </main>
     </>
