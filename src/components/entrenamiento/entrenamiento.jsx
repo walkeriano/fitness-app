@@ -77,12 +77,14 @@ export default function Entrenamiento() {
               className={styles.icon}
             />
             Ver rutina
+            <span></span>
           </Link>
           <div className={styles.containerImg}>
             <span></span>
             <Image src="/images/hologram.svg" alt="hello" fill={true} />
           </div>
         </section>
+        <div className={styles.expand}></div>
         <div className={styles.grilla}>
           <Image src="/images/grilla.svg" alt="hello" fill={true} />
         </div>
