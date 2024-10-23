@@ -80,6 +80,7 @@
                     align-items: center;
                     justify-content: center;
                     border: 1px solid #004093;
+                    animation: color 3s ease infinite;
 
                     & .icon{
                         font-size: 1.6rem;
@@ -196,3 +197,16 @@
         opacity: 1;
     }
   }
+
+  @keyframes color {
+    from {
+        border: 1px solid #00377e;
+    }
+  
+    to {
+        border: 1px solid #006fff;
+    }
+  }
+
+
+  
