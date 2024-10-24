@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./perfil.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import useUserProfile from "@/state/hook/useUserProfile";
+import AuthContext from "@/state/auth/auth-context";
 import Loading from "@/components/loadingExtra/loadingExtra";
 import InfoProducts from "@/components/infoProducts/infoProducts";
 import Contador from "@/components/contador/contador";
@@ -20,7 +21,8 @@ import imagenCarlos from "/public/images/coach-carlos-perfil.png";
 import imagenKarina from "/public/images/coach-karina-perfil.png";
 
 export default function Perfil() {
-  const { userProfile, calculatedData, loading, error } = useUserProfile();
+  const { user } = useContext(AuthContext);
+  const { userProfile, calculatedData, loading, error } = useUserProfile(user);
   const router = useRouter();
   const [imagenCoach, setImagenCoach] = useState(null);
 
@@ -72,7 +74,7 @@ export default function Perfil() {
             </section>
             <section className={styles.infoImg}>
               <span></span>
-              <img src={userProfile?.imageUrl} alt="image-persons" />
+              <Image src={userProfile?.imageUrl} alt="image-persons" fill={true} />
             </section>
           </section>
           <section className={styles.contInfoFisica}>

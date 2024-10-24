@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { usePathname } from "next/navigation";
 import styles from "./menu.module.css";
 import Image from "next/image";
@@ -6,9 +6,11 @@ import Link from "next/link";
 import useUserProfile from "@/state/hook/useUserProfile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import AuthContext from "@/state/auth/auth-context";
 
 export default function Menu() {
-  const { userProfile } = useUserProfile();
+  const { user } = useContext(AuthContext);
+  const { userProfile } = useUserProfile(user);
   const pathname = usePathname(); // Obtenemos la ruta actual usando el hook moderno
   const activeItemRef = useRef(null); // Referencia para el ítem activo
 
@@ -38,10 +40,11 @@ export default function Menu() {
       >
         <div className={styles.boxImg}>
           {userProfile && userProfile.imageUrl ? (
-            <img
+            <Image
               src={userProfile?.imageUrl}
               alt="Imagen del usuario"
               className={styles.userImage}
+              fill={true}
             />
           ) : (
             <FontAwesomeIcon

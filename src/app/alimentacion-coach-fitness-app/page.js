@@ -4,6 +4,8 @@ import Head from "next/head";
 import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
 import Footer from "@/components/footer/footer";
 import Menu from "@/components/menu/menu";
+import InfoProducts from "@/components/infoProducts/infoProducts";
+import Alimentacion from "@/components/alimentacion/alimentacion";
 
 export default function AlimentacionCoachFitnessApp() {
   return (
@@ -18,7 +20,8 @@ export default function AlimentacionCoachFitnessApp() {
         <HeaderPerfil />
         <Menu />
         <span className={styles.blur}></span>
-        <p>min dieta</p>
+        <Alimentacion/>
+        <InfoProducts />
         <Footer />
       </main>
     </>

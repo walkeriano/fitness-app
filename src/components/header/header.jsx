@@ -15,16 +15,19 @@ import AuthContext from "@/state/auth/auth-context";
 export default function Header() {
   const [menu, setMenu] = useState(true);
   const { user } = useContext(AuthContext);
-  const { userProfile } = useUserProfile();
+  const { userProfile } = useUserProfile(user);
+
+  
 
   return (
     <header className={styles.header}>
       <Link href={user ? "/perfil-coach-fitness-app" : "/acceso-fitness-app"} className={styles.ancorPerfil}>
         {userProfile && userProfile.imageUrl ? (
-          <img
+          <Image
             src={userProfile?.imageUrl}
             alt="Imagen del usuario"
             className={styles.userImage}
+            fill={true}
           />
         ) : (
           <FontAwesomeIcon
