@@ -61,39 +61,39 @@ export default function Alimentacion() {
           <h3>Objetivos nutritivos del día:</h3>
           <section className={styles.containerItems}>
             <div className={styles.datoItem}>
-              <p>Proteínas</p>
-              <h4>
+              <p>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   size="2x"
                   className={styles.icon}
                 />
-                {calculatedData?.proteinas} g
-              </h4>
+                Proteínas
+              </p>
+              <h4>{calculatedData?.proteinas} g</h4>
               <h5>({calculatedData?.proteinasCalorias} cals)</h5>
             </div>
             <div className={styles.datoItem}>
-              <p>Grasas</p>
-              <h4>
+              <p>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   size="2x"
                   className={styles.icon}
                 />
-                {calculatedData?.grasas} g
-              </h4>
+                Grasas
+              </p>
+              <h4>{calculatedData?.grasas} g</h4>
               <h5>({calculatedData?.grasasCalorias} cals)</h5>
             </div>
             <div className={styles.datoItem}>
-              <p>Carbos</p>
-              <h4>
+              <p>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   size="2x"
                   className={styles.icon}
                 />
-                {calculatedData?.carbohidratos} g
-              </h4>
+                Carbos
+              </p>
+              <h4>{calculatedData?.carbohidratos} g</h4>
               <h5>({calculatedData?.carbohidratosCalorias} cals)</h5>
             </div>
           </section>

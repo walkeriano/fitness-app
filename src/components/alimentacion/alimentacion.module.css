@@ -43,88 +43,12 @@
   }
 
   & .contadorGeneral {
-    width: 85%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    & .containerInfo {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 15px;
-
-      & h3 {
-        color: white;
-        font-size: 0.9rem;
-        letter-spacing: 0.5px;
-      }
-
-      & .containerItems {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-
-        & .datoItem {
-          width: 35%;
-          height: 120px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid red;
-          gap: 13px;
-          color: white;
-          border-radius: 20px;
-
-          & h4 {
-            font-size: 1.3rem;
-            line-height: 1;
-            display: flex;
-            align-content: center;
-            justify-content: center;
-
-            & .icon {
-              font-size: 0.9rem;
-              transform: rotate(-90deg);
-              margin-right: 3px;
-            }
-          }
-
-          & h5 {
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            line-height: 1;
-          }
-
-          & p {
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            line-height: 1;
-          }
-        }
-
-        & .datoItem:nth-child(1) {
-          background-color: rgba(0, 128, 0, 0.618);
-          border: 1px solid green;
-        }
-  
-        & .datoItem:nth-child(2) {
-          background-color: rgba(255, 255, 0, 0.503);
-          border: 1px solid yellow;
-        }
-        
-        & .datoItem:nth-child(3) {
-          background-color: rgba(255, 166, 0, 0.524);
-          border: 1px solid orange;
-        }
-      }
-    }
+    margin-bottom: 100px;
 
     & .totalInfo {
       width: 100%;
@@ -134,7 +58,7 @@
       justify-content: center;
       position: relative;
       color: white;
-  
+
       & .boxImg {
         position: absolute;
         width: 500px;
@@ -144,14 +68,14 @@
         margin-left: -5px;
         opacity: 0.2;
         animation: text 4s infinite ease;
-  
+
         & img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
       }
-  
+
       & .generalTitle {
         width: 200px;
         aspect-ratio: 1;
@@ -162,28 +86,27 @@
         flex-direction: column;
         gap: 25px;
         position: relative;
-  
+
         & .icon {
           font-size: 1.5rem;
           transform: rotate(90deg);
           margin-top: -10px;
-          
         }
-  
+
         & h3 {
-          font-size: 2.0rem;
+          font-size: 2rem;
           width: 85%;
           text-align: center;
           line-height: 1;
           letter-spacing: 1px;
         }
-  
+
         & p {
           font-size: 0.9rem;
           letter-spacing: 0.5px;
           line-height: 1;
         }
-  
+
         & .loader {
           width: 220px;
           padding: 20px;
@@ -202,9 +125,89 @@
         }
       }
     }
+
+    & .containerInfo {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 15px;
+
+      & h3 {
+        color: white;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        margin-left: 20px;
+      }
+
+      & .containerItems {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+
+        & .datoItem {
+          width: 35%;
+          height: 100px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid red;
+          gap: 13px;
+          color: white;
+          border-radius: 20px;
+
+          & h4 {
+            font-size: 1.3rem;
+            line-height: 1;
+            width: 90%;
+            text-align: center;
+          }
+
+          & h5 {
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            line-height: 1;
+          }
+
+          & p {
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            gap: 3px;
+
+            & .icon {
+              font-size: 0.7rem;
+              transform: rotate(90deg);
+              margin-right: 3px;
+            }
+          }
+        }
+
+        & .datoItem:nth-child(1) {
+          background-color: rgba(0, 128, 0, 0.618);
+          border: 1px solid green;
+        }
+
+        & .datoItem:nth-child(2) {
+          background-color: rgba(255, 255, 0, 0.503);
+          border: 1px solid yellow;
+        }
+
+        & .datoItem:nth-child(3) {
+          background-color: rgba(255, 166, 0, 0.524);
+          border: 1px solid orange;
+        }
+      }
+    }
   }
 }
-
 
 @keyframes l3 {
   to {
@@ -222,4 +225,3 @@
     transform: rotate(-10deg);
   }
 }
-
