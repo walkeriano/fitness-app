@@ -12,6 +12,7 @@ import Image from "next/image";
 import Loading from "@/components/loadingExtra/loadingExtra";
 import AuthContext from "@/state/auth/auth-context";
 import useUserProfile from "@/state/hook/useUserProfile";
+import Link from "next/link";
 
 export default function Alimentacion() {
   const { user } = useContext(AuthContext);
@@ -97,6 +98,16 @@ export default function Alimentacion() {
               <h5>({calculatedData?.carbohidratosCalorias} cals)</h5>
             </div>
           </section>
+        </section>
+        <section className={styles.linkDieta}>
+          <Link href="/">
+            Ver Dieta
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              size="2x"
+              className={styles.icon}
+            />
+          </Link>
         </section>
       </section>
       <ContactCoach />
