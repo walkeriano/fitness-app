@@ -4,7 +4,6 @@ import Head from "next/head";
 import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
 import Footer from "@/components/footer/footer";
 import Menu from "@/components/menu/menu";
-import InfoProducts from "@/components/infoProducts/infoProducts";
 import Alimentacion from "@/components/alimentacion/alimentacion";
 
 export default function AlimentacionCoachFitnessApp() {
@@ -21,7 +20,6 @@ export default function AlimentacionCoachFitnessApp() {
         <Menu />
         <span className={styles.blur}></span>
         <Alimentacion/>
-        <InfoProducts />
         <Footer />
       </main>
     </>

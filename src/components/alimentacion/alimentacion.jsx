@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
   faArrowRight,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 import ContactCoach from "../contactCoach/contactCoach";
@@ -11,8 +12,8 @@ import Image from "next/image";
 import Loading from "@/components/loadingExtra/loadingExtra";
 import AuthContext from "@/state/auth/auth-context";
 import useUserProfile from "@/state/hook/useUserProfile";
-import VisualizerTraining from "@/components/visualizerTraining/visualizerTraining";
-
+import VisualizerAlimentacion from "@/components/visualizerAlimentacion/visualizerAlimentacion";
+import InfoProducts from "@/components/infoProducts/infoProducts";
 export default function Alimentacion() {
   const { user } = useContext(AuthContext);
   const { userProfile, calculatedData, loading, error } = useUserProfile(user);
@@ -43,6 +44,14 @@ export default function Alimentacion() {
         </div>
       </section>
       {alimentacion ? (
+        <section className={styles.containerVisualizer}>
+          <span></span>
+          <button onClick={() => setAlimentacion(false)}>
+            <FontAwesomeIcon icon={faXmark} size="2x" className={styles.icon} />
+          </button>
+          <VisualizerAlimentacion />
+        </section>
+      ) : (
         <>
           <section className={styles.contadorGeneral}>
             <section className={styles.totalInfo}>
@@ -63,6 +72,16 @@ export default function Alimentacion() {
                   fill={true}
                 />
               </div>
+            </section>
+            <section className={styles.linkDieta}>
+              <button onClick={() => setAlimentacion(true)}>
+                Ver Dieta
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </button>
             </section>
             <section className={styles.containerInfo}>
               <h3>Objetivos nutritivos del día:</h3>
@@ -105,30 +124,10 @@ export default function Alimentacion() {
                 </div>
               </section>
             </section>
-            <section className={styles.linkDieta}>
-              <button onClick={() => setRutina(false)}>
-                Ver Dieta
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  size="2x"
-                  className={styles.icon}
-                />
-              </button>
-            </section>
           </section>
           <ContactCoach />
+          <InfoProducts />
         </>
-      ) : (
-        <section className={styles.containerVisualizer}>
-          <button onClick={() => setRutina(true)}>
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              size="2x"
-              className={styles.icon}
-            />
-          </button>
-          <VisualizerTraining />
-        </section>
       )}
     </section>
   );
