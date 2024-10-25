@@ -44,6 +44,28 @@
     }
   }
 
+  & .containerVisualizer{
+    width: 100%;
+    background-color: #006fff;
+    border-radius: 30px 30px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: openBottom 1.5s ease;
+
+    & button{
+      position: absolute;
+      top: -22px;
+      right: 60px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+    }
+  }
+
   & .rightContainer {
     width: 100%;
     display: flex;
