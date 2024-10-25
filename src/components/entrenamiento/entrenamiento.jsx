@@ -6,6 +6,7 @@ import {
   faChevronDown,
   faHeartPulse,
   faArrowRight,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import ContactCoach from "../contactCoach/contactCoach";
 import Loading from "@/components/loadingExtra/loadingExtra";
@@ -13,12 +14,16 @@ import AuthContext from "@/state/auth/auth-context";
 import useUserProfile from "@/state/hook/useUserProfile";
 import { useRouter } from "next/navigation";
 import VisualizerTraining from "@/components/visualizerTraining/visualizerTraining";
+import InfoProducts from "@/components/infoProducts/infoProducts";
+import masculino from "/public/images/icons/masculino-icon.svg";
+import femenino from "/public/images/icons/femenino-icon.svg";
 
 export default function Entrenamiento() {
   const { user } = useContext(AuthContext);
   const { userProfile, loading, error } = useUserProfile(user);
   const router = useRouter();
   const [rutina, setRutina] = useState(false);
+  const [ generoUser, setGeneroUser] = useState(null);
 
   useEffect(() => {
     // Si no hay usuario logueado y no estamos cargando, redirige al home
@@ -26,6 +31,16 @@ export default function Entrenamiento() {
       router.push("/"); // Redirige al home si no hay usuario logueado
     }
   }, [loading, userProfile, router]);
+
+
+  // Actualiza la imagen del coach dependiendo del valor de userProfile.coach
+  useEffect(() => {
+    if (userProfile?.genero === "masculino") {
+      setGeneroUser(masculino);
+    } else if (userProfile?.genero === "femenino") {
+      setGeneroUser(femenino);
+    }
+  }, [userProfile?.genero]);
 
   if (loading) return <Loading />;
   if (error) return <p>Error: {error}</p>;
@@ -45,12 +60,9 @@ export default function Entrenamiento() {
       </section>
       {rutina ? (
         <section className={styles.containerVisualizer}>
+          <span></span>
           <button onClick={() => setRutina(false)}>
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              size="2x"
-              className={styles.icon}
-            />
+            <FontAwesomeIcon icon={faXmark} size="2x" className={styles.icon} />
           </button>
           <VisualizerTraining />
         </section>
@@ -60,21 +72,23 @@ export default function Entrenamiento() {
             <section className={styles.infoTrainer}>
               <div className={styles.datosFisicos}>
                 <span>
-                  <FontAwesomeIcon
-                    icon={faHeartPulse}
-                    size="2x"
-                    className={styles.icon}
+                  <Image
+                    src="/images/icons/objetivo-fisico.svg"
+                    alt="icon-info"
+                    width={40}
+                    height={40}
                   />
                 </span>
-                <h4>Masa muscular</h4>
+                <h4>{userProfile?.objetivoFisico}</h4>
                 <p>Objetivo físico</p>
               </div>
               <div className={styles.datosFisicos}>
                 <span>
-                  <FontAwesomeIcon
-                    icon={faHeartPulse}
-                    size="2x"
-                    className={styles.icon}
+                  <Image
+                    src="/images/icons/fuerza.svg"
+                    alt="icon-info"
+                    width={38}
+                    height={38}
                   />
                 </span>
                 <h4>Fuerza</h4>
@@ -82,10 +96,11 @@ export default function Entrenamiento() {
               </div>
               <div className={styles.datosFisicos}>
                 <span>
-                  <FontAwesomeIcon
-                    icon={faHeartPulse}
-                    size="2x"
-                    className={styles.icon}
+                  <Image
+                    src="/images/icons/cardio.svg"
+                    alt="icon-info"
+                    width={35}
+                    height={35}
                   />
                 </span>
                 <h4>Cardio</h4>
@@ -93,13 +108,17 @@ export default function Entrenamiento() {
               </div>
               <div className={styles.datosFisicos}>
                 <span>
-                  <FontAwesomeIcon
-                    icon={faHeartPulse}
-                    size="2x"
-                    className={styles.icon}
+                  {generoUser && (
+                    <Image
+                    src={generoUser}
+                    alt="icon-info"
+                    width={32}
+                    height={32}
                   />
+                  )}
+                  
                 </span>
-                <h4>Masculino</h4>
+                <h4>{userProfile?.genero}</h4>
                 <p>Genero</p>
               </div>
             </section>
@@ -127,6 +146,7 @@ export default function Entrenamiento() {
             </div>
           </section>
           <ContactCoach />
+          <InfoProducts />
         </>
       )}
     </section>

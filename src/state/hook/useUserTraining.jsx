@@ -18,7 +18,7 @@ const useUserTraining = () => {
         }
 
         const userProfile = JSON.parse(savedUserProfile);
-        const { objetivoFisico, nivel } = userProfile;
+        const { objetivoFisico, nivel, genero } = userProfile;
 
         if (!objetivoFisico) {
           throw new Error(
@@ -28,7 +28,13 @@ const useUserTraining = () => {
 
         if (!nivel) {
           throw new Error(
-            "El campo 'comidasXdia' no está presente en el perfil de usuario."
+            "El campo 'nivel' no está presente en el perfil de usuario."
+          );
+        }
+
+        if (!genero) {
+          throw new Error(
+            "El campo 'genero' no está presente en el perfil de usuario."
           );
         }
 
@@ -39,7 +45,8 @@ const useUserTraining = () => {
         const q = query(
           entrenamientoRef,
           where("nombre", "==", objetivoFisico),
-          where("nivel", "==", nivel) // Nuevo filtro
+          where("nivel", "==", nivel), // Nuevo filtro
+          where("genero", "==", genero)
         );
 
         const querySnapshot = await getDocs(q);

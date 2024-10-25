@@ -156,7 +156,6 @@ export default function Perfil() {
                     alt="image-coach"
                     fill={true}
                     className={styles.imgItem}
-                    priority
                   />
                 )}
               </div>

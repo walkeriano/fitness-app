@@ -48,6 +48,7 @@ export default function FormFemenino() {
   const [selectedImage3, setSelectedImage3] = useState(null);
   const [imagePreview3, setImagePreview3] = useState(null);
   const [selectedAge, setSelectedAge] = useState("");
+  const [selectedNivel, setSelectedNivel] = useState("");
   const [selectedComidasXdia, setSelectedComidasXdia] = useState("");
   const [selectedObjetivoFisico, setSelectedObjetivoFisico] = useState("");
   const [selectedCoach, setSelectedCoach] = useState("");
@@ -292,6 +293,10 @@ export default function FormFemenino() {
 
   const handleAgeChange = (e) => {
     setSelectedAge(e.target.value); // Actualiza el estado cuando se selecciona una opción
+  };
+
+  const handleNivelChange = (e) => {
+    setSelectedNivel(e.target.value); // Actualiza el estado cuando se selecciona una opción
   };
 
   const handleComidasXdiaChange = (e) => {
@@ -951,90 +956,77 @@ export default function FormFemenino() {
             <h4 className={styles.firstitle}>¿Entrenas actualmente?</h4>
           </section>
           <section className={styles.contForm}>
-            <section className={styles.flexBoxState}>
-              <div
-                className={styles.btnState}
-                onClick={() => setTraining(true)}
-              >
-                <p>
-                  Claro que si! <span>💪🏼</span>
-                </p>
-              </div>
-              {training && (
-                <section className={styles.showInputs}>
-                  <section className={styles.boxItem}>
-                    <div className={styles.contInp}>
-                      <label>¿Desde hace cuanto tiempo?:</label>
-                      <input
-                        type="text"
-                        placeholder="Escribir aqui..."
-                        {...register("tiempoEntrenando")}
-                        className={
-                          touchedFields.tiempoEntrenando
-                            ? errors.tiempoEntrenando
-                              ? styles.invalid
-                              : styles.valid
-                            : ""
-                        }
-                      />
-                    </div>
-                    <button
-                      className={styles.cerrar}
-                      onClick={() => setTraining(false)}
-                    >
-                      <FontAwesomeIcon
-                        icon={faXmark}
-                        size="2x"
-                        className={styles.icon}
-                      />
-                    </button>
-                  </section>
-                  <section className={styles.boxItem}>
-                    <div className={styles.contInp}>
-                      <label>¿Cuántas veces a la semana?</label>
-                      <input
-                        type="text"
-                        placeholder="Escribir aqui..."
-                        {...register("vecesXsemana")}
-                        className={
-                          touchedFields.vecesXsemana
-                            ? errors.vecesXsemana
-                              ? styles.invalid
-                              : styles.valid
-                            : ""
-                        }
-                      />
-                    </div>
-                    <button
-                      className={styles.cerrar}
-                      onClick={() => setTraining(false)}
-                    >
-                      <FontAwesomeIcon
-                        icon={faXmark}
-                        size="2x"
-                        className={styles.icon}
-                      />
-                    </button>
-                  </section>
-                </section>
-              )}
+          <section className={styles.flexBoxEdad}>
               <label
-                htmlFor="experiencia"
-                className={`${styles.btnState} ${
-                  selectedTraining ? styles.valid : ""
+                htmlFor="nivel1"
+                className={`${styles.boxEdad} ${
+                  selectedNivel === "iniciado" ? styles.valid : ""
                 }`}
               >
-                <p>
-                  Todavia no <span>⛔️</span>
-                </p>
                 <input
-                  type="checkbox"
+                  type="radio"
                   hidden
-                  id="experiencia"
-                  {...register("experiencia", {
-                    onChange: handleTrainingChange,
+                  id="nivel1"
+                  value="iniciado"
+                  {...register("nivel", {
+                    required: "La edad es obligatoria",
+                    onChange: handleNivelChange,
                   })}
-                  checked={selectedTraining}
+                />
+                <p>iniciado</p>
+                <Image
+                  src="/images/body-1.png"
+                  alt="sujeto-edad"
+                  width={80}
+                  height={120}
+                />
+              </label>
+              <label
+                htmlFor="nivel2"
+                className={`${styles.boxEdad} ${
+                  selectedNivel === "intermedio" ? styles.valid : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  hidden
+                  id="nivel2"
+                  value="intermedio"
+                  {...register("nivel", {
+                    required: "La edad es obligatoria",
+                    onChange: handleNivelChange,
+                  })}
+                />
+                <p>Intermedio</p>
+                <Image
+                  src="/images/body-2.png"
+                  alt="sujeto-edad"
+                  width={80}
+                  height={120}
+                />
+              </label>
+              <label
+                htmlFor="nivel3"
+                className={`${styles.boxEdad} ${
+                  selectedNivel === "avanzado" ? styles.valid : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  hidden
+                  id="nivel3"
+                  value="avanzado"
+                  {...register("nivel", {
+                    required: "La edad es obligatoria",
+                    onChange: handleNivelChange,
+                  })}
+                />
+                <p>Avanzado</p>
+                <Image
+                  src="/images/body-3.png"
+                  alt="sujeto-edad"
+                  width={80}
+                  height={120}
                 />
               </label>
             </section>

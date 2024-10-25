@@ -46,23 +46,42 @@
 
   & .containerVisualizer{
     width: 100%;
-    background-color: #006fff;
-    border-radius: 30px 30px 0px 0px;
+    height: 700px;
+    border:2px solid #006fff;
+    background-color: #006effa6;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     animation: openBottom 1.5s ease;
+    margin-bottom: 50px;
+
+    & span{
+      width: 55px;
+      height: 6px;
+      background-color: #006fff;
+      margin-top: 15px;
+      border-radius: 50px;
+    }
 
     & button{
       position: absolute;
-      top: -22px;
-      right: 60px;
-      width: 45px;
-      height: 45px;
+      top: -18px;
+      right: 40px;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & .icon{
+        font-size: 1.3rem;
+        color: #006fff;
+      }
     }
   }
 
@@ -91,7 +110,7 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        gap: 2px;
+        gap: 4px;
 
         & span {
           width: 60px;
@@ -106,7 +125,7 @@
           animation: color 3s ease infinite;
 
           & .icon {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: #006fff;
           }
         }
@@ -115,6 +134,7 @@
           font-size: 1.1rem;
           letter-spacing: 0.5px;
           width: 90%;
+          text-transform: capitalize;
         }
 
         & p {
@@ -256,7 +276,7 @@
 
 @keyframes openRight {
   from {
-    transform: translateX(100px);
+    transform: translateX(150px);
     opacity: 0;
   }
 

@@ -1,6 +1,6 @@
 .perfilInfo {
   margin-top: 20px;
-  width: 93%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
   margin-bottom: 200px;
 
   & .contGeneralPerfil {
-    width: 93%;
+    width: 87%;
     height: 260px;
     display: flex;
     align-items: center;
@@ -124,7 +124,7 @@
   }
 
   & .contInfoFisica {
-    width: 100%;
+    width: 95%;
     height: 200px;
     border-radius: 30px;
     border: 1px solid #212121;
@@ -200,7 +200,7 @@
   }
 
   & .containerFunctions {
-    width: 100%;
+    width: 95%;
     margin-top: 30px;
     display: flex;
     align-items: center;
@@ -312,7 +312,7 @@
     border-radius: 30px;
     border: 1px solid #212121;
     background-color: #131313;
-    width: 100%;
+    width: 95%;
     height: 225px;
     margin-top: 30px;
     display: flex;
@@ -414,13 +414,14 @@
     border-radius: 30px;
     border: 1px solid #212121;
     background-color: #131313;
-    width: 100%;
+    width: 95%;
     margin-top: 30px;
     height: 115px;
     border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 30px;
 
     & .containerTitle {
       width: 60%;

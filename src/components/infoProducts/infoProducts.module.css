@@ -1,10 +1,10 @@
 .sectionGeneral {
-  width: 107%;
-  margin-top: 30px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 50px;
 
   & .titleSection {
     color: white;

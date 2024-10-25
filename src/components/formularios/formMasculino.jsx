@@ -950,7 +950,7 @@ export default function FormMasculino() {
             <h4 className={styles.firstitle}>¿Entrenas actualmente?</h4>
           </section>
           <section className={styles.contForm}>
-          <section className={styles.flexBoxEdad}>
+            <section className={styles.flexBoxEdad}>
               <label
                 htmlFor="nivel1"
                 className={`${styles.boxEdad} ${

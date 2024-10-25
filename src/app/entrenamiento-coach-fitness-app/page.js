@@ -5,7 +5,7 @@ import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
 import Footer from "@/components/footer/footer";
 import Menu from "@/components/menu/menu";
 import Entrenamiento from "@/components/entrenamiento/entrenamiento";
-import InfoProducts from "@/components/infoProducts/infoProducts";
+
 
 
 
@@ -23,7 +23,6 @@ export default function EntrenamientoCoachFitnessApp() {
         <Menu />
         <span className={styles.blur}></span>
         <Entrenamiento/>
-        <InfoProducts />
         <Footer />
       </main>
     </>
