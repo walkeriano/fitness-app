@@ -1,0 +1,284 @@
+.sectionQuestions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  margin-top: 50px;
+}
+
+.bgImage {
+  position: absolute;
+  height: 85%;
+  width: 60%;
+  top: 5%;
+  z-index: -1;
+  left: 5%;
+}
+
+.bgImage span {
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(#0c0c0c00, #0c0c0c);
+  position: absolute;
+  bottom: 0px;
+}
+
+.bgImage .img {
+  object-fit: contain;
+  z-index: -1;
+}
+
+.partLeft {
+  width: 35%;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.partLeft h4 {
+  font-size: 3.1vw;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: 300;
+  line-height: 1;
+  color: white
+}
+
+.partLeft h4 span {
+  color: #006fff;
+}
+
+.questionsChannels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.questionsChannels a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #006fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.questionsChannels a .icon {
+  font-size: 1.5rem;
+  color: #006fff;
+}
+
+.questionsChannels a:hover {
+  background-color: yellow;
+
+  .icon {
+    color: black;
+  }
+}
+
+.sectionAll {
+  width: 40%;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sectionAll hr {
+  width: 90%;
+  border: 1px solid rgb(36, 36, 36);
+}
+
+.questionsItem {
+  border: 1px solid transparent;
+  width: 100%;
+  height: 100px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.questionsItem p {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-left: 30px;
+  color: white;
+}
+
+.questionsItem .boxIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.questionsItem .boxIcon .icon {
+  font-size: 1.5rem;
+  transform: rotate(45deg);
+  color: white;
+}
+
+.questionsItem:hover {
+  border: 1px solid #006fff;
+  color: #006fff;
+  backdrop-filter: blur(4px);
+
+  .boxIcon {
+    background-color: #006fff;
+    border: 1px solid #006fff;
+  }
+
+  .boxIcon .icon {
+    color: white;
+  }
+}
+
+.questionsItemOn {
+  border: 1px solid #006fff;
+  width: 100%;
+  height: 100px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #006fff;
+}
+
+.questionsItemOn p {
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-left: 30px;
+  color: white;
+}
+
+.questionsItemOn .boxIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.questionsItemOn .boxIcon .icon {
+  font-size: 1.5rem;
+  transform: rotate(-90deg);
+  color: white;
+}
+
+.questionsItemOn .boxIcon:hover {
+  background-color: white;
+
+  .icon {
+    color: #006fff;
+  }
+}
+
+@media (max-width: 650px) {
+  .sectionQuestions {
+    flex-direction: column;
+    position: relative;
+    gap: 30px;
+  }
+
+  .partLeft {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .partLeft h4 {
+    font-size: 10vw;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .questionsChannels a {
+    width: 45px;
+    height: 45px;
+  }
+
+  .questionsChannels a .icon {
+    font-size: 1.3rem;
+  }
+
+  .sectionAll {
+    width: 100%;
+    height: 40%;
+    justify-content: flex-start;
+  }
+
+  .sectionAll hr {
+    width: 100%;
+    border: 1px solid rgb(36, 36, 36);
+  }
+
+  .questionsItem {
+    border-radius: 0px;
+  }
+
+  .bgImage {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+  }
+
+  .bgImage span {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    bottom: 0px;
+  }
+
+  .bgImage .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    z-index: -1;
+  }
+
+  .questionsItemOn {
+    border-radius: 0px;
+  }
+
+  .questionsItem .boxIcon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .questionsItem .boxIcon .icon {
+    font-size: 1.2rem;
+  }
+
+  .questionsItemOn .boxIcon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .questionsItemOn .boxIcon .icon {
+    font-size: 1.2rem;
+  }
+}

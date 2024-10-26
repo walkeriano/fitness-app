@@ -12,6 +12,7 @@ import Onetoone from "@/components/onetoone/onetoone";
 import Footer from "@/components/footer/footer";
 import Closing from "@/components/closing/closing";
 import Loading from "@/components/loading/loading";
+import PreguntasFrecuentes from "@/components/preguntasFrecuentes/preguntasFrecuentes";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,7 @@ export default function Home() {
             <Explicacion />
             <Beneficios />
             <Onetoone />
+            <PreguntasFrecuentes/>
             <Closing goUp={goUp} />
             <Footer />
           </>

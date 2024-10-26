@@ -880,9 +880,9 @@ export default function FormFemenino() {
                   {...register("estatura", {
                     required: "La estatura es obligatoria",
                     pattern: {
-                      value: /^\d+([.,]?\d+)?$/, // Permite números con punto o coma como separador decimal
+                      value: /^\d+(\.\d{1,2})?$/, // Permite números con punto o coma como separador decimal
                       message:
-                        "Solo se permiten números y un separador decimal (punto o coma)*",
+                        "El formato debe ser un número con hasta dos decimales (ej. 1.80)*",
                     },
                   })}
                   placeholder="Escribir aqui..."
@@ -905,9 +905,9 @@ export default function FormFemenino() {
                   {...register("peso", {
                     required: "El peso es obligatorio",
                     pattern: {
-                      value: /^\d+([.,]?\d+)?$/, // Permite números con punto o coma como separador decimal
+                      value: /^\d{1,2}$/, // Permite números con punto o coma como separador decimal
                       message:
-                        "Solo se permiten números y un separador decimal (punto o coma)*",
+                        "El peso debe ser un número entero de hasta dos dígitos*",
                     },
                   })}
                   placeholder="Escribir aqui..."
@@ -973,13 +973,7 @@ export default function FormFemenino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>iniciado</p>
-                <Image
-                  src="/images/body-1.png"
-                  alt="sujeto-edad"
-                  width={80}
-                  height={120}
-                />
+                <p>Iniciado 🤗</p>
               </label>
               <label
                 htmlFor="nivel2"
@@ -997,13 +991,7 @@ export default function FormFemenino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Intermedio</p>
-                <Image
-                  src="/images/body-2.png"
-                  alt="sujeto-edad"
-                  width={80}
-                  height={120}
-                />
+                <p>Intermedio 😎</p>
               </label>
               <label
                 htmlFor="nivel3"
@@ -1021,13 +1009,7 @@ export default function FormFemenino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Avanzado</p>
-                <Image
-                  src="/images/body-3.png"
-                  alt="sujeto-edad"
-                  width={80}
-                  height={120}
-                />
+                <p>Avanzado 💪🏼</p>
               </label>
             </section>
           </section>
