@@ -25,7 +25,9 @@ import {
   faShare,
   faCirclePlus,
   faCircleLeft,
-  faFileCircleCheck
+  faFileCircleCheck,
+  faMagnifyingGlass,
+  faFaceFrown,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -61,5 +63,7 @@ library.add(
   faShare,
   faCirclePlus,
   faCircleLeft,
-  faFileCircleCheck
+  faFileCircleCheck,
+  faMagnifyingGlass,
+  faFaceFrown
 );

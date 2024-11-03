@@ -74,12 +74,12 @@ export default function Herramientas() {
         <h3>Alimentación</h3>
       </Link>
       <Link
-        href="/administrador-alimentacion"
+        href="/administrador-infoproductos"
         passHref
         className={`${styles.itermTools} ${getLinkClassName(
-          "/administrador-alimentacion"
+          "/administrador-infoproductos"
         )}`}
-        ref={pathname === "/administrador-alimentacion" ? activeItemRef : null}
+        ref={pathname === "/administrador-infoproductos" ? activeItemRef : null}
       >
         <FontAwesomeIcon icon={faStore} size="2x" className={styles.iconTwo} />
         <h3>Infoproductos</h3>

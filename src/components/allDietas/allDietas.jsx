@@ -1,11 +1,9 @@
-import styles from "./allRutinas.module.css";
+import styles from "./allDietas.module.css";
 import React, { useState, useEffect, useContext } from "react";
-import useFetchTraining from "@/state/hook/useFetchTraining";
+import useFetchAlimentacion from "@/state/hook/useFetchAlimentacion";
 import { useRouter } from "next/navigation";
 import AuthContext from "@/state/auth/auth-context";
 import useUserProfile from "@/state/hook/useUserProfile";
-import useUploadFile from "@/state/hook/useUploadFile";
-import Loading from "@/components/loadingExtra/loadingExtra";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowsRotate,
@@ -14,14 +12,16 @@ import {
   faCircleLeft,
   faCirclePlus,
   faXmark,
-  faFileCircleCheck
+  faFileCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
+import Loading from "@/components/loadingExtra/loadingExtra";
+import useUploadFile from "@/state/hook/useUploadFile";
 
-export default function AllRutinas() {
+export default function AllDietas() {
   const { user } = useContext(AuthContext);
   const { userProfile } = useUserProfile(user);
   const router = useRouter();
-  const { rutinas, loading, error } = useFetchTraining();
+  const { dietas, loading, error } = useFetchAlimentacion();
   const { handleUpload, uploading, error: uploadError } = useUploadFile();
   const [actualizar, setActualizar] = useState(null);
 
@@ -65,8 +65,8 @@ export default function AllRutinas() {
 
   return (
     <section className={styles.containerRutinas}>
-      {rutinas.map((rutina) => (
-        <section key={rutina.id} className={styles.boxRutina}>
+      {dietas.map((dieta) => (
+        <section key={dieta.id} className={styles.boxRutina}>
           <section className={styles.contInfo}>
             <div className={styles.iRutina}>
               <FontAwesomeIcon
@@ -78,19 +78,19 @@ export default function AllRutinas() {
             <div className={styles.datosName}>
               <h3>
                 <span>Objetivo: </span>
-                {rutina?.nombre}
+                {dieta?.nombre}
               </h3>
               <h3>
                 <span>Genero: </span>
-                {rutina?.genero}
+                {dieta?.genero}
               </h3>
               <h3>
-                <span>Nivel: </span>
-                {rutina?.nivel}
+                <span>Comidas: </span>
+                {dieta?.comidas}
               </h3>
             </div>
           </section>
-          {actualizar === rutina.id ? (
+          {actualizar === dieta.id ? (
             <section className={styles.deleteOficial}>
               <p>Adjuntar nuevo documento:</p>
               <button
@@ -105,15 +105,23 @@ export default function AllRutinas() {
               </button>
               <div className={styles.contSubmit}>
                 <label htmlFor="archivo" className={styles.adjuntar}>
-                  {selectedFile && selectedRutina === rutina.id ? (
-                    <section  className={styles.onDoc}>
+                  {selectedFile && selectedRutina === dieta.id ? (
+                    <section className={styles.onDoc}>
                       <h4>Listo para subir</h4>
-                      <FontAwesomeIcon icon={faFileCircleCheck} size="1x" className={styles.icon} />
+                      <FontAwesomeIcon
+                        icon={faFileCircleCheck}
+                        size="1x"
+                        className={styles.icon}
+                      />
                       <button
                         onClick={clearFile}
                         className={styles.clearButton}
                       >
-                        <FontAwesomeIcon icon={faXmark} size="1x"  className={styles.icon} />
+                        <FontAwesomeIcon
+                          icon={faXmark}
+                          size="1x"
+                          className={styles.icon}
+                        />
                       </button>
                     </section>
                   ) : (
@@ -134,7 +142,7 @@ export default function AllRutinas() {
                     accept="application/pdf"
                     onChange={(e) => {
                       handleFileChange(e);
-                      setSelectedRutina(rutina.id); // Guardamos el ID de la rutina actual
+                      setSelectedRutina(dieta.id); // Guardamos el ID de la rutina actual
                     }}
                     disabled={uploading}
                   />
@@ -143,7 +151,7 @@ export default function AllRutinas() {
                   className={styles.deleteOn}
                   onClick={handleFileUpload}
                   disabled={
-                    uploading || !selectedFile || selectedRutina !== rutina.id
+                    uploading || !selectedFile || selectedRutina !== dieta.id
                   }
                 >
                   Publicar archivo
@@ -161,7 +169,7 @@ export default function AllRutinas() {
           ) : (
             <button
               className={styles.btnEliminar}
-              onClick={() => setActualizar(rutina.id)}
+              onClick={() => setActualizar(dieta.id)}
             >
               Actualizar rutina
               <span>
