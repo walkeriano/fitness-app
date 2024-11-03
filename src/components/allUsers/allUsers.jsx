@@ -72,7 +72,7 @@ export default function AllUsers() {
       <section className={styles.secondContainer}>
         {filteredUsers.length === 0 && (
           <div className={styles.noResults}>
-            <p>Ese usuario no existe...</p>
+            <p>El usuario no existe...</p>
             <FontAwesomeIcon
               icon={faFaceFrown}
               size="2x"
