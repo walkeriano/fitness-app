@@ -1,0 +1,256 @@
+.containerAllUsers {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+
+  & .firstContainer {
+    width: 90%;
+    height: 45px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    border: 1px solid #212121;
+    background-color: #131313;
+    margin-top: 20px;
+    border-radius: 50px;
+    padding: 0px 0px 0px 20px;
+
+    & p {
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    & .totalNumber {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background-color: #212121;
+      height: 100%;
+      padding: 0px 20px;
+      border-radius: 50px;
+
+      & h3 {
+        font-size: 1.2rem;
+      }
+
+      & .icon {
+        font-size: 1.1rem;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  & .secondContainer {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Crea 3 columnas de igual tamaño */
+    grid-template-rows: repeat(
+      3,
+      1fr
+    ); /* Crea 3 filas de altura fija de 100px */ /* Espacio entre las celdas */
+    gap: 15px;
+
+    & .boxUser {
+      border: 1px solid #212121;
+      background-color: #131313;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 7px 7px 7px;
+      color: white;
+      gap: 20px;
+
+      & .imgUser {
+        width: 70%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.187);
+        border: 2px solid #006fff;
+        position: relative;
+
+        & img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
+      & .contInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+
+        & .datosName {
+          width: 100%;
+          text-align: center;
+
+          & h3 {
+            font-size: 1rem;
+            letter-spacing: 0.7px;
+            text-transform: capitalize;
+          }
+        }
+
+        & .datosEdad {
+          width: 100%;
+          text-align: center;
+          color: #a6a6a6;
+
+          & p {
+            font-size: 0.9rem;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+          }
+        }
+
+        & .datoSuscripcion {
+          width: 100%;
+          text-align: center;
+          color: #a6a6a6;
+
+          & p {
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      & .btnBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+        position: relative;
+
+        & .btnSuspender, & .btnActivar, & .btnEliminar {
+          width: 100%;
+          height: 45px;
+          border-radius: 50px;
+          font-size: 0.9rem;
+          text-transform: capitalize;
+          letter-spacing: 0.7px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0px 0px 0px 15px;
+          background-color: #424242a5;
+          border: 2px solid #414141;
+          color: white;
+
+          & span {
+            width: 45px;
+            aspect-ratio: 1;
+            background-color: #414141;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & .icon {
+              font-size: 1.3rem;
+            }
+          }
+        }
+
+        & .btnEliminar {
+          background-color: #ff0000a5;
+          border: 2px solid #ff0000;
+
+          & span {
+            background-color: #ff0000;
+
+            & .icon {
+              font-size: 1.3rem;
+            }
+          }
+        }
+
+        & .btnActivar{
+          background-color: #00c91ea5;
+          border: 2px solid #00b41b;
+
+          & span{
+            background-color: #00b41b;
+            
+            & .icon{
+              font-size: 1.4rem;
+            }
+          }
+        }
+
+        & .btnSuspender::after{
+          content: "";
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: #00c91ea5;
+          border: 2px solid #00b41b;
+          top: -270px;
+          right: 10px;
+        }
+
+        & .btnActivar::after{
+          content: "";
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: #777777a5;
+          border: 2px solid #7a7a7a;
+          top: -270px;
+          right: 10px;
+        }
+      }
+
+      & .deleteOficial {
+        background-color: #ff0000a5;
+        border: 2px solid #ff0000;
+        height: 100px;
+        width: 100%;
+        border-radius: 26px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        & p{
+          margin-top: 15px;
+          font-size: 1rem;
+        }
+
+        & .deleteOn{
+          width: 100%;
+          background-color: #ff0000;
+          height: 50px;
+          border-radius: 0px 0px 25px 25px;
+          border:none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          gap: 10px;
+          font-size: 1rem;
+
+          & .icon{
+            font-size: 1.3rem;
+          }
+
+        }
+      }
+    }
+  }
+}

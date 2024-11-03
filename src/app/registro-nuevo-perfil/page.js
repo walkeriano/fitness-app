@@ -10,11 +10,12 @@ import Link from "next/link";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faArrowRight, faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 
 export default function RegistroNuevoPerfil() {
   const [newRegister, setNewRegister] = useState(true);
   const { user, register: registerUser } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
   const {
     register,
@@ -84,7 +85,7 @@ export default function RegistroNuevoPerfil() {
               <div className={styles.boxInput}>
                 <label>Contraseña:</label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Escribir aqui.."
                   className={
                     touchedFields.password
@@ -105,6 +106,16 @@ export default function RegistroNuevoPerfil() {
                     },
                   })}
                 />
+                <button
+                  type="button"
+                  className={styles.togglePassword}
+                  onClick={() => setShowPassword(!showPassword)} // Alterna la visibilidad
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    className={styles.icon}
+                  />
+                </button>
                 <p className={styles.indication}>
                   *Mínimo 6 carácteres entre números y letras
                 </p>

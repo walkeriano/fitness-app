@@ -27,9 +27,13 @@ export default function Perfil() {
   const [imagenCoach, setImagenCoach] = useState(null);
 
   useEffect(() => {
-    // Si no hay usuario logueado y no estamos cargando, redirige al home
+    // Redirige al home si no hay usuario logueado o si la suscripción está desactivada
     if (!loading && !userProfile) {
       router.push("/"); // Redirige al home si no hay usuario logueado
+    } else if (!loading && userProfile?.suscripcion === "suspendido") {
+      router.push("/perfil-suspendido"); // Redirige al home si la suscripción del usuario está desactivada
+    } else if (!loading && userProfile?.superUser === true){
+      router.push("/administrador-usuarios"); // Redirige al home si el usuario es superuser
     }
   }, [loading, userProfile, router]);
 
@@ -69,12 +73,16 @@ export default function Perfil() {
                   size="2x"
                   className={styles.icon}
                 />
-                Editar perfil
+                Actualizar datos
               </Link>
             </section>
             <section className={styles.infoImg}>
               <span></span>
-              <Image src={userProfile?.imageUrl} alt="image-persons" fill={true} />
+              <Image
+                src={userProfile?.imageUrl}
+                alt="image-persons"
+                fill={true}
+              />
             </section>
           </section>
           <section className={styles.contInfoFisica}>
@@ -141,14 +149,17 @@ export default function Perfil() {
                   />
                 </div>
               </div>
-              <span className={styles.btnRedirect}>
+              <Link
+                href="/entrenamiento-coach-fitness-app"
+                className={styles.btnRedirect}
+              >
                 <p>Ver rutina</p>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   size="2x"
                   className={styles.icon}
                 />
-              </span>
+              </Link>
               <div className={styles.imgCoach}>
                 {imagenCoach && (
                   <Image
@@ -177,14 +188,14 @@ export default function Perfil() {
                   />
                 </div>
               </div>
-              <span className={styles.btnRedirect}>
-              <p>Ver Dieta</p>
+              <Link href="/alimentacion-coach-fitness-app" className={styles.btnRedirect}>
+                <p>Ver Dieta</p>
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   size="2x"
                   className={styles.icon}
                 />
-              </span>
+              </Link>
             </section>
             <div className={styles.imgFood}>
               <Image src="/images/food.png" alt="image-coach" fill={true} />
@@ -196,14 +207,14 @@ export default function Perfil() {
               <p>Contacta al coach</p>
             </section>
             <section className={styles.containerLinks}>
-              <a href="/" className={styles.itemWss}>
+              <a href="https://wa.me/51997474185?text=Hola%20necesito%20ayuda" target="_blank" className={styles.itemWss}>
                 <FontAwesomeIcon
                   icon={faWhatsapp}
                   size="2x"
                   className={styles.icon}
                 />
               </a>
-              <a href="/" className={styles.itemEmail}>
+              <a href="mailto: consultas@comopezenelaula.com" className={styles.itemEmail}>
                 <FontAwesomeIcon
                   icon={faPaperPlane}
                   size="2x"

@@ -23,7 +23,10 @@ export default function HeaderPerfil() {
     try {
       await logout(); // Llamamos a la función logout para cerrar la sesión
       localStorage.removeItem("userProfile");
-    localStorage.removeItem("calculatedData");
+      localStorage.removeItem("calculatedData");
+      localStorage.removeItem("trainingData");
+      localStorage.removeItem("trainingData");
+      localStorage.removeItem("alimentacionData");
       console.log("Sesión cerrada con éxito");
       router.push("/");
     } catch (error) {

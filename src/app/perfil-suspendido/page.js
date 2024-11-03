@@ -1,18 +1,12 @@
 "use client";
-import React, { useRef } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
 import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
 import Footer from "@/components/footer/footer";
+import PerfilSuspendidoComp from "@/components/perfilSuspendido/perfilSuspendido";
 import Menu from "@/components/menu/menu";
-import Alimentacion from "@/components/alimentacion/alimentacion";
-import Closing from "@/components/closing/closing";
 
-
-
-export default function AlimentacionCoachFitnessApp() {
-  const goUp = useRef(null);
-  
+export default function PerfilSuspendido() {
   return (
     <>
       <Head>
@@ -21,12 +15,10 @@ export default function AlimentacionCoachFitnessApp() {
         <meta name="description" content="quesada coach app - fitness" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main ref={goUp} className={styles.contGeneralPerfil}>
+      <main className={styles.contGeneralPerfil}>
         <HeaderPerfil />
-        <Menu />
         <span className={styles.blur}></span>
-        <Alimentacion/>
-        <Closing goUp={goUp} />
+        <PerfilSuspendidoComp />
         <Footer />
       </main>
     </>

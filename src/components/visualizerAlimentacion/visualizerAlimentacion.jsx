@@ -2,7 +2,7 @@ import styles from "./visualizerAlimentacion.module.css";
 import useUserAlimentacion from "@/state/hook/useUserAlimentacion";
 
 export default function VisualizerAlimentacion(){
-    const { trainingData, loading, error } = useUserAlimentacion();
+    const { alimentacionData, loading, error } = useUserAlimentacion();
 
   if (loading) {
     return <p>Cargando datos de entrenamiento...</p>;
@@ -12,14 +12,14 @@ export default function VisualizerAlimentacion(){
     return <p>Error: {error}</p>;
   }
 
-  if (!trainingData) {
+  if (!alimentacionData) {
     return <p>No se encontraron datos de entrenamiento.</p>;
   }
 
 
     return(
         <section className={styles.containerVisualizer}>
-            <iframe src={`${trainingData?.archivo}#toolbar=0`} className={styles.cont} />
+            <iframe src={`${alimentacionData?.archivo}#toolbar=0`} className={styles.cont} />
         </section>
     )
 }

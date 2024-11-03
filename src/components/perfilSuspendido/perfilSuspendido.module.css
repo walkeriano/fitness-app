@@ -1,0 +1,187 @@
+.containerGeneral {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 100px;
+
+  & .containerAllInfo {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & .contGeneralPerfil {
+      width: 100%;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      & .infoPerfil {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        color: white;
+        animation: openLeft 1.5s linear;
+        gap: 15px;
+
+        & .namePerfil {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          width: 100%;
+          gap: 4px;
+
+          & h3 {
+            color: #a6a6a6;
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+            line-height: 1;
+          }
+
+          & h2 {
+            color: white;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            line-height: 1;
+            width: 95%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-transform: capitalize;
+          }
+        }
+
+        & .infoContact {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 5px;
+          width: 100%;
+
+          & p {
+            color: #a6a6a6;
+            font-size: 0.9rem;
+            line-height: 1;
+            width: 90%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+
+      & .infoImg {
+        width: 40vw;
+        aspect-ratio: 1;
+        max-width: 160px;
+        position: relative;
+        animation: openRight 1.5s linear;
+
+        & span {
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          border-radius: 50%;
+          background-color: rgb(0, 150, 0);
+          right: 5px;
+          top: 5px;
+          border: 1px solid rgb(0, 202, 0);
+        }
+
+        & img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          border: 2px solid #006fff;
+          object-fit: cover;
+        }
+      }
+    }
+
+    & .notificationInfo {
+      width: 100%;
+      padding: 30px 0px 20px 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      border: 1px solid #212121;
+      background-color: #131313;
+      gap: 25px;
+
+      & .icon{
+        color: white;
+        font-size: 3rem;
+      }
+
+      & .message{
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: white;
+
+        & h3{
+            font-size: 1.3rem;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        & p{
+            color: #a6a6a6;
+            font-size: 0.9rem;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+      }
+
+      & .btnBox{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        & .btnSuscripcion, & .btnContact{
+            width: 100%;
+            height: 50px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: white;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        & .btnSuscripcion{
+            background-color: #006effa5;
+            border: 2px solid #006fff;
+        }
+
+        & .btnContact{
+            border: 1px solid #212121;
+            background-color: #131313;
+        }
+      }
+    }
+  }
+}

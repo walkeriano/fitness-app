@@ -186,6 +186,8 @@ export default function FormMasculino() {
         imageUrl2,
         imageUrl3,
         genero: "masculino",
+        suscripcion: "activa",
+        superUser: false,
       };
 
       // Guardar los datos en el documento del usuario en Firestore
@@ -967,13 +969,8 @@ export default function FormMasculino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>iniciado</p>
-                <Image
-                  src="/images/body-1.png"
-                  alt="sujeto-edad"
-                  width={80}
-                  height={120}
-                />
+                <p>Iniciado 🤗</p>
+                
               </label>
               <label
                 htmlFor="nivel2"
@@ -991,13 +988,8 @@ export default function FormMasculino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Intermedio</p>
-                <Image
-                  src="/images/body-2.png"
-                  alt="sujeto-edad"
-                  width={80}
-                  height={120}
-                />
+                <p>Intermedio 😎</p>
+                
               </label>
               <label
                 htmlFor="nivel3"
@@ -1015,13 +1007,8 @@ export default function FormMasculino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Avanzado</p>
-                <Image
-                  src="/images/body-3.png"
-                  alt="sujeto-edad"
-                  width={80}
-                  height={120}
-                />
+                <p>Avanzado 💪🏼</p>
+                
               </label>
             </section>
           </section>

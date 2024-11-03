@@ -1,13 +1,18 @@
 "use client";
+import React, { useRef } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
-import Image from "next/image";
 import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
 import Footer from "@/components/footer/footer";
 import Perfil from "@/components/perfil/perfil";
 import Menu from "@/components/menu/menu";
+import Closing from "@/components/closing/closing";
+
+
 
 export default function PerfilCoachFitnessApp() {
+  const goUp = useRef(null);
+
   return (
     <>
       <Head>
@@ -16,11 +21,12 @@ export default function PerfilCoachFitnessApp() {
         <meta name="description" content="quesada coach app - fitness" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.contGeneralPerfil}>
+      <main ref={goUp} className={styles.contGeneralPerfil}>
         <HeaderPerfil />
         <Menu />
         <span className={styles.blur}></span>
         <Perfil />
+        <Closing goUp={goUp} />
         <Footer />
       </main>
     </>

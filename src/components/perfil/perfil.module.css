@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 200px;
+  margin-bottom: 40px;
 
   & .contGeneralPerfil {
     width: 87%;
@@ -287,6 +287,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 0px 15px;
+        color: white;
+        text-decoration: none;
 
         & p {
           font-size: 1rem;
@@ -378,6 +380,7 @@
         justify-content: space-between;
         padding: 0px 15px;
         color: white;
+        text-decoration: none;
 
         & p {
           font-size: 1rem;

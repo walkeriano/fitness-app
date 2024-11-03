@@ -188,6 +188,8 @@ export default function FormFemenino() {
         imageUrl2,
         imageUrl3,
         genero: "femenino",
+        suscripcion: "activa",
+        superUser: false,
       };
 
       // Guardar los datos en el documento del usuario en Firestore
