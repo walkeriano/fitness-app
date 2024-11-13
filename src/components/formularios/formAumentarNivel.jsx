@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect, useContext } from "react";
-import styles from "./formAumentar.module.css";
+import styles from "./formAumentarNivel.module.css";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -193,7 +193,7 @@ export default function FormAumentarNivel() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.formMasculino}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.formAumentar}>
       <Link href="/perfil-coach-fitness-app" className={styles.back}>
         Volver
       </Link>

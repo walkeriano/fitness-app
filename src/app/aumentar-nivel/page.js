@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import Head from "next/head";
 import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
-import AumentarNivelComp from "@/components/formularios/formAumentarNivel";
+import FormAumentarNivel from "@/components/formularios/formAumentarNivel";
 import Footer from "@/components/footer/footer";
 
 export default function AumentarNivel() {
@@ -16,7 +16,7 @@ export default function AumentarNivel() {
       </Head>
       <main className={styles.containerPerfilMasculino}>
         <HeaderPerfil />
-        <AumentarNivelComp/>
+        <FormAumentarNivel/>
         <span className={styles.blur}></span>
         <Footer />
       </main>
