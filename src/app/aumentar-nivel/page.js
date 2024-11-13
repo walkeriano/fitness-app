@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import Head from "next/head";
 import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
-import FormAumentarNivel from "@/components/formularios/formAumentarNivel";
+import FormAumentarNivel from "@/components/formAumentarNivel/formAumentarNivel";
 import Footer from "@/components/footer/footer";
 
 export default function AumentarNivel() {
