@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect, useContext } from "react";
-import styles from "./form.module.css";
+import styles from "./formAumentar.module.css";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
