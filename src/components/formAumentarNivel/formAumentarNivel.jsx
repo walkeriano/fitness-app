@@ -37,7 +37,6 @@ export default function FormAumentarNivel() {
   const [selectedNivel, setSelectedNivel] = useState("");
   const [selectedComidasXdia, setSelectedComidasXdia] = useState("");
   const [selectedObjetivoFisico, setSelectedObjetivoFisico] = useState("");
-  const [selectedCoach, setSelectedCoach] = useState("");
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 
   useEffect(() => {
@@ -194,9 +193,6 @@ export default function FormAumentarNivel() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formAumentar}>
-      <Link href="/perfil-coach-fitness-app" className={styles.back}>
-        Volver
-      </Link>
       {loadingForm && <LoadingExtra />}
       <section className={styles.contBtns}>
         <section className={styles.contUser}>
