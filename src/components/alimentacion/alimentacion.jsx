@@ -125,7 +125,7 @@ export default function Alimentacion() {
               </section>
             </section>
           </section>
-          <ContactCoach />
+          <ContactCoach coachName={userProfile?.coach} />
           <InfoProducts />
         </>
       )}

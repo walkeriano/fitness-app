@@ -80,7 +80,7 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        color: #a6a6a6;
+        color: #006fff;
         text-decoration: none;
         background-color: #131313;
         padding: 10px 15px;
@@ -89,8 +89,8 @@
         letter-spacing: 0.5px;
 
         & .icon {
-          font-size: 1rem;
-          color: #a6a6a6;
+          font-size: 1.2rem;
+          color: #006fff;
         }
       }
     }

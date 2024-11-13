@@ -1,13 +1,11 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./heroHome.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-
+import { faArrowRight, faChevronDown, faStar } from "@fortawesome/free-solid-svg-icons";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function HeroHome() {
   const divRef = useRef(null); // Referencia al div que queremos animar
@@ -25,11 +23,11 @@ export default function HeroHome() {
 
     const animation = gsap.to(divRef.current, {
       y: displacement, // Usar el desplazamiento calculado
-      filter: 'grayscale(100%)',
-      ease: 'power1.out',
+      filter: "grayscale(100%)",
+      ease: "power1.out",
       scrollTrigger: {
         trigger: divRef.current,
-        start: 'top 15%',
+        start: "top 15%",
         end: `+=${displacement}`, // También usar el desplazamiento aquí
         scrub: 1,
       },
@@ -40,12 +38,14 @@ export default function HeroHome() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-    
+
   return (
     <section className={styles.hero} ref={containerRef}>
       <section className={styles.info}>
         <h1>
-          Fitness<br/><span>life style</span>
+          Fitness
+          <br />
+          <span>life style</span>
         </h1>
         <section className={styles.contInfo}>
           <h2>Los grandes secretos del fitness en tus manos</h2>
@@ -57,6 +57,59 @@ export default function HeroHome() {
               className={styles.icon}
             />
           </div>
+          <section className={styles.containerReputacion}>
+            <div className={styles.boxTitle}>
+            <p>Nuestros casos de éxito</p>
+            <FontAwesomeIcon
+                  icon={faChevronDown}
+                  size="2x"
+                  className={styles.icon}
+                />
+            </div>
+            
+            <section className={styles.recomendacion}>
+              <div>
+                <Image
+                  src="/images/carlos-coach.jpg"
+                  alt="reputacion-1"
+                  className={styles.iconReputacion}
+                  fill={true}
+                />
+              </div>
+              <div>
+                <Image
+                  src="/images/carlos-coach.jpg"
+                  alt="reputacion-1"
+                  className={styles.iconReputacion}
+                  fill={true}
+                />
+              </div>
+              <div>
+                <Image
+                  src="/images/carlos-coach.jpg"
+                  alt="reputacion-1"
+                  className={styles.iconReputacion}
+                  fill={true}
+                />
+              </div>
+              <div>
+                <Image
+                  src="/images/carlos-coach.jpg"
+                  alt="reputacion-1"
+                  className={styles.iconReputacion}
+                  fill={true}
+                />
+              </div>
+              <span>
+                +150
+                <FontAwesomeIcon
+                  icon={faStar}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </span>
+            </section>
+          </section>
           <div className={styles.butonsHero}>
             <Link href="/acceso-fitness-app" className={styles.buttonFirst}>
               Iniciar sesión
@@ -68,7 +121,7 @@ export default function HeroHome() {
                 />
               </span>
             </Link>
-            <Link href="/suscripcion-mensual" className={styles.buttonFirst} >
+            <Link href="/suscripcion-mensual" className={styles.buttonFirst}>
               Suscribirme
               <span>
                 <FontAwesomeIcon
@@ -82,7 +135,11 @@ export default function HeroHome() {
         </section>
       </section>
       <section ref={divRef} className={styles.imageBox}>
-        <Image src="/images/partners-one.png" alt="carlos-y-karina" fill={true} />
+        <Image
+          src="/images/partners-one.png"
+          alt="carlos-y-karina"
+          fill={true}
+        />
         <span></span>
         <span></span>
       </section>

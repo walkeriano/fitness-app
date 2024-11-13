@@ -31,6 +31,10 @@
       font-size: 2rem;
       color: #3d3d3d;
     }
+
+    & p{
+      display: none;
+    }
   }
 
   
@@ -44,6 +48,10 @@
     & .iconLeft {
       font-size: 1.9rem;
       color: #3d3d3d;
+    }
+
+    & p{
+      display: none;
     }
   }
   
@@ -107,6 +115,7 @@
           color: white;
           font-size: 2rem;
           font-family: "Montserrat";
+          border-bottom: 2px solid transparent;
         }
 
         & span {
@@ -129,6 +138,120 @@
   }
 }
 
+
+@media (min-width: 850px){
+  .header {
+    border-bottom: 1px solid #1f1f1f;
+    border-right: 1px solid #1f1f1f;
+    border-left: 1px solid #1f1f1f;
+    width: 90vw;
+    height: 95px;
+    justify-content: space-between;
+    padding: 0px 25px;
+  
+    & .ancorPerfil{
+      width: auto;
+      text-decoration: none;
+      border: 1px solid transparent;
+      padding: 0px 10px;
+      border-radius: 50px;
+      cursor: pointer;
+  
+      & .icon {
+        font-size: 1.8rem;
+      }
+
+      & p{
+        display: block;
+        margin-left: 10px;
+        font-size: 1rem;
+        color: #3d3d3d;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    & .ancorPerfil:hover{
+      border: 1px solid #1f1f1f;
+    }
+  
+    
+    & .menu{
+      width: auto;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid transparent;
+      padding: 0px 15px 0px 5px;
+      border-radius: 50px;
+      cursor: pointer;
+  
+      & .iconLeft {
+        font-size: 1.7rem;
+      }
+
+      & p{
+        display: block;
+        margin-left: 10px;
+        font-size: 1rem;
+        color: #3d3d3d;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    & .menu:hover{
+      border: 1px solid #1f1f1f;
+    }
+    
+  
+    & .menuShow {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0px;
+      left: -5vw;
+  
+      & .headMenu {
+        width: 95%;
+  
+        & button {
+          cursor: pointer;
+        }
+
+        & button:hover{
+          background-color: white;
+
+          & .icon {
+            color: #006fff;
+          }
+        }
+      }
+  
+      & ul {
+        width: 80%;
+        gap: 35px;
+  
+        & li {
+          gap: 25px;
+          width: auto;
+          cursor: pointer;
+        }
+
+        & li:hover{
+          & a{
+            border-bottom: 2px solid white;
+          }
+        }
+      }
+    }
+  }
+  
+}
+
+
+
+
+
 @keyframes header {
   0% {
     opacity: 0;
@@ -139,3 +262,5 @@
     transform: translateY(0px);
   }
 }
+
+

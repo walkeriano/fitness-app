@@ -129,3 +129,30 @@
         }
     }
 }
+
+@media (min-width: 850px){
+    .containerBeneficios{
+        flex-direction: column;
+        gap: 30px;
+        border: 1px solid red;
+    
+        & .contFlex{
+            flex-direction: row;
+            gap:30px;
+            
+            & .link{
+                width: 100%;
+                height: 270px;
+                position: relative;
+    
+                & h3{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    
+        & .btnSuscripcion{
+            display: none;
+        }
+    }
+}

@@ -137,11 +137,10 @@ export default function AccesoFitnessApp() {
                     {errors.password.message}
                   </span>
                 )}
-                <p className={styles.indication}>
-                  *Mínimo 6 carácteres entre números y letras
-                </p>
               </div>
-
+              <p className={styles.indication}>
+                *Mínimo 6 carácteres entre números y letras
+              </p>
               {error && <span className={styles.error}>{error}</span>}
               <button type="submit" className={styles.btnAcces}>
                 Acceder

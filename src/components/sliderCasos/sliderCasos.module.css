@@ -166,3 +166,32 @@
     top: -175px;
   }
 }
+
+@media (min-width: 850px){
+  .sliderContainer {
+    border: 1px solid red;
+  
+    & .overflow {
+      justify-content: center;
+      gap: 35px;
+  
+      & .object {
+        min-width: 250px;
+        gap: 15px;
+  
+        & .comment {
+  
+          & span {
+            width: 90%;
+          }
+        }
+      }
+    }
+  
+    & .btnSuscripcion {
+      width: auto;
+      height: 65px;
+      gap: 20px;
+    }
+  }
+}

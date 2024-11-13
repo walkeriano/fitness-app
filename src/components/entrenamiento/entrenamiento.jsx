@@ -144,7 +144,7 @@ export default function Entrenamiento() {
               <Image src="/images/grilla.svg" alt="hello" fill={true} />
             </div>
           </section>
-          <ContactCoach />
+          <ContactCoach coachName={userProfile?.coach} />
           <InfoProducts />
         </>
       )}

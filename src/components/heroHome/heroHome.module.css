@@ -8,7 +8,7 @@
   justify-content: center;
   position: relative;
 
-  .info {
+  & .info {
     width: 100%;
     height: 100%;
     color: white;
@@ -78,6 +78,10 @@
         }
       }
 
+      & .containerReputacion{
+        display: none;
+      }
+
       & .butonsHero {
         width: 80%;
         display: flex;
@@ -139,6 +143,41 @@
       }
     }
   }
+
+  & .imageBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -2;
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    top: 13%;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      animation: image 1.5s ease-in-out;
+    }
+
+    & span {
+      width: 350px;
+      height: 450px;
+      position: absolute;
+      top: 0%;
+      left: -250px;
+      background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
+      z-index: -1;
+      animation: blur 3.5s ease-in-out;
+    }
+
+    & span:last-child {
+      left: auto;
+      right: -250px;
+      animation: blurTwo 3s ease-in-out;
+    }
+  }
 }
 
 @keyframes btnEffect {
@@ -158,41 +197,6 @@
   }
   100% {
     transform: translateX(0px);
-  }
-}
-
-.imageBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: -2;
-  position: absolute;
-  width: 100%;
-  height: 60%;
-  top: 13%;
-
-  & img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    animation: image 1.5s ease-in-out;
-  }
-
-  & span {
-    width: 350px;
-    height: 450px;
-    position: absolute;
-    top: 0%;
-    left: -250px;
-    background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
-    z-index: -1;
-    animation: blur 3.5s ease-in-out;
-  }
-
-  & span:last-child {
-    left: auto;
-    right: -250px;
-    animation: blurTwo 3s ease-in-out;
   }
 }
 
@@ -222,5 +226,200 @@
   }
   100% {
     transform: translateX(0px);
+  }
+}
+
+@media (min-width: 550px) {
+  .contInfo {
+    & h2 {
+      max-width: 350px;
+    }
+  }
+
+  .butonsHero {
+    max-width: 350px;
+  }
+}
+
+@media (min-width: 850px) {
+  .hero {
+    width: 90%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+
+    & .info {
+      width: 50%;
+      height: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: left;
+      gap: 30px;
+
+      & h1 {
+        font-size: 5.5vw;
+      }
+
+      & .contInfo {
+        gap: 28px;
+        align-items: flex-start;
+        width: 100%;
+
+        & h2 {
+          font-size: 1.5rem;
+        }
+
+        & .slide {
+          display: none;
+        }
+
+        & .containerReputacion{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 10px;
+
+          & .boxTitle{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            & p{
+              font-size: 1rem;
+              color: white;
+              letter-spacing: 0.5px;
+              line-height: 1;
+            }
+
+            & .icon{
+              font-size: 1rem;
+            }
+          }
+
+          & .recomendacion{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & div{
+              width: 75px;
+              aspect-ratio: 1;
+              background-color: white;
+              border-radius: 50%;
+              border: 5px solid #0c0c0c;
+              margin-left: -20px;
+              position: relative;
+
+              & img{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+            }
+
+            & div:nth-child(1){
+              margin-left: 0px;
+            }
+
+            & span{
+              font-size: 1rem;
+              padding: 4px 8px;
+              border-radius: 50px;
+              font-size: 1rem;
+              background-color: #006fff;
+              margin-left: -25px;
+              outline: 5px solid #0c0c0c;
+              z-index: 1;
+
+              & .icon{
+                font-size: 0.8rem;
+                margin-left: 5px;
+              }
+            }
+          }
+        }
+
+        & .butonsHero {
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          max-width: 100%;
+          margin-top: 20px;
+          min-width: 460px;
+
+          & .buttonFirst {
+            border: 1px solid #006fff;
+            width: 50%;
+            height: 70px;
+            border-radius: 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #006effaf;
+            padding: 0px 20px;
+            color: white;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+
+            & span {
+              width: 35px;
+              height: 35px;
+              background-color: white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              & .icon {
+                color: #0054c2;
+                font-size: 1.3rem;
+                transform: rotate(-45deg);
+              }
+            }
+          }
+
+          & .buttonFirst:last-child {
+            border: 1px solid white;
+            background-color: rgb(255, 255, 255);
+            color: #006fff;
+
+            & span {
+              background-color: #006fff;
+
+              & .icon {
+                color: white;
+                font-size: 1.3rem;
+                transform: rotate(-45deg);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .imageBox {
+      width: 55%;
+      height: 85%;
+      top: 7%;
+      right: 0px;
+
+      & span {
+        width: 85vw;
+        top: 6%;
+      }
+
+      & span:last-child {
+        display: none;
+      }
+    }
   }
 }

@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faGear,
   faChevronDown,
   faArrowRight,
   faPaperPlane,
+  faArrowUpRightDots
 } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import useUserProfile from "@/state/hook/useUserProfile";
@@ -67,13 +67,13 @@ export default function Perfil() {
                 <p>{userProfile?.email}</p>
                 <p>993 394 394</p>
               </div>
-              <Link href="/" className={styles.btnEditar}>
-                <FontAwesomeIcon
-                  icon={faGear}
+              <Link href="/aumentar-nivel" className={styles.btnEditar}>
+              <FontAwesomeIcon
+                  icon={faArrowUpRightDots}
                   size="2x"
                   className={styles.icon}
                 />
-                Actualizar datos
+                Aumentar nivel
               </Link>
             </section>
             <section className={styles.infoImg}>

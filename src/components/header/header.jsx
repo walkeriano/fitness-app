@@ -17,11 +17,12 @@ export default function Header() {
   const { user } = useContext(AuthContext);
   const { userProfile } = useUserProfile(user);
 
-  
-
   return (
     <header className={styles.header}>
-      <Link href={user ? "/perfil-coach-fitness-app" : "/acceso-fitness-app"} className={styles.ancorPerfil}>
+      <Link
+        href={user ? "/perfil-coach-fitness-app" : "/acceso-fitness-app"}
+        className={styles.ancorPerfil}
+      >
         {userProfile && userProfile.imageUrl ? (
           <Image
             src={userProfile?.imageUrl}
@@ -30,11 +31,14 @@ export default function Header() {
             fill={true}
           />
         ) : (
-          <FontAwesomeIcon
-            icon={faCircleUser}
-            size="2x"
-            className={styles.icon}
-          />
+          <>
+            <FontAwesomeIcon
+              icon={faCircleUser}
+              size="2x"
+              className={styles.icon}
+            />
+            <p>Acceder</p>
+          </>
         )}
       </Link>
 
@@ -53,6 +57,7 @@ export default function Header() {
             size="2x"
             className={styles.iconLeft}
           />
+          <p>Menú</p>
         </section>
       ) : (
         <section className={styles.menuShow}>
@@ -60,8 +65,8 @@ export default function Header() {
             <Image
               src="/images/icons/logo.svg"
               alt="logo-quesada"
-              width={180}
-              height={45}
+              width={210}
+              height={60}
             />
             <button onClick={() => setMenu(true)}>
               <FontAwesomeIcon

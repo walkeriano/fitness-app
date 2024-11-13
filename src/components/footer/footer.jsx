@@ -14,9 +14,9 @@ export default function Footer() {
           height={55}
         />
         <ul className={styles.list}>
-          <li>993 744 958</li>
-          <li>contacto@gmail.com</li>
-          <li>quesadacoach.com</li>
+          <a href="/" >993 744 958</a>
+          <a href="/">contacto@gmail.com</a>
+          <a href="/">quesadacoach.com</a>
         </ul>
       </section>
       <section className={styles.second}>

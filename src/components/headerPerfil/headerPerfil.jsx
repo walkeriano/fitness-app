@@ -25,7 +25,6 @@ export default function HeaderPerfil() {
       localStorage.removeItem("userProfile");
       localStorage.removeItem("calculatedData");
       localStorage.removeItem("trainingData");
-      localStorage.removeItem("trainingData");
       localStorage.removeItem("alimentacionData");
       console.log("Sesión cerrada con éxito");
       router.push("/");
