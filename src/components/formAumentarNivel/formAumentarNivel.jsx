@@ -193,6 +193,9 @@ export default function FormAumentarNivel() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formAumentar}>
+      <Link href="/perfil-coach-fitness-app" className={styles.back}>
+        Volver
+      </Link>
       {loadingForm && <LoadingExtra />}
       <section className={styles.contBtns}>
         <section className={styles.contUser}>

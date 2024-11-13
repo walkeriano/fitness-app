@@ -307,11 +307,6 @@
             }
           }
 
-          & .boxEdad:nth-child(2),
-          & .boxEdad:nth-child(4) {
-            flex-direction: row-reverse;
-          }
-
           & .error {
             color: yellow;
             font-size: 0.9rem;
@@ -368,110 +363,6 @@
 
           & .valid {
             border-color: #006fff;
-          }
-
-          & .showInputs {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-
-            & .boxItem {
-              width: 80%;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              position: relative;
-
-              & .contInp {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                gap: 10px;
-
-                & label {
-                  color: white;
-                  font-size: 16px;
-                  letter-spacing: 0.5px;
-                  margin-left: 15px;
-                }
-
-                & input {
-                  width: 100%;
-                  height: 60px;
-                  border-radius: 15px;
-                  padding-left: 15px;
-                  border: 1px solid #212121;
-                  background-color: #131313;
-                  color: white;
-                  outline: none;
-                  font-size: 16px;
-                }
-
-                & input::placeholder {
-                  font-size: 16px;
-                  letter-spacing: 0.5px;
-                }
-
-                & input::placeholder {
-                  color: #848484;
-                  letter-spacing: 1px;
-                  font-size: 16px;
-                }
-
-                & input:hover,
-                & input:focus,
-                & input:active {
-                  border: 1px solid #006fff;
-                }
-
-                & input:-webkit-autofill,
-                & input:-webkit-autofill:hover,
-                & input:-webkit-autofill:focus,
-                & input:-webkit-autofill:active {
-                  -webkit-text-fill-color: white !important; /* Cambia el color del texto */
-                  -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
-                  box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
-                  transition: background-color 5000s ease-in-out 0s;
-                  font-size: 16px;
-                }
-
-                & .error {
-                  color: yellow;
-                  font-size: 0.9rem;
-                  letter-spacing: 1px;
-                  margin-left: 15px;
-                  border-bottom: 1px solid yellow;
-                  padding-bottom: 3px;
-                }
-
-                & .valid {
-                  border-color: #006fff;
-                }
-              }
-
-              & .cerrar {
-                background-color: red;
-                width: 35px;
-                height: 35px;
-                border-radius: 50%;
-                border: none;
-                position: absolute;
-                bottom: 12px;
-                right: -17px;
-                color: white;
-                cursor: pointer;
-
-                & .icon {
-                  font-size: 1.4rem;
-                }
-              }
-            }
           }
         }
 
