@@ -193,11 +193,11 @@ export default function FormAumentarNivel() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formAumentar}>
-      <Link href="/perfil-coach-fitness-app" className={styles.back}>
+      <Link href="/perfil-coach-fitness-app" className={styles.backside}>
         Volver
       </Link>
       {loadingForm && <LoadingExtra />}
-      <section className={styles.contBtns}>
+      <section className={styles.contBtnsAumentar}>
         <section className={styles.contUser}>
           <FontAwesomeIcon
             icon={faArrowUpRightDots}
@@ -260,7 +260,7 @@ export default function FormAumentarNivel() {
           </>
         )}
       </section>
-      <section ref={formRef} className={styles.formContainer}>
+      <section ref={formRef} className={styles.formContainerAumentar}>
         <div className={styles.question}>
           <section className={styles.title}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
