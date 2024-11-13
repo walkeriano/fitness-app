@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  border: 1px solid green;
 
   & .back {
     position: absolute;
@@ -156,8 +157,8 @@
     justify-content: flex-start;
     overflow-x: hidden;
     z-index: 1;
-    position: relative;
-    border: 1px solid red;
+    
+    
 
     & .question {
       min-width: 100%;
