@@ -231,7 +231,7 @@ export default function FormAumentarNivel() {
             }`}
             disabled={!isSubmitEnabled}
           >
-            Crear plan
+            Actualizar
             <FontAwesomeIcon
               icon={faCircleCheck}
               size="2x"

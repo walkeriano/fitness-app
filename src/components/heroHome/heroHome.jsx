@@ -136,7 +136,7 @@ export default function HeroHome() {
       </section>
       <section ref={divRef} className={styles.imageBox}>
         <Image
-          src="/images/partners-one.png"
+          src="/images/partners-one.2.png"
           alt="carlos-y-karina"
           fill={true}
         />
