@@ -1,18 +1,80 @@
-.contGeneralPerfil{
+.contGeneralPerfil {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+
+  & .flexGeneral {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    position: relative;
+    justify-content: center;
 
-    & .blur{
-        position: absolute;
-        width: 550px;
-        height: 500px;
-        border-radius: 50%;
-        background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
-        z-index: -1;
-        top: -220px;
+    & .flexHeader {
+      width: 100%;
     }
+
+    & .flexPerfil {
+      width: 100%;
+    }
+  }
+
+  & .blur {
+    position: absolute;
+    width: 550px;
+    height: 500px;
+    border-radius: 50%;
+    background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
+    z-index: -1;
+    top: -220px;
+  }
+}
+
+@media (min-width: 850px) {
+  .contGeneralPerfil {
+    & .flexGeneral {
+      flex-direction: row;
+      align-items: flex-start;
+
+      & .flexHeader {
+        width: 22%;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        min-width: 270px;
+      }
+
+      & .flexPerfil {
+        width: 78%;
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+
+      & .flexPerfil::-webkit-scrollbar {
+        background-color: rgba(0, 0, 255, 0.136);
+        height: 0px;
+        width: 0px;
+      }
+
+      & .flexPerfil::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 72, 255, 0.358);
+        border-radius: 50px;
+      }
+
+      & .flexPerfil::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+    }
+
+    & .blur {
+        width: 800px;
+        left: -150px;
+      }
+  }
 }

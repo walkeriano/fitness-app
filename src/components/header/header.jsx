@@ -24,12 +24,16 @@ export default function Header() {
         className={styles.ancorPerfil}
       >
         {userProfile && userProfile.imageUrl ? (
-          <Image
-            src={userProfile?.imageUrl}
-            alt="Imagen del usuario"
-            className={styles.userImage}
-            fill={true}
-          />
+          <div className={styles.userImage}>
+            <div className={styles.imgBox}>
+              <Image
+                src={userProfile?.imageUrl}
+                alt="Imagen del usuario"
+                fill={true}
+              />
+            </div>
+            <p>{userProfile?.name}</p>
+          </div>
         ) : (
           <>
             <FontAwesomeIcon

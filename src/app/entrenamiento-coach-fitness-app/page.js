@@ -8,8 +8,6 @@ import Menu from "@/components/menu/menu";
 import Entrenamiento from "@/components/entrenamiento/entrenamiento";
 import Closing from "@/components/closing/closing";
 
-
-
 export default function EntrenamientoCoachFitnessApp() {
   const goUp = useRef(null);
 
@@ -22,10 +20,16 @@ export default function EntrenamientoCoachFitnessApp() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main ref={goUp} className={styles.contGeneralPerfil}>
-        <HeaderPerfil />
-        <Menu />
+        <section className={styles.flexGeneral}>
+          <section className={styles.flexHeader}>
+            <HeaderPerfil />
+            <Menu />
+          </section>
+          <section className={styles.flexPerfil}>
+            <Entrenamiento />
+          </section>
+        </section>
         <span className={styles.blur}></span>
-        <Entrenamiento/>
         <Closing goUp={goUp} />
         <Footer />
       </main>

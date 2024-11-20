@@ -8,8 +8,6 @@ import Perfil from "@/components/perfil/perfil";
 import Menu from "@/components/menu/menu";
 import Closing from "@/components/closing/closing";
 
-
-
 export default function PerfilCoachFitnessApp() {
   const goUp = useRef(null);
 
@@ -22,10 +20,16 @@ export default function PerfilCoachFitnessApp() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main ref={goUp} className={styles.contGeneralPerfil}>
-        <HeaderPerfil />
-        <Menu />
+        <section className={styles.flexGeneral}>
+          <section className={styles.flexHeader}>
+            <HeaderPerfil />
+            <Menu />
+          </section>
+          <section className={styles.flexPerfil}>
+            <Perfil />
+          </section>
+        </section>
         <span className={styles.blur}></span>
-        <Perfil />
         <Closing goUp={goUp} />
         <Footer />
       </main>

@@ -22,7 +22,7 @@ export default function Entrenamiento() {
   const { userProfile, loading, error } = useUserProfile(user);
   const router = useRouter();
   const [rutina, setRutina] = useState(false);
-  const [ generoUser, setGeneroUser] = useState(null);
+  const [generoUser, setGeneroUser] = useState(null);
 
   useEffect(() => {
     // Si no hay usuario logueado y no estamos cargando, redirige al home
@@ -30,7 +30,6 @@ export default function Entrenamiento() {
       router.push("/"); // Redirige al home si no hay usuario logueado
     }
   }, [loading, userProfile, router]);
-
 
   // Actualiza la imagen del coach dependiendo del valor de userProfile.coach
   useEffect(() => {
@@ -78,8 +77,10 @@ export default function Entrenamiento() {
                     height={40}
                   />
                 </span>
-                <h4>{userProfile?.objetivoFisico}</h4>
-                <p>Objetivo físico</p>
+                <div className={styles.contFlexInfo}>
+                  <h4>{userProfile?.objetivoFisico}</h4>
+                  <p>Objetivo físico</p>
+                </div>
               </div>
               <div className={styles.datosFisicos}>
                 <span>
@@ -90,8 +91,10 @@ export default function Entrenamiento() {
                     height={38}
                   />
                 </span>
-                <h4>Fuerza</h4>
-                <p>Principal</p>
+                <div className={styles.contFlexInfo}>
+                  <h4>Fuerza</h4>
+                  <p>Principal</p>
+                </div>
               </div>
               <div className={styles.datosFisicos}>
                 <span>
@@ -102,23 +105,26 @@ export default function Entrenamiento() {
                     height={35}
                   />
                 </span>
-                <h4>Cardio</h4>
-                <p>Secundario</p>
+                <div className={styles.contFlexInfo}>
+                  <h4>Cardio</h4>
+                  <p>Secundario</p>
+                </div>
               </div>
               <div className={styles.datosFisicos}>
                 <span>
                   {generoUser && (
                     <Image
-                    src={generoUser}
-                    alt="icon-info"
-                    width={32}
-                    height={32}
-                  />
+                      src={generoUser}
+                      alt="icon-info"
+                      width={32}
+                      height={32}
+                    />
                   )}
-                  
                 </span>
-                <h4>{userProfile?.genero}</h4>
-                <p>Genero</p>
+                <div className={styles.contFlexInfo}>
+                  <h4>{userProfile?.genero}</h4>
+                  <p>Genero</p>
+                </div>
               </div>
             </section>
             <section className={styles.imgContainer}>
