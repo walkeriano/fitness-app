@@ -120,8 +120,10 @@
       justify-content: center;
       border: 1px solid transparent;
       gap: 6px;
-      padding: 5px 10px;
+      padding: 15px 10px;
       border-radius: 50px;
+      cursor: pointer;
+      width: 80%;
 
       & .icon {
         font-size: 1.3rem;
@@ -135,6 +137,16 @@
       }
     }
 
+    & .btnHeader:hover{
+      border: 1px solid red;
+      background-color: rgba(255, 0, 0, 0.222);
+
+      & .icon, & p{
+        color: white;
+      }
+      
+    }
+
     & .cerrarSesion {
       width: 45px;
       height: 45px;
@@ -142,63 +154,50 @@
 
       & .containerClosing {
         position: fixed;
-        top: 0px;
+        top: auto;
+        bottom: 0px;
         left: 0px;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        z-index: 100;
-        background-color: #0c0c0cea;
-        gap: 35px;
+        width: 100%;
+        height: 250px;
+        z-index: 2000;
+        border-radius: 35px;
+        justify-content: flex-end;
+        padding-bottom: 25px;
+        gap: 20px;
 
         & h3 {
-          color: white;
-          font-size: 1.5rem;
-          width: 70%;
-          text-align: center;
-          letter-spacing: 0.5px;
-          line-height: 1.4;
+          font-size: 1.1rem;
         }
 
         & .btnClose {
           color: white;
           position: absolute;
-          top: 30px;
+          top: 40px;
           right: 30px;
+          background-color: #3d3d3d88;
+          width: 40px;
+          aspect-ratio: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+
+          & .iconBtn{
+            font-size: 1.3rem;
+          }
+        }
+
+        & .btnClose:hover{
+          cursor: pointer;
+          background-color: #3d3d3d;
+          
         }
 
         & .btnSesionClosing {
           border: 1px solid red;
-          width: 70%;
-          height: 65px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0px 20px;
-          border-radius: 15px;
-          background-color: rgb(165, 0, 0);
-          color: white;
-          font-size: 0.9rem;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-
-          & span {
-            width: 40px;
-            height: 40px;
-            background-color: red;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            & .icon {
-              font-size: 1.3rem;
-              color: white;
-            }
-          }
+          width: 80%;
+          cursor: pointer;
+          font-size: 0.8rem;
         }
       }
     }

@@ -64,7 +64,7 @@ export default function AccesoFitnessApp() {
             </h2>
             <div className={styles.contImg}>
               <Image
-                src="/images/partners-one.png"
+                src="/images/partners-one-oficial.png"
                 alt="carlos-y-karina"
                 fill={true}
               />

@@ -232,6 +232,7 @@
         padding-top: 20px;
         position: relative;
         animation: openLeft 1.7s linear;
+        text-decoration: none;
 
         & .titleSection {
           width: 80%;
@@ -313,6 +314,11 @@
         }
       }
 
+      & .trainningBox:hover{
+        border: 1px solid #006fff;
+        cursor: pointer;
+      }
+
       & .containerFoodTwo {
         display: none;
       }
@@ -346,6 +352,7 @@
     justify-content: flex-start;
     position: relative;
     padding-left: 20px;
+    text-decoration: none;
 
     & .titleFood {
       height: 80%;
@@ -435,6 +442,12 @@
         transform: scaleY(-1);
       }
     }
+  }
+
+  & .containerFood:hover{
+      border: 1px solid #006fff;
+      cursor: pointer;
+    
   }
 
   & .containerContact {
@@ -658,6 +671,7 @@
           align-items: center;
           justify-content: flex-start;
           position: relative;
+          text-decoration: none;
 
           & .titleFood {
             height: 100%;
@@ -746,6 +760,10 @@
               border-radius: 0px 0px 30px 0px;
             }
           }
+        }
+
+        & .containerFoodTwo:hover{
+          border: 1px solid #006fff ;
         }
       }
 

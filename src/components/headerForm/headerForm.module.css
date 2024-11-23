@@ -1,0 +1,21 @@
+.header {
+    border-bottom: 1px solid #1f1f1f;
+    width: 100vw;
+    height: 90px;
+    border-radius: 0px 0px 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    backdrop-filter: blur(5px);
+    background-color: #0c0c0ccf;
+    position: fixed;
+    z-index: 100;
+}
+
+@media (min-width: 850px){
+    .header{
+        width: 85vw;
+        border-left: 1px solid #1f1f1f;
+        border-right: 1px solid #1f1f1f;
+    }
+}

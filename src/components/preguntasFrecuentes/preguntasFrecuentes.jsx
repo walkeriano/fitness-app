@@ -171,8 +171,8 @@ export default function PreguntasFrecuentes() {
       <section className={stylesFrecuentQuestions.bgImage}>
         <span></span>
         <Image
-          src="/images/partners-one.png"
-          alt="kerby-coach"
+          src="/images/partners-one-oficial.png"
+          alt="carlos-coach"
           fill={true}
           className={stylesFrecuentQuestions.img}
         />

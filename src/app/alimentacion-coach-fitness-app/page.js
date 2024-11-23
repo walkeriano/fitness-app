@@ -22,10 +22,17 @@ export default function AlimentacionCoachFitnessApp() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main ref={goUp} className={styles.contGeneralPerfil}>
-        <HeaderPerfil />
-        <Menu />
+      <section className={styles.flexGeneral}>
+          <section className={styles.flexHeader}>
+            <HeaderPerfil />
+            <Menu />
+          </section>
+          <section className={styles.flexPerfil}>
+          <Alimentacion/>
+          </section>
+        </section>
         <span className={styles.blur}></span>
-        <Alimentacion/>
+        
         <Closing goUp={goUp} />
         <Footer />
       </main>

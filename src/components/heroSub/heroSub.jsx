@@ -63,8 +63,9 @@ export default function HeroHub() {
     <section className={styles.contHero}>
       <section className={styles.info}>
         <h2>
-          Suscripción <span>mensual</span>
+          Inicia ahora <span>suscripción mensual</span>
         </h2>
+        <h3>Alcanza tus objetivos físicos en tiempo record</h3>
         <div className={styles.price}>
           <p>S/.100</p>
           <p>
@@ -77,6 +78,13 @@ export default function HeroHub() {
             src="/images/image-subs-2.png"
             alt="logo-quesada"
             fill={true}
+            className={styles.bgMockup}
+          />
+          <Image
+            src="/images/mockup-two.png"
+            alt="logo-quesada"
+            fill={true}
+            className={styles.bgMockupResponsive}
           />
           <span></span>
         </div>

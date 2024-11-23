@@ -15,3 +15,12 @@
         top: -220px;
     }
 }
+
+
+@media (min-width: 850px){
+    .containerPerfilMasculino{
+        & .blur{
+            width: 70vw;
+        }
+    }
+}

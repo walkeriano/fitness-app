@@ -3,9 +3,20 @@ import styles from "./heroHome.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faChevronDown, faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faChevronDown,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookF,
+  faInstagram,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroHome() {
   const divRef = useRef(null); // Referencia al div que queremos animar
@@ -13,29 +24,50 @@ export default function HeroHome() {
   const containerRef = useRef(null); // Referencia al contenedor padre
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    const triggerId = "myComponentAnimation"; // Identificador único para este componente
 
-    // Obtener la altura del contenedor padre
-    const containerHeight = containerRef.current.getBoundingClientRect().height;
+    const updateAnimation = () => {
+      const containerHeight =
+        containerRef.current.getBoundingClientRect().height; // Altura dinámica
+      const displacement = containerHeight * 1.1; // Desplazamiento recalculado
 
-    // Calcular el desplazamiento deseado (ejemplo: 100% de la altura del contenedor)
-    const displacement = containerHeight * 1.0; // 50% de la altura del contenedor
+      // Resetear únicamente los triggers con el ID específico
+      ScrollTrigger.getAll()
+        .filter((trigger) => trigger.vars.id === triggerId)
+        .forEach((trigger) => trigger.kill());
 
-    const animation = gsap.to(divRef.current, {
-      y: displacement, // Usar el desplazamiento calculado
-      filter: "grayscale(100%)",
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: divRef.current,
-        start: "top 15%",
-        end: `+=${displacement}`, // También usar el desplazamiento aquí
-        scrub: 1,
-      },
-    });
+      // Configurar la animación con el ID único
+      gsap.to(divRef.current, {
+        y: displacement,
+        filter: "grayscale(100%)",
+        ease: "power1.out",
+        scrollTrigger: {
+          id: triggerId, // Asignar ID único al ScrollTrigger
+          trigger: divRef.current,
+          start: "top 15%",
+          end: `+=${displacement}`,
+          scrub: 1,
+        },
+      });
 
+      // Refrescar ScrollTrigger para asegurar cálculo inicial correcto
+      ScrollTrigger.refresh();
+    };
+
+    // Ejecutar inicialmente
+    updateAnimation();
+
+    // Actualizar animación al redimensionar la ventana
+    window.addEventListener("resize", updateAnimation);
+
+    // Limpiar eventos al desmontar
     return () => {
-      animation.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      window.removeEventListener("resize", updateAnimation);
+
+      // Eliminar únicamente los triggers asociados a este componente
+      ScrollTrigger.getAll()
+        .filter((trigger) => trigger.vars.id === triggerId)
+        .forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -44,7 +76,6 @@ export default function HeroHome() {
       <section className={styles.info}>
         <h1>
           Fitness
-          <br />
           <span>life style</span>
         </h1>
         <section className={styles.contInfo}>
@@ -59,14 +90,13 @@ export default function HeroHome() {
           </div>
           <section className={styles.containerReputacion}>
             <div className={styles.boxTitle}>
-            <p>Nuestros casos de éxito</p>
-            <FontAwesomeIcon
-                  icon={faChevronDown}
-                  size="2x"
-                  className={styles.icon}
-                />
+              <p>Asesorados activos</p>
+              <FontAwesomeIcon
+                icon={faChevronDown}
+                size="2x"
+                className={styles.icon}
+              />
             </div>
-            
             <section className={styles.recomendacion}>
               <div>
                 <Image
@@ -108,6 +138,39 @@ export default function HeroHome() {
                   className={styles.icon}
                 />
               </span>
+            </section>
+          </section>
+          <section className={styles.socialMedia}>
+            <div className={styles.boxInfoSocial}>
+              <p>Encuentranos en</p>
+              <FontAwesomeIcon
+                icon={faChevronDown}
+                size="2x"
+                className={styles.icon}
+              />
+            </div>
+            <section className={styles.channelSocial}>
+              <a href="">
+              <FontAwesomeIcon
+                icon={faFacebookF}
+                size="2x"
+                className={styles.icon}
+              />
+              </a>
+              <a href="">
+              <FontAwesomeIcon
+                icon={faInstagram}
+                size="2x"
+                className={styles.icon}
+              />
+              </a>
+              <a href="">
+              <FontAwesomeIcon
+                icon={faTiktok}
+                size="2x"
+                className={styles.icon}
+              />
+              </a>
             </section>
           </section>
           <div className={styles.butonsHero}>

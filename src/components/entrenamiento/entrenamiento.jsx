@@ -126,6 +126,10 @@ export default function Entrenamiento() {
                   <p>Genero</p>
                 </div>
               </div>
+              <div className={styles.coachResponsive}>
+                <ContactCoach coachName={userProfile?.coach} />
+              </div>
+              
             </section>
             <section className={styles.imgContainer}>
               <button
@@ -150,7 +154,10 @@ export default function Entrenamiento() {
               <Image src="/images/grilla.svg" alt="hello" fill={true} />
             </div>
           </section>
+          <div className={styles.coachMobile}>
           <ContactCoach coachName={userProfile?.coach} />
+          </div>
+          
           <InfoProducts />
         </>
       )}

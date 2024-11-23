@@ -30,6 +30,7 @@
         1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 
       animation: btnEffect 2s ease-in-out;
+      gap: 4px;
 
       & span {
         color: #0054c2;
@@ -40,11 +41,20 @@
       }
     }
 
+    & h3{
+      width: 70%;
+      text-align: center;
+      color: white;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
     & .price {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
+      position: relative;
 
       & p {
         font-size: 1.5rem;
@@ -79,11 +89,16 @@
       align-items: center;
       justify-content: center;
 
-      & img {
+      & .bgMockup{
+        display: block;
         object-fit: contain;
         width: 100%;
         height: 100%;
         animation: image 2s ease-in-out;
+      }
+
+      & .bgMockupResponsive{
+        display: none;
       }
 
       & span {
@@ -295,5 +310,119 @@
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media (min-width: 850px){
+  .contHero {
+    & .info {
+      gap: 35px;
+  
+      & h2 {
+        font-size: 4.2vw;
+        gap: 10px;
+      }
+  
+      & h3{
+        font-size: 1.6rem;
+      }
+  
+      & .price {
+        gap: 25px;
+  
+        & p {
+          font-size: 1.8rem;
+        }
+  
+        & p:nth-child(2) {
+          font-size: 1.8rem;
+        }
+      }
+  
+      & .contImg {
+        width: 70%;
+        height: 70vh;
+  
+        & .bgMockup {
+          display: none;
+        }
+
+        & .bgMockupResponsive{
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          animation: image 2s ease-in-out;
+        }
+  
+        & span {
+          width: 120vw;
+          height: 800px;
+        }
+      }
+    }
+  
+    & .contForm {
+      width: 60%;
+      max-width: 600px;
+      margin-top: 50px;
+      gap: 55px;
+      margin-bottom: 150px;
+  
+      & h3 {
+        font-size: 1.5rem;
+        width: 100%;
+      }
+  
+      & .form {
+        gap: 35px;
+  
+        & .btnSend {
+          width: 100%;
+          height: 65px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-radius: 10px;
+          padding: 0px 20px;
+          border: none;
+          text-transform: uppercase;
+          color: #006fff;
+          font-size: 0.9rem;
+          background-color: white;
+  
+          & span {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #006fff;
+            letter-spacing: 0.5px;
+  
+            & .icon {
+              color: white;
+              font-size: 1.3rem;
+              transform: rotate(-45deg);
+            }
+          }
+        }
+
+        & .btnSend:hover{
+          background-color: #006fff;
+          color: white;
+          cursor: pointer;
+
+          & span{
+            background-color: white;
+
+            & .icon{
+              color: #006fff;
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -140,7 +140,7 @@ export default function Perfil() {
           </section>
           <section className={styles.containerFunctions}>
             <section className={styles.flexTraining}>
-              <section className={styles.trainningBox}>
+              <Link href="/entrenamiento-coach-fitness-app" className={styles.trainningBox}>
                 <div className={styles.titleSection}>
                   <h4>Plan de entrenamiento</h4>
                   <div className={styles.contDetalle}>
@@ -173,8 +173,8 @@ export default function Perfil() {
                     />
                   )}
                 </div>
-              </section>
-              <section className={styles.containerFoodTwo}>
+              </Link>
+              <Link href="/alimentacion-coach-fitness-app" className={styles.containerFoodTwo}>
                 <section className={styles.titleFood}>
                   <div className={styles.boxtitleFood}>
                     <h4>Guía de alimentación</h4>
@@ -202,7 +202,7 @@ export default function Perfil() {
                 <div className={styles.imgFood}>
                   <Image src="/images/food.png" alt="image-coach" fill={true} />
                 </div>
-              </section>
+              </Link>
             </section>
             <section className={styles.flexCalculate}>
               <section className={styles.totalCalculo}>
@@ -239,7 +239,7 @@ export default function Perfil() {
               </section>
             </section>
           </section>
-          <section className={styles.containerFood}>
+          <Link href="/alimentacion-coach-fitness-app" className={styles.containerFood}>
             <section className={styles.titleFood}>
               <div className={styles.boxtitleFood}>
                 <h4>Guía de alimentación</h4>
@@ -267,7 +267,7 @@ export default function Perfil() {
             <div className={styles.imgFood}>
               <Image src="/images/food.png" alt="image-coach" fill={true} />
             </div>
-          </section>
+          </Link>
           <section className={styles.containerContact}>
             <section className={styles.containerTitle}>
               <h4>¿Algúna consulta?</h4>

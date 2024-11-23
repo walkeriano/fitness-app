@@ -54,6 +54,7 @@ export default function Alimentacion() {
       ) : (
         <>
           <section className={styles.contadorGeneral}>
+            <section className={styles.flexContador}>
             <section className={styles.totalInfo}>
               <div className={styles.generalTitle}>
                 <FontAwesomeIcon
@@ -82,6 +83,7 @@ export default function Alimentacion() {
                   className={styles.icon}
                 />
               </button>
+            </section>
             </section>
             <section className={styles.containerInfo}>
               <h3>Objetivos nutritivos del día:</h3>
@@ -125,7 +127,9 @@ export default function Alimentacion() {
               </section>
             </section>
           </section>
-          <ContactCoach coachName={userProfile?.coach} />
+          <section className={styles.flexContact}>
+            <ContactCoach coachName={userProfile?.coach} />
+          </section>
           <InfoProducts />
         </>
       )}

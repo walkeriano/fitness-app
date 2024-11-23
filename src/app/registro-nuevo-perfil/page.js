@@ -54,7 +54,7 @@ export default function RegistroNuevoPerfil() {
         {newRegister ? (
           <section className={styles.registerForm}>
             <div className={styles.titelForm}>
-              <p>Registrate para iniciar</p>
+              <p>Registrate para iniciar sesión</p>
               <h3>Crear credenciales de usuario</h3>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

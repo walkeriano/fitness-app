@@ -16,7 +16,7 @@
     justify-content: flex-start;
     padding-left: 8%;
     padding-right: 8%;
-    overflow: scroll;
+    overflow-x: scroll;
     gap: 30px;
 
     & .object {
@@ -124,6 +124,20 @@
     }
   }
 
+  .overflow::-webkit-scrollbar {
+    background-color: rgba(0, 0, 255, 0.136);
+    height: 0px;
+  }
+  
+  .overflow::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 72, 255, 0.358);
+    border-radius: 50px;
+  }
+  
+  .overflow::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
   & .btnSuscripcion {
     width: 85%;
     height: 65px;
@@ -138,6 +152,7 @@
     letter-spacing: 1px;
     text-decoration: none;
     color: #006fff;
+    cursor: pointer;
 
     & span {
       width: 35px;
@@ -156,6 +171,19 @@
     }
   }
 
+  & .btnSuscripcion:hover{
+    background-color: #006fff;
+    color: white;
+
+    & span{
+      background-color: white;
+
+      & .icon{
+        color: #006fff;
+      }
+    }
+  }
+
   & .blur {
     width: 500px;
     height: 600px;
@@ -169,7 +197,6 @@
 
 @media (min-width: 850px){
   .sliderContainer {
-    border: 1px solid red;
   
     & .overflow {
       justify-content: center;
@@ -192,6 +219,7 @@
       width: auto;
       height: 65px;
       gap: 20px;
+      z-index: 1;
     }
   }
 }

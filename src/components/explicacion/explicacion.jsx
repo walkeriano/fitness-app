@@ -23,6 +23,7 @@ export default function Explicacion() {
         scale: 1,
         duration: 1,
         scrollTrigger: {
+          id: "explicacionTrigger",
           trigger: imagePhoneRef.current, // El div que activará el scroll
           start: "top 60%", // Inicia la animación cuando el div está al 80% del viewport
           end: "top 20%", // Termina cuando llega al 50% del viewport

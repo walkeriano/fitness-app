@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import Head from "next/head";
 import FormFemenino from "@/components/formularios/formFemenino";
-import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
+import HeaderPerfil from "@/components/headerForm/headerForm";
 import Footer from "@/components/footer/footer";
 
 export default function PerfilFemenino() {

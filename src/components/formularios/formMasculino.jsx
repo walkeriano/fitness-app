@@ -949,7 +949,7 @@ export default function FormMasculino() {
         <div className={styles.question}>
           <section className={styles.title}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
-            <h4 className={styles.firstitle}>¿Entrenas actualmente?</h4>
+            <h4 className={styles.firstitle}>¿Cuánto tiempo llevas entrenando?</h4>
           </section>
           <section className={styles.contForm}>
             <section className={styles.flexBoxEdad}>

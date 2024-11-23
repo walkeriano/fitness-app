@@ -17,11 +17,12 @@
     animation: openBottom 1.5s ease ;
 
     & h3 {
-      font-size: 1.7rem;
+      font-size: 1.9rem;
       text-transform: uppercase;
       width: 100%;
       letter-spacing: 1px;
       line-height: 1.1;
+      font-family: "Montserrat";
     }
 
     & .detalle {
@@ -156,6 +157,10 @@
 
         
       }
+
+      & .coachResponsive{
+        display: none;
+      }
     }
 
     & .imgContainer {
@@ -239,6 +244,13 @@
       animation: scale 3s ease infinite;
       border: 1px solid #006eff4d;
     }
+  }
+
+  & .coachMobile{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -425,17 +437,30 @@
   .containerEntrenamiento {
     & .containerVisualizer{
       width: 85%;
-      
+    }
+
+    & .leftContainer{
+      & .detalle {
+        gap: 10px;
+  
+        & p {
+          font-size: 1.2rem;
+        }
+  
+        & .icon {
+          margin-top: 3px;
+          font-size: 1.1rem;
+        }
+      }
     }
 
     & .rightContainer {
-      border: 1px solid blue;
       flex-direction: row-reverse;
       justify-content: flex-start;
       width: 90%;
   
       & .infoTrainer {
-        height: 650px;
+        height: 700px;
         gap: 40px;
   
         & .datosFisicos {
@@ -456,37 +481,69 @@
 
           & .contFlexInfo{
             gap: 10px;
-            border: 1px solid red;
+
+            & h4 {
+              font-size: 1.3rem;
+            }
+    
+            & p {
+              font-size: 1rem;
+            }
           }
+        }
+
+        & .coachResponsive{
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          margin-top: 30px;
         }
       }
   
       & .imgContainer {
+        width: 50%;
         height: 650px;
-        border: 1px solid red;
+        justify-content: center;
 
         & .btnRutina {
           min-width: 170px;
           max-width: 200px;
           padding: 0px 20px;
           border-radius: 50px;
-          
-  
+
           & .icon {
             font-size: 1.6rem;
           }
         }
+
+        & .btnRutina:hover{
+          cursor: pointer;
+          background-color: white;
+          color: #006fff;
+          border: 1px solid white;
+        }
   
         & .containerImg {
-          max-width: 280px;
+          max-width: 350px;
           right: auto;
-          border: 1px solid red;
         }
       }
   
       & .expand {
-        right: 31%;
+        right: auto;
+        left: 18%;
       }
+
+      & .grilla {
+        right: auto;
+        top: -70px;
+        left: -25%;
+      }
+    }
+
+    & .coachMobile{
+      display: none;
     }
   }
 }
