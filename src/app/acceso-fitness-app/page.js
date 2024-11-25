@@ -60,7 +60,7 @@ export default function AccesoFitnessApp() {
         <section className={styles.container}>
           <section className={styles.infoImage}>
             <h2>
-              Coach <span>fitness app</span>
+              Acceso de<span>usuarios</span>
             </h2>
             <div className={styles.contImg}>
               <Image
