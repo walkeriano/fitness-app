@@ -1,7 +1,7 @@
 "use client";
 import styles from "./page.module.css";
 import Head from "next/head";
-import HeaderPerfil from "@/components/headerPerfil/headerPerfil";
+import HeaderPerfil from "@/components/headerForm/headerForm";
 import FormAumentarNivel from "@/components/formAumentarNivel/formAumentarNivel";
 import Footer from "@/components/footer/footer";
 
