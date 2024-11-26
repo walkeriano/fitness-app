@@ -68,7 +68,37 @@ const useFetchUsers = () => {
     }
   };
 
-  return { users, loading, error, deleteUser, suspendUser, activateUser };
+    // Función para cambiar suscripción a "suspendido"
+    const suspenderNivel = async (userId) => {
+      try {
+        const userRef = doc(db, "users", userId);
+        await updateDoc(userRef, { niveles: "suspendido" });
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user.id === userId ? { ...user, niveles: "suspendido" } : user
+          )
+        );
+      } catch (error) {
+        console.error("Error al suspender usuario:", error);
+      }
+    };
+  
+    // Función para cambiar suscripción a "activo"
+    const activateNivel = async (userId) => {
+      try {
+        const userRef = doc(db, "users", userId);
+        await updateDoc(userRef, { niveles: "activo" });
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user.id === userId ? { ...user, niveles: "activo" } : user
+          )
+        );
+      } catch (error) {
+        console.error("Error al activar usuario:", error);
+      }
+    };
+
+  return { users, loading, error, deleteUser, suspendUser, activateUser, activateNivel, suspenderNivel };
 };
 
 export default useFetchUsers;

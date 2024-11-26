@@ -36,7 +36,6 @@ export default function FormFemenino() {
   const formRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [loadingForm, setLoadingForm] = useState(false);
-  const [training, setTraining] = useState(false);
   const [impedimento, setImpedimento] = useState(false);
   const [suplemento, setSuplemento] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
@@ -88,16 +87,16 @@ export default function FormFemenino() {
   };
 
   const onSubmit = async (data) => {
-    if (!user) return; // Verificar si hay usuario antes de continuar
+    if (!user) return;
 
     try {
-      setLoadingForm(true); // Activar el loading
+      setLoadingForm(true);
       let imageUrl = "";
       let imageUrl1 = "";
       let imageUrl2 = "";
       let imageUrl3 = "";
 
-      // Comprimir y subir la primera imagen
+      
       if (selectedImage) {
         const options = {
           maxSizeMB: 0.5,
@@ -113,7 +112,7 @@ export default function FormFemenino() {
         imageUrl = await getDownloadURL(snapshot.ref);
       }
 
-      // Comprimir y subir la segunda imagen
+
       if (selectedImage1) {
         const options = {
           maxSizeMB: 0.5,
@@ -132,7 +131,7 @@ export default function FormFemenino() {
         imageUrl1 = await getDownloadURL(snapshot1.ref);
       }
 
-      // Comprimir y subir la tercera imagen
+      
       if (selectedImage2) {
         const options = {
           maxSizeMB: 0.5,
@@ -151,7 +150,7 @@ export default function FormFemenino() {
         imageUrl2 = await getDownloadURL(snapshot2.ref);
       }
 
-      // Comprimir y subir la cuarta imagen
+      
       if (selectedImage3) {
         const options = {
           maxSizeMB: 0.5,
@@ -170,17 +169,16 @@ export default function FormFemenino() {
         imageUrl3 = await getDownloadURL(snapshot3.ref);
       }
 
-      // Crear un nuevo objeto de datos excluyendo los campos 'image', 'image1', 'image2'
       const { image, image1, image2, image3, ...dataWithoutImages } = data;
 
-      // Filtrar los campos vacíos
+     
       const filteredData = Object.fromEntries(
         Object.entries(dataWithoutImages).filter(
           ([_, value]) => value !== "" && value !== null && value !== undefined
         )
       );
 
-      // Agregar las URLs de las imágenes al objeto filtrado
+     
       const formData = {
         ...filteredData,
         imageUrl,
@@ -188,15 +186,15 @@ export default function FormFemenino() {
         imageUrl2,
         imageUrl3,
         genero: "femenino",
-        suscripcion: "activa",
+        suscripcion: "activo",
+        niveles: "suspendido",
         superUser: false,
       };
 
-      // Guardar los datos en el documento del usuario en Firestore
+    
       await setDoc(doc(db, "users", user.uid), formData, { merge: true });
       console.log("Datos guardados correctamente:", formData);
 
-      // Resetear el formulario y limpiar las imágenes seleccionadas
       reset();
       setSelectedImage(null);
       setImagePreview(null);
@@ -209,24 +207,23 @@ export default function FormFemenino() {
     } catch (error) {
       console.error("Error al guardar los datos:", error);
     } finally {
-      // Asegúrate de que el loading permanezca activo al menos 6 segundos
-      const loadingDuration = 6000; // 6 segundos
+      
+      const loadingDuration = 6000;
       setTimeout(() => {
-        setLoadingForm(false); // Desactivar el loading
-        router.push("/perfil-coach-fitness-app"); // Redirigir al usuario
+        setLoadingForm(false);
+        router.push("/perfil-coach-fitness-app"); 
       }, loadingDuration);
     }
   };
 
-  // Función para desplazarse a la pregunta específica usando GSAP
   const scrollToQuestion = (index) => {
     const questionElement = formRef.current.children[index];
 
     if (questionElement) {
       gsap.to(window, {
-        duration: 0.5, // Duración de la animación en segundos
-        scrollTo: { y: questionElement, offsetY: 10 }, // Ajusta offsetY si es necesario
-        ease: "power2.out", // Curva de aceleración para un movimiento más suave
+        duration: 0.5, 
+        scrollTo: { y: questionElement, offsetY: 10 }, 
+        ease: "power2.out", 
       });
     } else {
       console.warn("No se encontró el elemento para desplazarse:", index);
@@ -253,7 +250,7 @@ export default function FormFemenino() {
     }
   };
 
-  // Efecto para manejar la actualización de visibilidad y progreso con animación
+ 
   useEffect(() => {
     const totalQuestions = formRef.current?.children.length || 0;
 
@@ -262,11 +259,11 @@ export default function FormFemenino() {
       if (i === currentQuestion) {
         gsap.fromTo(
           questionElement,
-          { x: -100, autoAlpha: 0 }, // Comienza desde la derecha, oculto
+          { x: -100, autoAlpha: 0 }, 
           {
             duration: 0.5,
-            x: 0, // Se mueve a su posición original
-            autoAlpha: 1, // Se vuelve visible
+            x: 0, 
+            autoAlpha: 1, 
             display: "flex",
             ease: "power2.out",
           }
@@ -274,18 +271,18 @@ export default function FormFemenino() {
       } else {
         gsap.to(questionElement, {
           duration: 0.5,
-          x: 100, // Se mueve hacia la izquierda
-          autoAlpha: 0, // Se vuelve invisible
+          x: 100, 
+          autoAlpha: 0, 
           onComplete: () => {
-            questionElement.style.display = "none"; // Oculta el elemento después de la animación
+            questionElement.style.display = "none"; 
           },
         });
       }
     }
 
-    // Calcula y actualiza el progreso del formulario con precisión
+
     const calculateProgress = () => {
-      const totalQuestions = formRef.current?.children.length || 1; // Asegúrate de que sea al menos 1
+      const totalQuestions = formRef.current?.children.length || 1; 
       const progressValue = (currentQuestion / totalQuestions) * 100;
       return progressValue;
     };
@@ -294,48 +291,48 @@ export default function FormFemenino() {
   }, [currentQuestion]);
 
   const handleAgeChange = (e) => {
-    setSelectedAge(e.target.value); // Actualiza el estado cuando se selecciona una opción
+    setSelectedAge(e.target.value); 
   };
 
   const handleNivelChange = (e) => {
-    setSelectedNivel(e.target.value); // Actualiza el estado cuando se selecciona una opción
+    setSelectedNivel(e.target.value); 
   };
 
   const handleComidasXdiaChange = (e) => {
-    setSelectedComidasXdia(e.target.value); // Actualiza el estado cuando se selecciona una opción
+    setSelectedComidasXdia(e.target.value); 
   };
 
   const handleObjetivoFisicoChange = (e) => {
-    setSelectedObjetivoFisico(e.target.value); // Actualiza el estado cuando se selecciona una opción
+    setSelectedObjetivoFisico(e.target.value); 
   };
 
   const handleCoachChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedCoach(selectedValue);
 
-    // Habilita el botón si se ha seleccionado un coach
+    
     if (selectedValue) {
       setIsSubmitEnabled(true);
     }
   };
 
   const handleBodyChange = (e) => {
-    setSelectedBody(e.target.value); // Actualiza el estado cuando se selecciona una opción
+    setSelectedBody(e.target.value);
   };
 
   const handleTrainingChange = (e) => {
-    setSelectedTraining(e.target.checked); // Actualiza el estado cuando se selecciona una opción
+    setSelectedTraining(e.target.checked); 
   };
 
   const handleImpedimentoChange = (e) => {
-    setSelectedImpedimento(e.target.checked); // Actualiza el estado cuando se selecciona una opción
+    setSelectedImpedimento(e.target.checked); 
   };
 
   const handleSuplementosChange = (e) => {
-    setSelectedSuplementos(e.target.checked); // Actualiza el estado cuando se selecciona una opción
+    setSelectedSuplementos(e.target.checked);
   };
 
-  // Mostramos un mensaje de carga mientras verificamos el estado de autenticación
+
   if (loading) {
     return <p>Cargando información del usuario...</p>;
   }
@@ -348,7 +345,7 @@ export default function FormFemenino() {
           <h4>{user ? user.email : "Usuario no disponible"}</h4>
           <h5>Nuevo perfil: Femenino</h5>
           <label htmlFor="image" className={styles.imgPerfil}>
-            {imagePreview && ( // Renderizar la vista previa si existe
+            {imagePreview && ( 
               <div className={styles.imagePreview}>
                 <Image src={imagePreview} alt="Vista previa" fill={true} />
               </div>

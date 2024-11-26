@@ -8,26 +8,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Explicacion() {
-  const imagePhoneRef = useRef(null); // Crear la referencia
+  const imagePhoneRef = useRef(null); 
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger); // Registrar el plugin ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger); 
 
-    // Animación de opacidad sincronizada con el scroll
+    
     gsap.fromTo(
-      imagePhoneRef.current, // El elemento a animar
-      { opacity: 0, x: 100, scale: 1.5 }, // Desde opacidad 0
+      imagePhoneRef.current, 
+      { opacity: 0, x: 100, scale: 1.5 }, 
       {
         opacity: 1,
-        x: 0, // Hasta opacidad 1
+        x: 0, 
         scale: 1,
         duration: 1,
         scrollTrigger: {
           id: "explicacionTrigger",
-          trigger: imagePhoneRef.current, // El div que activará el scroll
-          start: "top 60%", // Inicia la animación cuando el div está al 80% del viewport
-          end: "top 20%", // Termina cuando llega al 50% del viewport
-          scrub: true, // Hace que la animación se sincronice con el scroll
+          trigger: imagePhoneRef.current, 
+          start: "top 60%", 
+          end: "top 20%", 
+          scrub: true, 
         },
       }
     );

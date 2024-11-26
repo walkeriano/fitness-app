@@ -26,36 +26,35 @@ export default function AllRutinas() {
   const [actualizar, setActualizar] = useState(null);
 
   useEffect(() => {
-    // Redirige al home si no hay usuario logueado o si la suscripción está desactivada
     if (!loading && !userProfile) {
-      router.push("/"); // Redirige al home si no hay usuario logueado
+      router.push("/"); 
     } else if (!loading && userProfile?.superUser === false) {
-      router.push("/"); // Redirige al home si el usuario es superuser
+      router.push("/"); 
     }
   }, [loading, userProfile, router]);
 
-  // Estados para almacenar el archivo y la rutina seleccionada
+  
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedRutina, setSelectedRutina] = useState(null);
 
-  // Maneja el archivo seleccionado por el usuario
+
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  // Función para limpiar el archivo seleccionado
+  
   const clearFile = () => {
     setSelectedFile(null);
     setSelectedRutina(null);
   };
 
-  // Subida del archivo
+ 
   const handleFileUpload = async () => {
     if (selectedFile && selectedRutina) {
       const url = await handleUpload(selectedFile, selectedRutina);
       if (url) {
         console.log("Archivo subido y URL guardada:", url);
-        clearFile(); // Limpiamos el archivo y la rutina seleccionada una vez subido
+        clearFile(); 
       }
     }
   };

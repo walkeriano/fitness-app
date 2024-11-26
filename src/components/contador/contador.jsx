@@ -6,7 +6,7 @@ import { faArrowRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function Contador({ calculatedData }) {
   if (!calculatedData) {
-    return null; // Si no hay datos, no renderiza nada
+    return null; 
   }
 
   return (

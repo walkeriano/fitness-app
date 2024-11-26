@@ -27,17 +27,17 @@ export default function Perfil() {
   const [imagenCoach, setImagenCoach] = useState(null);
 
   useEffect(() => {
-    // Redirige al home si no hay usuario logueado o si la suscripción está desactivada
+    
     if (!loading && !userProfile) {
-      router.push("/"); // Redirige al home si no hay usuario logueado
+      router.push("/"); 
     } else if (!loading && userProfile?.suscripcion === "suspendido") {
-      router.push("/perfil-suspendido"); // Redirige al home si la suscripción del usuario está desactivada
+      router.push("/perfil-suspendido"); 
     } else if (!loading && userProfile?.superUser === true) {
-      router.push("/administrador-usuarios"); // Redirige al home si el usuario es superuser
+      router.push("/administrador-usuarios"); 
     }
   }, [loading, userProfile, router]);
 
-  // Actualiza la imagen del coach dependiendo del valor de userProfile.coach
+
   useEffect(() => {
     if (userProfile?.coach === "carlos quesada") {
       setImagenCoach(imagenCarlos);
@@ -68,14 +68,26 @@ export default function Perfil() {
                   <p>{userProfile?.email}</p>
                   <p>993 394 394</p>
                 </div>
-                <Link href="/aumentar-nivel" className={styles.btnEditar}>
-                  <FontAwesomeIcon
-                    icon={faArrowUpRightDots}
-                    size="2x"
-                    className={styles.icon}
-                  />
-                  Aumentar nivel
-                </Link>
+
+                {userProfile.niveles === "activo" ? (
+                  <Link href="/aumentar-nivel" className={styles.btnEditar}>
+                    <FontAwesomeIcon
+                      icon={faArrowUpRightDots}
+                      size="2x"
+                      className={styles.icon}
+                    />
+                    Aumentar nivel
+                  </Link>
+                ) : (
+                  <Link href="/aumentar-nivel" className={styles.btnEditarOff}>
+                    <FontAwesomeIcon
+                      icon={faArrowUpRightDots}
+                      size="2x"
+                      className={styles.icon}
+                    />
+                    Aumentar nivel
+                  </Link>
+                )}
               </section>
               <section className={styles.infoImg}>
                 <span></span>
@@ -140,7 +152,10 @@ export default function Perfil() {
           </section>
           <section className={styles.containerFunctions}>
             <section className={styles.flexTraining}>
-              <Link href="/entrenamiento-coach-fitness-app" className={styles.trainningBox}>
+              <Link
+                href="/entrenamiento-coach-fitness-app"
+                className={styles.trainningBox}
+              >
                 <div className={styles.titleSection}>
                   <h4>Plan de entrenamiento</h4>
                   <div className={styles.contDetalle}>
@@ -174,7 +189,10 @@ export default function Perfil() {
                   )}
                 </div>
               </Link>
-              <Link href="/alimentacion-coach-fitness-app" className={styles.containerFoodTwo}>
+              <Link
+                href="/alimentacion-coach-fitness-app"
+                className={styles.containerFoodTwo}
+              >
                 <section className={styles.titleFood}>
                   <div className={styles.boxtitleFood}>
                     <h4>Guía de alimentación</h4>
@@ -239,7 +257,10 @@ export default function Perfil() {
               </section>
             </section>
           </section>
-          <Link href="/alimentacion-coach-fitness-app" className={styles.containerFood}>
+          <Link
+            href="/alimentacion-coach-fitness-app"
+            className={styles.containerFood}
+          >
             <section className={styles.titleFood}>
               <div className={styles.boxtitleFood}>
                 <h4>Guía de alimentación</h4>

@@ -11,6 +11,7 @@ import {
   faFaceFrown,
   faMagnifyingGlass,
   faChevronDown,
+  faArrowUpRightDots,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 import AuthContext from "@/state/auth/auth-context";
@@ -20,25 +21,32 @@ import Loading from "@/components/loadingExtra/loadingExtra";
 export default function AllUsers() {
   const { user } = useContext(AuthContext);
   const { userProfile } = useUserProfile(user);
-  const { users, loading, error, deleteUser, suspendUser, activateUser } =
-    useFetchUsers();
+  const {
+    users,
+    loading,
+    error,
+    deleteUser,
+    suspendUser,
+    activateUser,
+    activateNivel,
+    suspenderNivel,
+  } = useFetchUsers();
   const [deleteUserBtn, setDeleteUserBtn] = useState(null);
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    // Redirige al home si no hay usuario logueado o si la suscripción está desactivada
     if (!loading && !userProfile) {
-      router.push("/"); // Redirige al home si no hay usuario logueado
+      router.push("/");
     } else if (!loading && userProfile?.superUser === false) {
-      router.push("/"); // Redirige al home si el usuario es superuser
+      router.push("/");
     }
   }, [loading, userProfile, router]);
 
   if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
 
-  // Filtrar usuarios en función del término de búsqueda
+
   const filteredUsers = users.filter((user) =>
     user?.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -83,7 +91,6 @@ export default function AllUsers() {
           />
         </section>
       </section>
-
       <section className={styles.secondContainer}>
         {filteredUsers.length === 0 && (
           <div className={styles.noResults}>
@@ -160,7 +167,35 @@ export default function AllUsers() {
                     </span>
                   </button>
                 )}
-
+                {user.niveles === "activo" ? (
+                  <button
+                    onClick={() => suspenderNivel(user.id)}
+                    className={styles.btnSuspenderNiveles}
+                  >
+                    Desactivar
+                    <span>
+                      <FontAwesomeIcon
+                        icon={faArrowUpRightDots}
+                        size="2x"
+                        className={styles.icon}
+                      />
+                    </span>
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => activateNivel(user.id)}
+                    className={styles.btnNiveles}
+                  >
+                    Intensidad
+                    <span>
+                      <FontAwesomeIcon
+                        icon={faArrowUpRightDots}
+                        size="2x"
+                        className={styles.icon}
+                      />
+                    </span>
+                  </button>
+                )}
                 <button
                   className={styles.btnEliminar}
                   onClick={() => setDeleteUserBtn(user.id)}

@@ -21,9 +21,8 @@ export default function Alimentacion() {
   const [alimentacion, setAlimentacion] = useState(false);
 
   useEffect(() => {
-    // Si no hay usuario logueado y no estamos cargando, redirige al home
     if (!loading && !userProfile) {
-      router.push("/"); // Redirige al home si no hay usuario logueado
+      router.push("/");
     }
   }, [loading, userProfile, router]);
 

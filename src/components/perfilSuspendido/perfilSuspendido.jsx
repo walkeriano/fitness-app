@@ -19,11 +19,11 @@ export default function PerfilSuspendido() {
   const router = useRouter();
 
   useEffect(() => {
-    // Redirige al home si no hay usuario logueado o si la suscripción está desactivada
+    
     if (!loading && !userProfile) {
-      router.push("/"); // Redirige al home si no hay usuario logueado
+      router.push("/"); 
     } else if (!loading && userProfile?.suscripcion === "activo") {
-      router.push("/perfil-coach-fitness-app"); // Redirige al home si la suscripción del usuario está desactivada
+      router.push("/perfil-coach-fitness-app"); 
     }
   }, [loading, userProfile, router]);
 

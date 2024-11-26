@@ -18,11 +18,11 @@ export default function AllInfoproductos() {
   const { infoproductos, loading, error, deleteInfoproducto } = useFetchInfoproductos();
 
   useEffect(() => {
-    // Redirige al home si no hay usuario logueado o si la suscripción está desactivada
+    
     if (!loading && !userProfile) {
-      router.push("/"); // Redirige al home si no hay usuario logueado
+      router.push("/"); 
     } else if (!loading && userProfile?.superUser === false) {
-      router.push("/"); // Redirige al home si el usuario es superuser
+      router.push("/"); 
     }
   }, [loading, userProfile, router]);
 

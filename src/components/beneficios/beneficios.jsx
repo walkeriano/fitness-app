@@ -28,7 +28,6 @@ export default function Beneficios() {
         entries.forEach((entry) => {
           const { target } = entry;
           if (entry.isIntersecting) {
-            // Animar el div contenedor
             gsap.to(target, {
               opacity: 1,
               x: 0,
@@ -36,7 +35,6 @@ export default function Beneficios() {
               ease: "power4.out",
             });
           } else {
-            // Restaurar la animación cuando sale de la vista
             gsap.to(target, {
               opacity: 0,
               x: -100,

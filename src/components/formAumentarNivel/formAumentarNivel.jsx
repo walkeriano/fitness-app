@@ -50,33 +50,33 @@ export default function FormAumentarNivel() {
   }, [user, router]);
 
   const onSubmit = async (data) => {
-    if (!user) return; // Verificar si hay usuario antes de continuar
+    if (!user) return; 
 
     try {
-      setLoadingForm(true); // Activar el loading
+      setLoadingForm(true); 
 
-      // Crear un nuevo objeto de datos excluyendo los campos 'image', 'image1', 'image2'
+      
       const { ...dataWithoutImages } = data;
 
-      // Filtrar los campos vacíos
+      
       const filteredData = Object.fromEntries(
         Object.entries(dataWithoutImages).filter(
           ([_, value]) => value !== "" && value !== null && value !== undefined
         )
       );
 
-      // Agregar las URLs de las imágenes al objeto filtrado
+      
       const formData = {
         ...filteredData,
         suscripcion: "activa",
         superUser: false,
       };
 
-      // Guardar los datos en el documento del usuario en Firestore
+
       await setDoc(doc(db, "users", user.uid), formData, { merge: true });
       console.log("Datos guardados correctamente:", formData);
 
-      // Resetear el formulario y limpiar las imágenes seleccionadas
+
       reset();
       localStorage.removeItem("userProfile");
       localStorage.removeItem("calculatedData");
@@ -85,24 +85,24 @@ export default function FormAumentarNivel() {
     } catch (error) {
       console.error("Error al guardar los datos:", error);
     } finally {
-      // Asegúrate de que el loading permanezca activo al menos 6 segundos
-      const loadingDuration = 6000; // 6 segundos
+      
+      const loadingDuration = 6000;
       setTimeout(() => {
-        setLoadingForm(false); // Desactivar el loading
-        router.push("/perfil-coach-fitness-app"); // Redirigir al usuario
+        setLoadingForm(false); 
+        router.push("/perfil-coach-fitness-app");
       }, loadingDuration);
     }
   };
 
-  // Función para desplazarse a la pregunta específica usando GSAP
+  
   const scrollToQuestion = (index) => {
     const questionElement = formRef.current.children[index];
 
     if (questionElement) {
       gsap.to(window, {
-        duration: 0.5, // Duración de la animación en segundos
-        scrollTo: { y: questionElement, offsetY: 10 }, // Ajusta offsetY si es necesario
-        ease: "power2.out", // Curva de aceleración para un movimiento más suave
+        duration: 0.5, 
+        scrollTo: { y: questionElement, offsetY: 10 }, 
+        ease: "power2.out", 
       });
     } else {
       console.warn("No se encontró el elemento para desplazarse:", index);
@@ -129,7 +129,6 @@ export default function FormAumentarNivel() {
     }
   };
 
-  // Efecto para manejar la actualización de visibilidad y progreso con animación
   useEffect(() => {
     const totalQuestions = formRef.current?.children.length || 0;
 
@@ -138,11 +137,11 @@ export default function FormAumentarNivel() {
       if (i === currentQuestion) {
         gsap.fromTo(
           questionElement,
-          { x: -100, autoAlpha: 0 }, // Comienza desde la derecha, oculto
+          { x: -100, autoAlpha: 0 }, 
           {
             duration: 0.5,
-            x: 0, // Se mueve a su posición original
-            autoAlpha: 1, // Se vuelve visible
+            x: 0, 
+            autoAlpha: 1, 
             display: "flex",
             ease: "power2.out",
           }
@@ -150,18 +149,17 @@ export default function FormAumentarNivel() {
       } else {
         gsap.to(questionElement, {
           duration: 0.5,
-          x: 100, // Se mueve hacia la izquierda
-          autoAlpha: 0, // Se vuelve invisible
+          x: 100, 
+          autoAlpha: 0, 
           onComplete: () => {
-            questionElement.style.display = "none"; // Oculta el elemento después de la animación
+            questionElement.style.display = "none";
           },
         });
       }
     }
 
-    // Calcula y actualiza el progreso del formulario con precisión
     const calculateProgress = () => {
-      const totalQuestions = formRef.current?.children.length || 1; // Asegúrate de que sea al menos 1
+      const totalQuestions = formRef.current?.children.length || 1; 
       const progressValue = (currentQuestion / totalQuestions) * 100;
       return progressValue;
     };
@@ -170,23 +168,23 @@ export default function FormAumentarNivel() {
   }, [currentQuestion]);
 
   const handleNivelChange = (e) => {
-    setSelectedNivel(e.target.value); // Actualiza el estado cuando se selecciona una opción
+    setSelectedNivel(e.target.value); 
   };
 
   const handleComidasXdiaChange = (e) => {
-    setSelectedComidasXdia(e.target.value); // Actualiza el estado cuando se selecciona una opción
+    setSelectedComidasXdia(e.target.value); 
   };
 
   const handleObjetivoFisicoChange = (event) => {
     const selectedValue = event.target.value;
-    setSelectedObjetivoFisico(selectedValue); // Actualiza el estado cuando se selecciona una opción
-    // Habilita el botón si se ha seleccionado un coach
+    setSelectedObjetivoFisico(selectedValue); 
+    
     if (selectedValue) {
       setIsSubmitEnabled(true);
     }
   };
 
-  // Mostramos un mensaje de carga mientras verificamos el estado de autenticación
+  
   if (loading) {
     return <p>Cargando información del usuario...</p>;
   }
@@ -231,7 +229,7 @@ export default function FormAumentarNivel() {
             }`}
             disabled={!isSubmitEnabled}
           >
-            Actualizar
+            Aumentar
             <FontAwesomeIcon
               icon={faCircleCheck}
               size="2x"

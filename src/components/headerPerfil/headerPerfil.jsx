@@ -21,7 +21,7 @@ export default function HeaderPerfil() {
 
   const handleLogout = async () => {
     try {
-      await logout(); // Llamamos a la función logout para cerrar la sesión
+      await logout(); 
       localStorage.removeItem("userProfile");
       localStorage.removeItem("calculatedData");
       localStorage.removeItem("trainingData");

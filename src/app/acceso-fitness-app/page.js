@@ -19,7 +19,7 @@ export default function AccesoFitnessApp() {
   const { user, login } = useContext(AuthContext);
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  // Desestructura las funciones de useForm
+ 
   const {
     register,
     handleSubmit,
@@ -29,21 +29,21 @@ export default function AccesoFitnessApp() {
   const router = useRouter();
 
   useEffect(() => {
-    // Si hay un usuario logueado, redirigir a /perfil-user
+    
     if (user) {
       router.push("/perfil-coach-fitness-app");
     }
   }, [user, router]);
 
-  // Función para manejar el envío del formulario
+  
   const onSubmit = async (data) => {
-    setError(null); // Resetea el error al intentar iniciar sesión
+    setError(null); 
 
     try {
       await login(data.email, data.password);
-      router.push("/perfil-coach-fitness-app"); // Redirige a la ruta /perfil después del inicio de sesión exitoso
+      router.push("/perfil-coach-fitness-app"); 
     } catch (error) {
-      setError(error.message); // Manejo de errores para mostrar al usuario
+      setError(error.message); 
     }
   };
 

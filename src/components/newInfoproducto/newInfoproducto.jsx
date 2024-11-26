@@ -22,20 +22,20 @@ export default function NewInfoproducto() {
     reset,
     formState: { errors },
   } = useForm();
-  const [imageFile, setImageFile] = useState(null); // Estado para almacenar el archivo de imagen
+  const [imageFile, setImageFile] = useState(null); 
   const [imagePreview, setImagePreview] = useState(null);
 
-  // Función para manejar el cambio en el input de imagen
+  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setImageFile(file);
-      setImagePreview(URL.createObjectURL(file)); // Mostrar vista previa
+      setImagePreview(URL.createObjectURL(file)); 
     }
   };
 
   const onSubmit = async (data) => {
-    setLoading(true); // Inicia el estado de carga
+    setLoading(true); 
 
     try {
       let image = "";
@@ -65,13 +65,13 @@ export default function NewInfoproducto() {
       setImageFile(null);
       setImagePreview(null);
 
-      // Simula un tiempo de espera de 5 segundos
+      
       setTimeout(() => {
-        setLoading(false); // Oculta el loading después de 5 segundos
+        setLoading(false); 
       }, 5000);
     } catch (error) {
       console.error("Error al agregar documento:", error);
-      setLoading(false); // Si hay un error, desactiva el loading
+      setLoading(false); 
     }
   };
 

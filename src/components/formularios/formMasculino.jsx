@@ -186,7 +186,8 @@ export default function FormMasculino() {
         imageUrl2,
         imageUrl3,
         genero: "masculino",
-        suscripcion: "activa",
+        suscripcion: "activo",
+        niveles: "suspendido",
         superUser: false,
       };
 

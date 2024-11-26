@@ -15,23 +15,23 @@ export default function Onetoone() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animación para la imagen (ingresa desde la izquierda)
+    
     gsap.fromTo(
       imageBoxRef.current,
-      { x: -100, opacity: 0 }, // Estado inicial
+      { x: -100, opacity: 0 }, 
       {
-        x: 0, // Estado final
+        x: 0, 
         opacity: 1,
         scrollTrigger: {
           trigger: imageBoxRef.current,
-          start: "top 80%", // Cuando el div esté al 80% de la ventana
-          end: "bottom 80%", // La animación termina cuando el div esté al 20% de la ventana
-          scrub: 1, // Sincroniza la animación con el scroll
+          start: "top 80%", 
+          end: "bottom 80%", 
+          scrub: 1, 
         },
       }
     );
 
-    // Animación para el contenedor de información (aparece desde la derecha)
+    
     gsap.fromTo(
       infoContainerRef.current,
       { x: 100, opacity: 0 }, // Estado inicial

@@ -94,10 +94,41 @@
           border-radius: 50px;
           font-size: 0.9rem;
           letter-spacing: 0.5px;
+          cursor: pointer;
+          border: 1px solid #006fff;
 
           & .icon {
             font-size: 1.2rem;
             color: #006fff;
+          }
+        }
+
+        & .btnEditar:hover{
+          background-color: #006fff;
+          color: white;
+
+          & .icon{
+            color: white;
+          }
+        }
+
+        & .btnEditarOff {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          color: #606060;
+          text-decoration: none;
+          background-color: #131313;
+          padding: 10px 15px;
+          border-radius: 50px;
+          font-size: 0.9rem;
+          letter-spacing: 0.5px;
+          cursor: auto;
+
+          & .icon {
+            font-size: 1.2rem;
+            color: #606060;
           }
         }
       }

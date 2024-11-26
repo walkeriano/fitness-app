@@ -16,20 +16,19 @@ export default function HeroHub() {
     formState: { errors },
     reset,
     getValues,
-    watch, // Observa los valores de los campos
-  } = useForm(); // Desestructura useForm
+    watch, 
+  } = useForm(); 
 
   const onSubmit = async (data) => {
     setResult("Sending....");
     const formData = new FormData();
   
-    // Añadir datos del formulario a FormData
+    
     Object.keys(data).forEach((key) => formData.append(key, data[key]));
   
-    // Generar una URL especial para el usuario
+    
     const specialUrl = `http://localhost:3000/registro-nuevo-perfil`;
-    formData.append("Crear perfil de usuario", specialUrl); // Añadimos la URL especial a FormData
-  
+    formData.append("Crear perfil de usuario", specialUrl); 
     formData.append("access_key", "285d4c2e-2da7-44f5-8632-15a4707d41a5");
   
     try {
@@ -42,8 +41,8 @@ export default function HeroHub() {
   
       if (responseData.success) {
         setResult("Form Submitted Successfully");
-        reset(); // Resetea el formulario
-        router.push("/registro-nuevo-perfil"); // Redirige al usuario al home principal
+        reset(); 
+        router.push("/registro-nuevo-perfil"); 
       } else {
         setResult(`Error: ${responseData.message}`);
       }
@@ -53,7 +52,7 @@ export default function HeroHub() {
     }
   };
 
-  // Observa los valores de los inputs
+  
   const nombresValue = watch("nombres");
   const apellidosValue = watch("apellidos");
   const telefonoValue = watch("telefono");

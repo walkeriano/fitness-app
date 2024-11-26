@@ -7,18 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser, faStore } from "@fortawesome/free-solid-svg-icons";
 
 export default function Herramientas() {
-  const pathname = usePathname(); // Obtenemos la ruta actual usando el hook moderno
+  const pathname = usePathname(); 
   const activeItemRef = useRef(null);
 
   useEffect(() => {
-    // Desplazar el ítem activo a la vista cuando cambia la ruta
+    
     if (activeItemRef.current) {
       activeItemRef.current.scrollIntoView({
-        block: "nearest", // Alinear el ítem si está parcialmente oculto
-        inline: "nearest", // Centrar horizontalmente el ítem activo
+        block: "nearest", 
+        inline: "nearest", 
       });
     }
-  }, [pathname]); // Se ejecuta cada vez que cambia la ruta
+  }, [pathname]);
 
   const getLinkClassName = (path) => {
     return pathname === path ? styles.activado : styles.desactivado;

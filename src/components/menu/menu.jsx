@@ -11,18 +11,17 @@ import AuthContext from "@/state/auth/auth-context";
 export default function Menu() {
   const { user } = useContext(AuthContext);
   const { userProfile } = useUserProfile(user);
-  const pathname = usePathname(); // Obtenemos la ruta actual usando el hook moderno
-  const activeItemRef = useRef(null); // Referencia para el ítem activo
+  const pathname = usePathname();
+  const activeItemRef = useRef(null);
 
   useEffect(() => {
-    // Desplazar el ítem activo a la vista cuando cambia la ruta
     if (activeItemRef.current) {
       activeItemRef.current.scrollIntoView({
-        block: "nearest", // Alinear el ítem si está parcialmente oculto
-        inline: "nearest", // Centrar horizontalmente el ítem activo
+        block: "nearest", 
+        inline: "nearest", 
       });
     }
-  }, [pathname]); // Se ejecuta cada vez que cambia la ruta
+  }, [pathname]); 
 
   const getLinkClassName = (path) => {
     return pathname === path ? styles.activado : styles.desactivado;
@@ -36,7 +35,7 @@ export default function Menu() {
         className={`${styles.item} ${getLinkClassName(
           "/perfil-coach-fitness-app"
         )}`}
-        ref={pathname === "/perfil-coach-fitness-app" ? activeItemRef : null} // Asignar la referencia al ítem activo
+        ref={pathname === "/perfil-coach-fitness-app" ? activeItemRef : null} 
       >
         <div className={styles.boxImg}>
           {userProfile && userProfile.imageUrl ? (

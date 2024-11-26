@@ -19,30 +19,29 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroHome() {
-  const divRef = useRef(null); // Referencia al div que queremos animar
+  const divRef = useRef(null); 
 
-  const containerRef = useRef(null); // Referencia al contenedor padre
-
+  const containerRef = useRef(null);
   useEffect(() => {
-    const triggerId = "myComponentAnimation"; // Identificador único para este componente
+    const triggerId = "myComponentAnimation"; 
 
     const updateAnimation = () => {
       const containerHeight =
-        containerRef.current.getBoundingClientRect().height; // Altura dinámica
-      const displacement = containerHeight * 1.1; // Desplazamiento recalculado
+        containerRef.current.getBoundingClientRect().height; 
+      const displacement = containerHeight * 1.1; 
 
-      // Resetear únicamente los triggers con el ID específico
+   
       ScrollTrigger.getAll()
         .filter((trigger) => trigger.vars.id === triggerId)
         .forEach((trigger) => trigger.kill());
 
-      // Configurar la animación con el ID único
+      
       gsap.to(divRef.current, {
         y: displacement,
         filter: "grayscale(100%)",
         ease: "power1.out",
         scrollTrigger: {
-          id: triggerId, // Asignar ID único al ScrollTrigger
+          id: triggerId, 
           trigger: divRef.current,
           start: "top 15%",
           end: `+=${displacement}`,
@@ -50,21 +49,21 @@ export default function HeroHome() {
         },
       });
 
-      // Refrescar ScrollTrigger para asegurar cálculo inicial correcto
+      
       ScrollTrigger.refresh();
     };
 
-    // Ejecutar inicialmente
+    
     updateAnimation();
 
-    // Actualizar animación al redimensionar la ventana
+    
     window.addEventListener("resize", updateAnimation);
 
-    // Limpiar eventos al desmontar
+    
     return () => {
       window.removeEventListener("resize", updateAnimation);
 
-      // Eliminar únicamente los triggers asociados a este componente
+      
       ScrollTrigger.getAll()
         .filter((trigger) => trigger.vars.id === triggerId)
         .forEach((trigger) => trigger.kill());
