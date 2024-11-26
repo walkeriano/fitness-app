@@ -21,11 +21,17 @@ export default function AdministradorInfoProductos() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main ref={goUp} className={styles.contGeneralPerfil}>
-        <HeaderPerfil />
+      <section className={styles.flexGeneral}>
+          <section className={styles.flexHeader}>
+            <HeaderPerfil />
+            <Herramientas />
+          </section>
+          <section className={styles.flexPerfil}>
+            <HeroAdmin />
+            <AllInfoproductos />
+          </section>
+        </section>
         <span className={styles.blur}></span>
-        <HeroAdmin />
-        <Herramientas />
-        <AllInfoproductos />
         <Closing goUp={goUp} />
         <Footer />
       </main>

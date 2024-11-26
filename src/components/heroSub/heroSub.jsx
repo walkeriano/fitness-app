@@ -81,7 +81,7 @@ export default function HeroHub() {
             className={styles.bgMockup}
           />
           <Image
-            src="/images/mockup-two.png"
+            src="/images/hero-sub.png"
             alt="logo-quesada"
             fill={true}
             className={styles.bgMockupResponsive}

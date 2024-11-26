@@ -258,3 +258,22 @@
     }
   }
   
+
+  @media (min-width: 850px){
+    .containerRutinas {
+      width: 90%;
+      gap: 25px;
+      margin-left: 5%;
+    }
+  }
+
+  @media (min-width: 1100px){
+    .containerRutinas{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Crea 3 columnas de igual tamaño */
+      grid-template-rows: repeat(
+        3,
+        1fr
+      );
+    }
+  }

@@ -24,11 +24,17 @@ export default function AdministradorRutinas() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main ref={goUp} className={styles.contGeneralPerfil}>
-        <HeaderPerfil />
+        <section className={styles.flexGeneral}>
+          <section className={styles.flexHeader}>
+            <HeaderPerfil />
+            <Herramientas />
+          </section>
+          <section className={styles.flexPerfil}>
+            <HeroAdmin />
+            <AllRutinas />
+          </section>
+        </section>
         <span className={styles.blur}></span>
-        <HeroAdmin />
-        <Herramientas />
-        <AllRutinas />
         <Closing goUp={goUp} />
         <Footer />
       </main>

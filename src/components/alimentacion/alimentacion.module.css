@@ -54,7 +54,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    animation: openBottom 1.5s ease;
+    animation: openBottom 1.5s linear;
     margin-bottom: 50px;
     margin-top: 35px;
 
@@ -101,6 +101,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      animation: openBottom 1.5s linear;
 
 
       & .totalInfo {
@@ -217,6 +218,7 @@
       align-items: flex-start;
       justify-content: center;
       gap: 15px;
+      animation: openBottom 1.5s linear;
 
       & h3 {
         color: white;

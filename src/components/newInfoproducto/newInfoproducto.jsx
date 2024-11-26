@@ -98,6 +98,22 @@ export default function NewInfoproducto() {
             </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className={styles.formulario}>
+              <button
+            className={styles.titleSection}
+            onClick={() => setShowCreate(true)}
+          >
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              size="2x"
+              className={styles.icon}
+            />
+            Minimizar ventana
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              size="2x"
+              className={styles.icon}
+            />
+          </button>
               <h3>
                 Crear nuevo infoproducto
                 <FontAwesomeIcon
@@ -190,7 +206,7 @@ export default function NewInfoproducto() {
                   />
                 </label>
               </div>
-              <button type="submit">
+              <button type="submit" className={styles.btnSend}>
                 Publicar ahora
                 <span>
                   <FontAwesomeIcon
@@ -202,22 +218,7 @@ export default function NewInfoproducto() {
               </button>
             </form>
           )}
-          <button
-            className={styles.titleSection}
-            onClick={() => setShowCreate(true)}
-          >
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              size="2x"
-              className={styles.icon}
-            />
-            Minimizar ventana
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              size="2x"
-              className={styles.icon}
-            />
-          </button>
+          
         </section>
       )}
     </section>

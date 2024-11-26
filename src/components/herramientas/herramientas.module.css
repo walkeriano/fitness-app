@@ -4,10 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  overflow: scroll;
+  overflow: auto;
   gap: 20px;
   padding-left: 25px;
   padding-right: 20px;
+  margin-top: 90px;
 
   & .itermTools {
     border: 2px solid #1f1f1f;
@@ -45,5 +46,52 @@
   & .itermTools.desactivado {
     opacity: 0.6;
     filter: grayscale(50%);
+  }
+
+  & .itermTools.activado:hover{
+    background-color: #006fff;
+    cursor: auto;
+  }
+
+  & .itermTools.desactivado:hover{
+    background-color: #0c0c0c;
+    cursor: pointer;
+    border: 2px solid #006fff;
+  }
+}
+
+.containerHerramientas::-webkit-scrollbar {
+  background-color: rgba(0, 0, 255, 0.136);
+  height: 0px;
+}
+
+.containerHerramientas::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 72, 255, 0.358);
+  border-radius: 50px;
+}
+
+.containerHerramientas::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+@media (min-width: 700px) {
+  .containerHerramientas{
+    justify-content: center;
+  }
+}
+
+@media (min-width: 850px){
+  .containerHerramientas{
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 35vh;
+    width: 95%;
+    margin-top: 0px;
+    gap: 25px;
+    padding-left: 0px;
+    z-index: 1000;
+    height: auto;
   }
 }

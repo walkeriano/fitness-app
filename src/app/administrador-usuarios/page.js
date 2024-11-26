@@ -24,11 +24,17 @@ export default function Administrador() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main ref={goUp} className={styles.contGeneralPerfil}>
-        <HeaderPerfil />
+        <section className={styles.flexGeneral}>
+          <section className={styles.flexHeader}>
+            <HeaderPerfil />
+            <Herramientas />
+          </section>
+          <section className={styles.flexPerfil}>
+            <HeroAdmin />
+            <AllUsers />
+          </section>
+        </section>
         <span className={styles.blur}></span>
-        <HeroAdmin />
-        <Herramientas />
-        <AllUsers />
         <Closing goUp={goUp} />
         <Footer />
       </main>

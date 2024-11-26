@@ -8,7 +8,6 @@
 
   & .sectionCreate {
     width: 100%;
-    border-radius: 30px;
     margin-top: 20px;
   }
 
@@ -125,6 +124,24 @@
           font-size: 1.3rem;
         }
       }
+    }
+  }
+}
+
+@media (min-width: 850px){
+  .containerGeneral{
+    width: 90%;
+    margin-left: 5%;
+
+    
+
+    & .allProducts{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas de igual tamaño */
+      grid-template-rows: repeat(
+        3,  
+        1fr
+      );
     }
   }
 }

@@ -40,7 +40,7 @@ export default function Explicacion() {
       </h3>
       <div className={styles.imagePhone} ref={imagePhoneRef}>
         <Image
-          src="/images/mockup.png"
+          src="/images/mock-oficial.png"
           alt="app-previsualizacion"
           fill={true}
         />

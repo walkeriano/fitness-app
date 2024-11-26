@@ -100,7 +100,7 @@ export default function HeroHome() {
             <section className={styles.recomendacion}>
               <div>
                 <Image
-                  src="/images/carlos-coach.jpg"
+                  src="/images/caso-01.jpg"
                   alt="reputacion-1"
                   className={styles.iconReputacion}
                   fill={true}
@@ -108,7 +108,7 @@ export default function HeroHome() {
               </div>
               <div>
                 <Image
-                  src="/images/carlos-coach.jpg"
+                  src="/images/caso-04.jpg"
                   alt="reputacion-1"
                   className={styles.iconReputacion}
                   fill={true}
@@ -116,7 +116,7 @@ export default function HeroHome() {
               </div>
               <div>
                 <Image
-                  src="/images/carlos-coach.jpg"
+                  src="/images/caso-06.jpg"
                   alt="reputacion-1"
                   className={styles.iconReputacion}
                   fill={true}
@@ -124,7 +124,7 @@ export default function HeroHome() {
               </div>
               <div>
                 <Image
-                  src="/images/carlos-coach.jpg"
+                  src="/images/caso-08.jpg"
                   alt="reputacion-1"
                   className={styles.iconReputacion}
                   fill={true}

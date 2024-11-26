@@ -10,6 +10,7 @@ import {
   faBolt,
   faFaceFrown,
   faMagnifyingGlass,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 import AuthContext from "@/state/auth/auth-context";
@@ -44,31 +45,45 @@ export default function AllUsers() {
 
   return (
     <section className={styles.containerAllUsers}>
-      <div className={styles.firstContainer}>
-        <p>Total usuarios:</p>
-        <div className={styles.totalNumber}>
-          <h3>{users?.length}</h3>
+      <section className={styles.containerTitleSection}>
+        <h2>Directorio de usuarios</h2>
+        <div className={styles.detalleTitle}>
+          <p>Usuario administrador</p>
           <FontAwesomeIcon
-            icon={faArrowRight}
+            icon={faChevronDown}
             size="2x"
             className={styles.icon}
           />
         </div>
-      </div>
-      <section className={styles.boxSearch}>
-        <input
-          type="text"
-          placeholder="Escribir nombre..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-        <FontAwesomeIcon
-          icon={faMagnifyingGlass}
-          size="2x"
-          className={styles.icon}
-        />
       </section>
+      <section className={styles.containerFlexAdmin}>
+        <div className={styles.firstContainer}>
+          <p>Total usuarios:</p>
+          <div className={styles.totalNumber}>
+            <h3>{users?.length}</h3>
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              size="2x"
+              className={styles.icon}
+            />
+          </div>
+        </div>
+        <section className={styles.boxSearch}>
+          <input
+            type="text"
+            placeholder="Escribir nombre..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+          />
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            size="2x"
+            className={styles.icon}
+          />
+        </section>
+      </section>
+
       <section className={styles.secondContainer}>
         {filteredUsers.length === 0 && (
           <div className={styles.noResults}>
