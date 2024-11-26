@@ -242,7 +242,7 @@
 
         animation: scrollTwo 30s linear infinite;
         & .object {
-          min-width: 250px;
+          min-width: 300px;
           gap: 15px;
     
           & .comment {
