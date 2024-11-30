@@ -9,9 +9,14 @@ const useUserProfile = (user) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true; // Verificación de montaje del componente
+    if (!user) {
+      setLoading(false);
+      return;
+    }
 
-    // Función para obtener los datos de localStorage
+    let isMounted = true; 
+
+   
     const getLocalStorageData = () => {
       const savedUserProfile = localStorage.getItem("userProfile");
       const savedCalculatedData = localStorage.getItem("calculatedData");
@@ -26,14 +31,14 @@ const useUserProfile = (user) => {
       return null;
     };
 
-    // Función para guardar datos en localStorage
+    
     const saveToLocalStorage = (profile, calculated) => {
       localStorage.setItem("userProfile", JSON.stringify(profile));
       localStorage.setItem("calculatedData", JSON.stringify(calculated));
     };
 
     const fetchUserProfile = async () => {
-      // Primero, verifica si hay datos en localStorage
+      
       const localData = getLocalStorageData();
       if (localData && isMounted) {
         setUserProfile(localData.userProfile);
@@ -42,7 +47,7 @@ const useUserProfile = (user) => {
         return;
       }
 
-      // Si no hay datos en localStorage, o no son válidos, intenta obtener datos de Firebase
+      
       if (user) {
         try {
           const userDocRef = doc(db, "users", user.uid);
@@ -79,12 +84,12 @@ const useUserProfile = (user) => {
       if (isMounted) setLoading(false);
     };
 
-    fetchUserProfile(); // Ejecutar la función al montar el componente
+    fetchUserProfile(); 
 
     return () => {
-      isMounted = false; // Limpiar en caso de desmontar el componente
+      isMounted = false; 
     };
-  }, []); // Elimina la dependencia de `user` en el array de dependencias
+  }, [user]); 
 
   const calculateCaloriesAndMacros = (data) => {
     const { peso, altura, edad, genero, actividad, objetivoFisico } = data;

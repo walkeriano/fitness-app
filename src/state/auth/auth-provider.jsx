@@ -11,7 +11,6 @@ import {
 import { auth, db } from "../../../firebase-config";
 import Loading from "@/components/loadingExtra/loadingExtra";
 
-// Función para obtener mensajes de error específicos de Firebase
 const getFirebaseErrorMessage = (error) => {
   switch (error.code) {
     case "auth/invalid-email":
@@ -31,10 +30,9 @@ const getFirebaseErrorMessage = (error) => {
   }
 };
 
-// Hook para manejar errores
 const handleFirebaseError = (error) => {
-  console.error("Firebase error:", error); // Log del error para depuración
-  return getFirebaseErrorMessage(error); // Retorna un mensaje amigable
+  console.error("Firebase error:", error); 
+  return getFirebaseErrorMessage(error);
 };
 
 export const AuthProvider = ({ children }) => {
@@ -65,7 +63,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await signOut(auth);
-      setUser(null); // Limpiar el estado del usuario después de cerrar sesión
+      setUser(null); 
     } catch (error) {
       throw new Error("Error durante el cierre de sesión. Inténtalo de nuevo.");
     }
@@ -74,9 +72,9 @@ export const AuthProvider = ({ children }) => {
   const register = async ({ email, password }) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const userId = userCredential.user.uid; // Obtener el UID del usuario recién registrado
+      const userId = userCredential.user.uid; 
 
-      // Crear un documento en Firestore en la colección "users"
+      
       await setDoc(doc(db, "users", userId), {
         email: email,
         createdAt: new Date(),

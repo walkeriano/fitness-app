@@ -26,6 +26,7 @@ export default function HeaderPerfil() {
       localStorage.removeItem("calculatedData");
       localStorage.removeItem("trainingData");
       localStorage.removeItem("alimentacionData");
+      localStorage.removeItem("infoproductosData");
       console.log("Sesión cerrada con éxito");
       router.push("/");
     } catch (error) {

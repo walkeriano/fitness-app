@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../../firebase-config"; // Asegúrate de importar la configuración de Firebase
+import { db } from "../../../firebase-config"; 
 
 const useUserTraining = () => {
   const [trainingData, setTrainingData] = useState(null);
@@ -8,19 +8,19 @@ const useUserTraining = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true; // Verificación de montaje del componente
+    let isMounted = true; 
 
-    // Función para obtener los datos de entrenamiento desde localStorage
+    
     const getLocalStorageTrainingData = () => {
       const savedTrainingData = localStorage.getItem("trainingData");
       if (savedTrainingData) {
-        console.log("Datos de entrenamiento obtenidos desde localStorage"); // Seguimiento en consola
+        console.log("Datos de entrenamiento obtenidos desde localStorage"); 
         return JSON.parse(savedTrainingData);
       }
       return null;
     };
 
-    // Función para guardar datos de entrenamiento en localStorage
+
     const saveTrainingDataToLocalStorage = (training) => {
       localStorage.setItem("trainingData", JSON.stringify(training));
     };
@@ -28,7 +28,6 @@ const useUserTraining = () => {
     const fetchUserTraining = async () => {
       setLoading(true);
 
-      // Verifica si ya existen datos en localStorage
       const localData = getLocalStorageTrainingData();
       if (localData && isMounted) {
         setTrainingData(localData);
@@ -37,7 +36,6 @@ const useUserTraining = () => {
       }
 
       try {
-        // Obtén el perfil del usuario desde localStorage
         const savedUserProfile = localStorage.getItem("userProfile");
         if (!savedUserProfile) {
           throw new Error("Perfil de usuario no encontrado en localStorage.");
@@ -50,7 +48,6 @@ const useUserTraining = () => {
           throw new Error("Faltan campos requeridos en el perfil de usuario.");
         }
 
-        // Consulta en la colección "entrenamiento" en Firebase
         const entrenamientoRef = collection(db, "entrenamiento");
         const q = query(
           entrenamientoRef,
@@ -62,11 +59,11 @@ const useUserTraining = () => {
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
-          const trainingDoc = querySnapshot.docs[0].data(); // Tomamos el primer documento que coincida
+          const trainingDoc = querySnapshot.docs[0].data(); 
           if (isMounted) {
-            console.log("Datos de entrenamiento obtenidos desde Firebase"); // Seguimiento en consola
+            console.log("Datos de entrenamiento obtenidos desde Firebase"); 
             setTrainingData(trainingDoc);
-            saveTrainingDataToLocalStorage(trainingDoc); // Guarda los datos en localStorage
+            saveTrainingDataToLocalStorage(trainingDoc);
           }
         } else {
           throw new Error(
@@ -81,12 +78,12 @@ const useUserTraining = () => {
       }
     };
 
-    fetchUserTraining(); // Ejecutar la función al montar el componente
+    fetchUserTraining(); 
 
     return () => {
-      isMounted = false; // Limpiar en caso de desmontar el componente
+      isMounted = false; 
     };
-  }, []); // Solo se ejecuta cuando el componente se monta
+  }, []); 
 
   return { trainingData, loading, error };
 };

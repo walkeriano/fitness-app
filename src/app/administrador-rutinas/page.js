@@ -18,9 +18,9 @@ export default function AdministradorRutinas() {
   return (
     <>
       <Head>
-        <meta charSet="UTF-8" />
+      <meta charSet="UTF-8" />
         <title>Quesada Coach App</title>
-        <meta name="description" content="quesada coach app - fitness" />
+        <meta name="description" content="Quesada coach app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main ref={goUp} className={styles.contGeneralPerfil}>

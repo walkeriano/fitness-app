@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import imageCompression from "browser-image-compression";
 import { db, storage } from "../../../firebase-config";
+import Image from "next/image";
 
 export default function NewInfoproducto() {
   const [showCreate, setShowCreate] = useState(true);
@@ -22,20 +23,19 @@ export default function NewInfoproducto() {
     reset,
     formState: { errors },
   } = useForm();
-  const [imageFile, setImageFile] = useState(null); 
+  const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
-  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setImageFile(file);
-      setImagePreview(URL.createObjectURL(file)); 
+      setImagePreview(URL.createObjectURL(file));
     }
   };
 
   const onSubmit = async (data) => {
-    setLoading(true); 
+    setLoading(true);
 
     try {
       let image = "";
@@ -65,13 +65,12 @@ export default function NewInfoproducto() {
       setImageFile(null);
       setImagePreview(null);
 
-      
       setTimeout(() => {
-        setLoading(false); 
+        setLoading(false);
       }, 5000);
     } catch (error) {
       console.error("Error al agregar documento:", error);
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -93,27 +92,30 @@ export default function NewInfoproducto() {
         <section className={styles.showForm}>
           {loading ? (
             <div className={styles.loading}>
-              <div className={styles.loader} ></div>
+              <div className={styles.loader}></div>
               <p>Publicando, por favor espera...</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className={styles.formulario}>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className={styles.formulario}
+            >
               <button
-            className={styles.titleSection}
-            onClick={() => setShowCreate(true)}
-          >
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              size="2x"
-              className={styles.icon}
-            />
-            Minimizar ventana
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              size="2x"
-              className={styles.icon}
-            />
-          </button>
+                className={styles.titleSection}
+                onClick={() => setShowCreate(true)}
+              >
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  size="2x"
+                  className={styles.icon}
+                />
+                Minimizar ventana
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  size="2x"
+                  className={styles.icon}
+                />
+              </button>
               <h3>
                 Crear nuevo infoproducto
                 <FontAwesomeIcon
@@ -175,19 +177,22 @@ export default function NewInfoproducto() {
                 {errors.precioAntiguo && <p>{errors.precioAntiguo.message}</p>}
               </div>
               <div className={styles.itemInput}>
-                <p>Archivo:</p>
-                <input type="text" placeholder="Escribir aqui..." />
+                <p>Link destino:</p>
+                <input
+                  type="text"
+                  {...register("url", {
+                    required: "La URL es obligatoria",
+                  })}
+                  placeholder="Escribir aqui..."
+                />
+                {errors.url && <p>{errors.url.message}</p>}
               </div>
               <div className={styles.itemInput}>
                 <p>Imagen:</p>
                 <label htmlFor="image">
                   {imagePreview && (
                     <div className={styles.imgInput}>
-                      <img
-                        src={imagePreview}
-                        alt="Vista previa"
-                        
-                      />
+                      <Image src={imagePreview} fill={true} alt="Vista previa" />
                     </div>
                   )}
                   <FontAwesomeIcon
@@ -218,7 +223,6 @@ export default function NewInfoproducto() {
               </button>
             </form>
           )}
-          
         </section>
       )}
     </section>

@@ -29,23 +29,22 @@ const useFetchInfoproductos = () => {
     fetchUsers();
   }, []);
 
-  // Función para eliminar un infoproducto y su imagen de Storage
   const deleteInfoproducto = async (id, imageUrl) => {
     try {
       if (imageUrl) {
-        // Crear referencia de la imagen en Firebase Storage a partir de la URL
+        
         const imageRef = ref(storage, imageUrl);
 
-        // Eliminar la imagen de Firebase Storage
+        
         await deleteObject(imageRef);
         console.log("Imagen eliminada de Firebase Storage");
       }
 
-      // Eliminar el documento de Firestore
+     
       await deleteDoc(doc(db, "infoproductos", id));
       console.log("Documento eliminado de Firestore");
 
-      // Actualizar el estado para reflejar el cambio en la interfaz
+      
       setInfoproductos((prev) => prev.filter((producto) => producto.id !== id));
     } catch (err) {
       console.error("Error al eliminar el infoproducto o la imagen:", err);

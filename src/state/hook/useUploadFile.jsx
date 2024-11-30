@@ -17,16 +17,16 @@ const useUploadFile = () => {
     setError(null);
 
     try {
-      // Subimos el archivo a la carpeta "archivos" con el nombre del ID de la rutina
+      
       const fileRef = ref(storage, `archivos/${rutinaId}.pdf`);
       
-      // Subimos el archivo a esta referencia
+      
       await uploadBytes(fileRef, file);
 
-      // Obtenemos la URL de descarga del archivo subido
+      
       const url = await getDownloadURL(fileRef);
 
-      // Actualizamos Firestore con la nueva URL del archivo
+      
       const rutinaDocRef = doc(db, "entrenamiento", rutinaId);
       await updateDoc(rutinaDocRef, { archivo: url });
 

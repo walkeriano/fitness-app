@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../../firebase-config"; // Asegúrate de importar la configuración de Firebase
+import { db } from "../../../firebase-config"; 
 
 const useUserAlimentacion = () => {
   const [alimentacionData, setAlimentacionData] = useState(null);
@@ -8,19 +8,19 @@ const useUserAlimentacion = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true; // Verificación de montaje del componente
+    let isMounted = true;
 
-    // Función para obtener los datos de alimentación desde localStorage
+    
     const getLocalStorageAlimentacionData = () => {
       const savedAlimentacionData = localStorage.getItem("alimentacionData");
       if (savedAlimentacionData) {
-        console.log("Datos de alimentación obtenidos desde localStorage"); // Seguimiento en consola
+        console.log("Datos de alimentación obtenidos desde localStorage"); 
         return JSON.parse(savedAlimentacionData);
       }
       return null;
     };
 
-    // Función para guardar datos de alimentación en localStorage
+    
     const saveAlimentacionDataToLocalStorage = (alimentacion) => {
       localStorage.setItem("alimentacionData", JSON.stringify(alimentacion));
     };
@@ -28,7 +28,7 @@ const useUserAlimentacion = () => {
     const fetchUserAlimentacion = async () => {
       setLoading(true);
 
-      // Verifica si ya existen datos en localStorage
+      
       const localData = getLocalStorageAlimentacionData();
       if (localData && isMounted) {
         setAlimentacionData(localData);
@@ -37,7 +37,7 @@ const useUserAlimentacion = () => {
       }
 
       try {
-        // Obtén el perfil del usuario desde localStorage
+        
         const savedUserProfile = localStorage.getItem("userProfile");
         if (!savedUserProfile) {
           throw new Error("Perfil de usuario no encontrado en localStorage.");
@@ -50,7 +50,7 @@ const useUserAlimentacion = () => {
           throw new Error("Faltan campos requeridos en el perfil de usuario.");
         }
 
-        // Consulta en la colección "alimentacion" en Firebase
+        
         const alimentacionRef = collection(db, "alimentacion");
         const q = query(
           alimentacionRef,
@@ -62,11 +62,11 @@ const useUserAlimentacion = () => {
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
-          const alimentacionDoc = querySnapshot.docs[0].data(); // Tomamos el primer documento que coincida
+          const alimentacionDoc = querySnapshot.docs[0].data(); 
           if (isMounted) {
-            console.log("Datos de alimentación obtenidos desde Firebase"); // Seguimiento en consola
+            console.log("Datos de alimentación obtenidos desde Firebase"); 
             setAlimentacionData(alimentacionDoc);
-            saveAlimentacionDataToLocalStorage(alimentacionDoc); // Guarda los datos en localStorage
+            saveAlimentacionDataToLocalStorage(alimentacionDoc); 
           }
         } else {
           throw new Error(
@@ -81,12 +81,12 @@ const useUserAlimentacion = () => {
       }
     };
 
-    fetchUserAlimentacion(); // Ejecutar la función al montar el componente
+    fetchUserAlimentacion(); 
 
     return () => {
-      isMounted = false; // Limpiar en caso de desmontar el componente
+      isMounted = false; 
     };
-  }, []); // Solo se ejecuta cuando el componente se monta
+  }, []);
 
   return { alimentacionData, loading, error };
 };

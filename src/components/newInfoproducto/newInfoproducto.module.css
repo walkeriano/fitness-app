@@ -36,8 +36,6 @@
     gap: 15px;
     padding: 20px 10px;
 
-    
-
     & .formulario {
       width: 95%;
       display: flex;
@@ -59,14 +57,14 @@
         font-size: 0.9rem;
         letter-spacing: 0.5px;
         cursor: pointer;
-  
+
         & .icon {
           transform: rotate(-90deg);
           font-size: 0.9rem;
         }
       }
 
-      & .titleSection:hover{
+      & .titleSection:hover {
         background-color: #006fff;
       }
 
@@ -115,18 +113,17 @@
         }
       }
 
-      & .btnSend:hover{
+      & .btnSend:hover {
         background-color: white;
         color: #006fff;
 
-        & span{
+        & span {
           background-color: #006fff;
 
-          & .icon{
+          & .icon {
             color: white;
           }
         }
-
       }
 
       & .itemInput {
@@ -162,6 +159,23 @@
           letter-spacing: 0.5px;
         }
 
+        & input:hover,
+            & input:focus,
+            & input:active {
+              border: 1px solid white;
+            }
+
+        & input:-webkit-autofill,
+        & input:-webkit-autofill:hover,
+        & input:-webkit-autofill:focus,
+        & input:-webkit-autofill:active {
+          -webkit-text-fill-color: white !important; /* Cambia el color del texto */
+          -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
+          box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
+          transition: background-color 5000s ease-in-out 0s;
+          font-size: 16px;
+        }
+
         & label {
           border: 2px dashed rgba(255, 255, 255, 0.257);
           background-color: rgba(255, 255, 255, 0.096);
@@ -174,6 +188,7 @@
           justify-content: center;
           gap: 10px;
           position: relative;
+          cursor: pointer;
 
           & .icon {
             color: rgba(255, 255, 255, 0.36);
@@ -186,12 +201,12 @@
             margin-left: 0px;
           }
 
-          & .imgInput{
+          & .imgInput {
             width: 100%;
             height: 100%;
             position: absolute;
 
-            & img{
+            & img {
               width: 100%;
               height: 100%;
               object-fit: cover;
@@ -211,7 +226,7 @@
       justify-content: center;
       gap: 15px;
 
-      & p{
+      & p {
         color: white;
         font-size: 1rem;
       }
@@ -242,8 +257,6 @@
     }
   }
 }
-
-
 
 @keyframes l7-0 {
   16.67% {
@@ -279,34 +292,33 @@
   }
 }
 
-@media (min-width: 850px){
+@media (min-width: 850px) {
   .allGeneral {
+    & .showForm {
+      padding: 30px 10px;
 
-  & .showForm {
-    padding: 30px 10px; 
+      & .formulario {
+        width: 80%;
+        gap: 35px;
 
-    & .formulario {
-      width: 80%;
-      gap: 35px;
-
-      & .titleSection {
-        width: 50%;
-        padding: 10px 0px;
-      }
-
-      & h3 {
-        font-size: 1.4rem;
-
-        & .icon {
-          font-size: 1.2rem;
+        & .titleSection {
+          width: 50%;
+          padding: 10px 0px;
         }
-      }
 
-      & .btnSend {
-        width: auto;
-        gap: 25px;
+        & h3 {
+          font-size: 1.4rem;
+
+          & .icon {
+            font-size: 1.2rem;
+          }
+        }
+
+        & .btnSend {
+          width: auto;
+          gap: 25px;
+        }
       }
     }
   }
-}
 }

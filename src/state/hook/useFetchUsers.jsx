@@ -28,7 +28,7 @@ const useFetchUsers = () => {
     fetchUsers();
   }, []);
 
-  // Función para eliminar usuario
+  
   const deleteUser = async (userId) => {
     try {
       await deleteDoc(doc(db, "users", userId));
@@ -38,7 +38,7 @@ const useFetchUsers = () => {
     }
   };
 
-  // Función para cambiar suscripción a "suspendido"
+  
   const suspendUser = async (userId) => {
     try {
       const userRef = doc(db, "users", userId);
@@ -53,7 +53,7 @@ const useFetchUsers = () => {
     }
   };
 
-  // Función para cambiar suscripción a "activo"
+  
   const activateUser = async (userId) => {
     try {
       const userRef = doc(db, "users", userId);
@@ -68,7 +68,7 @@ const useFetchUsers = () => {
     }
   };
 
-    // Función para cambiar suscripción a "suspendido"
+    
     const suspenderNivel = async (userId) => {
       try {
         const userRef = doc(db, "users", userId);
@@ -83,7 +83,7 @@ const useFetchUsers = () => {
       }
     };
   
-    // Función para cambiar suscripción a "activo"
+    
     const activateNivel = async (userId) => {
       try {
         const userRef = doc(db, "users", userId);

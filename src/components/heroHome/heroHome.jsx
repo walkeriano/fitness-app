@@ -19,51 +19,50 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroHome() {
-  const divRef = useRef(null); 
+  const divRef = useRef(null);
 
   const containerRef = useRef(null);
+  
   useEffect(() => {
-    const triggerId = "myComponentAnimation"; 
+    const triggerId = "myComponentAnimation";
 
-    const updateAnimation = () => {
-      const containerHeight =
-        containerRef.current.getBoundingClientRect().height; 
-      const displacement = containerHeight * 1.1; 
+    const initAnimation = () => {
+      const containerHeight = containerRef.current.getBoundingClientRect().height;
+      const displacement = containerHeight * 1.1;
 
-   
-      ScrollTrigger.getAll()
-        .filter((trigger) => trigger.vars.id === triggerId)
-        .forEach((trigger) => trigger.kill());
-
-      
       gsap.to(divRef.current, {
         y: displacement,
         filter: "grayscale(100%)",
         ease: "power1.out",
         scrollTrigger: {
-          id: triggerId, 
+          id: triggerId,
           trigger: divRef.current,
           start: "top 15%",
           end: `+=${displacement}`,
           scrub: 1,
-        },
+          onUpdate: self => {
+            if (self.isActive) {
+              const updatedHeight = containerRef.current.getBoundingClientRect().height;
+              const newDisplacement = updatedHeight * 1.1;
+              if (newDisplacement !== displacement) {
+                self.vars.end = `+=${newDisplacement}`;
+              }
+            }
+          }
+        }
       });
+    };
 
-      
+    initAnimation();
+
+    const handleResize = () => {
       ScrollTrigger.refresh();
     };
 
-    
-    updateAnimation();
+    window.addEventListener("resize", handleResize);
 
-    
-    window.addEventListener("resize", updateAnimation);
-
-    
     return () => {
-      window.removeEventListener("resize", updateAnimation);
-
-      
+      window.removeEventListener("resize", handleResize);
       ScrollTrigger.getAll()
         .filter((trigger) => trigger.vars.id === triggerId)
         .forEach((trigger) => trigger.kill());
@@ -78,7 +77,11 @@ export default function HeroHome() {
           <span>a un click de distancia</span>
         </h1>
         <section className={styles.contInfo}>
-          <h2>Planes de entrenamiento y nutrición personalizados creados por expertos, diseñados para transformar tu cuerpo y tu vida. Sin importar dónde estés, el cambio comienza ahora</h2>
+          <h2>
+            Planes de entrenamiento y nutrición personalizados creados por
+            expertos, diseñados para transformar tu cuerpo y tu vida. Sin
+            importar dónde estés, el cambio comienza ahora
+          </h2>
           <div className={styles.slide}>
             <p>Seguir deslizando</p>
             <FontAwesomeIcon
@@ -150,25 +153,25 @@ export default function HeroHome() {
             </div>
             <section className={styles.channelSocial}>
               <a href="">
-              <FontAwesomeIcon
-                icon={faFacebookF}
-                size="2x"
-                className={styles.icon}
-              />
+                <FontAwesomeIcon
+                  icon={faFacebookF}
+                  size="2x"
+                  className={styles.icon}
+                />
               </a>
               <a href="">
-              <FontAwesomeIcon
-                icon={faInstagram}
-                size="2x"
-                className={styles.icon}
-              />
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  size="2x"
+                  className={styles.icon}
+                />
               </a>
               <a href="">
-              <FontAwesomeIcon
-                icon={faTiktok}
-                size="2x"
-                className={styles.icon}
-              />
+                <FontAwesomeIcon
+                  icon={faTiktok}
+                  size="2x"
+                  className={styles.icon}
+                />
               </a>
             </section>
           </section>
