@@ -14,7 +14,7 @@
   width: 60%;
   top: 5%;
   z-index: -1;
-  left: 5%;
+  left: 2%;
 }
 
 .bgImage span {
@@ -31,7 +31,7 @@
 }
 
 .partLeft {
-  width: 45%;
+  width: 40%;
   height: 55%;
   display: flex;
   flex-direction: column;
@@ -76,7 +76,7 @@
 }
 
 .questionsChannels a:hover {
-  background-color: yellow;
+  background-color: #006fff;
 
   .icon {
     color: black;
@@ -85,22 +85,22 @@
 
 .sectionAll {
   width: 35%;
-  height: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-top: -50px;
 }
 
 .sectionAll hr {
   width: 90%;
-  border: 1px solid rgb(36, 36, 36);
+  border: 1px solid rgb(22, 22, 22);
 }
 
 .questionsItem {
   border: 1px solid transparent;
   width: 100%;
-  height: 100px;
+  height: 90px;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -110,10 +110,11 @@
 
 .questionsItem p {
   font-size: 1rem;
-  text-transform: uppercase;
   margin-left: 30px;
   color: white;
   width: 70%;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
 }
 
 .questionsItem .boxIcon {
@@ -161,9 +162,10 @@
 
 .questionsItemOn p {
   font-size: 1rem;
-  text-transform: uppercase;
   margin-left: 30px;
   color: white;
+  width: 75%;
+  letter-spacing: 0.5px;
 }
 
 .questionsItemOn .boxIcon {
@@ -192,16 +194,19 @@
   }
 }
 
-@media (max-width: 650px) {
+
+@media (max-width: 920px) {
   .sectionQuestions {
     flex-direction: column;
     position: relative;
     gap: 30px;
+    height: auto;
+    width: 100%;
   }
 
   .partLeft {
     width: 100%;
-    height: 60%;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -209,7 +214,7 @@
   }
 
   .partLeft h4 {
-    font-size: 10vw;
+    font-size: 2.6rem;
     letter-spacing: 1px;
     text-align: center;
   }
@@ -225,13 +230,13 @@
 
   .sectionAll {
     width: 100%;
-    height: 40%;
+    height: 45%;
     justify-content: flex-start;
+    margin-top: 0px;
   }
 
   .sectionAll hr {
     width: 100%;
-    border: 1px solid rgb(36, 36, 36);
   }
 
   .questionsItem {
@@ -242,8 +247,9 @@
     position: absolute;
     height: 50%;
     width: 100%;
+    max-width: 650px;
     top: 0%;
-    left: 0%;
+    left: auto;
   }
 
   .bgImage span {
@@ -263,6 +269,10 @@
 
   .questionsItemOn {
     border-radius: 0px;
+  }
+
+  .questionsItemOn p{
+    font-size: 0.9rem;
   }
 
   .questionsItem .boxIcon {

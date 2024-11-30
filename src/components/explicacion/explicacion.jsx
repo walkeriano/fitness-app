@@ -8,26 +8,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Explicacion() {
-  const imagePhoneRef = useRef(null); 
+  const imagePhoneRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger); 
+    gsap.registerPlugin(ScrollTrigger);
 
-    
     gsap.fromTo(
-      imagePhoneRef.current, 
-      { opacity: 0, x: 100, scale: 1.5 }, 
+      imagePhoneRef.current,
+      { opacity: 0, x: 100, scale: 1.5 },
       {
         opacity: 1,
-        x: 0, 
+        x: 0,
         scale: 1,
         duration: 1,
         scrollTrigger: {
           id: "explicacionTrigger",
-          trigger: imagePhoneRef.current, 
-          start: "top 60%", 
-          end: "top 20%", 
-          scrub: true, 
+          trigger: imagePhoneRef.current,
+          start: "top 60%",
+          end: "top 20%",
+          scrub: true,
         },
       }
     );
@@ -36,7 +35,7 @@ export default function Explicacion() {
   return (
     <section className={styles.containerExplicacion}>
       <h3>
-        ¿Qué es <span>quesada coach fitness app?</span>
+        ¿Qué es <span>quesada coach app?</span>
       </h3>
       <div className={styles.imagePhone} ref={imagePhoneRef}>
         <Image
@@ -46,12 +45,13 @@ export default function Explicacion() {
         />
       </div>
       <h4>
-        Aplicación fitness desarrollada para facilitar el seguimiento físico y
-        alimenticio en el progreso del día a día
+        Una experiencia fitness premium diseñada para alcanzar tus metas.
+        Descubre la fórmula perfecta entre entrenamiento, nutrición y motivación
+        para resultados garantizados.
       </h4>
       <p>
         Toda nuestra experiencia y conocimientos en en una aplicación que te
-        ayudará a lograr tus objetivos físicos en tiedadsampo record!
+        ayudará a lograr tus objetivos físicos en tiempo record!
       </p>
       <Link href="/" className={styles.btnSuscripcion}>
         Suscribirme ahora

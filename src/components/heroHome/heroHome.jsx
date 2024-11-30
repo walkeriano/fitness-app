@@ -74,11 +74,11 @@ export default function HeroHome() {
     <section className={styles.hero} ref={containerRef}>
       <section className={styles.info}>
         <h1>
-          Fitness
-          <span>life style</span>
+          Tu mejor versión,
+          <span>a un click de distancia</span>
         </h1>
         <section className={styles.contInfo}>
-          <h2>Los grandes secretos del fitness en tus manos</h2>
+          <h2>Planes de entrenamiento y nutrición personalizados creados por expertos, diseñados para transformar tu cuerpo y tu vida. Sin importar dónde estés, el cambio comienza ahora</h2>
           <div className={styles.slide}>
             <p>Seguir deslizando</p>
             <FontAwesomeIcon

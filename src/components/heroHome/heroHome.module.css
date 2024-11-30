@@ -2,7 +2,7 @@
   width: 100%;
   height: 85vh;
   min-height: 650px;
-  margin-top: 100px;
+  margin-top: 110px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -20,24 +20,25 @@
     z-index: 0;
 
     & h1 {
-      font-size: 2.8rem;
+      font-size: 6.2vw;
       text-transform: uppercase;
       display: flex;
       flex-direction: column;
-      line-height: 1;
+      line-height: 1.1;
       font-family: "Montserrat";
-      letter-spacing: 4px;
+      letter-spacing: 2px;
       color: #d4d4d4;
-      text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
-        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+      text-shadow: 0.5px 0 #fff, -0.5px 0 #fff, 0 0.5px #fff, 0 -0.5px #fff,
+      0.5px 0.5px #fff, -0.5px -0.5px #fff, 0.5px -0.5px #fff, -0.5px 0.5px #fff;
 
       animation: btnEffect 2s ease-in-out;
+      width: 90%;
 
       & span {
         color: #0054c2;
-        text-shadow: 1px 0 #006fff, -1px 0 #006fff, 0 1px #006fff,
-          0 -1px #006fff, 1px 1px #006fff, -1px -1px #006fff, 1px -1px #006fff,
-          -1px 1px #006fff;
+        text-shadow: 0.5px 0 #006fff, -0.5px 0 #006fff, 0 0.5px #006fff,
+          0 -0.5px #006fff, 0.5px 0.5px #006fff, -0.5px -0.5px #006fff, 0.5px -0.5px #006fff,
+          -0.5px 0.5px #006fff;
         animation: btnEffectTwo 2s ease-in-out;
       }
     }
@@ -53,9 +54,9 @@
       align-items: center;
 
       & h2 {
-        font-size: 1.3rem;
-        width: 70%;
-        letter-spacing: 1px;
+        font-size: 3.8vw;
+        width: 75%;
+        letter-spacing: 1.1px;
         line-height: 1.2;
       }
 
@@ -69,7 +70,7 @@
 
         & p {
           font-size: 0.9rem;
-          letter-spacing: 1px;
+          letter-spacing: 1.2px;
           font-weight: 100;
         }
 
@@ -242,11 +243,20 @@
 }
 
 @media (min-width: 550px) {
-  .contInfo {
-    & h2 {
-      max-width: 350px;
+  .hero{
+    & .info{
+      & h1{
+        font-size: 2.2rem;
+      }
+
+      & .contInfo{
+        & h2{
+          font-size: 1.1rem;
+        }
+      }
     }
   }
+  
 
   .butonsHero {
     max-width: 350px;
@@ -259,6 +269,7 @@
     align-items: flex-start;
     justify-content: center;
     position: relative;
+    margin-top: 95px;
 
     & .info {
       width: 90%;
@@ -267,13 +278,12 @@
       align-items: center;
       justify-content: flex-start;
       text-align: center;
-      gap: 20px;
+      gap: 12px;
       padding: 25px 0px 0px 0px;
 
-      & h1 {
-        font-size: 5.5vw;
-        flex-direction: row;
-        gap: 7px;
+      & h1{
+        font-size: clamp(1.5rem, 4.2vw, 3.1rem);
+        line-height: 1;
       }
 
       & .contInfo {
@@ -285,8 +295,8 @@
         position: relative;
 
         & h2 {
-          font-size: 1.5rem;
           max-width: 100%;
+          font-size: clamp(0.9rem, 2.3vw, 1.1rem);
         }
 
         & .slide {

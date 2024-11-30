@@ -79,7 +79,7 @@ export default function Beneficios() {
               className={styles.icon}
             />
           </span>
-          <h3>Plan de entrenamiento</h3>
+          <h3>Planes de entrenamiento</h3>
           <Image
             src="/images/benefits-one.jpg"
             alt="image-service"
@@ -89,8 +89,8 @@ export default function Beneficios() {
         {detailsOne && (
           <section className={styles.details}>
             <p>
-              Entrenamientos personalizados enfocados en tus objetivos
-              personales
+              Planes de entrenamiento Diseñados por expertos para adaptarse a tu
+              nivel, metas y estilo de vida.
             </p>
             <ul>
               <li>
@@ -135,7 +135,7 @@ export default function Beneficios() {
               className={styles.icon}
             />
           </span>
-          <h3>Guía de alimentación</h3>
+          <h3>Nutrición personalizada</h3>
           <Image
             src="/images/benefits-two.jpg"
             alt="image-service"
@@ -145,8 +145,8 @@ export default function Beneficios() {
         {detailsTwo && (
           <section className={styles.details}>
             <p>
-              Entrenamientos personalizados enfocados en tus objetivos
-              personales
+              Nutrición personalizada Dietas específicas para perder grasa,
+              ganar músculo o mantenerte en forma.
             </p>
             <ul>
               <li>
@@ -193,7 +193,7 @@ export default function Beneficios() {
               className={styles.icon}
             />
           </span>
-          <h3>Contacto directo con el coach</h3>
+          <h3>Seguimiento de progreso</h3>
           <Image
             src="/images/benefits-tre.jpg"
             alt="image-service"
@@ -203,8 +203,8 @@ export default function Beneficios() {
         {detailsTre && (
           <section className={styles.details}>
             <p>
-              Entrenamientos personalizados enfocados en tus objetivos
-              personales
+              Seguimiento de progresoHerramientas integradas para registrar
+              avances y celebrar cada logro.
             </p>
             <ul>
               <li>
@@ -259,8 +259,9 @@ export default function Beneficios() {
         {detailsFor && (
           <section className={styles.details}>
             <p>
-              Entrenamientos personalizados enfocados en tus objetivos
-              personales
+              Infoproductos exclusivos Disponibles solo dentro de la plataforma
+              y accesibles para su compra una vez que seas parte de nuestra
+              comunidad.
             </p>
             <ul>
               <li>
