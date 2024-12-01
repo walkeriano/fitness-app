@@ -9,10 +9,6 @@ const useUserProfile = (user) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!user) {
-      setLoading(false);
-      return;
-    }
 
     let isMounted = true; 
 
@@ -89,7 +85,7 @@ const useUserProfile = (user) => {
     return () => {
       isMounted = false; 
     };
-  }, [user]); 
+  }, []); 
 
   const calculateCaloriesAndMacros = (data) => {
     const { peso, altura, edad, genero, actividad, objetivoFisico } = data;
@@ -111,6 +107,7 @@ const useUserProfile = (user) => {
       activo: 1.725,
       extra_activo: 1.9,
     };
+    
     let tdee = bmr * (actividadFactor[actividad] || 1.2);
 
     switch (objetivoFisico) {
@@ -127,13 +124,16 @@ const useUserProfile = (user) => {
         break;
     }
 
+
     const proteinas = (peso * 1.8).toFixed(2);
     const grasas = ((tdee * 0.25) / 9).toFixed(2);
     const carbohidratos = ((tdee - (proteinas * 4 + grasas * 9)) / 4).toFixed(2);
 
+
     const proteinasCalorias = (proteinas * 4).toFixed(2);
     const grasasCalorias = (grasas * 9).toFixed(2);
     const carbohidratosCalorias = (carbohidratos * 4).toFixed(2);
+
 
     return {
       bmr: bmr.toFixed(2),
