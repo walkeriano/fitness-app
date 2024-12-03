@@ -338,6 +338,7 @@
 
             & div{
               width: 75px;
+              max-width: 75px;
               aspect-ratio: 1;
               background-color: transparent;
               border-radius: 50%;

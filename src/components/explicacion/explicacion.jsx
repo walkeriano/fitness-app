@@ -42,6 +42,7 @@ export default function Explicacion() {
           src="/images/mock-oficial.png"
           alt="app-previsualizacion"
           fill={true}
+          loading="lazy"
         />
       </div>
       <h4>

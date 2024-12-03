@@ -26,6 +26,8 @@ export default function InfoProducts() {
                   src={producto?.image}
                   alt="imagen-info-producto"
                   fill={true}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 50vw, 50vw"
                 />
               </section>
               <section className={styles.infoCard}>

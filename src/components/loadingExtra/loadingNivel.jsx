@@ -9,6 +9,7 @@ export default function LoadingForm() {
         alt="logo-quesada"
         width={230}
         height={70}
+        priority={true}
       />
       <div className={styles.textLoading}>
         <p>Actualizando plan de entrenamiento...</p>

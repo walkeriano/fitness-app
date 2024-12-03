@@ -106,6 +106,7 @@ export default function HeroHome() {
                   alt="reputacion-1"
                   className={styles.iconReputacion}
                   fill={true}
+                  sizes="(max-width: 75px)"
                 />
               </div>
               <div>
@@ -114,6 +115,7 @@ export default function HeroHome() {
                   alt="reputacion-1"
                   className={styles.iconReputacion}
                   fill={true}
+                  sizes="(max-width: 75px)"
                 />
               </div>
               <div>
@@ -122,6 +124,7 @@ export default function HeroHome() {
                   alt="reputacion-1"
                   className={styles.iconReputacion}
                   fill={true}
+                  sizes="(max-width: 75px)"
                 />
               </div>
               <div>
@@ -130,6 +133,7 @@ export default function HeroHome() {
                   alt="reputacion-1"
                   className={styles.iconReputacion}
                   fill={true}
+                  sizes="(max-width: 75px)"
                 />
               </div>
               <span>
@@ -204,6 +208,7 @@ export default function HeroHome() {
           src="/images/partners-one-oficial.png"
           alt="carlos-y-karina"
           fill={true}
+          priority={true}
         />
         <span></span>
         <span></span>

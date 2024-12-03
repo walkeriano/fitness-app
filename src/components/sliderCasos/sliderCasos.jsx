@@ -20,7 +20,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-01.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-01.jpg"  alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" />
               </div>
             </div>
             <div className={styles.comment}>
@@ -54,7 +54,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-02.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-02.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -88,7 +88,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-03.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-03.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -122,7 +122,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-04.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-04.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -156,7 +156,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-05.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-05.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -190,7 +190,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-06.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-06.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -224,7 +224,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-07.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-07.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -258,7 +258,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-08.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-08.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -292,7 +292,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-09.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-09.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -326,7 +326,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-10.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-10.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -360,7 +360,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-11.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-11.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -394,7 +394,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-12.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-12.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -428,7 +428,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-13.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-13.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -462,7 +462,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-14.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-14.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -496,7 +496,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-15.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-15.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>
@@ -530,7 +530,7 @@ export default function SliderCasos() {
                 />
               </span>
               <div className={styles.contFirst}>
-                <Image src="/images/caso-16.jpg" alt="woman" fill={true} />
+                <Image src="/images/caso-16.jpg" alt="woman" fill={true} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy"/>
               </div>
             </div>
             <div className={styles.comment}>

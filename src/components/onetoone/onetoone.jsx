@@ -52,6 +52,7 @@ export default function Onetoone() {
           src="/images/partners-two.png"
           alt="persons-carlos-karina"
           fill={true}
+           loading="lazy"
         />
       </div>
       <section className={styles.infoContainer}>
@@ -77,6 +78,7 @@ export default function Onetoone() {
           src="/images/texture.svg"
           alt="persons-carlos-karina"
           fill={true}
+          loading="lazy"
         />
       </div>
       <span className={styles.blur}></span>

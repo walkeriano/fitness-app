@@ -38,7 +38,7 @@ export default function AllInfoproductos() {
         {infoproductos.map((infoproducto) => (
           <div key={infoproducto.id} className={styles.product}>
             <div className={styles.boxImg}>
-              <Image src={infoproducto?.image} alt="visual-infoproducto" fill={true} />
+              <Image src={infoproducto?.image} alt="visual-infoproducto" fill={true} loading="lazy" sizes="(max-width: 768px) 50vw, 50vw" />
             </div>
             <div className={styles.priceContainer}>
               <h3>{infoproducto?.nombre}</h3>

@@ -77,12 +77,14 @@ export default function HeroHub() {
             src="/images/image-subs-2.png"
             alt="logo-quesada"
             fill={true}
+            loading="lazy"
             className={styles.bgMockup}
           />
           <Image
             src="/images/hero-sub.png"
             alt="logo-quesada"
             fill={true}
+            loading="lazy"
             className={styles.bgMockupResponsive}
           />
           <span></span>

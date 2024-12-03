@@ -9,6 +9,7 @@ export default function Loading() {
         alt="logo-quesada"
         width={230}
         height={70}
+        priority={true}
       />
       <div className={styles.loader}></div>
       <span className={styles.blur} ></span>

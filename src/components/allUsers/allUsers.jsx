@@ -105,7 +105,7 @@ export default function AllUsers() {
         {filteredUsers.map((user) => (
           <section key={user.id} className={styles.boxUser}>
             <div className={styles.imgUser}>
-              <Image src={user?.imageUrl} alt="perfil user" fill={true} />
+              <Image src={user?.imageUrl} alt="perfil user" fill={true} loading="lazy" sizes="(max-width: 768px) 50vw, 50vw" />
             </div>
             <section className={styles.contInfo}>
               <div className={styles.datosName}>

@@ -258,6 +258,7 @@ export default function PreguntasFrecuentes() {
           alt="carlos-coach"
           fill={true}
           className={stylesFrecuentQuestions.img}
+          priority
         />
       </section>
     </section>

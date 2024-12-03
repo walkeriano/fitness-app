@@ -145,12 +145,12 @@ export default function Entrenamiento() {
               </button>
               <div className={styles.containerImg}>
                 <span></span>
-                <Image src="/images/hologram.svg" alt="hello" fill={true} />
+                <Image src="/images/hologram.svg" alt="hello" fill={true}  loading="lazy" />
               </div>
             </section>
             <div className={styles.expand}></div>
             <div className={styles.grilla}>
-              <Image src="/images/grilla.svg" alt="hello" fill={true} />
+              <Image src="/images/grilla.svg" alt="hello" fill={true}  loading="lazy" />
             </div>
           </section>
           <div className={styles.coachMobile}>

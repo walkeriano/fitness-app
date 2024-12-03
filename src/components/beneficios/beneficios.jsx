@@ -84,6 +84,7 @@ export default function Beneficios() {
             src="/images/benefits-one.jpg"
             alt="image-service"
             fill={true}
+            loading="lazy"
           />
         </div>
         {detailsOne && (
@@ -140,6 +141,7 @@ export default function Beneficios() {
             src="/images/benefits-two.jpg"
             alt="image-service"
             fill={true}
+             loading="lazy"
           />
         </div>
         {detailsTwo && (
@@ -198,6 +200,7 @@ export default function Beneficios() {
             src="/images/benefits-tre.jpg"
             alt="image-service"
             fill={true}
+             loading="lazy"
           />
         </div>
         {detailsTre && (
@@ -254,6 +257,7 @@ export default function Beneficios() {
             src="/images/benefits-for.jpg"
             alt="image-service"
             fill={true}
+             loading="lazy"
           />
         </div>
         {detailsFor && (

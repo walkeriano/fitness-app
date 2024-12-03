@@ -52,6 +52,7 @@ export default function Header() {
           alt="logo-quesada"
           width={200}
           height={60}
+          priority={true}
         />
       </Link>
       {menu ? (
@@ -71,6 +72,7 @@ export default function Header() {
               alt="logo-quesada"
               width={210}
               height={60}
+              loading="lazy"
             />
             <button onClick={() => setMenu(true)}>
               <FontAwesomeIcon

@@ -95,6 +95,8 @@ export default function Perfil() {
                   src={userProfile?.imageUrl}
                   alt="image-persons"
                   fill={true}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 50vw, 50vw"
                 />
               </section>
             </section>
@@ -185,6 +187,8 @@ export default function Perfil() {
                       alt="image-coach"
                       fill={true}
                       className={styles.imgItem}
+                      loading="lazy"
+                      sizes="(max-width: 768px) 50vw, 50vw"
                     />
                   )}
                 </div>
@@ -218,7 +222,7 @@ export default function Perfil() {
                   </Link>
                 </section>
                 <div className={styles.imgFood}>
-                  <Image src="/images/food.png" alt="image-coach" fill={true} />
+                  <Image src="/images/food.png" alt="image-coach" fill={true} loading="lazy" sizes="(max-width: 768px) 50vw, 50vw" />
                 </div>
               </Link>
             </section>
@@ -286,7 +290,7 @@ export default function Perfil() {
               </Link>
             </section>
             <div className={styles.imgFood}>
-              <Image src="/images/food.png" alt="image-coach" fill={true} />
+              <Image src="/images/food.png" alt="image-coach" fill={true} loading="lazy" />
             </div>
           </Link>
           <section className={styles.containerContact}>

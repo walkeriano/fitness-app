@@ -70,6 +70,7 @@ export default function Alimentacion() {
                   src="/images/icons/texture.svg"
                   alt="textura"
                   fill={true}
+                  loading="lazy"
                 />
               </div>
             </section>
