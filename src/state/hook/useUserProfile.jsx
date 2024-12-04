@@ -58,7 +58,7 @@ const useUserProfile = (user) => {
               altura: parseFloat(profileData.altura) || 0,
               edad: parseInt(profileData.edad, 10) || 0,
               genero: profileData.genero,
-              actividad: profileData.actividad,
+              nivel: profileData.nivel,
               objetivoFisico: profileData.objetivoFisico,
             };
 
@@ -88,7 +88,7 @@ const useUserProfile = (user) => {
   }, []); 
 
   const calculateCaloriesAndMacros = (data) => {
-    const { peso, altura, edad, genero, actividad, objetivoFisico, nivel } = data;
+    const { peso, altura, edad, genero, objetivoFisico, nivel } = data;
   
     let bmr;
     if (genero && genero.toLowerCase() === "masculino") {
@@ -123,13 +123,13 @@ const useUserProfile = (user) => {
   
     // Ajuste del TDEE según el objetivo físico
     switch (objetivoFisico) {
-      case "definicion":
+      case "definición":
         tdee *= 0.85;
         break;
-      case "masaMuscular":
+      case "masa muscular":
         tdee *= 1.15;
         break;
-      case "recomposicionCorporal":
+      case "recomposicion corporal":
         break;
       default:
         console.error("Objetivo físico no especificado o incorrecto.");

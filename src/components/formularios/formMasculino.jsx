@@ -1243,7 +1243,7 @@ export default function FormMasculino() {
               <label
                 htmlFor="objetivoFisico1"
                 className={`${styles.itemObjetivo} ${
-                  selectedObjetivoFisico === "definicion" ? styles.valid : ""
+                  selectedObjetivoFisico === "definición" ? styles.valid : ""
                 }`}
               >
                 <div className={styles.titleBox}>
@@ -1257,7 +1257,7 @@ export default function FormMasculino() {
                     required: "El objetivo físico es obligatoria",
                     onChange: handleObjetivoFisicoChange,
                   })}
-                  value="definicion"
+                  value="definición"
                 />
                 <Image
                   src="/images/objetivo-1.jpg"
@@ -1268,7 +1268,7 @@ export default function FormMasculino() {
               <label
                 htmlFor="objetivoFisico2"
                 className={`${styles.itemObjetivo} ${
-                  selectedObjetivoFisico === "masaMuscular" ? styles.valid : ""
+                  selectedObjetivoFisico === "masa muscular" ? styles.valid : ""
                 }`}
               >
                 <div className={styles.titleBox}>
@@ -1283,7 +1283,7 @@ export default function FormMasculino() {
                     required: "El objetivo físico es obligatoria",
                     onChange: handleObjetivoFisicoChange,
                   })}
-                  value="masaMuscular"
+                  value="masa muscular"
                 />
                 <Image
                   src="/images/objetivo-2.jpg"
@@ -1294,7 +1294,7 @@ export default function FormMasculino() {
               <label
                 htmlFor="objetivoFisico3"
                 className={`${styles.itemObjetivo} ${
-                  selectedObjetivoFisico === "recomposicionCorporal"
+                  selectedObjetivoFisico === "recomposicion corporal"
                     ? styles.valid
                     : ""
                 }`}
@@ -1310,7 +1310,7 @@ export default function FormMasculino() {
                     required: "El objetivo físico es obligatoria",
                     onChange: handleObjetivoFisicoChange,
                   })}
-                  value="recomposicionCorporal"
+                  value="recomposicion corporal"
                 />
                 <Image
                   src="/images/objetivo-3.jpg"
