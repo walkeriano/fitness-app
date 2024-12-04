@@ -11,7 +11,7 @@ export default function PerfilSuspendido() {
     <>
       <Head>
       <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
           Quesada Coach App - Planes de entrenamiento y nutrición personalizados
           creados por expertos
@@ -24,9 +24,16 @@ export default function PerfilSuspendido() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.contGeneralPerfil}>
-        <HeaderPerfil />
+      <section className={styles.flexGeneral}>
+          <section className={styles.flexHeader}>
+            <HeaderPerfil />
+          </section>
+          <section className={styles.flexPerfil}>
+          <PerfilSuspendidoComp />
+          </section>
+        </section>
         <span className={styles.blur}></span>
-        <PerfilSuspendidoComp />
+        
         <Footer />
       </main>
     </>
