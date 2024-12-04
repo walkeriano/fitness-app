@@ -19,7 +19,7 @@ export default function Closing({ goUp }) {
           className={styles.icon}
         />
       </section>
-      <p>fitness coach app</p>
+      <p>quesada coach app</p>
     </section>
   );
 }

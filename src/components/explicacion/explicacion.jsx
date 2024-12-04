@@ -64,6 +64,7 @@ export default function Explicacion() {
           />
         </span>
       </Link>
+      <div className={styles.blur}></div>
     </section>
   );
 }

@@ -26,6 +26,9 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
+    "@babel/plugin-transform-private-methods": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "babel-loader": "^9.2.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.13"
   }
