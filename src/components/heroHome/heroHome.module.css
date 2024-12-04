@@ -387,8 +387,11 @@
               margin-left: -35px;
               outline: 5px solid #0c0c0c;
               z-index: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
 
-              & .icon{
+              & .iconSpan{
                 font-size: 0.8rem;
                 margin-left: 5px;
               }
@@ -435,6 +438,7 @@
               align-items: center;
               justify-content: center;
               border-radius: 50%;
+              text-decoration: none;
 
               & .iconChannel{
                 font-size: 1.5rem;

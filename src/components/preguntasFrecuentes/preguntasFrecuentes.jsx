@@ -8,6 +8,8 @@ import {
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
+import Link from "next/link";
+
 
 export default function PreguntasFrecuentes() {
   const [showOne, setShowOne] = useState(true);
@@ -26,27 +28,27 @@ export default function PreguntasFrecuentes() {
           <span>frecuentes</span>
         </h4>
         <div className={stylesFrecuentQuestions.questionsChannels}>
-          <a href="/">
+          <Link href="/">
             <FontAwesomeIcon
               className={stylesFrecuentQuestions.icon}
               icon={faFacebookF}
               size="2x"
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link href="/">
             <FontAwesomeIcon
               className={stylesFrecuentQuestions.icon}
               icon={faInstagram}
               size="2x"
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link href="/">
             <FontAwesomeIcon
               className={stylesFrecuentQuestions.icon}
               icon={faTiktok}
               size="2x"
             />
-          </a>
+          </Link>
         </div>
       </section>
       <section className={stylesFrecuentQuestions.sectionAll}>

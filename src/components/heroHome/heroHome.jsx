@@ -22,12 +22,13 @@ export default function HeroHome() {
   const divRef = useRef(null);
 
   const containerRef = useRef(null);
-  
+
   useEffect(() => {
     const triggerId = "myComponentAnimation";
 
     const initAnimation = () => {
-      const containerHeight = containerRef.current.getBoundingClientRect().height;
+      const containerHeight =
+        containerRef.current.getBoundingClientRect().height;
       const displacement = containerHeight * 1.1;
 
       gsap.to(divRef.current, {
@@ -40,16 +41,17 @@ export default function HeroHome() {
           start: "top 15%",
           end: `+=${displacement}`,
           scrub: 1,
-          onUpdate: self => {
+          onUpdate: (self) => {
             if (self.isActive) {
-              const updatedHeight = containerRef.current.getBoundingClientRect().height;
+              const updatedHeight =
+                containerRef.current.getBoundingClientRect().height;
               const newDisplacement = updatedHeight * 1.1;
               if (newDisplacement !== displacement) {
                 self.vars.end = `+=${newDisplacement}`;
               }
             }
-          }
-        }
+          },
+        },
       });
     };
 
@@ -136,11 +138,11 @@ export default function HeroHome() {
                 />
               </div>
               <div className={styles.spanta}>
-                +150
+                <p>+150</p>
                 <FontAwesomeIcon
                   icon={faStar}
                   size="2x"
-                  className={styles.icon}
+                  className={styles.iconSpan}
                 />
               </div>
             </section>
@@ -155,27 +157,27 @@ export default function HeroHome() {
               />
             </div>
             <section className={styles.channelSocial}>
-              <a href="/" className={styles.boxchannel}>
+              <Link href="/" className={styles.boxchannel}>
                 <FontAwesomeIcon
                   icon={faFacebookF}
                   size="2x"
                   className={styles.iconChannel}
                 />
-              </a>
-              <a href="/" className={styles.boxchannel}>
+              </Link>
+              <Link href="/" className={styles.boxchannel}>
                 <FontAwesomeIcon
                   icon={faInstagram}
                   size="2x"
                   className={styles.iconChannel}
                 />
-              </a>
-              <a href="/" className={styles.boxchannel}>
+              </Link>
+              <Link href="/" className={styles.boxchannel}>
                 <FontAwesomeIcon
                   icon={faTiktok}
                   size="2x"
                   className={styles.iconChannel}
                 />
-              </a>
+              </Link>
             </section>
           </section>
           <div className={styles.butonsHero}>
