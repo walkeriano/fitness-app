@@ -19,7 +19,7 @@ export default function AccesoFitnessApp() {
   const { user, login } = useContext(AuthContext);
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
- 
+
   const {
     register,
     handleSubmit,
@@ -29,21 +29,19 @@ export default function AccesoFitnessApp() {
   const router = useRouter();
 
   useEffect(() => {
-    
     if (user) {
       router.push("/perfil-coach-fitness-app");
     }
   }, [user, router]);
 
-  
   const onSubmit = async (data) => {
-    setError(null); 
+    setError(null);
 
     try {
       await login(data.email, data.password);
-      router.push("/perfil-coach-fitness-app"); 
+      router.push("/perfil-coach-fitness-app");
     } catch (error) {
-      setError(error.message); 
+      setError(error.message);
     }
   };
 
@@ -51,8 +49,16 @@ export default function AccesoFitnessApp() {
     <>
       <Head>
         <meta charSet="UTF-8" />
-        <title>Quesada Coach App</title>
-        <meta name="description" content="Quesada coach app" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+          Quesada Coach App - Planes de entrenamiento y nutrición personalizados
+          creados por expertos
+        </title>
+        <meta
+          name="description"
+          content="Descubre Quesada Coach App, Planes de entrenamiento y nutrición personalizados creados por
+            expertos, diseñados para transformar tu cuerpo y tu vida"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.contGeneral}>

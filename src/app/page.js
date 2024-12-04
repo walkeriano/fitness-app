@@ -30,9 +30,39 @@ export default function Home() {
     <>
       <Head>
         <meta charSet="UTF-8" />
-        <title>Quesada Coach App</title>
-        <meta name="description" content="Quesada coach app" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+          Quesada Coach App - Planes de entrenamiento y nutrición personalizados
+          creados por expertos
+        </title>
+        <meta
+          name="description"
+          content="Descubre Quesada Coach App, Planes de entrenamiento y nutrición personalizados creados por
+            expertos, diseñados para transformar tu cuerpo y tu vida"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta
+          name="keywords"
+          content="fitness, Quesada Coach, alimentación saludalbe, bienestar, entrenamiento personalizado"
+        />
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          property="og:title"
+          content="Quesada Coach App - Planes de entrenamiento y nutrición personalizados
+          creados por expertos"
+        />
+        <meta
+          property="og:description"
+          content="Descubre Quesada Coach App, Planes de entrenamiento y nutrición personalizados creados por
+            expertos, diseñados para transformar tu cuerpo y tu vida."
+        />
+        <meta
+          property="og:image"
+          content="https://quesadacoach.com/path-to-image.jpg"
+        />
+        <meta property="og:url" content="https://quesadacoach.com" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://quesadacoach.com" />
       </Head>
       <main className={styles.main}>
         {loading ? (
@@ -40,14 +70,14 @@ export default function Home() {
         ) : (
           <>
             <div ref={goUp} className={styles.ref}></div>
-            <Header/>
+            <Header />
             <HeroHome />
             <Presentacion />
             <SliderCasos />
             <Explicacion />
             <Beneficios />
             <Onetoone />
-            <PreguntasFrecuentes/>
+            <PreguntasFrecuentes />
             <Closing goUp={goUp} />
             <Footer />
           </>

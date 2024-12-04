@@ -74,13 +74,12 @@ export default function HeroHome() {
       <section className={styles.info}>
         <h1>
           Tu mejor versión,
-          <span>a un click de distancia</span>
+          <span>a un click</span>
         </h1>
         <section className={styles.contInfo}>
           <h2>
             Planes de entrenamiento y nutrición personalizados creados por
-            expertos, diseñados para transformar tu cuerpo y tu vida. Sin
-            importar dónde estés, el cambio comienza ahora
+            expertos, diseñados para transformar tu cuerpo y tu vida
           </h2>
           <div className={styles.slide}>
             <p>Seguir deslizando</p>
