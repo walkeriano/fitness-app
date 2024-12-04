@@ -196,11 +196,11 @@ export default function FormAumentarNivel() {
       </Link>
       {loadingForm && <LoadingExtra />}
       <section className={styles.contBtnsAumentar}>
-        <section className={styles.contUser}>
+        <section className={styles.contUserAumentar}>
           <FontAwesomeIcon
             icon={faArrowUpRightDots}
             size="2x"
-            className={styles.iconTwo}
+            className={styles.iconTwoAumentar}
           />
           <h4>Aumentar nivel de<br/>rutina y dieta</h4>
           <h5>{user ? user.email : "Usuario no disponible"}l</h5>
@@ -259,13 +259,13 @@ export default function FormAumentarNivel() {
         )}
       </section>
       <section ref={formRef} className={styles.formContainerAumentar}>
-        <div className={styles.question}>
-          <section className={styles.title}>
+        <div className={styles.questionAumentar}>
+          <section className={styles.titleAumentar}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
             <h4 className={styles.firstitle}>Detalles físicos</h4>
           </section>
-          <section className={styles.contForm}>
-            <section className={styles.flexBox}>
+          <section className={styles.contFormAumentar}>
+            <section className={styles.flexBoxAumentar}>
               <div className={styles.itemInput}>
                 <label>Peso (kg):</label>
                 <input
@@ -318,13 +318,13 @@ export default function FormAumentarNivel() {
             </section>
           </section>
         </div>
-        <div className={styles.question}>
-          <section className={styles.title}>
+        <div className={styles.questionAumentar}>
+          <section className={styles.titleAumentar}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
             <h4 className={styles.firstitle}>Definir intensidad</h4>
           </section>
-          <section className={styles.contForm}>
-            <section className={styles.flexBoxEdad}>
+          <section className={styles.contFormAumentar}>
+            <section className={styles.flexBoxEdadAumentar}>
               <label
                 htmlFor="nivel1"
                 className={`${styles.boxEdad} ${
@@ -382,15 +382,15 @@ export default function FormAumentarNivel() {
             </section>
           </section>
         </div>
-        <div className={styles.question}>
-          <section className={styles.title}>
+        <div className={styles.questionAumentar}>
+          <section className={styles.titleAumentar}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
             <h4 className={styles.firstitle}>
               ¿Cuántas comidas sólidas al día prefieres hacer?
             </h4>
           </section>
-          <section className={styles.contForm}>
-            <section className={styles.flexBoxState}>
+          <section className={styles.contFormAumentar}>
+            <section className={styles.flexBoxStateAumentar}>
               <label
                 htmlFor="comidasXdia1"
                 className={`${styles.btnState} ${
@@ -461,15 +461,15 @@ export default function FormAumentarNivel() {
             </section>
           </section>
         </div>
-        <div className={styles.question}>
-          <section className={styles.title}>
+        <div className={styles.questionAumentar}>
+          <section className={styles.titleAumentar}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
             <h4 className={styles.firstitle}>
               ¿Cuál es tu objetivo físico ideal?
             </h4>
           </section>
-          <section className={styles.contForm}>
-            <section className={styles.flexBoxObjetivo}>
+          <section className={styles.contFormAumentar}>
+            <section className={styles.flexBoxObjetivoAumentar}>
               <label
                 htmlFor="objetivoFisico1"
                 className={`${styles.itemObjetivo} ${
