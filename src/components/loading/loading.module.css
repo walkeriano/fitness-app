@@ -10,42 +10,58 @@
   position: relative;
   overflow-y: hidden;
   overflow-x: hidden;
+
+  & .blur {
+    width: 200%;
+    height: 55%;
+    top: -35%;
+    z-index: -1;
+    position: absolute;
+    background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
+  }
+
+  & .blurTwo {
+    width: 200%;
+    height: 55%;
+    bottom: -35%;
+    z-index: -1;
+    position: absolute;
+    background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
+  }
+
+  & .loader {
+    height: 4px;
+    width: 160px;
+    --c: no-repeat linear-gradient(#006fff 0 0);
+    background: var(--c), var(--c), #00367d;
+    background-size: 60% 100%;
+    animation: l16 4s infinite;
+  }
 }
 
-.blur{
-  width: 150%;
-  height: 400px;
-  top: -300px;
-  z-index: -1;
-  position: absolute;
-  background-image: radial-gradient(
-      closest-side,
-      #002D9D,#0c0c0c00
-    );
-}
-
-.blurTwo{
-  width: 150%;
-  height: 400px;
-  bottom: -300px;
-  z-index: -1;
-  position: absolute;
-  background-image: radial-gradient(
-      closest-side,
-      #002D9D,#0c0c0c00
-    );
-}
-
-.loader {
-  height: 4px;
-  width: 160px;
-  --c:no-repeat linear-gradient(#006fff 0 0);
-  background: var(--c),var(--c),#00367d;
-  background-size: 60% 100%;
-  animation: l16 4s infinite;
-}
 @keyframes l16 {
-  0%   {background-position:-150% 0,-150% 0}
-  66%  {background-position: 250% 0,-150% 0}
-  100% {background-position: 250% 0, 250% 0}
+  0% {
+    background-position: -150% 0, -150% 0;
+  }
+  66% {
+    background-position: 250% 0, -150% 0;
+  }
+  100% {
+    background-position: 250% 0, 250% 0;
+  }
+}
+
+
+@media (min-width: 850px){
+  .contLoading{
+    & .blur {
+      width: 100%;
+      top: -40%;
+    }
+  
+    & .blurTwo {
+      width: 100%;
+      bottom: -40%;
+    }
+  }
 }
