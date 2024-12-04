@@ -345,7 +345,7 @@
             align-items: center;
             justify-content: center;
 
-            & div{
+            & .divG{
               width: 75px;
               max-width: 75px;
               aspect-ratio: 1;
@@ -363,11 +363,11 @@
               }
             }
 
-            & div:nth-child(1){
+            & .divG:nth-child(1){
               margin-left: 0px;
             }
 
-            & div:hover::after{
+            & .divG:hover::after{
               content: "";
               position: absolute;
               left: 0px;
@@ -378,7 +378,7 @@
               cursor: pointer;
             }
 
-            & span{
+            & .spanta{
               font-size: 1rem;
               padding: 4px 8px;
               border-radius: 50px;
@@ -427,7 +427,7 @@
             justify-content: center;
             gap: 15px;
 
-            & a{
+            & .boxchannel{
               border: 1px solid #6d6d6d;
               width:50px;
               aspect-ratio: 1;
@@ -442,7 +442,7 @@
               }
             }
 
-            & a:hover{
+            & .boxchannel:hover{
               border: 1px solid #006fff;
               background-color: #006fff;
 

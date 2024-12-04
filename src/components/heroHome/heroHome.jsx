@@ -99,7 +99,7 @@ export default function HeroHome() {
               />
             </div>
             <section className={styles.recomendacion}>
-              <div>
+              <div className={styles.divG}>
                 <Image
                   src="/images/caso-01.jpg"
                   alt="reputacion-1"
@@ -108,7 +108,7 @@ export default function HeroHome() {
                   sizes="(max-width: 75px)"
                 />
               </div>
-              <div>
+              <div className={styles.divG}>
                 <Image
                   src="/images/caso-04.jpg"
                   alt="reputacion-1"
@@ -117,7 +117,7 @@ export default function HeroHome() {
                   sizes="(max-width: 75px)"
                 />
               </div>
-              <div>
+              <div className={styles.divG}>
                 <Image
                   src="/images/caso-06.jpg"
                   alt="reputacion-1"
@@ -126,7 +126,7 @@ export default function HeroHome() {
                   sizes="(max-width: 75px)"
                 />
               </div>
-              <div>
+              <div className={styles.divG}>
                 <Image
                   src="/images/caso-08.jpg"
                   alt="reputacion-1"
@@ -135,7 +135,7 @@ export default function HeroHome() {
                   sizes="(max-width: 75px)"
                 />
               </div>
-              <span>
+              <span className={styles.spanta}>
                 +150
                 <FontAwesomeIcon
                   icon={faStar}
@@ -155,21 +155,21 @@ export default function HeroHome() {
               />
             </div>
             <section className={styles.channelSocial}>
-              <a href="">
+              <a href="/" className={styles.boxchannel}>
                 <FontAwesomeIcon
                   icon={faFacebookF}
                   size="2x"
                   className={styles.icon}
                 />
               </a>
-              <a href="">
+              <a href="/" className={styles.boxchannel}>
                 <FontAwesomeIcon
                   icon={faInstagram}
                   size="2x"
                   className={styles.icon}
                 />
               </a>
-              <a href="">
+              <a href="/" className={styles.boxchannel}>
                 <FontAwesomeIcon
                   icon={faTiktok}
                   size="2x"
