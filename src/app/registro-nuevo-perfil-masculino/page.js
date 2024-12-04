@@ -1,11 +1,25 @@
 "use client";
+import React, { useContext, useEffect } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
 import FormMasculino from "@/components/formularios/formMasculino";
 import HeaderPerfil from "@/components/headerForm/headerForm";
 import Footer from "@/components/footer/footer";
+import AuthContext from "@/state/auth/auth-context";
+import { useRouter } from "next/navigation";
 
 export default function PerfilMasculino() {
+  const { user } = useContext(AuthContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/perfil-coach-fitness-app");
+    }
+  }, [user, router]);
+
+
   return (
     <>
       <Head>

@@ -11,148 +11,148 @@
   position: fixed;
   z-index: 100;
   animation: header 1.5s linear;
+}
 
-  & .ancorPerfil {
-    width: 47px;
-    height: 47px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid transparent;
+.ancorPerfil {
+  width: 47px;
+  height: 47px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+}
 
-    & .userImage {
-      width: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.ancorPerfil .icon {
+  font-size: 2rem;
+  color: #3d3d3d;
+}
 
-      & .imgBox {
-        width: 50px;
-        height: 50px;
-        position: relative;
+.ancorPerfil p {
+  display: none;
+}
 
-        & img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 50%;
-          border: 2px solid #006fff;
-        }
-      }
+.userImage {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      & p {
-        display: none;
-      }
-    }
+.userImage p {
+  display: none;
+}
 
-    & .icon {
-      font-size: 2rem;
-      color: #3d3d3d;
-    }
+.imgBox {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
 
-    & p {
-      display: none;
-    }
-  }
+.imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #006fff;
+}
 
-  & .menu {
-    width: 47px;
-    height: 47px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.menu {
+  width: 47px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    & .iconLeft {
-      font-size: 1.9rem;
-      color: #3d3d3d;
-    }
+.menu .iconLeft {
+  font-size: 1.9rem;
+  color: #3d3d3d;
+}
 
-    & p {
-      display: none;
-    }
-  }
+.menu p {
+  display: none;
+}
 
-  & .menuShow {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    background-color: #006fff;
-    top: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    backdrop-filter: blur(10px);
+.menuShow {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: #006fff;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  backdrop-filter: blur(10px);
+}
 
-    & .headMenu {
-      width: 100%;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0px 25px;
+.headMenu {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 25px;
+}
 
-      & button {
-        width: 45px;
-        height: 45px;
-        border: 2px solid white;
-        background-color: transparent;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.headMenu button {
+  width: 45px;
+  height: 45px;
+  border: 2px solid white;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        & .icon {
-          color: white;
-          font-size: 1.5rem;
-        }
-      }
-    }
+.headMenu button .icon {
+  color: white;
+  font-size: 1.5rem;
+}
 
-    & ul {
-      width: 85%;
-      height: 75%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 25px;
+.menuShow ul {
+  width: 85%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 25px;
+}
 
-      & li {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        width: 100%;
+.menuShow ul li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+}
 
-        & a {
-          text-decoration: none;
-          color: white;
-          font-size: 2rem;
-          font-family: "Montserrat";
-          border-bottom: 2px solid transparent;
-        }
+.menuShow ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+  font-family: "Montserrat";
+  border-bottom: 2px solid transparent;
+}
 
-        & span {
-          background-color: white;
-          width: 45px;
-          height: 45px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+.menuShow ul li span {
+  background-color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-          & .icon {
-            color: #006fff;
-            font-size: 1.6rem;
-            transform: rotate(-45deg);
-          }
-        }
-      }
-    }
-  }
+.menuShow ul li span .icon {
+  color: #006fff;
+  font-size: 1.6rem;
+  transform: rotate(-45deg);
 }
 
 @media (min-width: 850px) {
@@ -164,124 +164,119 @@
     height: 95px;
     justify-content: space-between;
     padding: 0px 25px;
+  }
 
-    & .ancorPerfil {
-      width: auto;
-      text-decoration: none;
-      border: 1px solid transparent;
-      padding: 0px 10px;
-      border-radius: 50px;
+  .ancorPerfil {
+    width: auto;
+    text-decoration: none;
+    border: 1px solid transparent;
+    padding: 0px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .ancorPerfil .icon {
+    font-size: 1.8rem;
+  }
+
+  .ancorPerfil p {
+    display: block;
+    margin-left: 10px;
+    font-size: 1rem;
+    color: #3d3d3d;
+    letter-spacing: 0.5px;
+  }
+
+  .imgBox {
+    width: 35px;
+    height: 35px;
+    position: relative;
+  }
+
+  .userImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #006fff;
+  }
+
+  .userImage p {
+    display: block;
+    color: white;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  .ancorPerfil:hover {
+    border: 1px solid #1f1f1f;
+  }
+
+  .menu {
+    width: auto;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid transparent;
+    padding: 0px 15px 0px 5px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .menu .iconLeft {
+    font-size: 1.7rem;
+  }
+
+  .menu p {
+    display: block;
+    margin-left: 10px;
+    font-size: 1rem;
+    color: #3d3d3d;
+    letter-spacing: 0.5px;
+  }
+
+  .menu:hover {
+    border: 1px solid #1f1f1f;
+  }
+
+  .menuShow {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: -5vw;
+  }
+
+  .headMenu {
+    width: 95%;
+
+    & button {
       cursor: pointer;
+    }
 
-      & .userImage {
-
-        & .imgBox {
-          width: 35px;
-          height: 35px;
-          position: relative;
-
-          & img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #006fff;
-          }
-        }
-
-        & p {
-          display: block;
-          color: white;
-          font-size: 1rem;
-          text-transform: capitalize;
-        }
-      }
+    & button:hover {
+      background-color: white;
 
       & .icon {
-        font-size: 1.8rem;
-      }
-
-      & p {
-        display: block;
-        margin-left: 10px;
-        font-size: 1rem;
-        color: #3d3d3d;
-        letter-spacing: 0.5px;
+        color: #006fff;
       }
     }
+  }
 
-    & .ancorPerfil:hover {
-      border: 1px solid #1f1f1f;
-    }
+  .menuShow ul {
+    width: 80%;
+    gap: 35px;
+  }
 
-    & .menu {
-      width: auto;
-      flex-direction: row-reverse;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border: 1px solid transparent;
-      padding: 0px 15px 0px 5px;
-      border-radius: 50px;
-      cursor: pointer;
+  .menuShow ul li {
+    gap: 25px;
+    width: auto;
+    cursor: pointer;
+  }
 
-      & .iconLeft {
-        font-size: 1.7rem;
-      }
-
-      & p {
-        display: block;
-        margin-left: 10px;
-        font-size: 1rem;
-        color: #3d3d3d;
-        letter-spacing: 0.5px;
-      }
-    }
-
-    & .menu:hover {
-      border: 1px solid #1f1f1f;
-    }
-
-    & .menuShow {
-      position: absolute;
-      width: 100vw;
-      height: 100vh;
-      top: 0px;
-      left: -5vw;
-
-      & .headMenu {
-        width: 95%;
-
-        & button {
-          cursor: pointer;
-        }
-
-        & button:hover {
-          background-color: white;
-
-          & .icon {
-            color: #006fff;
-          }
-        }
-      }
-
-      & ul {
-        width: 80%;
-        gap: 35px;
-
-        & li {
-          gap: 25px;
-          width: auto;
-          cursor: pointer;
-        }
-
-        & li:hover {
-          & a {
-            border-bottom: 2px solid white;
-          }
-        }
-      }
-    }
+  .menuShow ul li:hover a {
+    border-bottom: 2px solid white;
   }
 }
 

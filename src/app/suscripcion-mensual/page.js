@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import styles from "./page.module.css";
 import Head from "next/head";
 import Header from "@/components/header/header";
@@ -9,9 +9,20 @@ import HeroSub from "@/components/heroSub/heroSub";
 import Explicacion from "@/components/explicacion/explicacion";
 import Beneficios from "@/components/beneficios/beneficios";
 import Onetoone from "@/components/onetoone/onetoone";
+import AuthContext from "@/state/auth/auth-context";
+import { useRouter } from "next/navigation";
 
 export default function AccesUser() {
   const goUp = useRef(null);
+  const { user } = useContext(AuthContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/perfil-coach-fitness-app");
+    }
+  }, [user, router]);
 
   return (
     <>

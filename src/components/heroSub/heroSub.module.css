@@ -7,259 +7,262 @@
   gap: 40px;
   padding-top: 120px;
   margin-bottom: 70px;
+}
 
-  & .info {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 25px;
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
+}
 
-    & h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      text-transform: uppercase;
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-      font-family: "Montserrat";
-      letter-spacing: 4px;
-      color: #d4d4d4;
-      text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
-        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 
-      animation: btnEffect 2s ease-in-out;
-      gap: 4px;
+.info h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  font-family: "Montserrat";
+  letter-spacing: 4px;
+  color: #d4d4d4;
+  text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 
-      & span {
-        color: #0054c2;
-        text-shadow: 1px 0 #006fff, -1px 0 #006fff, 0 1px #006fff,
-          0 -1px #006fff, 1px 1px #006fff, -1px -1px #006fff, 1px -1px #006fff,
-          -1px 1px #006fff;
-        animation: btnEffectTwo 2s ease-in-out;
-      }
-    }
+  animation: btnEffect 2s ease-in-out;
+  gap: 4px;
+}
 
-    & h3{
-      width: 70%;
-      text-align: center;
-      color: white;
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-    }
+.info h2 span {
+  color: #0054c2;
+  text-shadow: 1px 0 #006fff, -1px 0 #006fff, 0 1px #006fff,
+    0 -1px #006fff, 1px 1px #006fff, -1px -1px #006fff, 1px -1px #006fff,
+    -1px 1px #006fff;
+  animation: btnEffectTwo 2s ease-in-out;
+}
 
-    & .price {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      position: relative;
+.info h3{
+  width: 70%;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
 
-      & p {
-        font-size: 1.5rem;
-        color: white;
-        letter-spacing: 0.5px;
-        animation: text 2s ease-in-out;
-      }
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
 
-      & p:nth-child(2) {
-        color: #979797;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
+.price p {
+  font-size: 1.5rem;
+  color: white;
+  letter-spacing: 0.5px;
+  animation: text 2s ease-in-out;
+}
 
-        & span {
-          width: 80px;
-          height: 2px;
-          background-color: #979797;
-          position: absolute;
-          transform: rotate(10deg);
-        }
-      }
-    }
+.price p:nth-child(2) {
+  color: #979797;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
 
-    & .contImg {
-      width: 100%;
-      height: 750px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.price p:nth-child(2) span {
+  width: 80px;
+  height: 2px;
+  background-color: #979797;
+  position: absolute;
+  transform: rotate(10deg);
+}
 
-      & .bgMockup{
-        display: block;
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-        animation: image 2s ease-in-out;
-      }
+.contImg {
+  width: 100%;
+  height: 750px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      & .bgMockupResponsive{
-        display: none;
-      }
+.bgMockup{
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  animation: image 2s ease-in-out;
+}
 
-      & span {
-        position: absolute;
-        width: 500px;
-        height: 800px;
-        border-radius: 50%;
-        background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
-        z-index: -1;
-        animation: blur 2s ease-in-out;
-      }
-    }
-  }
+.bgMockupResponsive{
+  display: none;
+}
 
-  & .contForm {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
+.contImg span {
+  position: absolute;
+  width: 500px;
+  height: 800px;
+  border-radius: 50%;
+  background-image: radial-gradient(closest-side, #002d9d, #0c0c0c00);
+  z-index: -1;
+  animation: blur 2s ease-in-out;
+}
 
-    & h3 {
-      color: white;
-      font-size: 1.3rem;
-      text-align: center;
-      width: 75%;
-      letter-spacing: 1px;
-    }
+.contForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
 
-    & .form {
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
+.contForm h3 {
+  color: white;
+  font-size: 1.3rem;
+  text-align: center;
+  width: 75%;
+  letter-spacing: 1px;
+}
 
-      & .inputCont {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 10px;
+.form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
 
-        & label {
-          color: white;
-          font-size: 16px;
-          letter-spacing: 1px;
-          padding-left: 15px;
-        }
+.form .error {
+  color: red;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  margin-left: 15px;
+}
 
-        & input {
-          width: 100%;
-          height: 70px;
-          border-radius: 15px;
-          border: 1px solid #212121;
-          background-color: #131313;
-          padding-left: 15px;
-          font-size: 16px;
-          color: white;
-          letter-spacing: 1px;
-          outline: none;
-        }
+.inputCont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
 
-        & input::placeholder {
-          color: #848484;
-          letter-spacing: 1px;
-          font-size: 16px;
-        }
+.inputCont label {
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding-left: 15px;
+}
 
-        & input:hover,
-        & input:focus,
-        & input:active {
-          border: 1px solid #006fff;
-        }
+.inputCont input {
+  width: 100%;
+  height: 70px;
+  border-radius: 15px;
+  border: 1px solid #212121;
+  background-color: #131313;
+  padding-left: 15px;
+  font-size: 16px;
+  color: white;
+  letter-spacing: 1px;
+  outline: none;
+}
 
-        & input:-webkit-autofill,
-        & input:-webkit-autofill:hover,
-        & input:-webkit-autofill:focus,
-        & input:-webkit-autofill:active {
-          -webkit-text-fill-color: white !important; /* Cambia el color del texto */
-          -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
-          box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
-          transition: background-color 5000s ease-in-out 0s;
-          font-size: 16px;
-        }
+.inputCont input::placeholder {
+  color: #848484;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
 
-        & .error {
-          color: yellow;
-          font-size: 0.9rem;
-          letter-spacing: 1px;
-          margin-left: 15px;
-          border-bottom: 1px solid yellow;
-          padding-bottom: 3px;
-        }
+.inputCont input:hover,
+.inputCont input:focus,
+.inputCont input:active {
+  border: 1px solid #006fff;
+}
 
-        .valid {
-          border-color: #006fff;
-        }
+.inputCont input:-webkit-autofill,
+.inputCont input:-webkit-autofill:hover,
+.inputCont input:-webkit-autofill:focus,
+.inputCont input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important; /* Cambia el color del texto */
+  -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
+  box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: 16px;
+}
 
-        .invalid {
-          border-color: #212121;
-        }
-      }
+.inputCont .error {
+  color: yellow;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-left: 15px;
+  border-bottom: 1px solid yellow;
+  padding-bottom: 3px;
+}
 
-      & .checkbox {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        justify-content: center;
-        gap: 15px;
+.valid {
+  border-color: #006fff;
+}
 
-        & label {
-          color: #6c6c6c;
-          font-size: 0.8rem;
-          letter-spacing: 0.5px;
-        }
-      }
+.invalid {
+  border-color: #212121;
+}
 
-      & .error {
-        color: red;
-        font-size: 0.9rem;
-        letter-spacing: 0.5px;
-        margin-left: 15px;
-      }
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+  gap: 15px;
+}
 
-      & .btnSend {
-        width: 100%;
-        height: 65px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 10px;
-        padding: 0px 20px;
-        border: none;
-        text-transform: uppercase;
-        color: #006fff;
-        font-size: 0.9rem;
-        background-color: white;
+.checkbox label {
+  color: #6c6c6c;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
 
-        & span {
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: #006fff;
-          letter-spacing: 0.5px;
+.btnSend {
+  width: 100%;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 0px 20px;
+  border: none;
+  text-transform: uppercase;
+  color: #006fff;
+  font-size: 0.9rem;
+  background-color: white;
 
-          & .icon {
-            color: white;
-            font-size: 1.3rem;
-            transform: rotate(-45deg);
-          }
-        }
-      }
-    }
-  }
+  
+}
+
+.btnSend span {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #006fff;
+  letter-spacing: 0.5px;
+}
+
+.btnSend span .icon {
+  color: white;
+  font-size: 1.3rem;
+  transform: rotate(-45deg);
 }
 
 @keyframes btnEffect {
@@ -314,115 +317,113 @@
 }
 
 @media (min-width: 850px){
-  .contHero {
-    & .info {
-      gap: 35px;
-  
-      & h2 {
-        font-size: 4.2vw;
-        gap: 10px;
-      }
-  
-      & h3{
-        font-size: 1.6rem;
-      }
-  
-      & .price {
-        gap: 25px;
-  
-        & p {
-          font-size: 1.8rem;
-        }
-  
-        & p:nth-child(2) {
-          font-size: 1.8rem;
-        }
-      }
-  
-      & .contImg {
-        width: 70%;
-        height: 70vh;
-  
-        & .bgMockup {
-          display: none;
-        }
+  .info {
+    gap: 35px;
+  }
 
-        & .bgMockupResponsive{
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          animation: image 2s ease-in-out;
-        }
-  
-        & span {
-          width: 120vw;
-          height: 800px;
-        }
-      }
-    }
-  
-    & .contForm {
-      width: 60%;
-      max-width: 600px;
-      margin-top: 50px;
-      gap: 55px;
-      margin-bottom: 150px;
-  
-      & h3 {
-        font-size: 1.5rem;
-        width: 100%;
-      }
-  
-      & .form {
-        gap: 35px;
-  
-        & .btnSend {
-          width: 100%;
-          height: 65px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          border-radius: 10px;
-          padding: 0px 20px;
-          border: none;
-          text-transform: uppercase;
-          color: #006fff;
-          font-size: 0.9rem;
-          background-color: white;
-  
-          & span {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #006fff;
-            letter-spacing: 0.5px;
-  
-            & .icon {
-              color: white;
-              font-size: 1.3rem;
-              transform: rotate(-45deg);
-            }
-          }
-        }
+  .info h2 {
+    font-size: 4.2vw;
+    gap: 10px;
+  }
 
-        & .btnSend:hover{
-          background-color: #006fff;
-          color: white;
-          cursor: pointer;
+  .info h3{
+    font-size: 1.6rem;
+  }
 
-          & span{
-            background-color: white;
+  .price {
+    gap: 25px;
+  }
 
-            & .icon{
-              color: #006fff;
-            }
-          }
-        }
-      }
-    }
+  .price p {
+    font-size: 1.8rem;
+  }
+
+  .price p:nth-child(2) {
+    font-size: 1.8rem;
+  }
+
+  .contImg {
+    width: 70%;
+    height: 70vh;
+  }
+
+  .bgMockup {
+    display: none;
+  }
+
+  .bgMockupResponsive{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: image 2s ease-in-out;
+  }
+
+  .contImg span {
+    width: 120vw;
+    height: 800px;
+  }
+
+  .contForm {
+    width: 60%;
+    max-width: 600px;
+    margin-top: 50px;
+    gap: 55px;
+    margin-bottom: 150px;
+  }
+
+  .contForm h3 {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  .form {
+    gap: 35px;
+  }
+
+  .btnSend {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 0px 20px;
+    border: none;
+    text-transform: uppercase;
+    color: #006fff;
+    font-size: 0.9rem;
+    background-color: white;
+  }
+
+  .btnSend span {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #006fff;
+    letter-spacing: 0.5px;
+  }
+
+  .btnSend span .icon {
+    color: white;
+    font-size: 1.3rem;
+    transform: rotate(-45deg);
+  }
+
+  .btnSend:hover{
+    background-color: #006fff;
+    color: white;
+    cursor: pointer;
+  }
+
+  .btnSend:hover span{
+    background-color: white;
+  }
+
+  .btnSend:hover span .icon{
+    color: #006fff;
   }
 }

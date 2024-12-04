@@ -16,7 +16,15 @@ export default function RegistroNuevoPerfil() {
   const [newRegister, setNewRegister] = useState(true);
   const { user, register: registerUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+
   const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/perfil-coach-fitness-app");
+    }
+  }, [user, router]);
+
   const {
     register,
     handleSubmit,
