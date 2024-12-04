@@ -67,7 +67,8 @@
           padding-left: 15px;
         }
 
-        & input, & input[type="password"] {
+        & input,
+        & input[type="password"] {
           width: 100%;
           height: 70px;
           border-radius: 15px;
@@ -126,7 +127,7 @@
           margin-top: 5px;
         }
 
-        & .togglePassword{
+        & .togglePassword {
           position: absolute;
           right: 20px;
           width: 35px;
@@ -136,7 +137,7 @@
           border: none;
           color: rgb(148, 148, 148);
 
-          & .icon{
+          & .icon {
             font-size: 1rem;
           }
         }
@@ -261,7 +262,7 @@
         line-height: 1.3;
       }
 
-      & .parraf{
+      & .parraf {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -273,12 +274,10 @@
           letter-spacing: 1px;
         }
 
-        & .icon{
+        & .icon {
           font-size: 1.2rem;
         }
       }
-
-      
     }
 
     & .selectorContainer {
@@ -400,18 +399,16 @@
   }
 }
 
-
-@media (min-width: 850px){
-  .containerSelection{
+@media (min-width: 850px) {
+  .containerSelection {
     & .selector {
-  
       & .imgBoxSelector {
         height: 420px;
       }
-  
+
       & .selectorContainer {
         width: 90%;
-  
+
         & .linkGen {
           height: 320px;
         }

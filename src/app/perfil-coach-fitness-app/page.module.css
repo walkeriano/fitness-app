@@ -73,8 +73,8 @@
     }
 
     & .blur {
-        width: 800px;
-        left: -150px;
-      }
+      width: 800px;
+      left: -150px;
+    }
   }
 }

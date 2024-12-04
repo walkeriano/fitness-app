@@ -88,8 +88,8 @@ const useUserProfile = (user) => {
   }, []); 
 
   const calculateCaloriesAndMacros = (data) => {
-    const { peso, altura, edad, genero, actividad, objetivoFisico } = data;
-
+    const { peso, altura, edad, genero, actividad, objetivoFisico, nivel } = data;
+  
     let bmr;
     if (genero && genero.toLowerCase() === "masculino") {
       bmr = 88.362 + 13.397 * peso + 4.799 * altura - 5.677 * edad;
@@ -99,17 +99,29 @@ const useUserProfile = (user) => {
       console.error("Género no especificado o incorrecto.");
       return null;
     }
-
-    const actividadFactor = {
-      sedentario: 1.2,
-      ligero: 1.375,
-      moderado: 1.55,
-      activo: 1.725,
-      extra_activo: 1.9,
-    };
-    
-    let tdee = bmr * (actividadFactor[actividad] || 1.2);
-
+  
+    // Aquí modificamos el factor de actividad basado en el campo `nivel`
+    let actividadFactor;
+    switch (nivel) {
+      case "iniciado":
+        actividadFactor = 1.55;  // Nivel "iniciado" obtiene un factor de 1.55
+        break;
+      case "intermedio":
+        actividadFactor = 1.725; // Nivel "intermedio" obtiene un factor de 1.725
+        break;
+      case "avanzado":
+        actividadFactor = 1.9;   // Nivel "avanzado" obtiene un factor de 1.9
+        break;
+      default:
+        // Si el campo `nivel` no es válido, se establece un factor por defecto (puedes cambiarlo según lo necesites)
+        console.error("Nivel de actividad no válido. Usando valor por defecto de 1.55.");
+        actividadFactor = 1.55;
+        break;
+    }
+  
+    let tdee = bmr * actividadFactor;
+  
+    // Ajuste del TDEE según el objetivo físico
     switch (objetivoFisico) {
       case "definicion":
         tdee *= 0.85;
@@ -123,18 +135,16 @@ const useUserProfile = (user) => {
         console.error("Objetivo físico no especificado o incorrecto.");
         break;
     }
-
-
+  
+    // Cálculo de macronutrientes
     const proteinas = (peso * 1.8).toFixed(2);
     const grasas = ((tdee * 0.25) / 9).toFixed(2);
     const carbohidratos = ((tdee - (proteinas * 4 + grasas * 9)) / 4).toFixed(2);
-
-
+  
     const proteinasCalorias = (proteinas * 4).toFixed(2);
     const grasasCalorias = (grasas * 9).toFixed(2);
     const carbohidratosCalorias = (carbohidratos * 4).toFixed(2);
-
-
+  
     return {
       bmr: bmr.toFixed(2),
       tdee: tdee.toFixed(2),
