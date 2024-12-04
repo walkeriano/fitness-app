@@ -135,14 +135,14 @@ export default function HeroHome() {
                   sizes="(max-width: 75px)"
                 />
               </div>
-              <span className={styles.spanta}>
+              <div className={styles.spanta}>
                 +150
                 <FontAwesomeIcon
                   icon={faStar}
                   size="2x"
                   className={styles.icon}
                 />
-              </span>
+              </div>
             </section>
           </section>
           <section className={styles.socialMedia}>
@@ -159,21 +159,21 @@ export default function HeroHome() {
                 <FontAwesomeIcon
                   icon={faFacebookF}
                   size="2x"
-                  className={styles.icon}
+                  className={styles.iconChannel}
                 />
               </a>
               <a href="/" className={styles.boxchannel}>
                 <FontAwesomeIcon
                   icon={faInstagram}
                   size="2x"
-                  className={styles.icon}
+                  className={styles.iconChannel}
                 />
               </a>
               <a href="/" className={styles.boxchannel}>
                 <FontAwesomeIcon
                   icon={faTiktok}
                   size="2x"
-                  className={styles.icon}
+                  className={styles.iconChannel}
                 />
               </a>
             </section>
