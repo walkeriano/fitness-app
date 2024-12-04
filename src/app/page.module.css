@@ -4,8 +4,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
+  & .ref{
+    height: 0px;
+  }
 }
 
-.ref{
-  height: 0px;
-}
+
