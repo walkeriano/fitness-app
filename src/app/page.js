@@ -46,6 +46,7 @@ export default function Home() {
           content="fitness, Quesada Coach, alimentación saludalbe, bienestar, entrenamiento personalizado"
         />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo512.png" />
         <meta
           property="og:title"
           content="Quesada Coach App - Planes de entrenamiento y nutrición personalizados
