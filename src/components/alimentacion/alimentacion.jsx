@@ -107,10 +107,10 @@ export default function Alimentacion() {
                       size="2x"
                       className={styles.icon}
                     />
-                    Grasas
+                    Carbos
                   </p>
-                  <h4>{calculatedData?.grasas} g</h4>
-                  <h5>({calculatedData?.grasasCalorias} cals)</h5>
+                  <h4>{calculatedData?.carbohidratos} g</h4>
+                  <h5>({calculatedData?.carbohidratosCalorias} cals)</h5>
                 </div>
                 <div className={styles.datoItem}>
                   <p>
@@ -119,11 +119,12 @@ export default function Alimentacion() {
                       size="2x"
                       className={styles.icon}
                     />
-                    Carbos
+                    Grasas
                   </p>
-                  <h4>{calculatedData?.carbohidratos} g</h4>
-                  <h5>({calculatedData?.carbohidratosCalorias} cals)</h5>
+                  <h4>{calculatedData?.grasas} g</h4>
+                  <h5>({calculatedData?.grasasCalorias} cals)</h5>
                 </div>
+                
               </section>
             </section>
           </section>

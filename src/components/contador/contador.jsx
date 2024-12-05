@@ -44,19 +44,20 @@ export default function Contador({ calculatedData }) {
             </h4>
           </div>
           <div className={styles.itemCalories}>
-            <p>Grasas</p>
-            <h4>
-              {calculatedData?.grasas} g{" "}
-              <span>({calculatedData?.grasasCalorias} cals)</span>
-            </h4>
-          </div>
-          <div className={styles.itemCalories}>
             <p>Carbos</p>
             <h4>
               {calculatedData?.carbohidratos} g{" "}
               <span>({calculatedData?.carbohidratosCalorias} cals)</span>
             </h4>
           </div>
+          <div className={styles.itemCalories}>
+            <p>Grasas</p>
+            <h4>
+              {calculatedData?.grasas} g{" "}
+              <span>({calculatedData?.grasasCalorias} cals)</span>
+            </h4>
+          </div>
+          
         </section>
       </section>
     </section>
