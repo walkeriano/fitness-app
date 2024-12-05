@@ -59,7 +59,7 @@ export default function Home() {
         />
         <meta
           property="og:image"
-          content="https://quesadacoach.com/path-to-image.jpg"
+          content="/logo512.png"
         />
         <meta property="og:url" content="https://quesadacoach.com" />
         <meta property="og:type" content="website" />
