@@ -116,10 +116,6 @@ export default function AllUsers() {
                 <p>{user?.genero}</p>
                 <p>{user?.edad} años</p>
               </div>
-              <div className={styles.datoSuscripcion}>
-                <p>Suscripción:</p>
-                <p>dsadsadasdas</p>
-              </div>
             </section>
             {deleteUserBtn === user.id ? (
               <section className={styles.deleteOficial}>

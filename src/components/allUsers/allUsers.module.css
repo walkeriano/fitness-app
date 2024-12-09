@@ -238,16 +238,6 @@
             letter-spacing: 0.5px;
           }
         }
-
-        & .datoSuscripcion {
-          width: 100%;
-          text-align: center;
-          color: #a6a6a6;
-
-          & p {
-            font-size: 0.9rem;
-          }
-        }
       }
 
       & .btnBox {

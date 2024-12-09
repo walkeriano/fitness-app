@@ -24,20 +24,20 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 10px;
+      gap: 20px;
 
       & h3 {
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-family: "Montserrat";
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
         width: 75%;
         text-align: center;
-        line-height: 1.1;
+        line-height: 1.2;
       }
 
       & p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         color: #989898;
         letter-spacing: 1px;
       }
@@ -79,7 +79,7 @@
           color: white;
           letter-spacing: 1px;
           outline: none;
-          -webkit-appearance: none; /* Elimina el estilo predeterminado de Safari */
+          -webkit-appearance: none;
           appearance: none;
         }
 

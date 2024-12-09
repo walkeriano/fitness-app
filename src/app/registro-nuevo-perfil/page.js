@@ -1,23 +1,25 @@
 "use client";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import AuthContext from "@/state/auth/auth-context";
 import styles from "./page.module.css";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/header/header";
+import HeaderPerfil from "@/components/headerForm/headerForm";
 import Footer from "@/components/footer/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faArrowRight, faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronDown,
+  faArrowRight,
+  faEyeSlash,
+  faEye,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function RegistroNuevoPerfil() {
   const [newRegister, setNewRegister] = useState(true);
   const { user, register: registerUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
-
-  
 
   const {
     register,
@@ -46,7 +48,7 @@ export default function RegistroNuevoPerfil() {
   return (
     <>
       <Head>
-      <meta charSet="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
           Quesada Coach App - Planes de entrenamiento y nutrición personalizados
@@ -60,12 +62,12 @@ export default function RegistroNuevoPerfil() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.containerSelection}>
-        <Header />
+        <HeaderPerfil />
         {newRegister ? (
           <section className={styles.registerForm}>
             <div className={styles.titelForm}>
-              <p>Registrate para iniciar sesión</p>
-              <h3>Crear credenciales de usuario</h3>
+              <h3>Crea tu plan personalizado</h3>
+              <p>Registrate para comenzar</p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
               <div className={styles.boxInput}>
