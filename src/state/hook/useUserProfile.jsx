@@ -57,7 +57,7 @@ const useUserProfile = (user) => {
               objetivoFisico: profileData.objetivoFisico,
             };
 
-            console.log('Datos después de la conversión:', convertedData);
+            console.log("Datos después de la conversión:", convertedData);
 
             setUserProfile(profileData);
 
@@ -92,6 +92,7 @@ const useUserProfile = (user) => {
   const calculateCaloriesAndMacros = (data) => {
     const { peso, estatura, edad, genero, objetivoFisico, nivel } = data;
 
+    // Calcular BMR
     let bmr;
     if (genero && genero.toLowerCase() === "masculino") {
       bmr = 88.362 + 13.397 * peso + 4.799 * estatura - 5.677 * edad;
@@ -102,20 +103,19 @@ const useUserProfile = (user) => {
       return null;
     }
 
-    // Aquí modificamos el factor de actividad basado en el campo `nivel`
+    // Factor de actividad física
     let actividadFactor;
     switch (nivel) {
       case "iniciado":
-        actividadFactor = 1.55; // Nivel "iniciado" obtiene un factor de 1.55
+        actividadFactor = 1.55;
         break;
       case "intermedio":
-        actividadFactor = 1.725; // Nivel "intermedio" obtiene un factor de 1.725
+        actividadFactor = 1.725;
         break;
       case "avanzado":
-        actividadFactor = 1.9; // Nivel "avanzado" obtiene un factor de 1.9
+        actividadFactor = 1.9;
         break;
       default:
-        // Si el campo `nivel` no es válido, se establece un factor por defecto (puedes cambiarlo según lo necesites)
         console.error(
           "Nivel de actividad no válido. Usando valor por defecto de 1.55."
         );
@@ -125,30 +125,57 @@ const useUserProfile = (user) => {
 
     let tdee = bmr * actividadFactor;
 
-    // Ajuste del TDEE según el objetivo físico
+    // Ajustar TDEE según el objetivo físico
+
     switch (objetivoFisico) {
       case "definición":
-        tdee *= 0.85;
+        tdee *= 0.70; // antes 15% ahora 30% Déficit calórico
         break;
       case "masa muscular":
-        tdee *= 1.15;
+        tdee *= 1.15; // Excedente calórico
         break;
       case "recomposicion corporal":
-        break;
+        break; // No se modifica
       default:
         console.error("Objetivo físico no especificado o incorrecto.");
         break;
     }
 
-    // Cálculo de macronutrientes
-    const proteinas = peso * 1.8;
-    const grasas = (tdee * 0.3) / 9;
-    const carbohidratos = (tdee - (proteinas * 4 + grasas * 9)) / 4;
+    let proteinas, grasas, carbohidratos;
 
-    // Calorías por macronutriente
-    const proteinasCalorias = proteinas * 4; // Calorías de proteínas
-    const grasasCalorias = grasas * 9; // Calorías de grasas
-    const carbohidratosCalorias = carbohidratos * 4; // Calorías de carbohidratos
+    switch (objetivoFisico) {
+      case "definición":
+        proteinas = peso * 2.5; // Mayor para preservar músculo
+        grasas = (tdee * 0.2) / 9; // 20% del TDEE
+        carbohidratos = (tdee - (proteinas * 4 + grasas * 9)) / 4 * 0.65;
+        break;
+
+      case "masa muscular":
+        proteinas = peso * 2.5; // Mayor para generar músculo
+        grasas = (tdee * 0.30) / 9; // 30% del TDEE
+        carbohidratos = (tdee - (proteinas * 4 + grasas * 9)) / 4 * 0.85; // -15%
+        break;
+
+      case "recomposicion corporal":
+        proteinas = peso * 2.2; // Alta para balancear ganancia y pérdida
+        grasas = (tdee * 0.3) / 9; // 30% del TDEE
+        carbohidratos = (tdee - (proteinas * 4 + grasas * 9)) / 4;
+        break;
+
+      default:
+        console.error(
+          "Objetivo físico no especificado o incorrecto. Usando valores por defecto."
+        );
+        proteinas = peso * 1.8;
+        grasas = (tdee * 0.3) / 9;
+        carbohidratos = (tdee - (proteinas * 4 + grasas * 9)) / 4;
+        break;
+    }
+
+    // Calorías de cada macronutriente
+    const proteinasCalorias = proteinas * 4;
+    const grasasCalorias = grasas * 9;
+    const carbohidratosCalorias = carbohidratos * 4;
 
     return {
       bmr: bmr.toFixed(2),
