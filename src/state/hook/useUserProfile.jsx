@@ -129,13 +129,13 @@ const useUserProfile = (user) => {
 
     switch (objetivoFisico) {
       case "definición":
-        tdee *= 0.70; // antes 15% ahora 30% Déficit calórico
+        tdee *= 0.7; // descuenta 30% Déficit calórico
         break;
       case "masa muscular":
-        tdee *= 1.15; // Excedente calórico
+        tdee *= 1.1; // aumenta 10% Excedente calórico
         break;
       case "recomposicion corporal":
-        break; // No se modifica
+        tdee *= 0.85; // descuenta 15% Déficit calórico
       default:
         console.error("Objetivo físico no especificado o incorrecto.");
         break;
@@ -147,13 +147,13 @@ const useUserProfile = (user) => {
       case "definición":
         proteinas = peso * 2.5; // Mayor para preservar músculo
         grasas = (tdee * 0.2) / 9; // 20% del TDEE
-        carbohidratos = (tdee - (proteinas * 4 + grasas * 9)) / 4 * 0.65;
+        carbohidratos = (tdee - (proteinas * 4 + grasas * 9)) / 4;
         break;
 
       case "masa muscular":
-        proteinas = peso * 2.5; // Mayor para generar músculo
-        grasas = (tdee * 0.30) / 9; // 30% del TDEE
-        carbohidratos = (tdee - (proteinas * 4 + grasas * 9)) / 4 * 0.85; // -15%
+        proteinas = peso * 2.0; // Mayor para generar músculo
+        grasas = (tdee * 0.3) / 9; // 30% del TDEE
+        carbohidratos = ((tdee - (proteinas * 4 + grasas * 9)) / 4); // -15%
         break;
 
       case "recomposicion corporal":
