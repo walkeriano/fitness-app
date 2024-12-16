@@ -96,7 +96,6 @@ export default function FormFemenino() {
       let imageUrl2 = "";
       let imageUrl3 = "";
 
-      
       if (selectedImage) {
         const options = {
           maxSizeMB: 0.5,
@@ -111,7 +110,6 @@ export default function FormFemenino() {
         const snapshot = await uploadBytes(storageRef, compressedImage);
         imageUrl = await getDownloadURL(snapshot.ref);
       }
-
 
       if (selectedImage1) {
         const options = {
@@ -131,7 +129,6 @@ export default function FormFemenino() {
         imageUrl1 = await getDownloadURL(snapshot1.ref);
       }
 
-      
       if (selectedImage2) {
         const options = {
           maxSizeMB: 0.5,
@@ -150,7 +147,6 @@ export default function FormFemenino() {
         imageUrl2 = await getDownloadURL(snapshot2.ref);
       }
 
-      
       if (selectedImage3) {
         const options = {
           maxSizeMB: 0.5,
@@ -171,14 +167,12 @@ export default function FormFemenino() {
 
       const { image, image1, image2, image3, ...dataWithoutImages } = data;
 
-     
       const filteredData = Object.fromEntries(
         Object.entries(dataWithoutImages).filter(
           ([_, value]) => value !== "" && value !== null && value !== undefined
         )
       );
 
-     
       const formData = {
         ...filteredData,
         imageUrl,
@@ -191,7 +185,6 @@ export default function FormFemenino() {
         superUser: false,
       };
 
-    
       await setDoc(doc(db, "users", user.uid), formData, { merge: true });
       console.log("Datos guardados correctamente:", formData);
 
@@ -207,11 +200,10 @@ export default function FormFemenino() {
     } catch (error) {
       console.error("Error al guardar los datos:", error);
     } finally {
-      
       const loadingDuration = 6000;
       setTimeout(() => {
         setLoadingForm(false);
-        router.push("/perfil-coach-fitness-app"); 
+        router.push("/perfil-coach-fitness-app");
       }, loadingDuration);
     }
   };
@@ -221,9 +213,9 @@ export default function FormFemenino() {
 
     if (questionElement) {
       gsap.to(window, {
-        duration: 0.5, 
-        scrollTo: { y: questionElement, offsetY: 10 }, 
-        ease: "power2.out", 
+        duration: 0.5,
+        scrollTo: { y: questionElement, offsetY: 10 },
+        ease: "power2.out",
       });
     } else {
       console.warn("No se encontró el elemento para desplazarse:", index);
@@ -250,7 +242,6 @@ export default function FormFemenino() {
     }
   };
 
- 
   useEffect(() => {
     const totalQuestions = formRef.current?.children.length || 0;
 
@@ -259,11 +250,11 @@ export default function FormFemenino() {
       if (i === currentQuestion) {
         gsap.fromTo(
           questionElement,
-          { x: -100, autoAlpha: 0 }, 
+          { x: -100, autoAlpha: 0 },
           {
             duration: 0.5,
-            x: 0, 
-            autoAlpha: 1, 
+            x: 0,
+            autoAlpha: 1,
             display: "flex",
             ease: "power2.out",
           }
@@ -271,18 +262,17 @@ export default function FormFemenino() {
       } else {
         gsap.to(questionElement, {
           duration: 0.5,
-          x: 100, 
-          autoAlpha: 0, 
+          x: 100,
+          autoAlpha: 0,
           onComplete: () => {
-            questionElement.style.display = "none"; 
+            questionElement.style.display = "none";
           },
         });
       }
     }
 
-
     const calculateProgress = () => {
-      const totalQuestions = formRef.current?.children.length || 1; 
+      const totalQuestions = formRef.current?.children.length || 1;
       const progressValue = (currentQuestion / totalQuestions) * 100;
       return progressValue;
     };
@@ -291,26 +281,25 @@ export default function FormFemenino() {
   }, [currentQuestion]);
 
   const handleAgeChange = (e) => {
-    setSelectedAge(e.target.value); 
+    setSelectedAge(e.target.value);
   };
 
   const handleNivelChange = (e) => {
-    setSelectedNivel(e.target.value); 
+    setSelectedNivel(e.target.value);
   };
 
   const handleComidasXdiaChange = (e) => {
-    setSelectedComidasXdia(e.target.value); 
+    setSelectedComidasXdia(e.target.value);
   };
 
   const handleObjetivoFisicoChange = (e) => {
-    setSelectedObjetivoFisico(e.target.value); 
+    setSelectedObjetivoFisico(e.target.value);
   };
 
   const handleCoachChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedCoach(selectedValue);
 
-    
     if (selectedValue) {
       setIsSubmitEnabled(true);
     }
@@ -321,17 +310,16 @@ export default function FormFemenino() {
   };
 
   const handleTrainingChange = (e) => {
-    setSelectedTraining(e.target.checked); 
+    setSelectedTraining(e.target.checked);
   };
 
   const handleImpedimentoChange = (e) => {
-    setSelectedImpedimento(e.target.checked); 
+    setSelectedImpedimento(e.target.checked);
   };
 
   const handleSuplementosChange = (e) => {
     setSelectedSuplementos(e.target.checked);
   };
-
 
   if (loading) {
     return <p>Cargando información del usuario...</p>;
@@ -345,7 +333,7 @@ export default function FormFemenino() {
           <h4>{user ? user.email : "Usuario no disponible"}</h4>
           <h5>Nuevo perfil: Femenino</h5>
           <label htmlFor="image" className={styles.imgPerfil}>
-            {imagePreview && ( 
+            {imagePreview && (
               <div className={styles.imagePreview}>
                 <Image src={imagePreview} alt="Vista previa" fill={true} />
               </div>
@@ -559,7 +547,9 @@ export default function FormFemenino() {
                   })}
                   value="18-25"
                 />
-                <p>18-25 años</p>
+                <div className={styles.textAge}>
+                  <p>18-25 años</p>
+                </div>
                 <Image
                   src="/images/sujeto-2-fem.png"
                   alt="sujeto-edad"
@@ -583,7 +573,9 @@ export default function FormFemenino() {
                   })}
                   value="26-35"
                 />
-                <p>26-35 años</p>
+                <div className={styles.textAge}>
+                  <p>26-35 años</p>
+                </div>
                 <Image
                   src="/images/sujeto-4-fem.png"
                   alt="sujeto-edad"
@@ -607,7 +599,9 @@ export default function FormFemenino() {
                   })}
                   value="36-45"
                 />
-                <p>36-45 años</p>
+                <div className={styles.textAge}>
+                  <p>36-45 años</p>
+                </div>
                 <Image
                   src="/images/sujeto-3-fem.png"
                   alt="sujeto-edad"
@@ -630,7 +624,9 @@ export default function FormFemenino() {
                   })}
                   value="46-65"
                 />
-                <p>45-65 años</p>
+                <div className={styles.textAge}>
+                  <p>45-65 años</p>
+                </div>
                 <Image
                   src="/images/sujeto-1-fem.png"
                   alt="sujeto-edad"
@@ -667,7 +663,10 @@ export default function FormFemenino() {
                     onChange: handleBodyChange,
                   })}
                 />
-                <p>Ectomorfo</p>
+                <div className={styles.textBodyType}>
+                  <p>Ectomorfo</p>
+                  <p>Me cuesta subir de peso</p>
+                </div>
                 <Image
                   src="/images/body-1-fem.png"
                   alt="sujeto-edad"
@@ -691,7 +690,10 @@ export default function FormFemenino() {
                     onChange: handleBodyChange,
                   })}
                 />
-                <p>Mesomorfo</p>
+                <div className={styles.textBodyType}>
+                  <p>Mesomorfo</p>
+                  <p>Subo y bajo de peso facilmente</p>
+                </div>
                 <Image
                   src="/images/body-2-fem.png"
                   alt="sujeto-edad"
@@ -715,7 +717,10 @@ export default function FormFemenino() {
                     onChange: handleBodyChange,
                   })}
                 />
-                <p>Endomorfo</p>
+                <div className={styles.textBodyType}>
+                  <p>Endomorfo</p>
+                  <p>Subo de peso rápidamente</p>
+                </div>
                 <Image
                   src="/images/body-3-fem.png"
                   alt="sujeto-edad"
@@ -946,16 +951,66 @@ export default function FormFemenino() {
                   <p className={styles.error}>{errors.edad.message}</p>
                 )}
               </div>
+              <div className={styles.itemInput}>
+                <label>Cintura (cm):</label>
+                <input
+                  type="text"
+                  {...register("cintura", {
+                    required: "Medida cintura es obligatorio",
+                    pattern: {
+                      message:
+                        "Solo se permiten números*",
+                    },
+                  })}
+                  placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.cintura
+                      ? errors.cintura
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
+                />
+                {errors.cintura && (
+                  <p className={styles.error}>{errors.cintura.message}</p>
+                )}
+              </div>
+              <div className={styles.itemInput}>
+                <label>Cadera (cm):</label>
+                <input
+                  type="text"
+                  {...register("cadera", {
+                    required: "Medida cadera es obligatorio",
+                    pattern: {
+                      message:
+                        "Solo se permiten números*",
+                    },
+                  })}
+                  placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.cadera
+                      ? errors.cadera
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
+                />
+                {errors.cadera && (
+                  <p className={styles.error}>{errors.cadera.message}</p>
+                )}
+              </div>
             </section>
           </section>
         </div>
         <div className={styles.question}>
           <section className={styles.title}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
-            <h4 className={styles.firstitle}>¿Cuánto tiempo llevas entrenando?</h4>
+            <h4 className={styles.firstitle}>
+              ¿Cuánto tiempo llevas entrenando?
+            </h4>
           </section>
           <section className={styles.contForm}>
-          <section className={styles.flexBoxEdad}>
+            <section className={styles.flexBoxEdad}>
               <label
                 htmlFor="nivel1"
                 className={`${styles.boxEdad} ${
@@ -972,7 +1027,9 @@ export default function FormFemenino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Iniciado 🤗</p>
+                <div className={styles.nivelTitle}>
+                  <p>Principante 🤗</p>
+                </div>
               </label>
               <label
                 htmlFor="nivel2"
@@ -990,7 +1047,9 @@ export default function FormFemenino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Intermedio 😎</p>
+                <div className={styles.nivelTitle}>
+                  <p>Intermedio 😎</p>
+                </div>
               </label>
               <label
                 htmlFor="nivel3"
@@ -1008,7 +1067,9 @@ export default function FormFemenino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Avanzado 💪🏼</p>
+                <div className={styles.nivelTitle}>
+                  <p>Avanzado 💪🏼</p>
+                </div>
               </label>
             </section>
           </section>

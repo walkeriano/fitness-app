@@ -557,7 +557,9 @@ export default function FormMasculino() {
                   })}
                   value="18-25"
                 />
-                <p>18-25 años</p>
+                <div className={styles.textAge}>
+                  <p>18-25 años</p>
+                </div>
                 <Image
                   src="/images/sujeto-4.png"
                   alt="sujeto-edad"
@@ -581,7 +583,10 @@ export default function FormMasculino() {
                   })}
                   value="26-35"
                 />
-                <p>26-35 años</p>
+                <div className={styles.textAge}>
+                  <p>26-35 años</p>
+                </div>
+
                 <Image
                   src="/images/sujeto-2.png"
                   alt="sujeto-edad"
@@ -605,7 +610,10 @@ export default function FormMasculino() {
                   })}
                   value="36-45"
                 />
-                <p>36-45 años</p>
+                <div className={styles.textAge}>
+                  <p>36-45 años</p>
+                </div>
+
                 <Image
                   src="/images/sujeto-3.png"
                   alt="sujeto-edad"
@@ -628,7 +636,10 @@ export default function FormMasculino() {
                   })}
                   value="46-65"
                 />
-                <p>45-65 años</p>
+                <div className={styles.textAge}>
+                  <p>45-65 años</p>
+                </div>
+
                 <Image
                   src="/images/sujeto-1.png"
                   alt="sujeto-edad"
@@ -665,7 +676,10 @@ export default function FormMasculino() {
                     onChange: handleBodyChange,
                   })}
                 />
-                <p>Ectomorfo</p>
+                <div className={styles.textBodyType}>
+                  <p>Ectomorfo</p>
+                  <p>Me cuesta subir de peso</p>
+                </div>
                 <Image
                   src="/images/body-1.png"
                   alt="sujeto-edad"
@@ -689,7 +703,10 @@ export default function FormMasculino() {
                     onChange: handleBodyChange,
                   })}
                 />
-                <p>Mesomorfo</p>
+                <div className={styles.textBodyType}>
+                  <p>Mesomorfo</p>
+                  <p>Subo y bajo de peso facilmente</p>
+                </div>
                 <Image
                   src="/images/body-2.png"
                   alt="sujeto-edad"
@@ -713,7 +730,10 @@ export default function FormMasculino() {
                     onChange: handleBodyChange,
                   })}
                 />
-                <p>Endomorfo</p>
+                <div className={styles.textBodyType}>
+                  <p>Endomorfo</p>
+                  <p>Subo de peso rápidamente</p>
+                </div>
                 <Image
                   src="/images/body-3.png"
                   alt="sujeto-edad"
@@ -944,13 +964,63 @@ export default function FormMasculino() {
                   <p className={styles.error}>{errors.edad.message}</p>
                 )}
               </div>
+              <div className={styles.itemInput}>
+                <label>Cintura (cm):</label>
+                <input
+                  type="text"
+                  {...register("cintura", {
+                    required: "Medida cintura es obligatorio",
+                    pattern: {
+                      message:
+                        "Solo se permiten números*",
+                    },
+                  })}
+                  placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.cintura
+                      ? errors.cintura
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
+                />
+                {errors.cintura && (
+                  <p className={styles.error}>{errors.cintura.message}</p>
+                )}
+              </div>
+              <div className={styles.itemInput}>
+                <label>Cadera (cm):</label>
+                <input
+                  type="text"
+                  {...register("cadera", {
+                    required: "Medida cadera es obligatorio",
+                    pattern: {
+                      message:
+                        "Solo se permiten números*",
+                    },
+                  })}
+                  placeholder="Escribir aqui..."
+                  className={
+                    touchedFields.cadera
+                      ? errors.cadera
+                        ? styles.invalid
+                        : styles.valid
+                      : ""
+                  }
+                />
+                {errors.cadera && (
+                  <p className={styles.error}>{errors.cadera.message}</p>
+                )}
+              </div>
             </section>
           </section>
         </div>
         <div className={styles.question}>
           <section className={styles.title}>
             <p className={styles.subtitle}>Personaliza el plan ideal para ti</p>
-            <h4 className={styles.firstitle}>¿Cuánto tiempo llevas entrenando?</h4>
+            <h4 className={styles.firstitle}>
+              ¿Cuánto tiempo llevas entrenando?
+            </h4>
           </section>
           <section className={styles.contForm}>
             <section className={styles.flexBoxEdad}>
@@ -970,7 +1040,10 @@ export default function FormMasculino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Iniciado 🤗</p>
+
+                <div className={styles.nivelTitle}>
+                  <p>Principante 🤗</p>
+                </div>
                 
               </label>
               <label
@@ -989,7 +1062,9 @@ export default function FormMasculino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Intermedio 😎</p>
+                <div className={styles.nivelTitle}>
+                  <p>Intermedio 😎</p>
+                </div>
                 
               </label>
               <label
@@ -1008,8 +1083,9 @@ export default function FormMasculino() {
                     onChange: handleNivelChange,
                   })}
                 />
-                <p>Avanzado 💪🏼</p>
-                
+                <div className={styles.nivelTitle}>
+                  <p>Avanzado 💪🏼</p>
+                </div>
               </label>
             </section>
           </section>

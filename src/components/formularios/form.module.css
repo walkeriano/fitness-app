@@ -5,845 +5,896 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
-
-  & .contBtns {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 390px;
-    position: absolute;
-    z-index: 10;
-
-    & .contUser {
-      position: absolute;
-      top: -265px;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-
-      & .imgPerfil {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background-color: #006eff23;
-        border: 1px solid #006fff;
-        outline: 1px solid #006fff;
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        position: relative;
-        cursor: pointer;
-
-        & p {
-          color: #006fff;
-          text-align: center;
-          width: 70%;
-          font-size: 0.8rem;
-          letter-spacing: 1px;
-          line-height: 1.2;
-        }
-
-        & span {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          background-color: #006fff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          & .icon {
-            font-size: 1.2rem;
-            color: white;
-          }
-        }
-
-        & .imagePreview {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          position: absolute;
-
-          & img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-          }
-        }
-      }
-
-      & .imgPerfil:hover{
-        background-color: #006eff49;
-      }
-
-      & h4 {
-        font-size: 1.3rem;
-        font-family: "Montserrat";
-        text-align: center;
-      }
-
-      & h5 {
-        color: #989898;
-        font-size: 1rem;
-        letter-spacing: 1px;
-      }
-    }
-
-    & .btnLeft,
-    & .btnRight {
-      border: 1px solid transparent;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid white;
-      background-color: transparent;
-      cursor: pointer;
-      position: relative;
-    }
-
-    & .btnLeft {
-      & .icon {
-        transform: rotate(90deg);
-        font-size: 1.4rem;
-      }
-    }
-
-    & .btnRight {
-      & .icon {
-        transform: rotate(-90deg);
-        font-size: 1.4rem;
-      }
-    }
-
-    & .btnRight:after {
-      content: "Siguiente";
-      position: absolute;
-      bottom: -25px;
-      font-size: 0.8rem;
-    }
-
-    & .btnLeft:after {
-      content: "Volver";
-      position: absolute;
-      bottom: -25px;
-      font-size: 0.8rem;
-    }
-
-    & .progressContainer {
-      width: 50%;
-      height: 5px;
-      border: 1px solid #006fff;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    & .btnFin {
-      background-color: #006fff;
-      border: none;
-      height: 50px;
-      padding: 10px 10px 10px 15px;
-      border-radius: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-
-      & .icon {
-        font-size: 1.5rem;
-      }
-    }
-
-    & .btnFin.disabled {
-      background-color: gray; /* o el color que prefieras */
-      cursor: not-allowed;
-    }
-
-    & .btnFin.active {
-      background-color: #006fff; /* o el color que prefieras */
-      cursor: pointer;
-    }
-
-    & .progressBar {
-      height: 100%;
-      background-color: #006fff; /* color de la barra de progreso */
-      transition: width 0.3s ease-in-out;
-    }
-  }
-
-  & .formContainer {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    overflow-x: hidden;
-    z-index: 1;
-    position: relative;
-
-    & .question {
-      min-width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 65px;
-      padding-bottom: 150px;
-
-      & .title {
-        width: 100%;
-        margin-top: 500px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-
-        & .subtitle {
-          color: #989898;
-          font-size: 1rem;
-        }
-
-        & .firstitle {
-          color: white;
-          font-size: 1.5rem;
-          letter-spacing: 0.5px;
-          font-family: "Montserrat";
-          width: 85%;
-          text-align: center;
-        }
-      }
-
-      & .contForm {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 55px;
-        width: 85%;
-
-        & .flexBox {
-          width: 90%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 55px;
-
-          & .itemInput {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            width: 100%;
-            gap: 10px;
-
-            & label {
-              color: white;
-              font-size: 16px;
-              letter-spacing: 1px;
-              padding-left: 15px;
-            }
-
-            & input {
-              width: 100%;
-              height: 70px;
-              border-radius: 15px;
-              border: 1px solid #212121;
-              background-color: #131313;
-              padding-left: 15px;
-              font-size: 16px;
-              color: white;
-              letter-spacing: 1px;
-              outline: none;
-            }
-
-            & input::placeholder {
-              color: #848484;
-              letter-spacing: 1px;
-              font-size: 16px;
-            }
-
-            & input:hover,
-            & input:focus,
-            & input:active {
-              border: 1px solid #006fff;
-            }
-
-            & input:-webkit-autofill,
-            & input:-webkit-autofill:hover,
-            & input:-webkit-autofill:focus,
-            & input:-webkit-autofill:active {
-              -webkit-text-fill-color: white !important; /* Cambia el color del texto */
-              -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
-              box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
-              transition: background-color 5000s ease-in-out 0s;
-              font-size: 16px;
-            }
-
-            & .error {
-              color: yellow;
-              font-size: 0.9rem;
-              letter-spacing: 1px;
-              margin-left: 15px;
-              border-bottom: 1px solid yellow;
-              padding-bottom: 3px;
-            }
-
-            .valid {
-              border-color: #006fff;
-            }
-
-            .invalid {
-              border-color: #212121;
-            }
-          }
-        }
-
-        & .flexBoxEdad {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 45px;
-
-          & .boxEdad {
-            width: 85%;
-            height: 90px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            border-radius: 15px;
-            border: 1px solid #212121;
-            background-color: #131313;
-
-            & p {
-              width: 50%;
-              height: 100%;
-              align-content: center;
-              text-align: center;
-              color: white;
-              font-size: 1.1rem;
-              letter-spacing: 1px;
-            }
-          }
-
-          & .boxEdad:nth-child(2),
-          & .boxEdad:nth-child(4) {
-            flex-direction: row-reverse;
-          }
-
-          & .error {
-            color: yellow;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            margin-left: 15px;
-            border-bottom: 1px solid yellow;
-            padding-bottom: 3px;
-          }
-
-          & .boxEdad.valid {
-            border: 2px solid #006fff;
-          }
-        }
-
-        & .flexBoxAdjuntar {
-          width: 90%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 120px;
-
-          & .itemAdjuntar {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            gap: 5px;
-
-            & h3 {
-              color: white;
-              font-size: 1.3rem;
-              font-family: "Montserrat";
-            }
-
-            & h4 {
-              text-align: center;
-              color: #656565;
-              font-size: 1rem;
-              letter-spacing: 1px;
-            }
-
-            & label {
-              width: 90%;
-              height: 300px;
-              border: 2px dashed #0056f4;
-              font-size: 0.9rem;
-              letter-spacing: 1px;
-              text-align: center;
-              padding-left: 0px;
-              border-radius: 30px;
-              margin-top: 15px;
-              position: relative;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              & .imagePreviewFirst {
-                width: 100%;
-                height: 100%;
-                border-radius: 30px;
-                position: absolute;
-                z-index: 10;
-
-                & img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                  border-radius: 30px;
-                  outline: 2px solid #0056f4;
-                }
-              }
-
-              & .iconCam {
-                position: absolute;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background-color: white;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1;
-
-                & .icon {
-                  font-size: 1.5rem;
-                  color: #0056f4;
-                }
-              }
-
-              & .textAdj {
-                position: absolute;
-                color: white;
-                z-index: 1;
-                bottom: 15px;
-                font-size: 0.9rem;
-              }
-
-              & .bgItem {
-                position: relative;
-                height: 90%;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-between;
-                opacity: 0.7;
-
-                & span {
-                  background: linear-gradient(#0c0c0c, #0c0c0c00);
-                  width: 90%;
-                  height: 80px;
-                }
-
-                & span:nth-child(2) {
-                  background: linear-gradient(#0c0c0c00, #0c0c0c);
-                }
-
-                & img {
-                  height: 100%;
-                  object-fit: contain;
-                  z-index: -1;
-                }
-              }
-            }
-
-            & .error {
-              color: yellow;
-              font-size: 0.9rem;
-              letter-spacing: 1px;
-              margin-left: 15px;
-              border-bottom: 1px solid yellow;
-              padding-bottom: 3px;
-            }
-          }
-        }
-
-        & .flexBoxState {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-start;
-          gap: 30px;
-
-          & .btnState {
-            border: 1px solid #212121;
-            background-color: #131313;
-            width: 80%;
-            height: 90px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-
-            & p {
-              color: white;
-              font-size: 1.2rem;
-              letter-spacing: 0.5px;
-
-              & span {
-                font-size: 1.7rem;
-                margin-left: 5px;
-              }
-            }
-          }
-
-          & .error {
-            color: yellow;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            margin-left: 15px;
-            border-bottom: 1px solid yellow;
-            padding-bottom: 3px;
-          }
-
-          & .valid {
-            border-color: #006fff;
-          }
-
-          & .showInputs {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-
-            & .boxItem {
-              width: 80%;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              position: relative;
-
-              & .contInp {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                gap: 10px;
-
-                & label {
-                  color: white;
-                  font-size: 16px;
-                  letter-spacing: 0.5px;
-                  margin-left: 15px;
-                }
-
-                & input {
-                  width: 100%;
-                  height: 60px;
-                  border-radius: 15px;
-                  padding-left: 15px;
-                  border: 1px solid #212121;
-                  background-color: #131313;
-                  color: white;
-                  outline: none;
-                  font-size: 16px;
-                }
-
-                & input::placeholder {
-                  font-size: 16px;
-                  letter-spacing: 0.5px;
-                }
-
-                & input::placeholder {
-                  color: #848484;
-                  letter-spacing: 1px;
-                  font-size: 16px;
-                }
-
-                & input:hover,
-                & input:focus,
-                & input:active {
-                  border: 1px solid #006fff;
-                }
-
-                & input:-webkit-autofill,
-                & input:-webkit-autofill:hover,
-                & input:-webkit-autofill:focus,
-                & input:-webkit-autofill:active {
-                  -webkit-text-fill-color: white !important; /* Cambia el color del texto */
-                  -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
-                  box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
-                  transition: background-color 5000s ease-in-out 0s;
-                  font-size: 16px;
-                }
-
-                & .error {
-                  color: yellow;
-                  font-size: 0.9rem;
-                  letter-spacing: 1px;
-                  margin-left: 15px;
-                  border-bottom: 1px solid yellow;
-                  padding-bottom: 3px;
-                }
-
-                & .valid {
-                  border-color: #006fff;
-                }
-              }
-
-              & .cerrar {
-                background-color: red;
-                width: 35px;
-                height: 35px;
-                border-radius: 50%;
-                border: none;
-                position: absolute;
-                bottom: 12px;
-                right: -17px;
-                color: white;
-                cursor: pointer;
-
-                & .icon {
-                  font-size: 1.4rem;
-                }
-              }
-            }
-          }
-        }
-
-        & .message {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 90%;
-          margin-top: 40px;
-
-          & p {
-            color: rgb(133, 133, 133);
-            font-size: 0.9rem;
-            text-align: center;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-          }
-        }
-
-        & .flexBoxObjetivo {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 25px;
-
-          & .itemObjetivo {
-            width: 100%;
-            height: 270px;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            gap: 10px;
-            border-radius: 30px;
-
-            & .titleBox {
-              width: 85%;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              margin-bottom: 20px;
-
-              & h4 {
-                color: white;
-                font-size: 1.6rem;
-                letter-spacing: 0.5px;
-                text-transform: uppercase;
-                width: 90%;
-              }
-            }
-
-            & img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              border-radius: 25px;
-              z-index: -1;
-            }
-          }
-
-          & .valid {
-            border: 2px solid #006fff;
-            position: relative;
-          }
-
-          & .valid::after {
-            content: "";
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(to Top, #006fff, #006eff00);
-            position: absolute;
-            border-radius: 0px 0px 27px 27px;
-            z-index: -1;
-          }
-        }
-      }
-    }
-  }
+}
+
+.contBtns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 390px;
+  position: absolute;
+  z-index: 10;
+}
+
+.contUser {
+  position: absolute;
+  top: -265px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.imgPerfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #006eff23;
+  border: 1px solid #006fff;
+  outline: 1px solid #006fff;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.imgPerfil p {
+  color: #006fff;
+  text-align: center;
+  width: 70%;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.imgPerfil span {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #006fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgPerfil span .icon {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.imagePreview {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.imagePreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.imgPerfil:hover {
+  background-color: #006eff49;
+}
+
+.contUser h4 {
+  font-size: 1.3rem;
+  font-family: "Montserrat";
+  text-align: center;
+}
+
+.contUser h5 {
+  color: #989898;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.btnLeft,
+.btnRight {
+  border: 1px solid transparent;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.btnLeft .icon {
+  transform: rotate(90deg);
+  font-size: 1.4rem;
+}
+
+.btnRight .icon {
+  transform: rotate(-90deg);
+  font-size: 1.4rem;
+}
+
+.btnRight:after {
+  content: "Siguiente";
+  position: absolute;
+  bottom: -25px;
+  font-size: 0.8rem;
+}
+
+.btnLeft:after {
+  content: "Volver";
+  position: absolute;
+  bottom: -25px;
+  font-size: 0.8rem;
+}
+
+.progressContainer {
+  width: 50%;
+  height: 5px;
+  border: 1px solid #006fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.btnFin {
+  background-color: #006fff;
+  border: none;
+  height: 50px;
+  padding: 10px 10px 10px 15px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btnFin .icon {
+  font-size: 1.5rem;
+}
+
+.btnFin.disabled {
+  background-color: gray; /* o el color que prefieras */
+  cursor: not-allowed;
+}
+
+.btnFin.active {
+  background-color: #006fff; /* o el color que prefieras */
+  cursor: pointer;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #006fff; /* color de la barra de progreso */
+  transition: width 0.3s ease-in-out;
+}
+
+.formContainer {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  z-index: 1;
+  position: relative;
+}
+
+.question {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 65px;
+  padding-bottom: 150px;
+}
+
+.title {
+  width: 100%;
+  margin-top: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.subtitle {
+  color: #989898;
+  font-size: 1rem;
+}
+
+.firstitle {
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  font-family: "Montserrat";
+  width: 85%;
+  text-align: center;
+}
+
+.contForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+  width: 85%;
+}
+
+.flexBox {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+}
+
+.flexBox .itemInput {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.flexBox .itemInput label {
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding-left: 15px;
+}
+
+.flexBox .itemInput input {
+  width: 100%;
+  height: 70px;
+  border-radius: 15px;
+  border: 1px solid #212121;
+  background-color: #131313;
+  padding-left: 15px;
+  font-size: 16px;
+  color: white;
+  letter-spacing: 1px;
+  outline: none;
+}
+
+.flexBox .itemInput input::placeholder {
+  color: #848484;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+.flexBox .itemInput input:hover,
+.itemInput .itemInput input:focus,
+.itemInput .itemInput input:active {
+  border: 1px solid #006fff;
+}
+
+.flexBox .itemInput input:-webkit-autofill,
+.flexBox .itemInput input:-webkit-autofill:hover,
+.flexBox .itemInput input:-webkit-autofill:focus,
+.flexBox .itemInput input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important; /* Cambia el color del texto */
+  -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
+  box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: 16px;
+}
+
+.flexBox .itemInput .error {
+  color: yellow;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-left: 15px;
+  border-bottom: 1px solid yellow;
+  padding-bottom: 3px;
+}
+
+.flexBox .itemInput input.valid {
+  border-color: #006fff;
+}
+
+.flexBox .itemInput input.invalid {
+  border-color: #212121;
+}
+
+.flexBoxEdad {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+}
+
+.flexBoxEdad .boxEdad {
+  width: 85%;
+  height: 90px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 15px;
+  border: 1px solid #212121;
+  background-color: #131313;
+  cursor: pointer;
+}
+
+.flexBoxEdad .boxEdad .textAge{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7px;
+}
+
+.flexBoxEdad .boxEdad .nivelTitle{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexBoxEdad .boxEdad .nivelTitle p{
+  color: white;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.flexBoxEdad .boxEdad .textBodyType{
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7px;
+}
+
+.flexBoxEdad .boxEdad .textBodyType p:nth-child(1),
+.flexBoxEdad .boxEdad .textAge p:nth-child(1){
+  text-align: left;
+  color: white;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  width: 90%;
+}
+
+.flexBoxEdad .boxEdad .textBodyType p:nth-child(2){
+  text-align: left;
+  color: grey;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  width: 90%;
+  line-height: 1.2;
+}
+
+.flexBoxEdad .boxEdad:nth-child(2),
+.flexBoxEdad .boxEdad:nth-child(4) {
+  flex-direction: row-reverse;
+}
+
+.flexBoxEdad .boxEdad:nth-child(2) .textBodyType,
+.flexBoxEdad .boxEdad:nth-child(4) .textBodyType{
+  align-items: flex-end;
+}
+
+.flexBoxEdad .boxEdad:nth-child(2) .textBodyType p:nth-child(1),
+.flexBoxEdad .boxEdad:nth-child(4) .textBodyType p:nth-child(1),
+.flexBoxEdad .boxEdad:nth-child(2) .textBodyType p:nth-child(2),
+.flexBoxEdad .boxEdad:nth-child(4) .textBodyType p:nth-child(2)
+{
+  text-align: right;
+}
+
+.flexBoxEdad .boxEdad:nth-child(2) .textAge p:nth-child(1),
+.flexBoxEdad .boxEdad:nth-child(4) .textAge p:nth-child(1){
+  text-align: right;
 }
 
 
-@media (min-width: 850px){
-  .formMasculino{
-    & .contBtns {
 
-      & .btnLeft:hover,
-      & .btnRight:hover{
-        background-color: rgba(255, 255, 255, 0.171);
-      } 
-    }
 
-    & .formContainer {
-  
-      & .question {
-  
-        & .contForm {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 55px;
-          width: 85%;
-  
-          & .flexBox {
-            width: 60%;
-            max-width: 500px;
-          }
-  
-          & .flexBoxEdad {
-            width: 60%;
-            max-width: 500px;
-  
-            & .boxEdad {
-              cursor: pointer;
-            }
-          }
-  
-          & .flexBoxAdjuntar {
-            width: 60%;
-            max-width: 500px;
-  
-            & .itemAdjuntar {
-  
-              & label {
-                cursor: pointer;
-  
-                & .imagePreviewFirst {
-                  width: 100%;
-                  height: 100%;
-                  border-radius: 30px;
-                  position: absolute;
-                  z-index: 10;
-  
-                  & img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 30px;
-                    outline: 2px solid #0056f4;
-                  }
-                }
-              }
-            }
-          }
-  
-          & .flexBoxState {
-            width: 60%;
-            max-width: 500px;
-          }
-  
-          & .message {
-            width: 60%;
-          }
-  
-          & .flexBoxObjetivo {
-            width: 60%;
-            max-width: 500px;
-  
-            & .itemObjetivo {
-              cursor: pointer;
-              border: 1px solid transparent ;
-  
-              & .titleBox {
-                width: 85%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom: 20px;
-  
-                & h4 {
-                  color: white;
-                  font-size: 1.6rem;
-                  letter-spacing: 0.5px;
-                  text-transform: uppercase;
-                  width: 90%;
-                }
-              }
-  
-              & img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 25px;
-                z-index: -1;
-              }
-            }
+.flexBoxEdad .boxEdad .error {
+  color: yellow;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-left: 15px;
+  border-bottom: 1px solid yellow;
+  padding-bottom: 3px;
+}
 
-            & .itemObjetivo:hover{
-              border: 1px solid #006fff;
-            }
-  
-            & .valid {
-              border: 1px solid #006fff;
-              position: relative;
-            }
-  
-            & .valid::after {
-              content: "";
-              width: 100%;
-              height: 50%;
-              background: linear-gradient(to Top, #006fff, #006eff00);
-              position: absolute;
-              border-radius: 0px 0px 27px 27px;
-              z-index: -1;
-            }
-          }
-        }
-      }
-    }
+.flexBoxEdad .boxEdad.valid {
+  border: 2px solid #006fff;
+}
+
+.flexBoxAdjuntar {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+}
+
+.flexBoxAdjuntar .itemAdjuntar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 5px;
+}
+
+.flexBoxAdjuntar .itemAdjuntar h3 {
+  color: white;
+  font-size: 1.3rem;
+  font-family: "Montserrat";
+}
+
+.flexBoxAdjuntar .itemAdjuntar h4 {
+  text-align: center;
+  color: #656565;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label {
+  width: 90%;
+  height: 300px;
+  border: 2px dashed #0056f4;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-align: center;
+  padding-left: 0px;
+  border-radius: 30px;
+  margin-top: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label:hover {
+  border: 2px dashed white;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .imagePreviewFirst {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  position: absolute;
+  z-index: 10;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .imagePreviewFirst img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+  outline: 2px solid #0056f4;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .iconCam {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .iconCam .icon {
+  font-size: 1.5rem;
+  color: #0056f4;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .textAdj {
+  position: absolute;
+  color: white;
+  z-index: 1;
+  bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .bgItem {
+  position: relative;
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.7;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .bgItem span {
+  background: linear-gradient(#0c0c0c, #0c0c0c00);
+  width: 90%;
+  height: 80px;
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .bgItem span:nth-child(2) {
+  background: linear-gradient(#0c0c0c00, #0c0c0c);
+}
+
+.flexBoxAdjuntar .itemAdjuntar label .bgItem img {
+  height: 100%;
+  object-fit: contain;
+  z-index: -1;
+}
+
+.flexBoxAdjuntar .itemAdjuntar .error {
+  color: yellow;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-left: 15px;
+  border-bottom: 1px solid yellow;
+  padding-bottom: 3px;
+}
+
+.flexBoxState {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.flexBoxState .btnState {
+  border: 1px solid #212121;
+  background-color: #131313;
+  width: 80%;
+  height: 90px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.flexBoxState .btnState p {
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+.flexBoxState .btnState p span {
+  font-size: 1.7rem;
+  margin-left: 5px;
+}
+
+.flexBoxState .error {
+  color: yellow;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-left: 15px;
+  border-bottom: 1px solid yellow;
+  padding-bottom: 3px;
+}
+
+.flexBoxState .valid {
+  border-color: #006fff;
+}
+
+.flexBoxState .showInputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.flexBoxState .showInputs .boxItem {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.flexBoxState .contInp {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flexBoxState .contInp label {
+  color: white;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin-left: 15px;
+}
+
+.flexBoxState .contInp input {
+  width: 100%;
+  height: 60px;
+  border-radius: 15px;
+  padding-left: 15px;
+  border: 1px solid #212121;
+  background-color: #131313;
+  color: white;
+  outline: none;
+  font-size: 16px;
+}
+
+.flexBoxState .contInp input::placeholder {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.flexBoxState .contInp input::placeholder {
+  color: #848484;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+.flexBoxState .contInp input:hover,
+.flexBoxState .contInp input:focus,
+.flexBoxState .contInp input:active {
+  border: 1px solid #006fff;
+}
+
+.flexBoxState .contInp input:-webkit-autofill,
+.flexBoxState .contInp input:-webkit-autofill:hover,
+.flexBoxState .contInp input:-webkit-autofill:focus,
+.flexBoxState .contInp input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important; /* Cambia el color del texto */
+  -webkit-box-shadow: 0 0 0px 1000px #0048ff00 inset !important; /* Fondo blanco para el campo */
+  box-shadow: 0 0 0px 1000px #0048ff00 inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: 16px;
+}
+
+.flexBoxState .contInp .error {
+  color: yellow;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-left: 15px;
+  border-bottom: 1px solid yellow;
+  padding-bottom: 3px;
+}
+
+.flexBoxState .contInp input.valid {
+  border-color: #006fff;
+}
+
+.flexBoxState .showInputs .boxItem .cerrar {
+  background-color: red;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  bottom: 12px;
+  right: -17px;
+  color: white;
+  cursor: pointer;
+}
+
+.flexBoxState .showInputs .boxItem .cerrar .icon {
+  font-size: 1.4rem;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin-top: 40px;
+}
+
+.message p {
+  color: rgb(133, 133, 133);
+  font-size: 0.9rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.flexBoxObjetivo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.flexBoxObjetivo .itemObjetivo {
+  width: 100%;
+  height: 270px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.flexBoxObjetivo .itemObjetivo .titleBox {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.flexBoxObjetivo .itemObjetivo .titleBox h4 {
+  color: white;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  width: 90%;
+}
+
+.flexBoxObjetivo .itemObjetivo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+  z-index: -1;
+}
+
+.flexBoxObjetivo .itemObjetivo.valid {
+  border: 2px solid #006fff;
+  position: relative;
+}
+
+.flexBoxObjetivo .itemObjetivo.valid::after {
+  content: "";
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to Top, #006fff, #006eff00);
+  position: absolute;
+  border-radius: 0px 0px 27px 27px;
+  z-index: -1;
+}
+
+@media (min-width: 850px) {
+  .contBtns .btnLeft:hover,
+  .contBtns .btnRight:hover {
+    background-color: rgba(255, 255, 255, 0.171);
+  }
+
+  .formContainer .question .contForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 55px;
+    width: 85%;
+  }
+
+  .flexBox {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  .flexBoxEdad {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  .flexBoxEdad .boxEdad {
+    cursor: pointer;
+  }
+
+  .flexBoxAdjuntar {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  .flexBoxAdjuntar .itemAdjuntar label {
+    cursor: pointer;
+  }
+
+  .flexBoxAdjuntar .itemAdjuntar label .imagePreviewFirst {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .flexBoxAdjuntar .itemAdjuntar label .imagePreviewFirst img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    outline: 2px solid #0056f4;
+  }
+
+  .flexBoxState {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  .message {
+    width: 60%;
+  }
+
+  .flexBoxObjetivo {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  .flexBoxObjetivo .itemObjetivo {
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .flexBoxObjetivo .itemObjetivo .titleBox {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .flexBoxObjetivo .itemObjetivo .titleBox h4 {
+    color: white;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    width: 90%;
+  }
+
+  .flexBoxObjetivo .itemObjetivo .titleBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    z-index: -1;
+  }
+
+  .flexBoxObjetivo .itemObjetivo:hover {
+    border: 1px solid #006fff;
+  }
+
+  .flexBoxObjetivo .itemObjetivo.valid {
+    border: 1px solid #006fff;
+    position: relative;
+  }
+
+  .flexBoxObjetivo .itemObjetivo.valid::after {
+    content: "";
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to Top, #006fff, #006eff00);
+    position: absolute;
+    border-radius: 0px 0px 27px 27px;
+    z-index: -1;
   }
 }
