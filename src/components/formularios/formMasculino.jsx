@@ -356,7 +356,6 @@ export default function FormMasculino() {
               onChange={onImageChange}
               hidden
             />
-
             <span>
               <FontAwesomeIcon
                 icon={faCamera}
