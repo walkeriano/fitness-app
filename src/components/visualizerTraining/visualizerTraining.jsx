@@ -19,7 +19,7 @@ export default function VisualizerTraining(){
 
     return(
         <section className={styles.containerVisualizer}>
-            <iframe src={`${trainingData?.archivo}#toolbar=0`} className={styles.cont} />
+            <iframe src={`${trainingData?.archivo}#toolbar=0&navpanes=0&scrollbar=0`}  className={styles.cont} />
         </section>
     )
 }

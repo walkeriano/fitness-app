@@ -17,8 +17,8 @@ import AuthContext from "@/state/auth/auth-context";
 import Loading from "@/components/loadingExtra/loadingExtra";
 import InfoProducts from "@/components/infoProducts/infoProducts";
 import Contador from "@/components/contador/contador";
-import imagenCarlos from "/public/images/coach-carlos-perfil.png";
-import imagenKarina from "/public/images/coach-karina-perfil.png";
+import imagenCarlos from "../../../public/images/coach-carlos-perfil.png";
+import imagenKarina from "../../../public/images/coach-karina-perfil.png";
 
 export default function Perfil() {
   const { user } = useContext(AuthContext);

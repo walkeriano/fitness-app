@@ -57,7 +57,6 @@ export default function Entrenamiento() {
       </section>
       {rutina ? (
         <section className={styles.containerVisualizer}>
-          <span></span>
           <button onClick={() => setRutina(false)}>
             <FontAwesomeIcon icon={faXmark} size="2x" className={styles.icon} />
           </button>

@@ -33,7 +33,6 @@ export default function PerfilSuspendido() {
           </section>
         </section>
         <span className={styles.blur}></span>
-        
         <Footer />
       </main>
     </>
