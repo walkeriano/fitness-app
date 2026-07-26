@@ -31,7 +31,7 @@ import {
   faImage,
   faArrowUpRightDots,
 } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faInstagram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faInstagram, faWhatsapp,} from "@fortawesome/free-brands-svg-icons";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
@@ -69,5 +69,5 @@ library.add(
   faMagnifyingGlass,
   faFaceFrown,
   faImage,
-  faArrowUpRightDots
+  faArrowUpRightDots,
 );

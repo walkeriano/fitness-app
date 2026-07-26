@@ -7,6 +7,7 @@ import Footer from "@/components/footer/footer";
 import Perfil from "@/components/perfil/perfil";
 import Menu from "@/components/menu/menu";
 import Closing from "@/components/closing/closing";
+import ChatWindow from "@/components/ai/chatWindow/chatWindow";
 
 export default function PerfilCoachFitnessApp() {
   const goUp = useRef(null);
@@ -14,7 +15,7 @@ export default function PerfilCoachFitnessApp() {
   return (
     <>
       <Head>
-      <meta charSet="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>
           Quesada Coach App - Planes de entrenamiento y nutrición personalizados
@@ -32,6 +33,7 @@ export default function PerfilCoachFitnessApp() {
           <section className={styles.flexHeader}>
             <HeaderPerfil />
             <Menu />
+            <ChatWindow />
           </section>
           <section className={styles.flexPerfil}>
             <Perfil />

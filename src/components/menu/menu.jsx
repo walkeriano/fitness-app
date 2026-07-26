@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "@/state/auth/auth-context";
 
+
 export default function Menu() {
   const { user } = useContext(AuthContext);
   const { userProfile } = useUserProfile(user);
