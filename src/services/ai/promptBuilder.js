@@ -1,7 +1,7 @@
 export function buildPrompt(userData, question) {
-    return `
+  return `
         Usuario:
-
+        
         ${JSON.stringify(userData)}
 
         Pregunta:

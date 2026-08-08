@@ -1,14 +1,12 @@
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function askMockAI(message) {
+  await delay(1000);
 
-    await delay(1000);
+  const question = message.toLowerCase();
 
-    const question = message.toLowerCase();
-
-    if(question.includes("cena")){
-
-        return `
+  if (question.includes("cena")) {
+    return `
 🍽️ Cena Fitness
 
 200 g pollo
@@ -19,11 +17,10 @@ Ensalada
 
 620 kcal
 `;
-    }
+  }
 
-    if(question.includes("desayuno")){
-
-        return `
+  if (question.includes("desayuno")) {
+    return `
 🥣 Desayuno
 
 Avena
@@ -34,11 +31,10 @@ Plátano
 
 520 kcal
 `;
-    }
+  }
 
-    if(question.includes("proteína")){
-
-        return `
+  if (question.includes("proteína")) {
+    return `
 💪 Para aumentar tu proteína puedes consumir:
 
 • Pollo
@@ -49,9 +45,9 @@ Plátano
 
 • Claras de huevo
 `;
-    }
+  }
 
-    return `
+  return `
 Soy tu asistente nutricional.
 
 Puedo ayudarte con:
