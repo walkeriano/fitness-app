@@ -1,17 +1,26 @@
-import styles from "./chatInput.module.css";
 import { useState } from "react";
+import styles from "./chatInput.module.css";
+
+const MAX_MESSAGE_LENGTH = 1000;
 
 export default function ChatInput({ onSend, loading }) {
   const [text, setText] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const normalizedText = text.trim();
+  const canSend = normalizedText.length > 0 && !loading;
 
-    if (!text.trim()) return;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    await onSend(text);
+    if (!canSend) {
+      return;
+    }
 
-    setText("");
+    const sentSuccessfully = await onSend(normalizedText);
+
+    if (sentSuccessfully) {
+      setText("");
+    }
   };
 
   return (
@@ -20,16 +29,21 @@ export default function ChatInput({ onSend, loading }) {
       className={styles.contanerInput}
     >
       <input
+        type="text"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        maxLength={MAX_MESSAGE_LENGTH}
+        disabled={loading}
+        autoComplete="off"
+        aria-label="Pregunta para el asistente nutricional"
         placeholder="Escribe tu pregunta..."
+        onChange={(event) => setText(event.target.value)}
       />
 
       <button
-        disabled={loading}
         type="submit"
+        disabled={!canSend}
       >
-        Enviar
+        {loading ? "Enviando..." : "Enviar"}
       </button>
     </form>
   );

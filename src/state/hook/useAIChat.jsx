@@ -2,28 +2,50 @@
 
 import { useState } from "react";
 
-export default function useAIChat() {
-  const [messages, setMessages] = useState([
-    {
-      id: crypto.randomUUID(),
-      role: "assistant",
-      content:
-        "👋 Hola. Soy tu asistente nutricional. Pregúntame cualquier cosa sobre alimentación o recetas.",
-    },
-  ]);
+const INITIAL_MESSAGE = {
+  id: "initial-assistant-message",
+  role: "assistant",
+  content:
+    "👋 Hola. Soy tu asistente nutricional. Pregúntame sobre alimentación, recetas o hábitos saludables.",
+  isInitial: true,
+};
 
+export default function useAIChat() {
+  const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [loading, setLoading] = useState(false);
 
   const sendMessage = async (text) => {
-    if (!text.trim()) return;
+    const normalizedText = text.trim();
+
+    if (!normalizedText || loading) {
+      return false;
+    }
 
     const userMessage = {
       id: crypto.randomUUID(),
       role: "user",
-      content: text,
+      content: normalizedText,
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    const previousConversation = messages
+      .filter((message) => !message.isInitial && !message.isError)
+      .map(({ role, content }) => ({
+        role,
+        content,
+      }));
+
+    const conversation = [
+      ...previousConversation,
+      {
+        role: userMessage.role,
+        content: userMessage.content,
+      },
+    ];
+
+    setMessages((previousMessages) => [
+      ...previousMessages,
+      userMessage,
+    ]);
 
     setLoading(true);
 
@@ -34,34 +56,50 @@ export default function useAIChat() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: text,
+          messages: conversation,
         }),
       });
 
       const data = await response.json();
 
-      if (!data.success) {
-        throw new Error(data.error);
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.error?.message || "No se pudo obtener una respuesta."
+        );
+      }
+
+      if (typeof data.answer !== "string" || !data.answer.trim()) {
+        throw new Error("El asistente devolvió una respuesta vacía.");
       }
 
       const assistantMessage = {
         id: crypto.randomUUID(),
         role: "assistant",
-        content: data.answer,
+        content: data.answer.trim(),
       };
 
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error) {
-      console.error(error);
+      setMessages((previousMessages) => [
+        ...previousMessages,
+        assistantMessage,
+      ]);
 
-      setMessages((prev) => [
-        ...prev,
+      return true;
+    } catch (error) {
+      console.error("Error enviando mensaje al asistente:", error);
+
+      setMessages((previousMessages) => [
+        ...previousMessages,
         {
           id: crypto.randomUUID(),
           role: "assistant",
-          content: "Ha ocurrido un error. Inténtalo nuevamente.",
+          content:
+            error.message ||
+            "Ha ocurrido un error. Inténtalo nuevamente.",
+          isError: true,
         },
       ]);
+
+      return false;
     } finally {
       setLoading(false);
     }
