@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./chatWindow.module.css";
 import useAIChat from "@/state/hook/useAIChat";
-import ChatMessage from "../ChatMessage";
+import ChatMessage from "../chatMessage/chatMessage";
 import ChatInput from "@/components/ai/chatInput/chatInput";
 import TypingIndicator from "../TypingIndicator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,8 +16,13 @@ export default function ChatWindow() {
     <>
       {openChatAi ? (
         <section className={styles.bgContainer}>
+          <button
+            className={styles.btnCerrar}
+            onClick={() => setOpenChatAi(false)}
+          >
+            cerrar
+          </button>
           <div className={styles.messageContainer}>
-            <button onClick={() => setOpenChatAi(false)}>cerrar</button>
             <div className={styles.contenidoInteraction}>
               {messages.map((message) => (
                 <ChatMessage key={message.id} message={message} />
