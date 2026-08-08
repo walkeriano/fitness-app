@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const INITIAL_MESSAGE = {
   id: "initial-assistant-message",
@@ -13,6 +13,16 @@ const INITIAL_MESSAGE = {
 export default function useAIChat() {
   const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [loading, setLoading] = useState(false);
+
+  const completeMessageAnimation = useCallback((messageId) => {
+    setMessages((previousMessages) =>
+      previousMessages.map((message) =>
+        message.id === messageId
+          ? { ...message, animate: false }
+          : message
+      )
+    );
+  }, []);
 
   const sendMessage = async (text) => {
     const normalizedText = text.trim();
@@ -76,6 +86,7 @@ export default function useAIChat() {
         id: crypto.randomUUID(),
         role: "assistant",
         content: data.answer.trim(),
+        animate: true,
       };
 
       setMessages((previousMessages) => [
@@ -109,5 +120,6 @@ export default function useAIChat() {
     messages,
     loading,
     sendMessage,
+    completeMessageAnimation,
   };
 }

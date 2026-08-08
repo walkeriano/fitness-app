@@ -9,7 +9,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 export default function ChatWindow() {
-  const { messages, loading, sendMessage } = useAIChat();
+  const {
+    messages,
+    loading,
+    sendMessage,
+    completeMessageAnimation,
+  } = useAIChat();
   const [openChatAi, setOpenChatAi] = useState(false);
 
   return (
@@ -25,7 +30,11 @@ export default function ChatWindow() {
           <div className={styles.messageContainer}>
             <div className={styles.contenidoInteraction}>
               {messages.map((message) => (
-                <ChatMessage key={message.id} message={message} />
+                <ChatMessage
+                  key={message.id}
+                  message={message}
+                  onAnimationComplete={completeMessageAnimation}
+                />
               ))}
               {loading && <TypingIndicator />}
             </div>
