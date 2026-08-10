@@ -6,28 +6,40 @@ import ChatMessage from "../chatMessage/chatMessage";
 import ChatInput from "@/components/ai/chatInput/chatInput";
 import TypingIndicator from "../TypingIndicator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 export default function ChatWindow() {
-  const {
-    messages,
-    loading,
-    sendMessage,
-    completeMessageAnimation,
-  } = useAIChat();
+  const { messages, loading, sendMessage, completeMessageAnimation } =
+    useAIChat();
   const [openChatAi, setOpenChatAi] = useState(false);
 
   return (
     <>
       {openChatAi ? (
         <section className={styles.bgContainer}>
-          <button
-            className={styles.btnCerrar}
-            onClick={() => setOpenChatAi(false)}
-          >
-            cerrar
-          </button>
           <div className={styles.messageContainer}>
+            <section className={styles.headerChat}>
+              <section className={styles.flexNameBox}>
+                <div className={styles.imgContainer}>
+                  <Image
+                    src="/images/edit-img.jpg"
+                    alt="Chef Personal I.A"
+                    fill={true}
+                  />
+                </div>
+                <div className={styles.flexNameText}>
+                  <h3>Chef Personal I.A</h3>
+                  <p>Disponible...</p>
+                </div>
+              </section>
+              <button
+                className={styles.btnCerrar}
+                onClick={() => setOpenChatAi(false)}
+              >
+                <FontAwesomeIcon  size="2x" icon={faXmark} className={styles.icon} />
+              </button>
+            </section>
             <div className={styles.contenidoInteraction}>
               {messages.map((message) => (
                 <ChatMessage

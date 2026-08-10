@@ -17,10 +17,10 @@
 }
 
 .contanerInput button {
-  background-color: blue;
+  background-color: #006effb6;
   padding: 10px 20px;
   border-radius: 50px;
-  border: none;
+  border: 1px solid #006fff;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   font-weight: 500;
