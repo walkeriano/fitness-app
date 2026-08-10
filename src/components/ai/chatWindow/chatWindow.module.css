@@ -1,7 +1,7 @@
 .bgContainer {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   background-color: rgba(0, 0, 0, 0.747);
   z-index: 1000000;
   display: flex;
@@ -97,7 +97,7 @@
   margin-right: 5px;
 }
 
-.btnCerrar .icon{
+.btnCerrar .icon {
   font-size: 1.2rem;
 }
 
