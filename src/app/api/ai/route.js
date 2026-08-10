@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import { askAI } from "@/services/ai/aiService";
+import { evaluateChatScope } from "@/services/ai/scopePolicy";
+import {
+  getMissingUserContextFields,
+  normalizeUserContext,
+} from "@/services/ai/userContext";
 
 export const runtime = "nodejs";
 
@@ -16,7 +21,7 @@ function createErrorResponse(status, code, message) {
         message,
       },
     },
-    { status }
+    { status },
   );
 }
 
@@ -62,10 +67,7 @@ function validateMessages(messages) {
       };
     }
 
-    if (
-      typeof message.content !== "string" ||
-      !message.content.trim()
-    ) {
+    if (typeof message.content !== "string" || !message.content.trim()) {
       return {
         valid: false,
         code: "EMPTY_MESSAGE",
@@ -111,44 +113,70 @@ export async function POST(request) {
       return createErrorResponse(
         400,
         "INVALID_JSON",
-        "La petición no contiene un JSON válido."
+        "La petición no contiene un JSON válido.",
       );
     }
 
     const validation = validateMessages(body?.messages);
 
     if (!validation.valid) {
+      return createErrorResponse(400, validation.code, validation.message);
+    }
+
+    const userContext = normalizeUserContext(body?.userContext);
+
+    const missingFields = getMissingUserContextFields(userContext);
+
+    if (missingFields.length > 0) {
       return createErrorResponse(
-        400,
-        validation.code,
-        validation.message
+        422,
+        "PROFILE_INCOMPLETE",
+        "Completa tu nombre, edad, número de comidas, peso y objetivo físico para recibir respuestas personalizadas.",
       );
     }
 
-    const answer = await askAI(validation.messages);
+    const scopeEvaluation = evaluateChatScope(
+      validation.messages,
+      userContext.name,
+    );
+
+    if (!scopeEvaluation.allowAI) {
+      return NextResponse.json({
+        success: true,
+        answer: scopeEvaluation.localAnswer,
+        source: "local",
+      });
+    }
+
+    const answer = await askAI({
+      messages: validation.messages,
+      userContext,
+    });
 
     return NextResponse.json({
       success: true,
       answer,
+      source: "openai",
     });
   } catch (error) {
     const status = error?.status;
     const code = getOpenAIErrorCode(error);
-    const requestId =
-      error?.request_id || error?.requestID || null;
+    const requestId = error?.request_id || error?.requestID || null;
 
     console.error("Error generando respuesta de IA", {
       status,
       code,
       requestId,
       message: error?.message,
+      incompleteReason: error?.incompleteReason || null,
+      usage: error?.usage || null,
     });
 
     if (code === "AI_INCOMPLETE_RESPONSE") {
       return createErrorResponse(
         502,
         "AI_INCOMPLETE_RESPONSE",
-        "La respuesta quedó incompleta. Inténtalo nuevamente."
+        "La respuesta quedó incompleta. Inténtalo nuevamente.",
       );
     }
 
@@ -164,14 +192,14 @@ export async function POST(request) {
         return createErrorResponse(
           503,
           "AI_QUOTA_EXHAUSTED",
-          "El asistente no está disponible temporalmente."
+          "El asistente no está disponible temporalmente.",
         );
       }
 
       return createErrorResponse(
         429,
         "AI_RATE_LIMITED",
-        "Se han enviado demasiadas solicitudes. Inténtalo nuevamente en unos momentos."
+        "Se han enviado demasiadas solicitudes. Inténtalo nuevamente en unos momentos.",
       );
     }
 
@@ -179,7 +207,7 @@ export async function POST(request) {
       return createErrorResponse(
         502,
         "AI_AUTHENTICATION_ERROR",
-        "El asistente no está disponible temporalmente."
+        "El asistente no está disponible temporalmente.",
       );
     }
 
@@ -187,7 +215,7 @@ export async function POST(request) {
       return createErrorResponse(
         503,
         "AI_MODEL_UNAVAILABLE",
-        "El modelo configurado no está disponible."
+        "El modelo configurado no está disponible.",
       );
     }
 
@@ -195,7 +223,7 @@ export async function POST(request) {
       return createErrorResponse(
         502,
         "AI_PERMISSION_ERROR",
-        "El asistente no está disponible temporalmente."
+        "El asistente no está disponible temporalmente.",
       );
     }
 
@@ -203,14 +231,14 @@ export async function POST(request) {
       return createErrorResponse(
         502,
         "AI_PROVIDER_ERROR",
-        "El servicio de IA no respondió correctamente."
+        "El servicio de IA no respondió correctamente.",
       );
     }
 
     return createErrorResponse(
       500,
       "AI_INTERNAL_ERROR",
-      "No se pudo generar una respuesta."
+      "No se pudo generar una respuesta.",
     );
   }
 }

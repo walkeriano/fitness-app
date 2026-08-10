@@ -1,26 +1,49 @@
 "use client";
+import { useCallback, useContext, useEffect, useState } from "react";
+import AuthContext from "@/state/auth/auth-context";
+import useUserProfile from "@/state/hook/useUserProfile";
+import {
+  getMissingUserContextFields,
+  normalizeUserContext,
+} from "@/services/ai/userContext";
 
-import { useCallback, useState } from "react";
+function createInitialMessage(name) {
+  const greeting = name ? `Hola ${name}` : "Hola";
 
-const INITIAL_MESSAGE = {
-  id: "initial-assistant-message",
-  role: "assistant",
-  content:
-    "👋 Hola. Soy tu asistente nutricional. Pregúntame sobre alimentación, recetas o hábitos saludables.",
-  isInitial: true,
-};
+  return {
+    id: "initial-assistant-message",
+    role: "assistant",
+    content: `🙌🏻 ${greeting}, soy tu Chef Personal 👨🏽‍🍳. Estaré encantado de ayudarte y asesorarte en tu alimentación, recetas y nutrición.`,
+    isInitial: true,
+  };
+}
 
 export default function useAIChat() {
-  const [messages, setMessages] = useState([INITIAL_MESSAGE]);
+  const { user } = useContext(AuthContext);
+  const {
+    userProfile,
+    loading: profileLoading,
+    error: profileError,
+  } = useUserProfile(user);
+  const userContext = normalizeUserContext(userProfile);
+  const [messages, setMessages] = useState(() => [createInitialMessage(null)]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const personalizedInitialMessage = createInitialMessage(userContext?.name);
+
+    setMessages((previousMessages) =>
+      previousMessages.map((message) =>
+        message.isInitial ? personalizedInitialMessage : message,
+      ),
+    );
+  }, [userContext?.name]);
 
   const completeMessageAnimation = useCallback((messageId) => {
     setMessages((previousMessages) =>
       previousMessages.map((message) =>
-        message.id === messageId
-          ? { ...message, animate: false }
-          : message
-      )
+        message.id === messageId ? { ...message, animate: false } : message,
+      ),
     );
   }, []);
 
@@ -28,6 +51,66 @@ export default function useAIChat() {
     const normalizedText = text.trim();
 
     if (!normalizedText || loading) {
+      return false;
+    }
+
+    if (!user) {
+      setMessages((previousMessages) => [
+        ...previousMessages,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: "Debes iniciar sesión para utilizar el asistente.",
+          isError: true,
+        },
+      ]);
+
+      return false;
+    }
+
+    if (profileLoading) {
+      setMessages((previousMessages) => [
+        ...previousMessages,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content:
+            "Estamos cargando tu perfil. Inténtalo nuevamente en unos segundos.",
+          isError: true,
+        },
+      ]);
+
+      return false;
+    }
+
+    if (profileError) {
+      setMessages((previousMessages) => [
+        ...previousMessages,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: "No se pudo cargar la información de tu perfil.",
+          isError: true,
+        },
+      ]);
+
+      return false;
+    }
+
+    const missingFields = getMissingUserContextFields(userContext);
+
+    if (missingFields.length > 0) {
+      setMessages((previousMessages) => [
+        ...previousMessages,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content:
+            "Completa tu nombre, edad, número de comidas, peso y objetivo físico para recibir respuestas personalizadas.",
+          isError: true,
+        },
+      ]);
+
       return false;
     }
 
@@ -52,10 +135,7 @@ export default function useAIChat() {
       },
     ];
 
-    setMessages((previousMessages) => [
-      ...previousMessages,
-      userMessage,
-    ]);
+    setMessages((previousMessages) => [...previousMessages, userMessage]);
 
     setLoading(true);
 
@@ -67,6 +147,7 @@ export default function useAIChat() {
         },
         body: JSON.stringify({
           messages: conversation,
+          userContext,
         }),
       });
 
@@ -74,7 +155,7 @@ export default function useAIChat() {
 
       if (!response.ok || !data.success) {
         throw new Error(
-          data.error?.message || "No se pudo obtener una respuesta."
+          data.error?.message || "No se pudo obtener una respuesta.",
         );
       }
 
@@ -104,8 +185,7 @@ export default function useAIChat() {
           id: crypto.randomUUID(),
           role: "assistant",
           content:
-            error.message ||
-            "Ha ocurrido un error. Inténtalo nuevamente.",
+            error.message || "Ha ocurrido un error. Inténtalo nuevamente.",
           isError: true,
         },
       ]);
