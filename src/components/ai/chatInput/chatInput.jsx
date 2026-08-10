@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styles from "./chatInput.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
 
 const MAX_MESSAGE_LENGTH = 1000;
 
@@ -43,7 +46,7 @@ export default function ChatInput({ onSend, loading }) {
         type="submit"
         disabled={!canSend}
       >
-        {loading ? "Enviando..." : "Enviar"}
+        {loading ? <FontAwesomeIcon icon={faSpinner} spin /> : "Enviar"}
       </button>
     </form>
   );
