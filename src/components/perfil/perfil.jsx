@@ -17,6 +17,7 @@ import AuthContext from "@/state/auth/auth-context";
 import Loading from "@/components/loadingExtra/loadingExtra";
 import InfoProducts from "@/components/infoProducts/infoProducts";
 import Contador from "@/components/contador/contador";
+import ChatWindow from "@/components/ai/chatWindow/chatWindow";
 import imagenCarlos from "../../../public/images/coach-carlos-perfil.png";
 import imagenKarina from "../../../public/images/coach-karina-perfil.png";
 
@@ -27,16 +28,14 @@ export default function Perfil() {
   const [imagenCoach, setImagenCoach] = useState(null);
 
   useEffect(() => {
-    
     if (!loading && !userProfile) {
-      router.push("/"); 
+      router.push("/");
     } else if (!loading && userProfile?.suscripcion === "suspendido") {
-      router.push("/perfil-suspendido"); 
+      router.push("/perfil-suspendido");
     } else if (!loading && userProfile?.superUser === true) {
-      router.push("/administrador-usuarios"); 
+      router.push("/administrador-usuarios");
     }
   }, [loading, userProfile, router]);
-
 
   useEffect(() => {
     if (userProfile?.coach === "carlos quesada") {
@@ -222,10 +221,16 @@ export default function Perfil() {
                   </Link>
                 </section>
                 <div className={styles.imgFood}>
-                  <Image src="/images/food.png" alt="image-coach" fill={true} loading="lazy" sizes="(max-width: 768px) 50vw, 50vw" />
+                  <Image
+                    src="/images/food.png"
+                    alt="image-coach"
+                    fill={true}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 50vw, 50vw"
+                  />
                 </div>
               </Link>
-            </section>
+            </section>   
             <section className={styles.flexCalculate}>
               <section className={styles.totalCalculo}>
                 <Contador calculatedData={calculatedData} />
@@ -261,6 +266,7 @@ export default function Perfil() {
               </section>
             </section>
           </section>
+          <ChatWindow />
           <Link
             href="/alimentacion-coach-fitness-app"
             className={styles.containerFood}
@@ -290,7 +296,12 @@ export default function Perfil() {
               </Link>
             </section>
             <div className={styles.imgFood}>
-              <Image src="/images/food.png" alt="image-coach" fill={true} loading="lazy" />
+              <Image
+                src="/images/food.png"
+                alt="image-coach"
+                fill={true}
+                loading="lazy"
+              />
             </div>
           </Link>
           <section className={styles.containerContact}>

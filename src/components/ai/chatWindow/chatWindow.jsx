@@ -6,7 +6,11 @@ import ChatMessage from "../chatMessage/chatMessage";
 import ChatInput from "@/components/ai/chatInput/chatInput";
 import TypingIndicator from "../TypingIndicator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faXmark,
+  faChevronDown,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
 export default function ChatWindow() {
@@ -37,7 +41,11 @@ export default function ChatWindow() {
                 className={styles.btnCerrar}
                 onClick={() => setOpenChatAi(false)}
               >
-                <FontAwesomeIcon  size="2x" icon={faXmark} className={styles.icon} />
+                <FontAwesomeIcon
+                  size="2x"
+                  icon={faXmark}
+                  className={styles.icon}
+                />
               </button>
             </section>
             <div className={styles.contenidoInteraction}>
@@ -55,19 +63,24 @@ export default function ChatWindow() {
         </section>
       ) : (
         <section className={styles.containerBtnActive}>
-          <button
-            onClick={() => setOpenChatAi(true)}
-            className={styles.btnChatActive}
-          >
-            <h3>Buen día, ¿Qué quieres desayunar?</h3>
-            <div className={styles.flexName}>
-              <p>OPEN AI</p>
+          <div className={styles.boxtitleFood}>
+            <h4>Cheff Nutricionista I.A</h4>
+            <div className={styles.contDetalle}>
+              <p>Recetas y nutrición</p>
               <FontAwesomeIcon
-                icon={faStar}
+                icon={faChevronDown}
                 size="2x"
                 className={styles.icon}
               />
             </div>
+          </div>
+          <Image src="/images/cheff-ia.png" alt="Chef Personal I.A" fill={true} />
+          <button
+            onClick={() => setOpenChatAi(true)}
+            className={styles.btnChatActive}
+          >
+            <h3>Abrir Chat</h3>
+            <FontAwesomeIcon icon={faArrowRight} size="2x" className={styles.icon} />
           </button>
         </section>
       )}

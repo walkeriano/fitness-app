@@ -114,46 +114,104 @@
 }
 
 .containerBtnActive {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.btnChatActive {
-  width: 90%;
-  padding: 10px 0px;
-  border-radius: 50px;
+  border-radius: 30px;
+  border: 1px solid #212121;
+  background-color: #131313;
+  width: 95%;
+  height: 200px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #006effb6;
-  cursor: pointer;
-  border: 2px solid #006fff;
-  color: white;
-  gap: 5px;
+  justify-content: space-between;
+  position: relative;
+  text-decoration: none;
+  animation: openBottom 1.5s linear;
+  padding: 16px ;
 }
 
-.flexName {
+.containerBtnActive img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  object-position: bottom right;
+  border-radius: 25px;
+}
+
+.titleFood {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  z-index: 1;
+  padding: 15px;
+}
+
+.boxtitleFood {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.boxtitleFood h4 {
+  width: 100%;
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: white;
+  line-height: 1.1;
+}
+
+.boxtitleFood .contDetalle {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+  color: #a6a6a6;
 }
 
-.flexName .icon {
-  font-size: 0.8rem;
-}
-
-.btnChatActive h3 {
+.contDetalle p {
   font-size: 0.9rem;
-  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-.btnChatActive p {
-  font-size: 0.8rem;
-  font-weight: 300;
-  letter-spacing: 1px;
+.contDetalle .icon {
+  font-size: 0.9rem;
+}
+
+.btnChatActive {
+  width: auto;
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #006eff;
+  cursor: pointer;
+  border: none;
+  color: white;
+  gap: 5px;
+  border-radius: 50px;
+  padding: 8px 15px;
+  z-index: 1;
+}
+
+
+.btnChatActive h3 {
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.btnChatActive .icon{
+  font-size: 1.2rem;
+  transform: rotate(-45deg);
 }
