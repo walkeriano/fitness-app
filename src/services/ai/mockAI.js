@@ -6,7 +6,8 @@ export async function askMockAI(message) {
   const question = message.toLowerCase();
 
   if (question.includes("cena")) {
-    return `
+    return {
+      answer: `
 🍽️ Cena Fitness
 
 200 g pollo
@@ -16,11 +17,14 @@ export async function askMockAI(message) {
 Ensalada
 
 620 kcal
-`;
+`,
+      imageQuery: "healthy chicken rice dinner",
+    };
   }
 
   if (question.includes("desayuno")) {
-    return `
+    return {
+      answer: `
 🥣 Desayuno
 
 Avena
@@ -30,11 +34,14 @@ Yogur
 Plátano
 
 520 kcal
-`;
+`,
+      imageQuery: "healthy oatmeal yogurt banana",
+    };
   }
 
   if (question.includes("proteína")) {
-    return `
+    return {
+      answer: `
 💪 Para aumentar tu proteína puedes consumir:
 
 • Pollo
@@ -44,10 +51,13 @@ Plátano
 • Atún
 
 • Claras de huevo
-`;
+`,
+      imageQuery: "healthy high protein foods",
+    };
   }
 
-  return `
+  return {
+    answer: `
 Soy tu asistente nutricional.
 
 Puedo ayudarte con:
@@ -61,5 +71,7 @@ Puedo ayudarte con:
 🍌 Snacks
 
 🥑 Alimentación saludable
-`;
+`,
+    imageQuery: "healthy colorful nutritious food",
+  };
 }

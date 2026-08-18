@@ -8,6 +8,28 @@ const SUPPORTED_PROVIDERS = new Set(["mock", "openai"]);
 const DEFAULT_MODEL = "gpt-5-nano";
 const DEFAULT_MAX_OUTPUT_TOKENS = 800;
 const MAX_ALLOWED_OUTPUT_TOKENS = 1200;
+const MAX_ANSWER_CHARACTERS = 1000;
+const RESPONSE_FORMAT = {
+  type: "json_schema",
+  name: "nutrition_assistant_response",
+  strict: true,
+  schema: {
+    type: "object",
+    properties: {
+      answer: {
+        type: "string",
+        description: "Respuesta nutricional breve y práctica en español.",
+      },
+      imageQuery: {
+        type: "string",
+        description:
+          "Consulta visual en inglés de 2 a 7 palabras para buscar una fotografía relacionada.",
+      },
+    },
+    required: ["answer", "imageQuery"],
+    additionalProperties: false,
+  },
+};
 
 function getAIProvider() {
   const provider = process.env.AI_PROVIDER?.trim().toLowerCase();
@@ -41,6 +63,32 @@ function getMaxOutputTokens() {
   return DEFAULT_MAX_OUTPUT_TOKENS;
 }
 
+export function limitAnswerLength(answer) {
+  const normalizedAnswer = answer.trim();
+
+  if (normalizedAnswer.length <= MAX_ANSWER_CHARACTERS) {
+    return normalizedAnswer;
+  }
+
+  const availableText = normalizedAnswer.slice(
+    0,
+    MAX_ANSWER_CHARACTERS - 1,
+  );
+  const sentenceBoundaries = [". ", "! ", "? ", ".\n", "!\n", "?\n"];
+  const lastSentence = Math.max(
+    ...sentenceBoundaries.map((boundary) => availableText.lastIndexOf(boundary)),
+  );
+  const lastWord = availableText.lastIndexOf(" ");
+  const cutoff =
+    lastSentence >= MAX_ANSWER_CHARACTERS * 0.6
+      ? lastSentence + 1
+      : lastWord > 0
+        ? lastWord
+        : availableText.length;
+
+  return `${availableText.slice(0, cutoff).trim()}…`;
+}
+
 export async function askAI({ messages, userContext }) {
   const provider = getAIProvider();
 
@@ -66,6 +114,9 @@ export async function askAI({ messages, userContext }) {
     reasoning: {
       effort: "minimal",
     },
+    text: {
+      format: RESPONSE_FORMAT,
+    },
     max_output_tokens: getMaxOutputTokens(),
     store: false,
   });
@@ -84,11 +135,32 @@ export async function askAI({ messages, userContext }) {
     throw error;
   }
 
-  const answer = response.output_text?.trim();
+  const outputText = response.output_text?.trim();
 
-  if (!answer) {
+  if (!outputText) {
     throw new Error("OpenAI devolvió una respuesta sin contenido de texto");
   }
 
-  return answer;
+  let parsedResponse;
+
+  try {
+    parsedResponse = JSON.parse(outputText);
+  } catch {
+    const error = new Error("OpenAI devolvió una respuesta con formato inválido");
+    error.code = "AI_INVALID_RESPONSE_FORMAT";
+    throw error;
+  }
+
+  const rawAnswer = parsedResponse.answer?.trim();
+  const imageQuery = parsedResponse.imageQuery?.trim();
+
+  if (!rawAnswer || !imageQuery) {
+    const error = new Error("OpenAI devolvió una respuesta incompleta");
+    error.code = "AI_INVALID_RESPONSE_FORMAT";
+    throw error;
+  }
+
+  const answer = limitAnswerLength(rawAnswer);
+
+  return { answer, imageQuery };
 }

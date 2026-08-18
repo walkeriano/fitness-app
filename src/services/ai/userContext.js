@@ -5,14 +5,11 @@ const PHYSICAL_GOALS = {
   masaMuscular: "masa muscular",
   "masa muscular": "masa muscular",
 
-  recomposicionCorporal:
-    "recomposición corporal",
+  recomposicionCorporal: "recomposición corporal",
 
-  "recomposicion corporal":
-    "recomposición corporal",
+  "recomposicion corporal": "recomposición corporal",
 
-  "recomposición corporal":
-    "recomposición corporal",
+  "recomposición corporal": "recomposición corporal",
 };
 
 function normalizeName(value) {
@@ -31,17 +28,13 @@ function normalizeName(value) {
 function normalizeInteger(value) {
   const number = Number.parseInt(value, 10);
 
-  return Number.isInteger(number) && number > 0
-    ? number
-    : null;
+  return Number.isInteger(number) && number > 0 ? number : null;
 }
 
 function normalizeNumber(value) {
   const number = Number.parseFloat(value);
 
-  return Number.isFinite(number) && number > 0
-    ? number
-    : null;
+  return Number.isFinite(number) && number > 0 ? number : null;
 }
 
 function normalizePhysicalGoal(value) {
@@ -52,37 +45,45 @@ function normalizePhysicalGoal(value) {
   return PHYSICAL_GOALS[value.trim()] || null;
 }
 
-export function normalizeUserContext(profile) {
+export function normalizeUserContext(profile, calculatedData = profile) {
   if (!profile || typeof profile !== "object") {
     return null;
   }
 
   return {
     name: normalizeName(profile.name),
-
     edad: normalizeInteger(profile.edad),
-
-    comidasXdia: normalizeInteger(
-      profile.comidasXdia
-    ),
-
+    comidasXdia: normalizeInteger(profile.comidasXdia),
     peso: normalizeNumber(profile.peso),
+    objetivoFisico: normalizePhysicalGoal(profile.objetivoFisico),
 
-    objetivoFisico: normalizePhysicalGoal(
-      profile.objetivoFisico
+    tdee: normalizeNumber(calculatedData.tdee),
+    proteinas: normalizeNumber(calculatedData.proteinas),
+    grasas: normalizeNumber(calculatedData.grasas),
+    carbohidratos: normalizeNumber(calculatedData.carbohidratos),
+
+    proteinasCalorias: normalizeNumber(calculatedData.proteinasCalorias),
+    grasasCalorias: normalizeNumber(calculatedData.grasasCalorias),
+    carbohidratosCalorias: normalizeNumber(
+      calculatedData.carbohidratosCalorias,
     ),
   };
 }
 
-export function getMissingUserContextFields(
-  userContext
-) {
+export function getMissingUserContextFields(userContext) {
   const requiredFields = [
     "name",
     "edad",
     "comidasXdia",
     "peso",
     "objetivoFisico",
+    "tdee",
+    "proteinas",
+    "grasas",
+    "carbohidratos",
+    "proteinasCalorias",
+    "grasasCalorias",
+    "carbohidratosCalorias",
   ];
 
   if (!userContext) {
@@ -92,10 +93,6 @@ export function getMissingUserContextFields(
   return requiredFields.filter((field) => {
     const value = userContext[field];
 
-    return (
-      value === null ||
-      value === undefined ||
-      value === ""
-    );
+    return value === null || value === undefined || value === "";
   });
 }

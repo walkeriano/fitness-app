@@ -3,6 +3,8 @@
   gap: 12px;
   width: 90%;
   margin-top: 20px;
+  margin-bottom: 18px;
+  position: relative;
 }
 
 .contanerInput input {
@@ -31,4 +33,13 @@
   filter: grayscale(1);
   color: rgba(255, 255, 255, 0.5);
   cursor: not-allowed;
+}
+
+.characterCounter {
+  position: absolute;
+  left: 14px;
+  bottom: -17px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.65rem;
+  letter-spacing: 0.3px;
 }

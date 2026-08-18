@@ -7,6 +7,8 @@ import {
   normalizeUserContext,
 } from "@/services/ai/userContext";
 
+const MAX_CONVERSATION_MESSAGES = 20;
+
 function createInitialMessage(name) {
   const greeting = name ? `Hola ${name}` : "Hola";
 
@@ -14,6 +16,14 @@ function createInitialMessage(name) {
     id: "initial-assistant-message",
     role: "assistant",
     content: `🙌🏻 ${greeting}, soy tu Chef Personal 👨🏽‍🍳. Estaré encantado de ayudarte y asesorarte en tu alimentación, recetas y nutrición.`,
+    image: {
+      url: "/images/edit-img.jpg",
+      alt: "Chef nutricionista de Quesada Coach",
+      photographer: null,
+      photographerUrl: null,
+      sourceUrl: null,
+      isFallback: true,
+    },
     isInitial: true,
   };
 }
@@ -22,10 +32,11 @@ export default function useAIChat() {
   const { user } = useContext(AuthContext);
   const {
     userProfile,
+    calculatedData,
     loading: profileLoading,
     error: profileError,
   } = useUserProfile(user);
-  const userContext = normalizeUserContext(userProfile);
+  const userContext = normalizeUserContext(userProfile, calculatedData);
   const [messages, setMessages] = useState(() => [createInitialMessage(null)]);
   const [loading, setLoading] = useState(false);
 
@@ -89,7 +100,7 @@ export default function useAIChat() {
         {
           id: crypto.randomUUID(),
           role: "assistant",
-          content: "No se pudo cargar la información de tu perfil.",
+          content: "No pudimos calcular tus objetivos nutricionales. Actualiza tu perfil o inténtalo nuevamente.",
           isError: true,
         },
       ]);
@@ -133,7 +144,7 @@ export default function useAIChat() {
         role: userMessage.role,
         content: userMessage.content,
       },
-    ];
+    ].slice(-MAX_CONVERSATION_MESSAGES);
 
     setMessages((previousMessages) => [...previousMessages, userMessage]);
 
@@ -167,6 +178,7 @@ export default function useAIChat() {
         id: crypto.randomUUID(),
         role: "assistant",
         content: data.answer.trim(),
+        image: data.image || null,
         animate: true,
       };
 

@@ -5,6 +5,16 @@ export function buildPersonalizedInstructions(baseInstructions, userContext) {
     comidasXdia: userContext.comidasXdia,
     peso: userContext.peso,
     objetivoFisico: userContext.objetivoFisico,
+
+    objetivosNutricionalesDiarios: {
+      calorias: userContext.tdee,
+      proteinasGramos: userContext.proteinas,
+      grasasGramos: userContext.grasas,
+      carbohidratosGramos: userContext.carbohidratos,
+      proteinasCalorias: userContext.proteinasCalorias,
+      grasasCalorias: userContext.grasasCalorias,
+      carbohidratosCalorias: userContext.carbohidratosCalorias,
+    },
   });
 
   return `

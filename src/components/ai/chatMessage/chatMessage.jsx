@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import styles from "./chatMessage.module.css";
 
 const WORD_DELAY_MS = 55;
@@ -54,6 +55,11 @@ export default function ChatMessage({ message, onAnimationComplete }) {
   const visibleContent = shouldAnimate
     ? words.slice(0, visibleWords).join("")
     : message.content;
+  const showImage =
+    !isUser &&
+    !message.isError &&
+    message.image?.url &&
+    (!shouldAnimate || visibleWords >= words.length);
 
   return (
     <div className={isUser ? styles.userMessage : styles.aiMessage}>
@@ -64,6 +70,39 @@ export default function ChatMessage({ message, onAnimationComplete }) {
             <span className={styles.cursor} aria-hidden="true" />
           )}
         </p>
+        {showImage && (
+          <section className={styles.responseImage}>
+            <div className={styles.imageContainer}>
+              <Image
+                src={message.image.url}
+                alt={message.image.alt || "Imagen relacionada con la respuesta"}
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 85vw, 500px"
+              />
+            </div>
+            {!message.image.isFallback && message.image.photographer && (
+              <p className={styles.imageCredit}>
+                Foto de{" "}
+                <a
+                  href={message.image.photographerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {message.image.photographer}
+                </a>{" "}
+                en{" "}
+                <a
+                  href={message.image.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Pexels
+                </a>
+              </p>
+            )}
+          </section>
+        )}
       </div>
     </div>
   );

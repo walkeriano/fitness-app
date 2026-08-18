@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { askAI } from "@/services/ai/aiService";
 import { evaluateChatScope } from "@/services/ai/scopePolicy";
+import { searchRecipeImage } from "@/services/images/pexels";
 import {
   getMissingUserContextFields,
   normalizeUserContext,
@@ -9,7 +10,8 @@ import {
 export const runtime = "nodejs";
 
 const MAX_MESSAGES = 20;
-const MAX_MESSAGE_LENGTH = 1000;
+const MAX_USER_MESSAGE_LENGTH = 1000;
+const MAX_ASSISTANT_MESSAGE_LENGTH = 5000;
 const ALLOWED_ROLES = new Set(["user", "assistant"]);
 
 function createErrorResponse(status, code, message) {
@@ -75,11 +77,19 @@ function validateMessages(messages) {
       };
     }
 
-    if (message.content.trim().length > MAX_MESSAGE_LENGTH) {
+    const maximumLength =
+      message.role === "user"
+        ? MAX_USER_MESSAGE_LENGTH
+        : MAX_ASSISTANT_MESSAGE_LENGTH;
+
+    if (message.content.trim().length > maximumLength) {
       return {
         valid: false,
         code: "MESSAGE_TOO_LONG",
-        message: `Cada mensaje puede contener como máximo ${MAX_MESSAGE_LENGTH} caracteres.`,
+        message:
+          message.role === "user"
+            ? `Tu mensaje puede contener como máximo ${MAX_USER_MESSAGE_LENGTH} caracteres.`
+            : "El historial contiene una respuesta demasiado extensa.",
       };
     }
   }
@@ -131,7 +141,7 @@ export async function POST(request) {
       return createErrorResponse(
         422,
         "PROFILE_INCOMPLETE",
-        "Completa tu nombre, edad, número de comidas, peso y objetivo físico para recibir respuestas personalizadas.",
+        "No pudimos calcular tus objetivos nutricionales. Actualiza tu perfil o inténtalo nuevamente.",
       );
     }
 
@@ -141,21 +151,26 @@ export async function POST(request) {
     );
 
     if (!scopeEvaluation.allowAI) {
+      const image = await searchRecipeImage(scopeEvaluation.imageQuery);
+
       return NextResponse.json({
         success: true,
         answer: scopeEvaluation.localAnswer,
+        image,
         source: "local",
       });
     }
 
-    const answer = await askAI({
+    const aiResult = await askAI({
       messages: validation.messages,
       userContext,
     });
+    const image = await searchRecipeImage(aiResult.imageQuery);
 
     return NextResponse.json({
       success: true,
-      answer,
+      answer: aiResult.answer,
+      image,
       source: "openai",
     });
   } catch (error) {
@@ -177,6 +192,14 @@ export async function POST(request) {
         502,
         "AI_INCOMPLETE_RESPONSE",
         "La respuesta quedó incompleta. Inténtalo nuevamente.",
+      );
+    }
+
+    if (code === "AI_INVALID_RESPONSE_FORMAT") {
+      return createErrorResponse(
+        502,
+        "AI_INVALID_RESPONSE_FORMAT",
+        "El asistente devolvió una respuesta con formato inválido.",
       );
     }
 

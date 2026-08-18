@@ -139,6 +139,7 @@ export function evaluateChatScope(messages, userName) {
     return {
       allowAI: false,
       localAnswer: `${name}, estoy listo para ayudarte con recetas, organización de comidas y nutrición personalizada. ¿Qué te gustaría preparar o consultar?`,
+      imageQuery: "healthy colorful nutritious food",
     };
   }
 
@@ -146,6 +147,7 @@ export function evaluateChatScope(messages, userName) {
     return {
       allowAI: false,
       localAnswer: `De nada, ${name}. Cuando quieras, podemos continuar organizando tu alimentación.`,
+      imageQuery: "healthy meal preparation",
     };
   }
 
@@ -157,6 +159,7 @@ export function evaluateChatScope(messages, userName) {
     return {
       allowAI: false,
       localAnswer: `${name}, puedo ayudarte exclusivamente con alimentación, recetas, organización de comidas y nutrición personalizada según tu perfil.`,
+      imageQuery: "healthy nutrition ingredients",
     };
   }
 
@@ -164,6 +167,7 @@ export function evaluateChatScope(messages, userName) {
     return {
       allowAI: true,
       localAnswer: null,
+      imageQuery: null,
     };
   }
 
@@ -175,11 +179,13 @@ export function evaluateChatScope(messages, userName) {
     return {
       allowAI: true,
       localAnswer: null,
+      imageQuery: null,
     };
   }
 
   return {
     allowAI: false,
     localAnswer: `${name}, esta consulta está fuera de mi función como Chef Nutricionista IA. Puedo ayudarte con recetas, alimentos, distribución de comidas y recomendaciones nutricionales personalizadas.`,
+    imageQuery: "healthy food nutrition",
   };
 }
