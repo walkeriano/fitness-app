@@ -74,13 +74,21 @@ export default function ChatWindow() {
               />
             </div>
           </div>
-          <Image src="/images/cheff-ia.png" alt="Chef Personal I.A" fill={true} />
+          <Image
+            src="/images/cheff-ia.png"
+            alt="Chef Personal I.A"
+            fill={true}
+          />
           <button
             onClick={() => setOpenChatAi(true)}
             className={styles.btnChatActive}
           >
             <h3>Abrir Chat</h3>
-            <FontAwesomeIcon icon={faArrowRight} size="2x" className={styles.icon} />
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              size="2x"
+              className={styles.icon}
+            />
           </button>
         </section>
       )}
