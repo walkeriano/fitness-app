@@ -230,7 +230,7 @@ export default function Perfil() {
                   />
                 </div>
               </Link>
-            </section>   
+            </section>
             <section className={styles.flexCalculate}>
               <section className={styles.totalCalculo}>
                 <Contador calculatedData={calculatedData} />
