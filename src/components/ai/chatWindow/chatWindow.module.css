@@ -114,6 +114,22 @@
   overflow-y: auto;
 }
 
+.contenidoInteraction::-webkit-scrollbar {
+  background-color: rgba(0, 0, 255, 0);
+  width: 4px;
+}
+
+.contenidoInteraction::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 59, 59, 0.358);
+  border-radius: 50px;
+}
+
+.contenidoInteraction::-webkit-scrollbar-track {
+  background-color: transparent;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
 .containerBtnActive {
   border-radius: 30px;
   border: 1px solid #212121;
@@ -222,8 +238,16 @@
 }
 
 @media (min-width: 850px) {
+  .bgContainer {
+    left: 0px;
+  }
+
+  .messageContainer {
+    width: 80%;
+    height: 80%;
+  }
+
   .containerBtnActive {
     height: 280px;
   }
-
 }

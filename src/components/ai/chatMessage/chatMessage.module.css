@@ -111,8 +111,16 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 850px) {
   .imageContainer img {
-    height: 180px;
+    height: 250px;
+  }
+
+  .messageContent {
+    max-width: 55%;
+  }
+
+  .aiMessageContent {
+    max-width: 55%;
   }
 }
