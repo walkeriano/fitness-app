@@ -5,10 +5,10 @@ export default function Loading() {
   return (
     <div className={styles.contLoading}>
       <Image
-        src="/images/icons/logo.svg"
+        src="/images/icons/logo-two.svg"
         alt="logo-quesada"
         width={230}
-        height={70}
+        height={230}
         priority={true}
       />
       <div className={styles.loader}></div>
