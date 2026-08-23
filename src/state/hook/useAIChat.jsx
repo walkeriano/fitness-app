@@ -6,6 +6,10 @@ import {
   getMissingUserContextFields,
   normalizeUserContext,
 } from "@/services/ai/userContext";
+import {
+  loadAIChatSession,
+  saveAIChatSession,
+} from "@/services/ai/chatStorage";
 
 const MAX_CONVERSATION_MESSAGES = 20;
 
@@ -39,6 +43,35 @@ export default function useAIChat() {
   const userContext = normalizeUserContext(userProfile, calculatedData);
   const [messages, setMessages] = useState(() => [createInitialMessage(null)]);
   const [loading, setLoading] = useState(false);
+  const [hydratedUserId, setHydratedUserId] = useState(null);
+
+  useEffect(() => {
+    const userId = user?.uid;
+
+    if (!userId) {
+      setHydratedUserId(null);
+      setMessages([createInitialMessage(null)]);
+      return;
+    }
+
+    setHydratedUserId(null);
+
+    const restoredMessages = loadAIChatSession(userId);
+
+    setMessages([
+      createInitialMessage(null),
+      ...restoredMessages,
+    ]);
+    setHydratedUserId(userId);
+  }, [user?.uid]);
+
+  useEffect(() => {
+    if (!user?.uid || hydratedUserId !== user.uid) {
+      return;
+    }
+
+    saveAIChatSession(user.uid, messages);
+  }, [hydratedUserId, messages, user?.uid]);
 
   useEffect(() => {
     const personalizedInitialMessage = createInitialMessage(userContext?.name);

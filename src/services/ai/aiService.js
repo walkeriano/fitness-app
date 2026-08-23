@@ -6,9 +6,9 @@ import { buildPersonalizedInstructions } from "./promptBuilder";
 const SUPPORTED_PROVIDERS = new Set(["mock", "openai"]);
 
 const DEFAULT_MODEL = "gpt-5-nano";
-const DEFAULT_MAX_OUTPUT_TOKENS = 800;
+const DEFAULT_MAX_OUTPUT_TOKENS = 1200;
 const MAX_ALLOWED_OUTPUT_TOKENS = 1200;
-const MAX_ANSWER_CHARACTERS = 1000;
+const MAX_ANSWER_CHARACTERS = 1800;
 const RESPONSE_FORMAT = {
   type: "json_schema",
   name: "nutrition_assistant_response",
@@ -18,7 +18,8 @@ const RESPONSE_FORMAT = {
     properties: {
       answer: {
         type: "string",
-        description: "Respuesta nutricional breve y práctica en español.",
+        description:
+          "Respuesta nutricional visible para el usuario. No debe incluir ni mencionar la consulta de imagen del campo imageQuery.",
       },
       imageQuery: {
         type: "string",
@@ -87,6 +88,30 @@ export function limitAnswerLength(answer) {
         : availableText.length;
 
   return `${availableText.slice(0, cutoff).trim()}…`;
+}
+
+export function removeImageQueryFromAnswer(answer, imageQuery) {
+  const normalizedImageQuery = imageQuery.trim().toLowerCase();
+
+  return answer
+    .split("\n")
+    .filter((line) => {
+      const normalizedLine = line.trim().toLowerCase();
+
+      if (!normalizedLine) {
+        return true;
+      }
+
+      const isLabeledImageQuery =
+        /^(consulta|búsqueda|query)\s+(de\s+)?(foto|fotografía|imagen|visual)(\s+en\s+inglés)?\s*:/i.test(
+          line.trim(),
+        );
+      const isStandaloneImageQuery = normalizedLine === normalizedImageQuery;
+
+      return !isLabeledImageQuery && !isStandaloneImageQuery;
+    })
+    .join("\n")
+    .trim();
 }
 
 export async function askAI({ messages, userContext }) {
@@ -160,7 +185,15 @@ export async function askAI({ messages, userContext }) {
     throw error;
   }
 
-  const answer = limitAnswerLength(rawAnswer);
+  const sanitizedAnswer = removeImageQueryFromAnswer(rawAnswer, imageQuery);
+
+  if (!sanitizedAnswer) {
+    const error = new Error("OpenAI devolvió una respuesta visible vacía");
+    error.code = "AI_INVALID_RESPONSE_FORMAT";
+    throw error;
+  }
+
+  const answer = limitAnswerLength(sanitizedAnswer);
 
   return { answer, imageQuery };
 }

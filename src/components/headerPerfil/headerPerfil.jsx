@@ -13,15 +13,19 @@ import {
   faRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
+import { removeAIChatSession } from "@/services/ai/chatStorage";
 
 export default function HeaderPerfil() {
-  const { logout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [outside, setOutside] = useState(true);
   const router = useRouter();
 
   const handleLogout = async () => {
     try {
+      const userId = user?.uid;
+
       await logout(); 
+      removeAIChatSession(userId);
       localStorage.removeItem("userProfile");
       localStorage.removeItem("calculatedData");
       localStorage.removeItem("trainingData");

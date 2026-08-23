@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./chatWindow.module.css";
 import useAIChat from "@/state/hook/useAIChat";
 import ChatMessage from "../chatMessage/chatMessage";
@@ -17,6 +17,39 @@ export default function ChatWindow() {
   const { messages, loading, sendMessage, completeMessageAnimation } =
     useAIChat();
   const [openChatAi, setOpenChatAi] = useState(false);
+  const interactionRef = useRef(null);
+
+  useEffect(() => {
+    const interaction = interactionRef.current;
+
+    if (!openChatAi || !interaction) {
+      return;
+    }
+
+    let animationFrameId;
+
+    const scrollToLatestContent = () => {
+      window.cancelAnimationFrame(animationFrameId);
+      animationFrameId = window.requestAnimationFrame(() => {
+        interaction.scrollTop = interaction.scrollHeight;
+      });
+    };
+
+    const observer = new MutationObserver(scrollToLatestContent);
+
+    observer.observe(interaction, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
+
+    scrollToLatestContent();
+
+    return () => {
+      observer.disconnect();
+      window.cancelAnimationFrame(animationFrameId);
+    };
+  }, [openChatAi]);
 
   return (
     <>
@@ -48,7 +81,10 @@ export default function ChatWindow() {
                 />
               </button>
             </section>
-            <div className={styles.contenidoInteraction}>
+            <div
+              ref={interactionRef}
+              className={styles.contenidoInteraction}
+            >
               {messages.map((message) => (
                 <ChatMessage
                   key={message.id}
