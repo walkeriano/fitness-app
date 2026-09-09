@@ -3,7 +3,9 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 
 const useUserProfile = (user) => {
+  const userId = user?.uid;
   const [userProfile, setUserProfile] = useState(null);
+  const [profileUid, setProfileUid] = useState(null);
   const [calculatedData, setCalculatedData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,7 +17,7 @@ const useUserProfile = (user) => {
       const savedUserProfile = localStorage.getItem("userProfile");
       const savedCalculatedData = localStorage.getItem("calculatedData");
 
-      if (savedUserProfile && savedCalculatedData) {
+      if (userId && localStorage.getItem("userProfileUid") === userId && savedUserProfile && savedCalculatedData) {
         console.log("Datos obtenidos desde localStorage");
         return {
           userProfile: JSON.parse(savedUserProfile),
@@ -26,22 +28,28 @@ const useUserProfile = (user) => {
     };
 
     const saveToLocalStorage = (profile, calculated) => {
+      localStorage.setItem("userProfileUid", userId);
       localStorage.setItem("userProfile", JSON.stringify(profile));
       localStorage.setItem("calculatedData", JSON.stringify(calculated));
     };
 
     const fetchUserProfile = async () => {
+      setLoading(true);
+      setUserProfile(null);
+      setCalculatedData(null);
+      setError(null);
       const localData = getLocalStorageData();
       if (localData && isMounted) {
+        setProfileUid(userId);
         setUserProfile(localData.userProfile);
         setCalculatedData(localData.calculatedData);
         setLoading(false);
         return;
       }
 
-      if (user) {
+      if (userId) {
         try {
-          const userDocRef = doc(db, "users", user.uid);
+          const userDocRef = doc(db, "users", userId);
           const userDoc = await getDoc(userDocRef);
 
           if (userDoc.exists() && isMounted) {
@@ -57,6 +65,7 @@ const useUserProfile = (user) => {
               objetivoFisico: profileData.objetivoFisico,
             };
 
+            setProfileUid(userId);
             setUserProfile(profileData);
 
             const calculatedValues = calculateCaloriesAndMacros(convertedData);
@@ -85,7 +94,7 @@ const useUserProfile = (user) => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [userId]);
 
   const calculateCaloriesAndMacros = (data) => {
     const { peso, estatura, edad, genero, objetivoFisico, nivel } = data;
@@ -195,7 +204,13 @@ const useUserProfile = (user) => {
     };
   };
 
-  return { userProfile, calculatedData, loading, error };
+  const belongsToUser = Boolean(userId) && profileUid === userId;
+  return {
+    userProfile: belongsToUser ? userProfile : null,
+    calculatedData: belongsToUser ? calculatedData : null,
+    loading,
+    error,
+  };
 };
 
 export default useUserProfile;

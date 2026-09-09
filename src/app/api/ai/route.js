@@ -148,6 +148,7 @@ export async function POST(request) {
     const scopeEvaluation = evaluateChatScope(
       validation.messages,
       userContext.name,
+      Boolean(body?.nutritionPlan),
     );
 
     if (!scopeEvaluation.allowAI) {
@@ -164,6 +165,7 @@ export async function POST(request) {
     const aiResult = await askAI({
       messages: validation.messages,
       userContext,
+      nutritionPlan: body?.nutritionPlan,
     });
     const image = await searchRecipeImage(aiResult.imageQuery);
 

@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predev": "node scripts/prepare-pdf-worker.mjs",
+    "prebuild": "node scripts/prepare-pdf-worker.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -21,6 +23,7 @@
     "gsap": "^3.12.5",
     "next": "14.2.13",
     "openai": "^6.49.0",
+    "pdfjs-dist": "^6.3.289",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",

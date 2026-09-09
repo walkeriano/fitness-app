@@ -1,6 +1,8 @@
 "use client";
 import { useCallback, useContext, useEffect, useState } from "react";
 import AuthContext from "@/state/auth/auth-context";
+import useNutritionPlanFile from "@/state/hook/useNutritionPlanFile";
+import useNutritionPdf from "@/state/hook/useNutritionPdf";
 import useUserProfile from "@/state/hook/useUserProfile";
 import {
   getMissingUserContextFields,
@@ -32,7 +34,7 @@ function createInitialMessage(name) {
   };
 }
 
-export default function useAIChat() {
+export default function useAIChat({ enabled = true } = {}) {
   const { user } = useContext(AuthContext);
   const {
     userProfile,
@@ -40,7 +42,19 @@ export default function useAIChat() {
     loading: profileLoading,
     error: profileError,
   } = useUserProfile(user);
-  const userContext = normalizeUserContext(userProfile, calculatedData);
+  const userContext = userProfile && calculatedData
+    ? normalizeUserContext(userProfile, calculatedData)
+    : null;
+  const nutritionPlanFile = useNutritionPlanFile({
+    userId: user?.uid,
+    userProfile,
+    enabled: enabled && !profileLoading,
+  });
+  const nutritionPdf = useNutritionPdf({
+    userId: user?.uid,
+    fileUrl: nutritionPlanFile.fileUrl,
+    enabled: enabled && !profileLoading,
+  });
   const [messages, setMessages] = useState(() => [createInitialMessage(null)]);
   const [loading, setLoading] = useState(false);
   const [hydratedUserId, setHydratedUserId] = useState(null);
@@ -94,7 +108,7 @@ export default function useAIChat() {
   const sendMessage = async (text) => {
     const normalizedText = text.trim();
 
-    if (!normalizedText || loading) {
+    if (!normalizedText || loading || nutritionPlanFile.loading || nutritionPdf.loading) {
       return false;
     }
 
@@ -192,6 +206,7 @@ export default function useAIChat() {
         body: JSON.stringify({
           messages: conversation,
           userContext,
+          nutritionPlan: nutritionPdf.text,
         }),
       });
 
@@ -243,7 +258,10 @@ export default function useAIChat() {
 
   return {
     messages,
-    loading,
+    loading: loading || nutritionPlanFile.loading || nutritionPdf.loading,
+    planNotice: nutritionPlanFile.loading || nutritionPdf.loading
+      ? "Leyendo tu plan de alimentación…"
+      : nutritionPlanFile.error || nutritionPdf.error,
     sendMessage,
     completeMessageAnimation,
   };

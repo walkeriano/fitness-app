@@ -14,9 +14,9 @@ import {
 import Image from "next/image";
 
 export default function ChatWindow() {
-  const { messages, loading, sendMessage, completeMessageAnimation } =
-    useAIChat();
   const [openChatAi, setOpenChatAi] = useState(false);
+  const { messages, loading, sendMessage, completeMessageAnimation, planNotice } =
+    useAIChat({ enabled: openChatAi });
   const interactionRef = useRef(null);
 
   useEffect(() => {
@@ -94,6 +94,7 @@ export default function ChatWindow() {
               ))}
               {loading && <TypingIndicator />}
             </div>
+            {planNotice && <p role="status">{planNotice}</p>}
             <ChatInput onSend={sendMessage} loading={loading} />
           </div>
         </section>

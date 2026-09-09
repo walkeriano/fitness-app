@@ -130,7 +130,7 @@ function hasPreviousNutritionContext(messages) {
     );
 }
 
-export function evaluateChatScope(messages, userName) {
+export function evaluateChatScope(messages, userName, hasNutritionPlan = false) {
   const lastMessage = messages.at(-1);
   const text = normalizeText(lastMessage?.content || "");
   const name = userName || "Hola";
@@ -163,7 +163,9 @@ export function evaluateChatScope(messages, userName) {
     };
   }
 
-  if (isNutritionRelated) {
+  const refersToPlan = hasNutritionPlan && /\b(pdf|documento|archivo|mi plan|este plan|el plan|segun el plan|pagina)\b/.test(text);
+
+  if (isNutritionRelated || (refersToPlan && !isClearlyOutOfScope)) {
     return {
       allowAI: true,
       localAnswer: null,
