@@ -21,7 +21,7 @@ function createInitialMessage(name) {
   return {
     id: "initial-assistant-message",
     role: "assistant",
-    content: `🙌🏻 ${greeting}, soy tu Chef Personal 👨🏽‍🍳. Estaré encantado de ayudarte y asesorarte en tu alimentación, recetas y nutrición.`,
+    content: `🙌🏻 ${greeting}, soy tu Chef Personal 👨🏽‍🍳. Estaré encantado de ayudarte y asesorarte en tu alimentación, recetas y nutrición`,
     image: {
       url: "/images/edit-img.jpg",
       alt: "Chef nutricionista de Quesada Coach",
